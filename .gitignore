@@ -1,0 +1,4 @@
+tests/.env
+.DS_Store
+tests/test-results.xml
+tests/seismos-suite
