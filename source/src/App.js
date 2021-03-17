@@ -1,13 +1,14 @@
-import React, { Fragment } from "react";
-import Dashboard from './pages/Dashboard'
+// @packages
+import React from "react";
+import Dashboard from './pages/dashboard/'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
-function App() {
+const App = () => {
   return (
-    <Fragment>
+    <>
       <CssBaseline/>
         <Dashboard/>
-    </Fragment>
+    </>
   );
 }
 
