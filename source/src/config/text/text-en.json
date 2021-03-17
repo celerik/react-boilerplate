@@ -1,0 +1,39 @@
+{
+  "appName": "Flow OS",
+  
+  "dashboardPage": {
+    "helloWorld": "Hello World!"
+  },
+  "notFoundPage": {
+    "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
+  },
+  "notifications": {
+    "delete": "The record was successfully deleted!",
+    "insert": "The record was successfully inserted!",
+    "update": "The record was successfully updated!"
+  },
+  "pagination": {
+    "items": "items",
+    "itemsPerPage": "Items per page",
+    "next": "Next",
+    "of": "of",
+    "ofTotal": "of total",
+    "page": "Page",
+    "previous": "Previous",
+    "showing": "Showing records from",
+    "to": "to"
+  },
+  "validations": {
+    "date": "Invalid date",
+    "email": "Invalid email",
+    "maxValue": "Max value: {0}",
+    "minCharacters": "Expected at least {0} characters",
+    "minValue": "Min value: {0}",
+    "number": "Invalid number",
+    "phone": "Invalid phone",
+    "required": "Required field",
+    "search": "Invalid search",
+    "verification": "Verification doesn't match",
+    "zip": "Invalid zip code"
+  }
+}
