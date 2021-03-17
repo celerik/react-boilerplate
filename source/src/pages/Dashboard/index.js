@@ -11,8 +11,7 @@ import { config } from '../../config'
 
 const Dashboard = ({classes}) => (
     <div className={classes.root}>
-        <Typography >{config.text.dashboardPage.helloWorld}</Typography>
-        
+        <Typography >{config.text.dashboardPage.helloWorld}</Typography> 
     </div>
   );
 
