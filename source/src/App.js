@@ -1,6 +1,6 @@
 // @packages
 import React from "react";
-import Dashboard from './pages/dashboard/'
+import Dashboard from './pages/dashboard'
 import CssBaseline from '@material-ui/core/CssBaseline';
 
 const App = () => {
