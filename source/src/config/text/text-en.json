@@ -1,6 +1,5 @@
 {
   "appName": "Flow OS",
-  
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
