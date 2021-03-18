@@ -1,4 +1,4 @@
 /**
  * Global classes.
  */
- export default theme => ({});
+export default () => ({});
