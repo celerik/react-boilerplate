@@ -1,16 +1,19 @@
 // @packages
 import CssBaseline from '@material-ui/core/CssBaseline';
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 // @scripts
-import Dashboard from './pages/dashboard';
+import Routes from './config/routes/routes';
 import { store } from './core';
 
 const App = () => (
     <Provider store={store}>
-      <CssBaseline />
-        <Dashboard />
+      <BrowserRouter>
+        <CssBaseline />
+        <Routes />
+      </BrowserRouter>
     </Provider>
 );
 

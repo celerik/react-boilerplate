@@ -1,6 +1,12 @@
-[
-    {
-        "component": "Dashboard",
-        "name": "/"
+{
+    "home": {
+        "component": "DashBoard",
+        "name": "Dashboard",
+        "url": "/"
+    },
+    "login": {
+        "component": "Login",
+        "name": "Login",
+        "url": "/login"
     }
-]
+}
