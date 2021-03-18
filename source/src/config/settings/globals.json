@@ -1,0 +1,21 @@
+{
+  "localStorage": {
+    "device": "localStorage",
+    "isEnabled": true,
+    "key": "state",
+    "savableState": [
+      "appVersion",
+      "user"
+    ],
+    "throttleWait": 1000
+  },
+  "reduxLogger": {
+    "isEnabled": true
+  },
+  "serviceMocker": {
+    "delayResponse": 300,
+    "isEnabled": true,
+    "loginPassword": "123",
+    "loginUserName": "user@flowos.com"
+  }
+}

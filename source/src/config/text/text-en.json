@@ -3,6 +3,9 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
+  "loginPage": {
+    "invalidCredentials": "Invalid credentials"
+  },
   "notFoundPage": {
     "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
   },
