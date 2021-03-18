@@ -3,7 +3,9 @@
     "name": "local"
   },
   "serviceMocker": {
-    "exclude": []
+    "include": [
+      "mockServiceSecurityLogin"
+    ]
   },
   "services": {
     "root": "localhost:8080"

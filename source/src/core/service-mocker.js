@@ -50,9 +50,9 @@ export const initializeServiceMocker = (store) => {
       const serviceMocker = {
           replyWithMockData: () => {
               mockAdapter.reset();
-              const exclude = config.settings.serviceMocker.exclude || [];
+              const include = config.settings.serviceMocker.include || [];
               Object.keys(mockedServices).forEach((name) => {
-                  if (!exclude.some(item => item === name)) {
+                  if (include.some(item => item === name)) {
                     mockedServices[name](mockAdapter, store);
                   }
               });

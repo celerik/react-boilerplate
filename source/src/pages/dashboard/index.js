@@ -1,36 +1,33 @@
 // @packages
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
-import { useSelector, useDispatch } from "react-redux";
-import Button from '@material-ui/core/Button';
-
-// @styles
-import styles from './styles';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 // @scripts
-import { config } from '../../config'
+import Home from '../../components/templates/home'
 import {
   login
 } from '../../actions';
 
-const Dashboard = ({classes}) => {
-  const dispatch = useDispatch();
-
-  const onLogin = () => {
-    dispatch(login({email: 'user@flowos.com', password: '123' }))
-  }
+const DashboardPage = ({ infoUser, onLogin }) => {
 
   return (
-    <div className={classes.root}>
-        <Typography >{config.text.dashboardPage.helloWorld}</Typography> 
-        <Button onClick={onLogin}>
-          test            
-        </Button>
-    </div>
-  )};
+    <Home 
+      user={infoUser}
+      login={onLogin}
+    />
+  )
+};
 
-  
+const mapDispatchToProps = dispatch => bindActionCreators({
+  onLogin: login,
+}, dispatch);
 
-export default withStyles(styles)(Dashboard)
+const mapStateToProps = ({
+  user
+}) => ({
+  infoUser: user.account
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(DashboardPage)
 
