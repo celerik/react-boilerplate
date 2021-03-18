@@ -2,6 +2,7 @@
     "language": "en",
     "user": {
         "authToken": "",
+        "account": "Testing",
         "id": "",
         "name": "",
         "email": "",

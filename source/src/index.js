@@ -2,14 +2,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
+import { Provider } from 'react-redux';
 
 // @scripts
-import App from './app';
+import App from './App';
+import { store } from './core';
+
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 

@@ -7,7 +7,7 @@ const App = () => {
   return (
     <>
       <CssBaseline/>
-        <Dashboard/>
+          <Dashboard/>
     </>
   );
 }
