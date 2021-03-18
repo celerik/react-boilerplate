@@ -8,15 +8,13 @@ import { Provider } from 'react-redux';
 import Routes from './config/routes';
 import { store } from './core';
 
-const App = () => {
-  return (
+const App = () => (
     <Provider store={store}>
       <BrowserRouter>
         <CssBaseline />
         <Routes />
       </BrowserRouter>
     </Provider>
-  );
-}
+);
 
 export default App;
