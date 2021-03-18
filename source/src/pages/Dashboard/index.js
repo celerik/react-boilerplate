@@ -16,20 +16,21 @@ import {
 
 const Dashboard = ({classes}) => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user.account);
 
   const onLogin = () => {
-    dispatch(login({email: 'user@flowos.com', password: '123' }));
+    dispatch(login({email: 'user@flowos.com', password: '123' }))
   }
 
   return (
     <div className={classes.root}>
-      {console.log(user, 'Veamos')}
         <Typography >{config.text.dashboardPage.helloWorld}</Typography> 
         <Button onClick={onLogin}>
-          holis            
+          test            
         </Button>
     </div>
   )};
 
+  
+
 export default withStyles(styles)(Dashboard)
+

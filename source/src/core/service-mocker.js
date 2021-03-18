@@ -31,37 +31,27 @@ const createMockResponse = ({ data = null, httpCode = 200 }) => [
 const mockedServices = {
   mockServiceSecurityLogin: (mockAdapter) => {
     mockAdapter.onPost(config.services.security.login).reply((call) => {
-      console.log(getMockParams(call),'el login', config.mockData.security.user)
-
       const { email, password } = getMockParams(call);
-      const {
-        email: mockEmail,
-        password: mockPassword
-      } = config.mockdata.security.user;
-      debugger
+      const { loginUserName, loginPassword } = config.settings.serviceMocker;
 
-
-      const success = email === mockEmail && password === mockPassword;
+      const success =
+          (email === loginUserName) &&
+          (password === (loginPassword));
       return createMockResponse({
-        data: success ? config.mockdata.security.user : null,
-        httpCode: success ? 200 : 401
+          data: success ? config.mockData.security.user : null,
+          httpCode: success ? 200 : 401
       });
     });
   }
 };
 
 export const initializeServiceMocker = (store) => {
-      const mockAdapter = new MockAdapter(
-          axios, {
-              delayResponse: config.settings.serviceMocker.delayResponse
-          }
-      );
+      const mockAdapter = new MockAdapter(axios, { delayResponse: 2000 });
       const serviceMocker = {
           replyWithMockData: () => {
               mockAdapter.reset();
               const exclude = config.settings.serviceMocker.exclude || [];
               Object.keys(mockedServices).forEach((name) => {
-
                   if (!exclude.some(item => item === name)) {
                     mockedServices[name](mockAdapter, store);
                   }

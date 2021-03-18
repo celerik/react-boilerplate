@@ -1,0 +1,14 @@
+{
+  "environment": {
+    "name": "local"
+  },
+  "serviceMocker": {
+    "exclude": []
+  },
+  "services": {
+    "root": "localhost:8080"
+  },
+  "reduxLogger": {
+    "isEnabled": true
+  }
+}

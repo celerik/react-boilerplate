@@ -2,7 +2,7 @@
 import merge from 'deepmerge';
 
 // @json
-import envUnitTest from './env-unit-test.json';
+import env from './env-local.json';
 import globals from './globals.json';
 
 
@@ -10,8 +10,7 @@ import globals from './globals.json';
  * @return {Object}
  */
 const getSettings = () => {
-    console.log(merge(globals, envUnitTest), 'el merge')
-    return merge(globals, envUnitTest);
+    return merge(globals, env);
 };
 
 export default getSettings();

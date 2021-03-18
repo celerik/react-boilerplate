@@ -15,7 +15,7 @@
   "serviceMocker": {
     "delayResponse": 300,
     "isEnabled": true,
-    "loginPassword": "MTIz",
-    "loginUserName": "SHaeqapo"
+    "loginPassword": "123",
+    "loginUserName": "user@flowos.com"
   }
 }
