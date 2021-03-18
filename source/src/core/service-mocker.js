@@ -43,7 +43,7 @@ const mockedServices = {
 };
 
 export const initializeServiceMocker = (store) => {
-    const mockAdapter = new MockAdapter(axios, { delayResponse: 2000 });
+    const mockAdapter = new MockAdapter(axios, { delayResponse: config.settings.serviceMocker.delayResponse });
     const serviceMocker = {
         replyWithMockData: () => {
             mockAdapter.reset();
