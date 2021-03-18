@@ -16,7 +16,7 @@ const Login = ({ classes, login }) => {
 
   const onLogin = () => {
     login({ email: 'user@flowos.com', password: '123' });
-    history.push('/');
+    history.push(config.routes.home.url);
   }
 
   return (

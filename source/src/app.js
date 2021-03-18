@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from 'react-redux';
 
 // @scripts
-import Routes from './config/routes';
+import Routes from './config/routes/routes';
 import { store } from './core';
 
 const App = () => {
