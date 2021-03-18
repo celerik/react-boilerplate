@@ -13,7 +13,7 @@ import {
 const DashboardPage = ({ infoUser, onLogin }) => (
     <Home
         user={infoUser}
-        login={onLogin}
+        onLogin={onLogin}
     />
 );
 

@@ -11,12 +11,12 @@ import styles from './styles';
 // @scripts
 import { config } from '../../../config';
 
-const Home = ({ classes, login }) => {
-    const onLogin = () => login({ email: 'user@flowos.com', password: '123' });
+const Home = ({ classes, onLogin }) => {
+    const onClick = () => onLogin({ email: 'user@flowos.com', password: '123' });
     return (
     <div className={classes.root}>
         <Typography>{config.text.dashboardPage.helloWorld}</Typography>
-        <Button onClick={onLogin}>
+        <Button onClick={onClick}>
           test
         </Button>
     </div>
@@ -25,11 +25,7 @@ const Home = ({ classes, login }) => {
 
 Home.propTypes = {
     classes: PropTypes.object.isRequired,
-    login: PropTypes.func
-};
-
-Home.defaultProps = {
-    login: null
+    onLogin: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(Home);
