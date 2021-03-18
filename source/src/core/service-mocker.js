@@ -10,9 +10,7 @@ import { config } from '../config';
  * @param {{params: object}|{data: string}} call
  * @returns {Object}
  */
-export const getMockParams = (call) => {
-  return call.params || JSON.parse(call.data);
-};
+export const getMockParams = (call) => call.params || JSON.parse(call.data);
 
 /**
  * Creates a response for a mocked service.
@@ -24,46 +22,45 @@ export const getMockParams = (call) => {
  * ]}
  */
 const createMockResponse = ({ data = null, httpCode = 200 }) => [
-  httpCode,
-  data
+    httpCode,
+    data
 ];
 
 const mockedServices = {
-  mockServiceSecurityLogin: (mockAdapter) => {
-    mockAdapter.onPost(config.services.security.login).reply((call) => {
-      const { email, password } = getMockParams(call);
-      const { loginUserName, loginPassword } = config.settings.serviceMocker;
+    mockServiceSecurityLogin: (mockAdapter) => {
+        mockAdapter.onPost(config.services.security.login).reply((call) => {
+            const { email, password } = getMockParams(call);
+            const { loginUserName, loginPassword } = config.settings.serviceMocker;
 
-      const success =
-          (email === loginUserName) &&
-          (password === (loginPassword));
-      return createMockResponse({
-          data: success ? config.mockData.security.user : null,
-          httpCode: success ? 200 : 401
-      });
-    });
-  }
+            const success = (email === loginUserName)
+          && (password === (loginPassword));
+            return createMockResponse({
+                data: success ? config.mockData.security.user : null,
+                httpCode: success ? 200 : 401
+            });
+        });
+    }
 };
 
 export const initializeServiceMocker = (store) => {
-      const mockAdapter = new MockAdapter(axios, { delayResponse: 2000 });
-      const serviceMocker = {
-          replyWithMockData: () => {
-              mockAdapter.reset();
-              const include = config.settings.serviceMocker.include || [];
-              Object.keys(mockedServices).forEach((name) => {
-                  if (include.some(item => item === name)) {
+    const mockAdapter = new MockAdapter(axios, { delayResponse: 2000 });
+    const serviceMocker = {
+        replyWithMockData: () => {
+            mockAdapter.reset();
+            const include = config.settings.serviceMocker.include || [];
+            Object.keys(mockedServices).forEach((name) => {
+                if (include.some(item => item === name)) {
                     mockedServices[name](mockAdapter, store);
-                  }
-              });
-              mockAdapter.onAny().passThrough();
-          },
-          replyWithNetworkError: () => {
-              mockAdapter.reset();
-              mockAdapter.onAny().networkError();
-          }
-      };
+                }
+            });
+            mockAdapter.onAny().passThrough();
+        },
+        replyWithNetworkError: () => {
+            mockAdapter.reset();
+            mockAdapter.onAny().networkError();
+        }
+    };
 
-      serviceMocker.replyWithMockData();
-      return serviceMocker;
+    serviceMocker.replyWithMockData();
+    return serviceMocker;
 };

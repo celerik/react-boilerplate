@@ -4,8 +4,6 @@ import React from 'react';
 // @scripts
 import Home from '../../components/templates/dashboard';
 
-const HomePage = () => {
-    return <Home />
-};
+const HomePage = () => <Home />;
 
 export default HomePage;
