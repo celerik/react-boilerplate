@@ -24,7 +24,7 @@ export const login = ({ email, password }) => dispatch => axios
         })
         return response
     })
-    .catch((err) => Promise.reject(err));
+    .catch(Promise.reject);
 
 
 export const logout = () =>

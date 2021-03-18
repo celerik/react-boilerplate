@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <CssBaseline/>
-          <Dashboard/>
+        <Dashboard/>
     </Provider>
   );
 }
