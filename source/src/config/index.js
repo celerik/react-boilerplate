@@ -7,19 +7,19 @@ import settings from './settings';
 import { getServices } from './services';
 
 const getConfiguration = () => {
-  const services = getServices(settings.services.root);
-  const config = {
-    initialState,
-    mockData,
-    routes,
-    services,
-    settings,
-    text: language[initialState.language]
-  };
+    const services = getServices(settings.services.root);
+    const config = {
+        initialState,
+        mockData,
+        routes,
+        services,
+        settings,
+        text: language[initialState.language]
+    };
 
-  global.config = config;
+    global.config = config;
 
-  return config;
+    return config;
 };
 
 export const config = getConfiguration();

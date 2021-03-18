@@ -12,23 +12,20 @@ export const LOGOUT = 'LOGOUT';
  * @param {string} userName
  * @param {string} password
  */
-export const login = ({ email, password }) => dispatch => axios 
+export const login = ({ email, password }) => dispatch => axios
     .post(config.services.security.login, {
         password,
         email
     })
     .then((response) => {
-        dispatch ({
+        dispatch({
             type: LOGIN,
             payload: response.data
-        })
-        return response
+        });
+        return response;
     })
     .catch(Promise.reject);
 
-
-export const logout = () =>
-    ({
-        type: LOGOUT
-    });
-
+export const logout = () => ({
+    type: LOGOUT
+});

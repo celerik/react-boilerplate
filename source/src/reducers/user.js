@@ -20,12 +20,12 @@ const accountReducer = (
 ) => {
     switch (action.type) {
         case LOGIN:
-            return action.payload
+            return action.payload;
         default:
             return state;
     }
 };
 
 export const userReducer = combineReducers({
-    account: accountReducer,
+    account: accountReducer
 });
