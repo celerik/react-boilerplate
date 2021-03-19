@@ -5,26 +5,10 @@ import axios from 'axios';
 // @scripts
 import { config } from '../config';
 
-/**
- * Gets the paramters of a mocked service.
- * @param {{params: object}|{data: string}} call
- * @returns {Object}
- */
-export const getMockParams = (call) => call.params || JSON.parse(call.data);
-
-/**
- * Creates a response for a mocked service.
- * @param {Object} data - Data to be sent in the response.
- * @param {number} httpCode - Http code associated with the response.
- * @returns {[
- *  httpCode: number,
- *  response: object
- * ]}
- */
-const createMockResponse = ({ data = null, httpCode = 200 }) => [
-    httpCode,
-    data
-];
+import {
+    createMockResponse,
+    getMockParams
+} from '../util';
 
 const mockedServices = {
     mockServiceSecurityLogin: (mockAdapter) => {
