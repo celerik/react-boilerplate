@@ -16,13 +16,6 @@ export const querySelectorAll = selectors =>
     document.querySelectorAll(selectors);
 
 /**
- * Returns the base URL of the current site.
- * @returns {string}
- */
-export const getBaseUrl = () =>
-    window.location.origin;
-
-/**
  * Returns the current language of the browser.
  * @returns {string}
  */

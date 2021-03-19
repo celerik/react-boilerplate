@@ -3,13 +3,12 @@
     "user": {
         "account": {
             "authToken": "",
+            "email": "",
             "id": "",
             "name": "",
-            "email": "",
             "password": "",
             "userName": ""
         }
-        
     },
     "menu":  {}
 }
