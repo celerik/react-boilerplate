@@ -1,8 +1,8 @@
 // @scripts
-import { initializeServiceMocker } from './service-mocker';
-import { initializeReduxStore } from './redux-store';
 import { config } from '../config';
 import { constants } from './constants';
+import { initializeReduxStore } from './redux-store';
+import { initializeServiceMocker } from './service-mocker';
 
 // @exports
 export * from './constants';
@@ -19,8 +19,8 @@ const initializeApp = () => {
     const store = initializeReduxStore(environment);
     const serviceMocker = initializeServiceMocker(store);
     global.core = {
-        store,
-        serviceMocker
+        serviceMocker,
+        store
     };
 
     return global.core;

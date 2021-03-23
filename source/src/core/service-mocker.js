@@ -16,8 +16,7 @@ const mockedServices = {
             const { email, password } = getMockParams(call);
             const { loginUserName, loginPassword } = config.settings.serviceMocker;
 
-            const success = (email === loginUserName)
-          && (password === (loginPassword));
+            const success = (email === loginUserName) && (password === (loginPassword));
             return createMockResponse({
                 data: success ? config.mockData.security.user : null,
                 httpCode: success ? 200 : 401
