@@ -10,7 +10,10 @@
   },
   "serviceMocker": {
     "delayResponse": 0,
-    "isEnabled": true
+    "isEnabled": true,
+    "include": [
+      "mockServiceSecurityLogin"
+    ]
   },
   "services": {
     "root": "localhost:8080"

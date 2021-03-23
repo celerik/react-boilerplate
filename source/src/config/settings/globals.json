@@ -4,7 +4,6 @@
     "isEnabled": true,
     "key": "state",
     "savableState": [
-      "appVersion",
       "user"
     ],
     "throttleWait": 1000

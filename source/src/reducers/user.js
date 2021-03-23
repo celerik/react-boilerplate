@@ -8,15 +8,14 @@ import { config } from '../config';
 /**
  * @return {{
  *  authToken: string,
- *  clientId: string,
- *  displayName: string,
- *  permissions: string,
- *  userId: string,
- *  userName: string
+ *  id: string,
+ *  name: string,
+ *  email: string,
+ *  password: string
  * }}
  */
 const accountReducer = (
-    state = config.initialState.user, action
+    state = config.initialState.user.account, action
 ) => {
     switch (action.type) {
         case LOGIN:

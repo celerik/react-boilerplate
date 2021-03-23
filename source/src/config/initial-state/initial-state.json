@@ -1,12 +1,14 @@
 {
     "language": "en",
     "user": {
-        "authToken": "",
-        "id": "",
-        "name": "",
-        "email": "",
-        "password": "",
-        "userName": ""
+        "account": {
+            "authToken": "",
+            "email": "",
+            "id": "",
+            "name": "",
+            "password": "",
+            "userName": ""
+        }
     },
     "menu":  {}
 }
