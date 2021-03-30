@@ -22,8 +22,7 @@ const ActionItem = ({
             <Icon>
                 {typeof icon === 'string'
                     ? <Icon>{icon}</Icon>
-                    : icon
-                }
+                    : icon}
             </Icon>
         </div>
         {expanded && (

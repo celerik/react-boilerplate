@@ -34,7 +34,7 @@ const TemplateDashboard = ({
             </div>
         </div>
     );
-}
+};
 
 TemplateDashboard.propTypes = {
     classes: PropTypes.object.isRequired,
