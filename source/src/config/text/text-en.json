@@ -15,6 +15,11 @@
     "insert": "The record was successfully inserted!",
     "update": "The record was successfully updated!"
   },
+  "mainMenu": {
+    "dataExplorer": "Data explorer",
+    "projects": "Projects",
+    "teamName": "Team Name"
+  },
   "pagination": {
     "items": "items",
     "itemsPerPage": "Items per page",
