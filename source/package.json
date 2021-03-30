@@ -47,7 +47,9 @@
     "lintj": "./node_modules/.bin/eslint --ext .js src/",
     "start": "cross-env DISABLE_ESLINT_PLUGIN=true REACT_APP_ENV=local npm-run-all -p start-js",
     "start-js": "react-scripts start",
-    "test": "cross-env REACT_APP_ENV=unitTest CI=true react-scripts test --setupFiles ./src/setup-tests.js --colors --env=jsdom --coverage"
+    "test": "cross-env REACT_APP_ENV=unitTest CI=true react-scripts test --setupFiles ./src/setup-tests.js --colors --env=jsdom --coverage",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
@@ -68,6 +70,12 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-actions": "^6.1.21",
+    "@storybook/addon-essentials": "^6.1.21",
+    "@storybook/addon-links": "^6.1.21",
+    "@storybook/node-logger": "^6.1.21",
+    "@storybook/preset-create-react-app": "^3.1.7",
+    "@storybook/react": "^6.1.21",
     "cross-env": "7.0.3",
     "eslint": "7.22.0",
     "eslint-plugin-react": "7.22.0",
