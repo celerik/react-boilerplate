@@ -1,7 +1,7 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React, { useMemo, useState } from 'react';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';

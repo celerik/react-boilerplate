@@ -1,4 +1,4 @@
-export default theme => ({
+export default () => ({
     map: {
         bottom: 0,
         left: 0,

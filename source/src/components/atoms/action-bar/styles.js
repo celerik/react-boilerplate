@@ -1,4 +1,4 @@
-export default theme => ({
+export default () => ({
     mainContainer: {
         display: 'flex',
         flexDirection: 'column',
