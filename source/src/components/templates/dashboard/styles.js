@@ -1,6 +1,9 @@
-// @packages
-import globals from '../../../styles/global';
-
-export default theme => Object.assign({}, globals(theme), {
-
+export default () => ({
+    mainContainer: {
+        display: 'flex',
+        flexDirection: 'row'
+    },
+    infoContainer: {
+        position: 'relative'
+    }
 });

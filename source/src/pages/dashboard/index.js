@@ -2,8 +2,13 @@
 import React from 'react';
 
 // @scripts
-import Home from '../../components/templates/dashboard';
+import Map from '../../components/organisms/map';
+import TemplateDashboard from '../../components/templates/dashboard';
 
-const HomePage = () => <Home />;
+const DashboardPage = () => (
+    <TemplateDashboard>
+        <Map />
+    </TemplateDashboard>
+);
 
-export default HomePage;
+export default DashboardPage;
