@@ -15,5 +15,5 @@ export const FirstStory = Template.bind({});
 
 FirstStory.args = {
     primary: true,
-    label: 'Aaaa'
+    label: 'Label'
 };
