@@ -6,24 +6,26 @@ import React from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import styles from './styles';
 import { dimensions } from '../../../styles/global';
 
+// @styles
+import styles from './styles';
+
 const ActionBar = ({
-    classes,
     backgroundColor,
     bottomActions,
+    classes,
+    id,
     onClickAway,
     onClickInside,
     topActions,
-    id,
     width
 }) => (
     <ClickAwayListener onClickAway={onClickAway}>
         <Paper
             className={classes.mainContainer}
-            onClick={onClickInside}
             id={id}
+            onClick={onClickInside}
             style={{
                 backgroundColor,
                 width
@@ -44,13 +46,13 @@ const ActionBar = ({
 );
 
 ActionBar.propTypes = {
-    classes: PropTypes.object.isRequired,
     backgroundColor: PropTypes.string,
     bottomActions: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.node,
         label: PropTypes.string,
         onClick: PropTypes.func
     })),
+    classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClickAway: PropTypes.func,
     onClickInside: PropTypes.func,

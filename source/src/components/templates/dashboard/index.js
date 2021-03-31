@@ -5,8 +5,10 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import DefaultActionBar from '../../organisms/default-action-bar';
-import styles from './styles';
 import { dimensions } from '../../../styles/global';
+
+// @scripts
+import styles from './styles';
 
 const TemplateDashboard = ({
     classes,
