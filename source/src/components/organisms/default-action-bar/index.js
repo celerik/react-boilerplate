@@ -1,7 +1,7 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
@@ -12,6 +12,7 @@ import ActionItem from './action-item';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
+import Dropdown from '../../atoms/dropdown-selector';
 
 const DefaultActionBar = ({
     classes,
@@ -24,6 +25,11 @@ const DefaultActionBar = ({
 }) => {
     const theme = useTheme();
     const name = useSelector(state => state.user.account.name);
+    const [user, setUser] = useState({});
+
+    const onChangeUser = ({ item }) => {
+        setUser(item);
+    };
 
     const topActions = [
         isExpanded && (
@@ -35,6 +41,13 @@ const DefaultActionBar = ({
                 {name}
             </Typography>
         ),
+        <Dropdown
+            isExpanded={isExpanded}
+            onChange={onChangeUser}
+            user={user}
+            items={[]}
+            key="home1"
+        />,
         <ActionItem
             color={theme.palette.text.primary}
             expanded={isExpanded}
