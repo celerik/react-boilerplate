@@ -5,6 +5,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import DefaultActionBar from '../../organisms/default-action-bar';
+import ProjectBar from '../../organisms/project-action-bar';
 import { dimensions } from '../../../styles/global';
 
 // @scripts
@@ -27,6 +28,11 @@ const TemplateDashboard = ({
                 onExpand={() => setMenuExpanded(true)}
                 onCollapse={() => setMenuExpanded(false)}
                 width={menuWidth}
+            />
+            <ProjectBar
+                visible
+                onExpand={() => setMenuExpanded(true)}
+                onCollapse={() => setMenuExpanded(false)}
             />
             <div
                 className={classes.infoContainer}
