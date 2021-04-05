@@ -36,7 +36,7 @@ const ActionBar = ({
                     React.cloneElement(actionComponent)
                 ))}
             </div>
-            <div>
+            <div className={classes.bottomActions}>
                 {bottomActions.map(actionComponent => (
                     React.cloneElement(actionComponent)
                 ))}

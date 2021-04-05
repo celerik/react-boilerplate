@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 
 const ActionItem = ({
+    bottomItem,
     classes,
     color,
     description,
@@ -27,7 +28,7 @@ const ActionItem = ({
         </div>
         {expanded && (
             <Typography
-                className={classes.itemDescription}
+                className={!bottomItem ? classes.itemDescription : null}
                 style={{ color }}
                 variant="body1"
             >
@@ -38,6 +39,7 @@ const ActionItem = ({
 );
 
 ActionItem.propTypes = {
+    bottomItem: PropTypes.bool,
     classes: PropTypes.object.isRequired,
     color: PropTypes.string,
     description: PropTypes.string.isRequired,
@@ -47,6 +49,7 @@ ActionItem.propTypes = {
 };
 
 ActionItem.defaultProps = {
+    bottomItem: false,
     color: null,
     expanded: true
 };
