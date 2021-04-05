@@ -9,10 +9,10 @@ import { useTheme, withStyles } from '@material-ui/core';
 // @scripts
 import ActionBar from '../../atoms/action-bar';
 import ActionItem from './action-item';
+import UserSelectorDropdown from '../../atoms/dropdown-selector';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
-import Dropdown from '../../atoms/dropdown-selector';
 
 const DefaultActionBar = ({
     classes,
@@ -40,7 +40,7 @@ const DefaultActionBar = ({
                 {name}
             </Typography>
         ),
-        <Dropdown
+        <UserSelectorDropdown
             isExpanded={isExpanded}
             onChange={onChangeUser}
             user={user}

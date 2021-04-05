@@ -6,14 +6,13 @@ import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
-
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @styles
 import styles from './styles';
 
-const Dropdown = ({
+const DropdownUser = ({
     classes,
     isExpanded,
     onChange,
@@ -72,7 +71,7 @@ const Dropdown = ({
     );
 };
 
-Dropdown.propTypes = {
+DropdownUser.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExpanded: PropTypes.bool.isRequired,
@@ -89,4 +88,4 @@ Dropdown.propTypes = {
     }).isRequired
 };
 
-export default withStyles(styles)(Dropdown);
+export default withStyles(styles)(DropdownUser);
