@@ -20,7 +20,6 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
-    teamColor,
     width
 }) => {
     const theme = useTheme();
@@ -46,18 +45,6 @@ const DefaultActionBar = ({
             onChange={onChangeUser}
             user={user}
             items={[]}
-            key="home1"
-        />,
-        <ActionItem
-            color={theme.palette.text.primary}
-            expanded={isExpanded}
-            description={config.text.mainMenu.teamName}
-            icon={(
-                <div
-                    className={classes.teamIcon}
-                    style={{ backgroundColor: teamColor }}
-                />
-            )}
             key="home1"
         />,
         <ActionItem
@@ -100,14 +87,12 @@ DefaultActionBar.propTypes = {
     isExpanded: PropTypes.bool,
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
-    teamColor: PropTypes.string,
     id: PropTypes.string.isRequired,
     width: PropTypes.number
 };
 
 DefaultActionBar.defaultProps = {
     isExpanded: false,
-    teamColor: '#B4B4B4',
     width: dimensions.MAIN_MENU_EXPANDED_WIDTH
 };
 

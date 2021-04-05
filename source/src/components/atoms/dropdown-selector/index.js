@@ -4,8 +4,9 @@ import Icon from '@material-ui/core/Icon';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import MenuItem from '@material-ui/core/MenuItem';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import Select from '@material-ui/core/Select';
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -20,8 +21,6 @@ const Dropdown = ({
     user,
     items
 }) => {
-    const [open, setOpen] = useState(false);
-
     const handleSelectOnChange = (evt) => {
         const { value } = evt.target;
         const item = items.find(item => item.value === value);
@@ -29,14 +28,6 @@ const Dropdown = ({
         onChange({
             item
         });
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
-    const handleOpen = () => {
-        setOpen(true);
     };
 
     return (
@@ -50,18 +41,17 @@ const Dropdown = ({
     )}
     {isExpanded && (
         <FormControl className={classes.formControlContainer}>
-            <Select
-                labelId="demo-controlled-open-select-label"
-                id="demo-controlled-open-select"
-                open={open}
-                onClose={handleClose}
-                onOpen={handleOpen}
+            <TextField
+                select
                 value={user.value}
                 onChange={handleSelectOnChange}
-                disableUnderline
+                SelectProps={{
+                    MenuProps: { disablePortal: true }
+                }}
+                InputProps={{ disableUnderline: true }}
             >
                 {items.map((item) => (
-                    <MenuItem value={item.value} key={item.value}>
+                    <MenuItem value={item.value} key={item.value} id={item.value}>
                     {item.icon && (
                         <ListItemIcon className={classes.icon}>
                             <Icon>
@@ -71,10 +61,10 @@ const Dropdown = ({
                             </Icon>
                         </ListItemIcon>
                     )}
-                    <Typography variant="inherit">{item.label}</Typography>
+                    <Typography variant="inherit">{item.label.toUpperCase()}</Typography>
                     </MenuItem>
                 ))}
-            </Select>
+            </TextField>
         </FormControl>
     )}
     </div>

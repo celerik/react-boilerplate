@@ -24,7 +24,7 @@ export default () => ({
     icon: {
         alignItems: 'center',
         marginRight: 10,
-        marginLeft: 7,
+        marginLeft: 13,
         width: 30,
         minWidth: '0 !important'
     },
