@@ -29,19 +29,19 @@ const CustomMap = ({
 
         map.on('load', () => {
             map.setPaintProperty('building', 'fill-color', [
-                "interpolate",
-                ["linear"],
-                ["zoom"],
+                'interpolate',
+                ['linear'],
+                ['zoom'],
                 2,
-                theme.palette.background.map,
+                theme.palette.background.primary,
                 1,
-                theme.palette.background.map
+                theme.palette.background.primary
             ]);
-            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.map);
-            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.map);
-            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.map);
-            map.setPaintProperty('building', 'fill-color', theme.palette.background.map);
-            map.setPaintProperty('land', 'background-color', theme.palette.background.map);
+            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.primary);
+            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.primary);
+            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.primary);
+            map.setPaintProperty('building', 'fill-color', theme.palette.background.primary);
+            map.setPaintProperty('land', 'background-color', theme.palette.background.primary);
         });
 
         return () => map.remove();

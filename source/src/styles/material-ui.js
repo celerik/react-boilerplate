@@ -31,7 +31,7 @@ export const theme = createMuiTheme({
     palette: {
         background: {
             default: colors.background.background2,
-            map: colors.background.background5
+            primary: colors.background.background5
         },
         primary: {
             main: colors.purple
