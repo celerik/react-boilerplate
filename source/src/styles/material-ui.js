@@ -5,7 +5,8 @@ const colors = {
         background1: '#FEFEFE',
         background2: '#F7F7F7',
         background3: '#F1F1F1',
-        background4: '#E3E2E2'
+        background4: '#E3E2E2',
+        background5: '#F6F6F6',
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
@@ -29,7 +30,8 @@ const colors = {
 export const theme = createMuiTheme({
     palette: {
         background: {
-            default: colors.background.background2
+            default: colors.background.background2,
+            map: colors.background.background5
         },
         primary: {
             main: colors.purple
