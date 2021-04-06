@@ -9,7 +9,7 @@ import { config } from '../../../config';
 
 // @scripts
 import styles from './styles';
-import Boom from '../features/index';
+import ZoomButtons from '../zoom-buttons/index';
 
 const CustomMap = ({
     className,
@@ -33,7 +33,7 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
         <div className={classes.map} ref={mapContainer} />
-        <div><Boom/></div>
+        <div><ZoomButtons/></div>
         </div>
     );
 };
