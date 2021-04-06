@@ -16,6 +16,7 @@ const TemplateDashboard = ({
     children
 }) => {
     const [isMenuExpanded, setMenuExpanded] = useState(false);
+    const [isProjectMenuExpanded, setProjectMenuExpanded] = useState(false);
 
     const menuWidth = isMenuExpanded
         ? dimensions.MAIN_MENU_EXPANDED_WIDTH
@@ -27,12 +28,12 @@ const TemplateDashboard = ({
                 isExpanded={isMenuExpanded}
                 onExpand={() => setMenuExpanded(true)}
                 onCollapse={() => setMenuExpanded(false)}
+                onOpenProjectMenu={() => setProjectMenuExpanded(true)}
                 width={menuWidth}
             />
             <ProjectBar
-                visible
-                onExpand={() => setMenuExpanded(true)}
-                onCollapse={() => setMenuExpanded(false)}
+                visible={isProjectMenuExpanded}
+                onCollapse={() => setProjectMenuExpanded(false)}
             />
             <div
                 className={classes.infoContainer}

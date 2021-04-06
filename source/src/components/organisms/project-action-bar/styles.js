@@ -3,25 +3,29 @@ export default () => ({
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        width: 400,
-        padding: '30px 20px'
+        padding: '30px 20px',
+        width: 400
     },
     buttonAdd: {
-        color: 'white',
         backgroundColor: '#8675FF',
-        width: 124,
+        color: 'white',
         height: 47,
-        marginBottom: 30
+        marginBottom: 30,
+        width: 124
     },
     searchBar: {
+        margin: '0px 0px 30px 0px !Important',
         '& .inputRounded, .MuiOutlinedInput-root': {
             borderRadius: 50
-        },
-        margin: '0px 0px 30px 0px !Important'
+        }
     },
     title: {
+        fontWeight: 'bold',
+        letterSpacing: 2
+    },
+    titleHeader: {
+        alignItems: 'center',
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-between'
     }
 });

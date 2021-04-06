@@ -1,27 +1,28 @@
 // @packages
-import PropTypes from 'prop-types';
-import React from 'react';
-import InputAdornment from '@material-ui/core/InputAdornment';
-import { withStyles } from '@material-ui/core';
-import classNames from 'classnames';
 import Icon from '@material-ui/core/Icon';
 import IconButton from '@material-ui/core/IconButton';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import PropTypes from 'prop-types';
+import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core';
 
 // @styles
 import styles from './styles';
 
 const InputField = ({
-    classes,
-    id,
     className,
-    onClick,
-    label,
-    variant,
-    size,
+    classes,
+    disable,
     icon,
-    iconButtons,
-    placeholder
+    iconButton,
+    id,
+    onClickIconButton,
+    placeholder,
+    size,
+    value,
+    variant
 }) => {
     const inputStyle = classNames(classes, className);
 
@@ -38,16 +39,14 @@ const InputField = ({
             );
         }
 
-        if (iconButtons?.length) {
+        if (iconButton) {
             defaultProps.endAdornment = (
                 <InputAdornment position="end">
-                    {iconButtons.map((iconButton, index) => (
-                        <IconButton onClick={Function.prototype} key={index}>
-                            <Icon>
-                                {iconButton.icon}
-                            </Icon>
-                        </IconButton>
-                    ))}
+                    <IconButton onClick={onClickIconButton} key={index}>
+                        <Icon>
+                            {iconButton}
+                        </Icon>
+                    </IconButton>
                 </InputAdornment>
             );
         }
@@ -57,32 +56,43 @@ const InputField = ({
 
     return (
         <TextField
-            className={inputStyle}
-            id="input-with-icon-textfield"
-            variant={variant}
-            autoComplete="off"
-            size={size}
-            placeholder={placeholder}
             InputProps={inputProps()}
+            autoComplete="off"
+            className={inputStyle}
+            disable={disable}
+            id={`${id}-textField`}
+            placeholder={placeholder}
+            size={size}
+            value={value}
+            variant={variant}
         />
     );
 };
 
 InputField.propTypes = {
-    backgroundColor: PropTypes.string,
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    width: PropTypes.number,
+    disable: PropTypes.bool,
     icon: PropTypes.string,
-    iconButton: PropTypes.string
+    iconButton: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    onClickIconButton: PropTypes.func,
+    placeholder: PropTypes.string,
+    size: PropTypes.oneOf(['small', 'medium']),
+    value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
+    variant: PropTypes.oneOf(['filled', 'outlined', 'standard'])
 };
 
 InputField.defaultProps = {
-    backgroundColor: null,
-    onClick: Function.prototype,
+    className: null,
+    disable: false,
     icon: null,
-    iconButton: null
+    iconButton: null,
+    onClickIconButton: Function.prototype,
+    placeholder: '',
+    size: 'medium',
+    value: null,
+    variant: 'standard'
 };
 
 export default withStyles(styles)(InputField);

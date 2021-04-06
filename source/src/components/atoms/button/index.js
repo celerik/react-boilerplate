@@ -2,21 +2,18 @@
 import Button from '@material-ui/core/Button';
 import PropTypes from 'prop-types';
 import React from 'react';
-import { withStyles } from '@material-ui/core';
 import classNames from 'classnames';
-
-// @scripts
-import { dimensions } from '../../../styles/global';
+import { withStyles } from '@material-ui/core';
 
 // @styles
 import styles from './styles';
 
 const ActionButtom = ({
+    className,
     classes,
     id,
-    className,
-    onClick,
-    label
+    label,
+    onClick
 }) => {
     const ButtonStyle = classNames(classes, className);
 
@@ -32,17 +29,17 @@ const ActionButtom = ({
 };
 
 ActionButtom.propTypes = {
-    backgroundColor: PropTypes.string,
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    onClick: PropTypes.func,
-    width: PropTypes.number
+    label: PropTypes.string,
+    onClick: PropTypes.func
 };
 
 ActionButtom.defaultProps = {
-    backgroundColor: null,
-    onClick: Function.prototype,
-    width: dimensions.MAIN_MENU_COLLAPSED_WIDTH
+    className: null,
+    label: '',
+    onClick: Function.prototype
 };
 
 export default withStyles(styles)(ActionButtom);

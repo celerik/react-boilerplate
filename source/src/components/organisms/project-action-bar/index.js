@@ -1,41 +1,38 @@
 // @packages
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
+import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
+import IconButton from '@material-ui/core/IconButton';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
-import InputField from '../../atoms/inputfield';
-import IconButton from '@material-ui/core/IconButton';
-import Typography from '@material-ui/core/Typography';
-import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import React from 'react';
+import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import { dimensions } from '../../../styles/global';
 import ActionButtom from '../../atoms/button';
+import InputField from '../../atoms/inputfield';
+import ListActions from '../../molecules/list-options';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
 
 const ProjectBar = ({
     backgroundColor,
-    bottomActions,
     classes,
     id,
-    onClickAway,
-    visible,
-    onClickInside,
-    topActions
+    onCollapse,
+    visible
 }) => {
     if (!visible) {
         return null;
     }
 
     return (
-    <ClickAwayListener onClickAway={onClickAway}>
+    <ClickAwayListener onClickAway={onCollapse} id={`${id}-project-menu`}>
         <Paper
             className={classes.mainContainer}
             id={id}
-            onClick={onClickInside}
             style={{
                 backgroundColor
             }}
@@ -43,29 +40,24 @@ const ProjectBar = ({
             <ActionButtom
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
-                label="NEW PROJECT"
+                label={config.text.projectMenu.newProject}
             />
             <InputField
                 className={classes.searchBar}
-                placeholder="Search project by name..."
+                placeholder={config.text.projectMenu.searchProjectByname}
                 size="small"
                 variant="outlined"
                 icon="search"
             />
-            <div className={classes.title}>
-                <Typography>
-                    Existing projects
+            <div className={classes.titleHeader}>
+                <Typography className={classes.title}>
+                    {config.text.projectMenu.existingProjects}
                 </Typography>
                 <IconButton onClick={Function.prototype}>
                     <FilterListSharpIcon />
                 </IconButton>
             </div>
-            <InputField
-                variant="filled"
-                placeholder="Project Name 1"
-                iconButtons={[{ icon: 'search' }, { icon: 'logout' }]}
-            />
-
+            <ListActions items={[{ text: 'Project name 1' }, { text: 'Project name 2' }]} />
         </Paper>
     </ClickAwayListener>
     );
@@ -73,30 +65,15 @@ const ProjectBar = ({
 
 ProjectBar.propTypes = {
     backgroundColor: PropTypes.string,
-    bottomActions: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.node,
-        label: PropTypes.string,
-        onClick: PropTypes.func
-    })),
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    onClickAway: PropTypes.func,
-    onClickInside: PropTypes.func,
-    topActions: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.node,
-        label: PropTypes.string,
-        onClick: PropTypes.func
-    })),
-    width: PropTypes.number
+    onCollapse: PropTypes.func,
+    visible: PropTypes.bool.isRequired
 };
 
 ProjectBar.defaultProps = {
     backgroundColor: null,
-    bottomActions: [],
-    onClickAway: Function.prototype,
-    onClickInside: Function.prototype,
-    topActions: [],
-    width: dimensions.MAIN_MENU_COLLAPSED_WIDTH
+    onCollapse: Function.prototype
 };
 
 export default withStyles(styles)(ProjectBar);
