@@ -36,4 +36,6 @@ export default theme => ({
         lineHeight: '140%',
         width: '80%'
     }
+
+    
 });

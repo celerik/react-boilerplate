@@ -2,13 +2,14 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
 import { Map } from 'mapbox-gl';
-import { withStyles } from '@material-ui/core';
+import { IconButton, withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
 
 // @scripts
 import styles from './styles';
+import Boom from '../features/index';
 
 const CustomMap = ({
     className,
@@ -31,7 +32,8 @@ const CustomMap = ({
 
     return (
         <div className={className} id={id}>
-            <div className={classes.map} ref={mapContainer} />
+        <div className={classes.map} ref={mapContainer} />
+        <div><Boom/></div>
         </div>
     );
 };
