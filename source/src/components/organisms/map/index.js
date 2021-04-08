@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
+import ZoomButtons from '../zoom-buttons/index';
 
-// @scripts
+// @styles
 import styles from './styles';
 
 const CustomMap = ({
@@ -32,6 +33,7 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
+            <ZoomButtons />
         </div>
     );
 };
