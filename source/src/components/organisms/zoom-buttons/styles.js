@@ -1,16 +1,16 @@
 export default () => ({
-    zoom: {
+    button: {
         background: 'white',
-        width: 37,
         height: 37,
+        marginBottom: 10,
         minWidth: 37,
-        marginBottom: 10
+        width: 37
     },
     main: {
         bottom: 25,
-        position: 'absolute',
-        right: 20,
+        display: 'flex',
         flexDirection: 'column',
-        display: 'flex'
+        position: 'absolute',
+        right: 20
     }
 });
