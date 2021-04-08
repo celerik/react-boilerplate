@@ -37,11 +37,6 @@ const ProjectBar = ({
                 backgroundColor
             }}
         >
-            <ActionButtom
-                className={classes.buttonAdd}
-                onClick={Function.prototype}
-                label={config.text.projectMenu.newProject}
-            />
             <InputField
                 className={classes.searchBar}
                 placeholder={config.text.projectMenu.searchProjectByname}
@@ -58,6 +53,11 @@ const ProjectBar = ({
                 </IconButton>
             </div>
             <ListActions items={[{ text: 'Project name 1' }, { text: 'Project name 2' }]} />
+            <ActionButtom
+                className={classes.buttonAdd}
+                onClick={Function.prototype}
+                label={config.text.projectMenu.newProject}
+            />
         </Paper>
     </ClickAwayListener>
     );

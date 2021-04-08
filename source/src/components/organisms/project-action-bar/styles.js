@@ -10,7 +10,7 @@ export default () => ({
         backgroundColor: '#8675FF',
         color: 'white',
         height: 47,
-        marginBottom: 30,
+        marginTop: 30,
         width: 124
     },
     searchBar: {
