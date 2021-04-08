@@ -33,7 +33,7 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
-                <ZoomButtons />
+            <ZoomButtons />
         </div>
     );
 };
