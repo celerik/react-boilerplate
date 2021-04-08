@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
+import Logo from '../../molecules/logo';
 
-// @scripts
+// @styles
 import styles from './styles';
 
 const CustomMap = ({
@@ -32,6 +33,7 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
+            <Logo />
         </div>
     );
 };
