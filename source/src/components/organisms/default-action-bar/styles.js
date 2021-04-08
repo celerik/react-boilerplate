@@ -35,5 +35,5 @@ export default theme => ({
         color: theme.palette.text.hint,
         lineHeight: '140%',
         width: '80%'
-    } 
+    }
 });

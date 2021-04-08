@@ -1,23 +1,33 @@
+// @packages
+import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '@material-ui/core/Icon';
 import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core';
 
-const ZoomButtons = () => {
+// @scripts
+import styles from './styles';
 
-    return(
-        <div>
-            <Button style={{left: 1210.55, top: 500.87, position: "absolute", background: "white", height: 24, width: 24, padding: 24}}>    
+const ZoomButtons = ({ classes }) => (
+        <div className={classes.main}>
+            <Button className={classes.zoom}>
                 <Icon>
                     add
                 </Icon>
             </Button>
-            <Button style={{left: 1210.55, top: 550.87, position: "absolute", background: "white", height: 24, width: 24, padding: 24}}>    
+            <Button className={classes.zoom}>
                 <Icon>
                     remove
                 </Icon>
             </Button>
         </div>
-    );
-}
+);
 
-export default ZoomButtons;
+ZoomButtons.propTypes = {
+    classes: PropTypes.object.isRequired,
+    className: PropTypes.string.isRequired
+};
+
+ZoomButtons.defaultProps = {};
+
+export default withStyles(styles)(ZoomButtons);

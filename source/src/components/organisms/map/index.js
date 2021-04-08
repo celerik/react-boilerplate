@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
 import { Map } from 'mapbox-gl';
-import { IconButton, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
@@ -33,7 +33,7 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
         <div className={classes.map} ref={mapContainer} />
-        <div><ZoomButtons/></div>
+        <ZoomButtons />
         </div>
     );
 };
