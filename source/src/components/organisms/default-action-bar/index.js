@@ -19,6 +19,7 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
+    onOpenProjectMenu,
     teamColor,
     width
 }) => {
@@ -46,13 +47,15 @@ const DefaultActionBar = ({
                 />
             )}
             key="home1"
+            onClick={Function.prototype}
         />,
         <ActionItem
             color={theme.palette.text.primary}
-            expanded={isExpanded}
             description={config.text.mainMenu.dataExplorer}
+            expanded={isExpanded}
             icon="data_usage"
             key="home2"
+            onClick={Function.prototype}
         />,
         isExpanded && (
             <Divider
@@ -66,7 +69,8 @@ const DefaultActionBar = ({
             expanded={isExpanded}
             description={config.text.mainMenu.projects}
             icon="description"
-            key="data-explorer"
+            key="projects"
+            onClick={onOpenProjectMenu}
         />
     ].filter(Boolean);
 
@@ -87,6 +91,7 @@ DefaultActionBar.propTypes = {
     isExpanded: PropTypes.bool,
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
+    onOpenProjectMenu: PropTypes.func.isRequired,
     teamColor: PropTypes.string,
     id: PropTypes.string.isRequired,
     width: PropTypes.number

@@ -31,6 +31,11 @@
     "showing": "Showing records from",
     "to": "to"
   },
+  "projectMenu": {
+    "existingProjects": "EXISTING PROJECTS",
+    "newProject": "NEW PROJECT",
+    "searchProjectByname": "Search project by name..."
+  },
   "validations": {
     "date": "Invalid date",
     "email": "Invalid email",
