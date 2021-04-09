@@ -6,8 +6,9 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import DefaultActionBar from '../../organisms/default-action-bar';
 import { dimensions } from '../../../styles/global';
+import Logo from '../../molecules/logo';
 
-// @scripts
+// @styles
 import styles from './styles';
 
 const TemplateDashboard = ({
@@ -34,6 +35,7 @@ const TemplateDashboard = ({
             >
                 {children}
             </div>
+            <Logo />
         </div>
     );
 };
