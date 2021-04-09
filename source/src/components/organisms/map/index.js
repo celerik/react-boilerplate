@@ -18,6 +18,7 @@ const CustomMap = ({
     id
 }) => {
     const mapContainer = useRef();
+    const mapRef = useRef();
 
     useEffect(() => {
         const map = new Map({
@@ -45,13 +46,22 @@ const CustomMap = ({
             map.setPaintProperty('land', 'background-color', theme.palette.background.primary);
         });
 
+        mapRef.current = map;
+
         return () => map.remove();
     }, []);
 
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
-            <ZoomButtons />
+            <ZoomButtons
+                onZoomIn={() => {
+                    mapRef.current.zoomIn();
+                }}
+                onZoomOut={() => {
+                    mapRef.current.zoomOut();
+                }}
+            />
         </div>
     );
 };

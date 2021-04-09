@@ -6,7 +6,7 @@ const colors = {
         background2: '#F7F7F7',
         background3: '#F1F1F1',
         background4: '#E3E2E2',
-        background5: '#F6F6F6',
+        background5: '#F6F6F6'
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
