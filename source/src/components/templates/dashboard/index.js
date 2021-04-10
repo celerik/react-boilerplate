@@ -15,7 +15,6 @@ const TemplateDashboard = ({
     children
 }) => {
     const [isMenuExpanded, setMenuExpanded] = useState(false);
-    const [isProjectMenuExpanded, setProjectMenuExpanded] = useState(false);
 
     const menuWidth = isMenuExpanded
         ? dimensions.MAIN_MENU_EXPANDED_WIDTH
