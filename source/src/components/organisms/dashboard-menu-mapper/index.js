@@ -37,7 +37,7 @@ const MenuContent = ({
                     />
                 ))}
                 <Route path="/dashboard/*">
-                    <Typography>Resource not found</Typography>
+                    <Typography>{config.text.notFoundPage.common}</Typography>
                 </Route>
             </Switch>
         </Paper>

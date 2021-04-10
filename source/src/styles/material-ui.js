@@ -58,9 +58,6 @@ export const theme = createMuiTheme({
     overrides: {
         MuiCssBaseline: {
             '@global': {
-                // '*': {
-                //     // scrollbarWidth: 'bold'
-                // },
                 '::-webkit-scrollbar': {
                     width: 6
                 },
