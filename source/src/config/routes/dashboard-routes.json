@@ -1,0 +1,7 @@
+{
+    "projects": {
+        "component": "ProjectsMenu",
+        "name": "Projects",
+        "url": "/projects"
+    }
+}

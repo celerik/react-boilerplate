@@ -6,7 +6,7 @@ const colors = {
         background2: '#F7F7F7',
         background3: '#F1F1F1',
         background4: '#E3E2E2',
-        background5: '#F6F6F6',
+        background5: '#F6F6F6'
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
@@ -56,6 +56,17 @@ export const theme = createMuiTheme({
         fontFamily: 'Poppins'
     },
     overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                '::-webkit-scrollbar': {
+                    width: 6
+                },
+                '::-webkit-scrollbar-thumb': {
+                    backgroundColor: `${colors.text.text2}66`,
+                    borderRadius: 10
+                }
+            }
+        },
         MuiDivider: {
             root: {
                 backgroundColor: '#D8D8D8'

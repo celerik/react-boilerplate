@@ -10,7 +10,19 @@ import {
     getMockParams
 } from '../util';
 
+// @constants
+const httpCodes = {
+    success: 200,
+    unauthorized: 401
+};
+
 const mockedServices = {
+    mockServiceGetProjects: (mockAdapter) => {
+        mockAdapter.onGet(config.services.projects.get).reply(() => createMockResponse({
+            data: config.mockData.projects,
+            httpCode: httpCodes.success
+        }));
+    },
     mockServiceSecurityLogin: (mockAdapter) => {
         mockAdapter.onPost(config.services.security.login).reply((call) => {
             const { email, password } = getMockParams(call);
@@ -19,7 +31,7 @@ const mockedServices = {
             const success = (email === loginUserName) && (password === (loginPassword));
             return createMockResponse({
                 data: success ? config.mockData.security.user : null,
-                httpCode: success ? 200 : 401
+                httpCode: success ? httpCodes.success : httpCodes.unauthorized
             });
         });
     }

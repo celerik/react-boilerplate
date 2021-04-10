@@ -21,7 +21,7 @@ const ListActions = ({
                 <Item
                     className={classes.itemList}
                     key={index}
-                    text={element.text}
+                    text={element.projectName}
                     iconButtons={[{ icon: 'content_copy' }, { icon: 'east' }]}
                 />
                 <Divider
