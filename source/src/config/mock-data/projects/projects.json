@@ -1,127 +1,102 @@
 [
     {
-      "_id": "6070ac389d8c9df31e85aa51",
-      "name": "Clarence",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac389d8c9df31e85aa51",
+        "projectName": "Clarence"
     },
     {
-      "_id": "6070ac383747c0325f8399e4",
-      "name": "Singer",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac383747c0325f8399e4",
+        "projectName": "Singer"
     },
     {
-      "_id": "6070ac38ea5e2620fa5183d3",
-      "name": "Efland",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38ea5e2620fa5183d3",
+        "projectName": "Efland"
     },
     {
-      "_id": "6070ac3897308eb826a553e3",
-      "name": "Glenville",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3897308eb826a553e3",
+        "projectName": "Glenville"
     },
     {
-      "_id": "6070ac388fd3333ff7b07f88",
-      "name": "Rockbridge",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac388fd3333ff7b07f88",
+        "projectName": "Rockbridge"
     },
     {
-      "_id": "6070ac3861c49cf9532a442b",
-      "name": "Dorneyville",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3861c49cf9532a442b",
+        "projectName": "Dorneyville"
     },
     {
-      "_id": "6070ac389fa33546419bdf9c",
-      "name": "Weedville",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac389fa33546419bdf9c",
+        "projectName": "Weedville"
     },
     {
-      "_id": "6070ac387f78145ac7e0fc16",
-      "name": "Cornucopia",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac387f78145ac7e0fc16",
+        "projectName": "Cornucopia"
     },
     {
-      "_id": "6070ac38df9118d0905adfd1",
-      "name": "Stewart",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38df9118d0905adfd1",
+        "projectName": "Stewart"
     },
     {
-      "_id": "6070ac38c2ddb0eee22d6957",
-      "name": "Nipinnawasee",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38c2ddb0eee22d6957",
+        "projectName": "Nipinnawasee"
     },
     {
-      "_id": "6070ac3815f5d372571cd210",
-      "name": "Bawcomville",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3815f5d372571cd210",
+        "projectName": "Bawcomville"
     },
     {
-      "_id": "6070ac38c28a5abddc202dc7",
-      "name": "Lopezo",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38c28a5abddc202dc7",
+        "projectName": "Lopezo"
     },
     {
-      "_id": "6070ac38e0081f7edab3d2bd",
-      "name": "Yukon",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38e0081f7edab3d2bd",
+        "projectName": "Yukon"
     },
     {
-      "_id": "6070ac386fb5edbf3e399f6a",
-      "name": "Caspar",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac386fb5edbf3e399f6a",
+        "projectName": "Caspar"
     },
     {
-      "_id": "6070ac388816706c6d7c90d4",
-      "name": "Chicopee",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac388816706c6d7c90d4",
+        "projectName": "Chicopee"
     },
     {
-      "_id": "6070ac3889472e80eb88b578",
-      "name": "Ladera",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3889472e80eb88b578",
+        "projectName": "Ladera"
     },
     {
-      "_id": "6070ac3865de04b2c24e9c5c",
-      "name": "Brambleton",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3865de04b2c24e9c5c",
+        "projectName": "Brambleton"
     },
     {
-      "_id": "6070ac384366eb1355d3b5cd",
-      "name": "Ironton",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac384366eb1355d3b5cd",
+        "projectName": "Ironton"
     },
     {
-      "_id": "6070ac38eacccb28734dd5e6",
-      "name": "Crucible",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38eacccb28734dd5e6",
+        "projectName": "Crucible"
     },
     {
-      "_id": "6070ac38f69b360ce66ab6d4",
-      "name": "Darbydale",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38f69b360ce66ab6d4",
+        "projectName": "Darbydale"
     },
     {
-      "_id": "6070ac3817484da9c096170c",
-      "name": "Virgie",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3817484da9c096170c",
+        "projectName": "Virgie"
     },
     {
-      "_id": "6070ac3843e4dcd1f4136244",
-      "name": "Bethpage",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3843e4dcd1f4136244",
+        "projectName": "Bethpage"
     },
     {
-      "_id": "6070ac387963f3b548e187a7",
-      "name": "Gorham",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac387963f3b548e187a7",
+        "projectName": "Gorham"
     },
     {
-      "_id": "6070ac38bc4e302aff19a1f3",
-      "name": "Cumberland",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac38bc4e302aff19a1f3",
+        "projectName": "Cumberland"
     },
     {
-      "_id": "6070ac3805f470caa4789b8b",
-      "name": "Roderfield",
-      "creationDate": "Fri Apr 09 2021 14:34:16 GMT-0500 (hora estándar de Colombia)"
+        "projectId": "6070ac3805f470caa4789b8b",
+        "projectName": "Roderfield"
     }
-  ]
+]
