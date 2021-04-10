@@ -4,8 +4,10 @@ import { combineReducers } from 'redux';
 // @scripts
 import { LOGOUT } from '../actions';
 import { userReducer } from './user';
+import { projectsReducer } from './projects';
 
 const appReducer = combineReducers({
+    projects: projectsReducer,
     user: userReducer
 });
 

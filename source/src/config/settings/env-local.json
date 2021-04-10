@@ -7,6 +7,7 @@
   },
   "serviceMocker": {
     "include": [
+      "mockServiceGetProjects",
       "mockServiceSecurityLogin"
     ]
   },

@@ -10,5 +10,6 @@
             "userName": ""
         }
     },
-    "menu":  {}
+    "menu":  {},
+    "projects": []
 }

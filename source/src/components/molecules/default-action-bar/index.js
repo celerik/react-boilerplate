@@ -12,6 +12,7 @@ import ActionItem from './action-item';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
+import { useHistory } from 'react-router';
 
 const DefaultActionBar = ({
     classes,
@@ -19,12 +20,18 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
-    onOpenProjectMenu,
     teamColor,
     width
 }) => {
     const theme = useTheme();
     const name = useSelector(state => state.user.account.name);
+    const history = useHistory();
+
+    const onSelectItem = item => (event) => {
+        event.stopPropagation();
+        onCollapse();
+        history.replace(config.routes.application.home.url + item);
+    };
 
     const topActions = [
         isExpanded && (
@@ -47,7 +54,7 @@ const DefaultActionBar = ({
                 />
             )}
             key="home1"
-            onClick={Function.prototype}
+            onClick={onSelectItem('/home1')}
         />,
         <ActionItem
             color={theme.palette.text.primary}
@@ -55,7 +62,7 @@ const DefaultActionBar = ({
             expanded={isExpanded}
             icon="data_usage"
             key="home2"
-            onClick={Function.prototype}
+            onClick={onSelectItem('/home2')}
         />,
         isExpanded && (
             <Divider
@@ -70,7 +77,7 @@ const DefaultActionBar = ({
             description={config.text.mainMenu.projects}
             icon="description"
             key="projects"
-            onClick={onOpenProjectMenu}
+            onClick={onSelectItem(config.routes.dashboard.projects.url)}
         />
     ].filter(Boolean);
 
@@ -91,7 +98,6 @@ DefaultActionBar.propTypes = {
     isExpanded: PropTypes.bool,
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
-    onOpenProjectMenu: PropTypes.func.isRequired,
     teamColor: PropTypes.string,
     id: PropTypes.string.isRequired,
     width: PropTypes.number

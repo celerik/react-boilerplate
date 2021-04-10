@@ -1,4 +1,7 @@
 {
+  "projects": {
+    "get": "{root}/projects"
+  },
   "security": {
     "login": "{root}/login"
   }

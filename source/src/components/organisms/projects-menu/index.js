@@ -1,8 +1,6 @@
 // @packages
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -10,33 +8,21 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import ActionButtom from '../../atoms/button';
-import InputField from '../../atoms/inputfield';
+import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
 import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
+import { useSelector } from 'react-redux';
 
 const ProjectBar = ({
-    backgroundColor,
-    classes,
-    id,
-    onCollapse,
-    visible
+    classes
 }) => {
-    if (!visible) {
-        return null;
-    }
+    const projects = useSelector(state => state.projects);
 
     return (
-    <ClickAwayListener onClickAway={onCollapse} id={`${id}-project-menu`}>
-        <Paper
-            className={classes.mainContainer}
-            id={id}
-            style={{
-                backgroundColor
-            }}
-        >
+        <>
             <InputField
                 className={classes.searchBar}
                 placeholder={config.text.projectMenu.searchProjectByname}
@@ -52,28 +38,20 @@ const ProjectBar = ({
                     <FilterListSharpIcon />
                 </IconButton>
             </div>
-            <ListActions items={[{ text: 'Project name 1' }, { text: 'Project name 2' }]} />
+            <ListActions items={projects} />
             <ActionButtom
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
                 label={config.text.projectMenu.newProject}
             />
-        </Paper>
-    </ClickAwayListener>
+        </>
     );
 };
 
 ProjectBar.propTypes = {
-    backgroundColor: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
-    onCollapse: PropTypes.func,
-    visible: PropTypes.bool.isRequired
+    classes: PropTypes.object.isRequired
 };
 
-ProjectBar.defaultProps = {
-    backgroundColor: null,
-    onCollapse: Function.prototype
-};
+ProjectBar.defaultProps = {};
 
 export default withStyles(styles)(ProjectBar);

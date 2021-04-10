@@ -56,6 +56,20 @@ export const theme = createMuiTheme({
         fontFamily: 'Poppins'
     },
     overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                // '*': {
+                //     // scrollbarWidth: 'bold'
+                // },
+                '::-webkit-scrollbar': {
+                    width: 6
+                },
+                '::-webkit-scrollbar-thumb': {
+                    backgroundColor: `${colors.text.text2}66`,
+                    borderRadius: 10
+                }
+            }
+        },
         MuiDivider: {
             root: {
                 backgroundColor: '#D8D8D8'
