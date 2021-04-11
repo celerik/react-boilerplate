@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 // @packages
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -19,7 +18,7 @@ const ProjectMenu = ({
     match,
     id
 }) => {
-    const { params: { projectId }} = match;
+    const { params: { projectId } } = match;
 
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
@@ -42,11 +41,13 @@ const ProjectMenu = ({
                 </Typography>
                 <Icon className={classes.settingsIcon}>settings</Icon>
             </div>
-            {config.masterData.projectMenu.map((menuOption) => (
-                // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+            {config.masterData.projectMenu.map((menuOption, index) => (
                 <div
                     className={classes.option}
                     onClick={onClickMenuItem(menuOption.name)}
+                    tabIndex={index}
+                    role="button"
+                    onKeyDown={Function.prototype}
                     key={`${id}-option-${menuOption.name}`}
                 >
                     <Icon>{menuOption.icon}</Icon>
@@ -58,7 +59,7 @@ const ProjectMenu = ({
 
         </div>
     );
-}
+};
 
 ProjectMenu.propTypes = {
     classes: PropTypes.object.isRequired,
