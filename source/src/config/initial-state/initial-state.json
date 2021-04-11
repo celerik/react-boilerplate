@@ -1,5 +1,8 @@
 {
     "language": "en",
+    "menu":  {},
+    "projects": [],
+    "servicePatterns": [],
     "user": {
         "account": {
             "authToken": "",
@@ -9,7 +12,5 @@
             "password": "",
             "userName": ""
         }
-    },
-    "menu":  {},
-    "projects": []
+    }
 }
