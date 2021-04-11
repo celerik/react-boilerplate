@@ -12,11 +12,12 @@ const ServicePatternCard = ({
     className,
     id
 }) => (
-    <div className={classNames(classes.mainContainer, className)} id={id}>
-    </div>
+    <div className={classNames(classes.mainContainer, className)} id={id} />
 );
 
 ServicePatternCard.propTypes = {
+    classes: PropTypes.object.isRequired,
+    className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
 };
 
