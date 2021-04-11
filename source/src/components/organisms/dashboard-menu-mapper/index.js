@@ -5,13 +5,19 @@ import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Route, Switch } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
+
+// @scripts
+import ProjectMenu from '../project-menu';
 import ProjectsMenu from '../projects-menu';
+import ServicePatterns from '../service-patterns';
 
 // @styles
 import styles from './styles';
 
 const componentMapper = {
-    ProjectsMenu
+    ProjectMenu,
+    ProjectsMenu,
+    ServicePatterns
 };
 
 const MenuContent = ({
@@ -32,12 +38,13 @@ const MenuContent = ({
                 {Object.values(config.routes.dashboard).map(route => (
                     <Route
                         component={componentMapper[route.component]}
+                        exact
                         key={`route-${route.name}`}
-                        path={`/dashboard${route.url}`}
+                        path={route.url}
                     />
                 ))}
                 <Route path="/dashboard/*">
-                    <Typography>{config.text.notFoundPage.common}</Typography>
+                    <Typography>{config.text.notFoundPage.content}</Typography>
                 </Route>
             </Switch>
         </Paper>

@@ -8,6 +8,8 @@
   "serviceMocker": {
     "include": [
       "mockServiceGetProjects",
+      "mockServiceGetServicePattern",
+      "mockServiceGetServicePatterns",
       "mockServiceSecurityLogin"
     ]
   },

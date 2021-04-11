@@ -30,7 +30,7 @@ const DefaultActionBar = ({
     const onSelectItem = item => (event) => {
         event.stopPropagation();
         onCollapse();
-        history.replace(config.routes.application.home.url + item);
+        history.push(item);
     };
 
     const topActions = [
@@ -44,7 +44,7 @@ const DefaultActionBar = ({
             </Typography>
         ),
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             expanded={isExpanded}
             description={config.text.mainMenu.teamName}
             icon={(
@@ -54,15 +54,15 @@ const DefaultActionBar = ({
                 />
             )}
             key="home1"
-            onClick={onSelectItem('/home1')}
+            onClick={onSelectItem('/dashboard/home1')}
         />,
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             description={config.text.mainMenu.dataExplorer}
             expanded={isExpanded}
             icon="data_usage"
             key="home2"
-            onClick={onSelectItem('/home2')}
+            onClick={onSelectItem('/dashboard/home2')}
         />,
         isExpanded && (
             <Divider
@@ -72,7 +72,7 @@ const DefaultActionBar = ({
             />
         ),
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             expanded={isExpanded}
             description={config.text.mainMenu.projects}
             icon="description"

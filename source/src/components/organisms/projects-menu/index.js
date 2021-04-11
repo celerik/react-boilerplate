@@ -15,11 +15,28 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { formatUrlParam } from '../../../util/string';
 
 const ProjectBar = ({
     classes
 }) => {
+    const history = useHistory();
     const projects = useSelector(state => state.projects);
+
+    const onClickEditProject = (projectId) => {
+        history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
+    };
+
+    const actions = [{
+        name: config.text.projectMenu.clone,
+        icon: 'content_copy',
+        onClick: Function.prototype
+    }, {
+        name: config.text.projectMenu.edit,
+        icon: 'east',
+        onClick: onClickEditProject
+    }];
 
     return (
         <>
@@ -31,14 +48,18 @@ const ProjectBar = ({
                 icon="search"
             />
             <div className={classes.titleHeader}>
-                <Typography className={classes.title}>
+                <Typography className={classes.title} variant="h4">
                     {config.text.projectMenu.existingProjects}
                 </Typography>
                 <IconButton onClick={Function.prototype}>
                     <FilterListSharpIcon />
                 </IconButton>
             </div>
-            <ListActions items={projects} />
+            <ListActions
+                actions={actions}
+                id="list-project-actions"
+                items={projects}
+            />
             <ActionButtom
                 className={classes.buttonAdd}
                 onClick={Function.prototype}

@@ -6,7 +6,7 @@ export default () => Object.assign({}, {
         height: '100vh',
         padding: '30px 20px',
         position: 'relative',
-        width: 400,
+        width: 350,
         zIndex: 5
     }
 });

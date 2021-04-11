@@ -13,8 +13,7 @@ export default () => ({
         }
     },
     title: {
-        fontWeight: 'bold',
-        letterSpacing: 2
+        letterSpacing: 1.6
     },
     titleHeader: {
         alignItems: 'center',

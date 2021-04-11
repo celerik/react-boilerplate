@@ -4,7 +4,7 @@ import axios from 'axios';
 
 // @scripts
 import { config } from '../config';
-
+import { format } from '../util/string';
 import {
     createMockResponse,
     getMockParams
@@ -20,6 +20,29 @@ const mockedServices = {
     mockServiceGetProjects: (mockAdapter) => {
         mockAdapter.onGet(config.services.projects.get).reply(() => createMockResponse({
             data: config.mockData.projects,
+            httpCode: httpCodes.success
+        }));
+    },
+    mockServiceGetServicePattern: (mockAdapter) => {
+        const url = config.services.servicePatterns.getOne;
+        const pathRegexp = new RegExp(format(url, '.*', '.*'));
+        mockAdapter.onGet(pathRegexp).reply((call) => {
+            const servicePatternId = /([a-z]|[A-Z]|[0-9])*$/.exec(call.url)[0];
+            const servicePatterDetails = config.mockData.servicePatternsDetailed.find(
+                servicePattern => servicePattern.servicePatternId === servicePatternId
+            );
+
+            return createMockResponse({
+                data: servicePatterDetails,
+                httpCode: httpCodes.success
+            });
+        });
+    },
+    mockServiceGetServicePatterns: (mockAdapter) => {
+        const url = config.services.servicePatterns.get;
+        const pathRegexp = new RegExp(format(url, '.*'));
+        mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({
+            data: config.mockData.servicePatterns,
             httpCode: httpCodes.success
         }));
     },
