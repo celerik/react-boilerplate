@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-// @scripts
+// @styles
 import styles from './styles';
 
 const ZoomButtons = ({ classes, id }) => (
