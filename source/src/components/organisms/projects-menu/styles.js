@@ -1,11 +1,4 @@
 export default () => ({
-    mainContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        height: '100vh',
-        padding: '30px 20px',
-        width: 400
-    },
     buttonAdd: {
         backgroundColor: '#8675FF',
         color: 'white',
@@ -20,8 +13,7 @@ export default () => ({
         }
     },
     title: {
-        fontWeight: 'bold',
-        letterSpacing: 2
+        letterSpacing: 1.6
     },
     titleHeader: {
         alignItems: 'center',

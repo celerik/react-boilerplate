@@ -4,6 +4,7 @@ import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
+import Tooltip from '@material-ui/core/Tooltip';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
@@ -25,11 +26,23 @@ const Item = ({
                 {text}
             </Typography>
             <div>
-            <IconButton onClick={Function.prototype} key={index} className={classes.iconButton}>
-                    <Icon>
-                        {iconButton.icon}
-                    </Icon>
-            </IconButton>
+            {iconButtons.map((iconButton) => (
+                <Tooltip
+                    title={iconButton.name}
+                    key={`${id}-${iconButton.name}-tooltip`}
+                    enterDelay={500}
+                    enterNextDelay={500}
+                >
+                    <IconButton
+                        className={classes.iconButton}
+                        onClick={(event) => iconButton.onClick(id, event)}
+                    >
+                        <Icon>
+                            {iconButton.icon}
+                        </Icon>
+                    </IconButton>
+                </Tooltip>
+            ))}
             </div>
         </div>
     );
@@ -38,7 +51,11 @@ const Item = ({
 Item.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    iconButtons: PropTypes.array,
+    iconButtons: PropTypes.arrayOf(PropTypes.shape({
+        icon: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        onClick: PropTypes.func.isRequired
+    })),
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired
 };

@@ -1,0 +1,42 @@
+{
+    "observationPeriods": {
+        "component": null,
+        "name": "ObservationPeriods",
+        "url": "/dashboard/projects/:projectId/observation-periods"
+    },
+    "project": {
+        "component": "ProjectMenu",
+        "name": "Project",
+        "url": "/dashboard/projects/:projectId"
+    },
+    "projects": {
+        "component": "ProjectsMenu",
+        "name": "Projects",
+        "url": "/dashboard/projects"
+    },
+    "projectVehicles": {
+        "component": null,
+        "name": "ProjectVehicles",
+        "url": "/dashboard/projects/:projectId/project-vehicles"
+    },
+    "servicePatterns": {
+        "component": "ServicePatterns",
+        "name": "ServicePatterns",
+        "url": "/dashboard/projects/:projectId/service-patterns"
+    },
+    "servicesParameters": {
+        "component": null,
+        "name": "ServicesParameters",
+        "url": "/dashboard/projects/:projectId/services-parameters"
+    },
+    "times": {
+        "component": null,
+        "name": "Times",
+        "url": "/dashboard/projects/:projectId/times"
+    },
+    "viewResults": {
+        "component": null,
+        "name": "ViewResults",
+        "url": "/dashboard/projects/:projectId/view-results"
+    }
+}

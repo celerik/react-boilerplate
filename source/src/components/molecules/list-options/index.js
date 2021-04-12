@@ -12,25 +12,22 @@ import Item from '../../atoms/item';
 import styles from './styles';
 
 const ListActions = ({
+    actions,
     classes,
     id,
     items
 }) => (
-    <div className={classes.mainContainer} id={`${id}-item-list`} >
-        {items.map((element, index) => (
-            < >
+    <div className={classes.mainContainer} id={`${id}-item-list`}>
+        {items.map((element) => (
+            <>
                 <Item
                     className={classes.itemList}
-                    key={index}
-                    text={element.text}
-                    iconButtons={[
-                    {icon: "content_copy"},
-                    {icon: "east"}
-                    ]}
+                    id={element.projectId}
+                    text={element.projectName}
+                    iconButtons={actions}
                 />
                 <Divider
                     className={classes.divider}
-                    key="divider"
                     variant="fullWidth"
                 />
             </>
@@ -40,6 +37,10 @@ const ListActions = ({
 );
 
 ListActions.propTypes = {
+    actions: PropTypes.shape({
+        icon: PropTypes.string.isRequired,
+        onClick: PropTypes.func.isRequired
+    }).isRequired,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({

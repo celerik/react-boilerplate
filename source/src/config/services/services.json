@@ -1,4 +1,11 @@
 {
+  "projects": {
+    "get": "{root}/projects"
+  },
+  "servicePatterns": {
+    "get": "{root}/projects/{0}/servicePatterns",
+    "getOne": "{root}/projects/{0}/servicePatterns/{1}"
+  },
   "security": {
     "login": "{root}/login"
   }
