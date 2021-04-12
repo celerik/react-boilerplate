@@ -10,5 +10,10 @@ export default () => ({
         alignItems: 'center',
         display: 'flex',
         flexDirection: 'column'
+    },
+    bottomActions: {
+        alignItems: 'center',
+        display: 'flex',
+        flexDirection: 'column'
     }
 });

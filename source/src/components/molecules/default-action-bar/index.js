@@ -81,9 +81,44 @@ const DefaultActionBar = ({
         />
     ].filter(Boolean);
 
+    const bottomActions = [
+        <ActionItem
+            bottomItem
+            color={theme.palette.text.primary}
+            expanded={isExpanded}
+            description={config.text.mainMenu.account}
+            icon="person"
+            key="user"
+        />,
+        isExpanded && (
+            <Divider
+                className={classes.divider}
+                key="divider"
+                variant="fullWidth"
+            />
+        ),
+        <ActionItem
+            bottomItem
+            color={theme.palette.text.primary}
+            expanded={isExpanded}
+            description={config.text.mainMenu.logout}
+            icon="logout"
+            key="logout"
+        />,
+        <ActionItem
+            bottomItem
+            color={theme.palette.text.primary}
+            expanded={isExpanded}
+            description={config.text.mainMenu.privacyPolicy}
+            icon="description"
+            key="privacyPolicy"
+        />
+    ].filter(Boolean);
+
     return (
         <ActionBar
             backgroundColor={theme.palette.backgroundColor}
+            bottomActions={bottomActions}
             id={id}
             onClickAway={onCollapse}
             onClickInside={onExpand}
