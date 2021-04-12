@@ -17,40 +17,46 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
-const AlertDialog = ({ classes, onClose, visible }) => (
-      <Dialog
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-          onClose={onClose}
-          open={visible}
-      >
-       {onClose && (
-        <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
-          <CloseIcon className={classes.closeButton} />
-        </IconButton>
-       )}
-        <DialogTitle id="alert-dialog-title" className={classes.titleHeader}>
-          {config.text.dialogLayout.cloneProject}
+const AlertDialog = ({
+    classes,
+    id,
+    onClose,
+    visible
+}) => (
+    <Dialog
+        id={id}
+        onClose={onClose}
+        open={visible}
+    >
+        {onClose && (
+            <IconButton className={classes.closeButton} onClick={onClose}>
+                <CloseIcon className={classes.closeButton} />
+            </IconButton>
+        )}
+        <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
+            {config.text.dialogLayout.cloneProject}
         </DialogTitle>
         <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {config.text.dialogLayout.petition}
-          </DialogContentText>
+            <DialogContentText id={`${id}-description`}>
+                {config.text.dialogLayout.petition}
+            </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose} color="primary">
-            {config.text.dialogLayout.cloneSnapshot}
-          </Button>
-          <Button onClick={onClose} color="primary" autoFocus>
-            {config.text.dialogLayout.cloneServicePattern}
-          </Button>
+            <Button onClick={onClose} color="primary">
+                {config.text.dialogLayout.cloneSnapshot}
+            </Button>
+            <Button onClick={onClose} color="primary" autoFocus>
+                {config.text.dialogLayout.cloneServicePattern}
+            </Button>
         </DialogActions>
-      </Dialog>
+    </Dialog>
 );
 
 AlertDialog.propTypes = {
-  classes: PropTypes.object.isRequired,
-  id: PropTypes.string.isRequired
+    classes: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired,
+    onClose: PropTypes.func.isRequired,
+    visible: PropTypes.func.isRequired
 };
 
 AlertDialog.defaultProps = {};
