@@ -1,5 +1,6 @@
 // @packages
 import Button from '@material-ui/core/Button';
+import { config } from '../../../config';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -21,24 +22,33 @@ const AlertDialog = ({ classes, onClose, visible }) => (
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
       >
-       {onClose ? (
+       {onClose && (
         <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
           <CloseIcon className={classes.closeButton} />
         </IconButton>
-       ) : null}
-        <DialogTitle id="alert-dialog-title" className={classes.titleHeader}>Clone project</DialogTitle>
+       )}
+        <DialogTitle id="alert-dialog-title" className={classes.titleHeader}>
+{' '}
+{config.text.dialogLayout.cloneProject}
+{' '}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-            You can clone a Service Pattern or clone a
-            Snapshot of the project. Select one:
+{' '}
+{config.text.dialogLayout.petition}
+{' '}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} color="primary">
-            Clone a Snapshot
+{' '}
+{config.text.dialogLayout.cloneSnapshot}
+{' '}
           </Button>
           <Button onClick={onClose} color="primary" autoFocus>
-            Clone a Service Pattern
+{' '}
+{config.text.dialogLayout.cloneServicePattern}
+{' '}
           </Button>
         </DialogActions>
       </Dialog>

@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import ActionButtom from '../../atoms/button';
-import AlertDialog from '../Dialog-Layout';
+import AlertDialog from '../clone-project-dialog';
 import { config } from '../../../config';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';

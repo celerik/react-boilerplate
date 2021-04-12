@@ -1,8 +1,8 @@
 export default () => ({
     closeButton: {
+        color: 'gray',
         position: 'absolute',
-        right: 0,
-        color: 'gray'
+        right: 0
     },
     titleHeader: {
         alignItems: 'center',
