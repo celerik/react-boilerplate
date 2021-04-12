@@ -16,7 +16,11 @@ const ServicePatterns = ({
     match
 }) => {
     const { params: { projectId } } = match;
-    const projects = useSelector(state => state.projects);
+    const { projects, servicePatterns } = useSelector(state => ({
+        projects: state.projects,
+        servicePatterns: state.servicePatterns
+    }));
+
     const project = projects.find(project => project.projectId === projectId);
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
@@ -32,6 +36,9 @@ const ServicePatterns = ({
     return (
         <div id={id}>
             <BackToButton label={format(config.text.projectMenu.backToProject, project.projectName)} />
+            {servicePatterns.map(item => (
+                <div>{item.routeName}</div>
+            ))}
         </div>
     );
 };

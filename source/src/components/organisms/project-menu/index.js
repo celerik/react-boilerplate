@@ -7,10 +7,12 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
-import styles from './styles';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { useSelector } from 'react-redux';
+
+// @styles
+import styles from './styles';
 
 const ProjectMenu = ({
     classes,
@@ -56,7 +58,6 @@ const ProjectMenu = ({
                     </Typography>
                 </div>
             ))}
-
         </div>
     );
 };
