@@ -18,7 +18,8 @@
   "mainMenu": {
     "dataExplorer": "Data explorer",
     "projects": "Projects",
-    "teamName": "Team Name"
+    "teamName": "Team Name",
+    "manageTeams": "Manage Teams"
   },
   "pagination": {
     "items": "items",

@@ -10,6 +10,9 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @styles
+import { config } from '../../../config';
+
+// @styles
 import styles from './styles';
 
 const DropdownUser = ({
@@ -18,49 +21,63 @@ const DropdownUser = ({
     isExpanded,
     items,
     onChange,
-    user
+    team
 }) => {
     const handleSelectOnChange = (evt) => {
         const { value } = evt.target;
-        const item = items.find(item => item.value === value);
+        if (value) {
+            const item = items.find(item => item.value === value);
 
-        onChange({ item });
+            onChange({ item });
+        }
     };
+
+    const IconItem = ({ icon }) => (
+        <ListItemIcon className={classes.icon}>
+            <Icon>
+                {typeof icon === 'string'
+                    ? <Icon>{icon}</Icon>
+                    : icon}
+            </Icon>
+        </ListItemIcon>
+    );
 
     return (
         <div className={classes.itemContainer} id={`${id}-selector-user`}>
         {!isExpanded && (
             <Icon className={classes.iconOnly}>
-                {typeof user.icon === 'string'
-                    ? <Icon>{user.icon}</Icon>
-                    : user.icon}
+                {typeof team.icon === 'string'
+                    ? <Icon>{team.icon}</Icon>
+                    : team.icon}
             </Icon>
         )}
         {isExpanded && (
             <FormControl className={classes.formControlContainer}>
                 <TextField
                     select
-                    value={user.value}
+                    value={team.value}
                     onChange={handleSelectOnChange}
                     SelectProps={{
                         MenuProps: { disablePortal: true }
                     }}
                     InputProps={{ disableUnderline: true }}
+                    variant="outlined"
+                    className={classes.selector}
                 >
                     {items.map((item) => (
-                        <MenuItem value={item.value} key={item.value} id={item.value}>
-                        {item.icon && (
-                            <ListItemIcon className={classes.icon}>
-                                <Icon>
-                                    {typeof item.icon === 'string'
-                                        ? <Icon>{item.icon}</Icon>
-                                        : item.icon}
-                                </Icon>
-                            </ListItemIcon>
-                        )}
-                        <Typography variant="inherit">{item.label.toUpperCase()}</Typography>
+                        <MenuItem value={item.value} key={item.value} id={item.value} className={classes.menuItem}>
+                            <div className={classes.itemList}>
+                                {item.icon && (
+                                    <IconItem icon={item.icon} />
+                                )}
+                                <Typography variant="inherit" className={classes.labelItem}>{item.label}</Typography>
+                            </div>
                         </MenuItem>
                     ))}
+                    <MenuItem className={classes.dropdownButton} onClick={Function.prototype}>
+                        <Typography variant="inherit">{config.text.mainMenu.manageTeams}</Typography>
+                        <IconItem icon="group" />
+                    </MenuItem>
                 </TextField>
             </FormControl>
         )}
@@ -78,7 +95,7 @@ DropdownUser.propTypes = {
         value: PropTypes.string.isRequired
     })).isRequired,
     onChange: PropTypes.func.isRequired,
-    user: PropTypes.shape({
+    team: PropTypes.shape({
         icon: PropTypes.any.isRequired,
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired

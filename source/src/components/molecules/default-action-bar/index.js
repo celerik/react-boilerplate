@@ -25,11 +25,11 @@ const DefaultActionBar = ({
 }) => {
     const theme = useTheme();
     const name = useSelector(state => state.user.account.name);
-    const [user, setUser] = useState({});
+    const [team, setTeam] = useState({});
     const history = useHistory();
 
     const onChangeUser = ({ item }) => {
-        setUser(item);
+        setTeam(item);
     };
 
     const onSelectItem = item => (event) => {
@@ -51,7 +51,7 @@ const DefaultActionBar = ({
         <UserSelectorDropdown
             isExpanded={isExpanded}
             onChange={onChangeUser}
-            user={user}
+            team={team}
             items={[]}
             key="home1"
             onClick={onSelectItem('/dashboard/home1')}
