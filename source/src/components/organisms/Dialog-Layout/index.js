@@ -6,16 +6,15 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import React from 'react';
 
-const AlertDialog = ({visible, onClose}) => {
-  return (
+const AlertDialog = ({ visible, onClose }) => (
     <div>
       <Dialog
-        open={visible}
-        onClose={onClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
+          open={visible}
+          onClose={onClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Clone project"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">Clone project</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             You can clone a Service Pattern or clone a
@@ -32,7 +31,6 @@ const AlertDialog = ({visible, onClose}) => {
         </DialogActions>
       </Dialog>
     </div>
-  );
-}
+);
 
 export default AlertDialog;

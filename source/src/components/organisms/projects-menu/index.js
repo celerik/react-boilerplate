@@ -2,7 +2,7 @@
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
-import React , {useState} from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
