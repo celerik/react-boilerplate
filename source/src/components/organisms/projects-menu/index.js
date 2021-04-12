@@ -1,8 +1,6 @@
 // @packages
-import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import IconButton from '@material-ui/core/IconButton';
-import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -10,33 +8,38 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import ActionButtom from '../../atoms/button';
-import InputField from '../../atoms/inputfield';
+import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
 import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
+import { useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
+import { formatUrlParam } from '../../../util/string';
 
 const ProjectBar = ({
-    backgroundColor,
-    classes,
-    id,
-    onCollapse,
-    visible
+    classes
 }) => {
-    if (!visible) {
-        return null;
-    }
+    const history = useHistory();
+    const projects = useSelector(state => state.projects);
+
+    const onClickEditProject = (projectId) => {
+        history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
+    };
+
+    const actions = [{
+        name: config.text.projectMenu.clone,
+        icon: 'content_copy',
+        onClick: Function.prototype
+    }, {
+        name: config.text.projectMenu.edit,
+        icon: 'east',
+        onClick: onClickEditProject
+    }];
 
     return (
-    <ClickAwayListener onClickAway={onCollapse} id={`${id}-project-menu`}>
-        <Paper
-            className={classes.mainContainer}
-            id={id}
-            style={{
-                backgroundColor
-            }}
-        >
+        <>
             <InputField
                 className={classes.searchBar}
                 placeholder={config.text.projectMenu.searchProjectByname}
@@ -45,35 +48,31 @@ const ProjectBar = ({
                 icon="search"
             />
             <div className={classes.titleHeader}>
-                <Typography className={classes.title}>
+                <Typography className={classes.title} variant="h4">
                     {config.text.projectMenu.existingProjects}
                 </Typography>
                 <IconButton onClick={Function.prototype}>
                     <FilterListSharpIcon />
                 </IconButton>
             </div>
-            <ListActions items={[{ text: 'Project name 1' }, { text: 'Project name 2' }]} />
+            <ListActions
+                actions={actions}
+                id="list-project-actions"
+                items={projects}
+            />
             <ActionButtom
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
                 label={config.text.projectMenu.newProject}
             />
-        </Paper>
-    </ClickAwayListener>
+        </>
     );
 };
 
 ProjectBar.propTypes = {
-    backgroundColor: PropTypes.string,
-    classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
-    onCollapse: PropTypes.func,
-    visible: PropTypes.bool.isRequired
+    classes: PropTypes.object.isRequired
 };
 
-ProjectBar.defaultProps = {
-    backgroundColor: null,
-    onCollapse: Function.prototype
-};
+ProjectBar.defaultProps = {};
 
 export default withStyles(styles)(ProjectBar);

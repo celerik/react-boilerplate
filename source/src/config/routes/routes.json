@@ -2,7 +2,7 @@
     "home": {
         "component": "DashBoard",
         "name": "Dashboard",
-        "url": "/"
+        "url": "/dashboard"
     },
     "login": {
         "component": "Login",

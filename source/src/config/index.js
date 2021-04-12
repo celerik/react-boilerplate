@@ -1,6 +1,7 @@
 // @scripts
 import initialState from './initial-state';
 import language from './text';
+import masterData from './master-data';
 import mockData from './mock-data';
 import routes from './routes';
 import settings from './settings';
@@ -10,6 +11,7 @@ const getConfiguration = () => {
     const services = getServices(settings.services.root);
     const config = {
         initialState,
+        masterData,
         mockData,
         routes,
         services,

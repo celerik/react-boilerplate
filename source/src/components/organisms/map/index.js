@@ -35,15 +35,15 @@ const CustomMap = ({
                 ['linear'],
                 ['zoom'],
                 2,
-                theme.palette.background.primary,
+                theme.palette.background.default,
                 1,
-                theme.palette.background.primary
+                theme.palette.background.default
             ]);
-            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.primary);
-            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.primary);
-            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.primary);
-            map.setPaintProperty('building', 'fill-color', theme.palette.background.primary);
-            map.setPaintProperty('land', 'background-color', theme.palette.background.primary);
+            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.default);
+            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.default);
+            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.default);
+            map.setPaintProperty('building', 'fill-color', theme.palette.background.default);
+            map.setPaintProperty('land', 'background-color', theme.palette.background.default);
         });
 
         mapRef.current = map;
@@ -55,12 +55,8 @@ const CustomMap = ({
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
             <ZoomButtons
-                onZoomIn={() => {
-                    mapRef.current.zoomIn();
-                }}
-                onZoomOut={() => {
-                    mapRef.current.zoomOut();
-                }}
+                onZoomIn={() => mapRef.current.zoomIn()}
+                onZoomOut={() => mapRef.current.zoomOut()}
             />
         </div>
     );

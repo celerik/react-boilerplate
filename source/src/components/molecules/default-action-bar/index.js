@@ -12,6 +12,7 @@ import ActionItem from './action-item';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
+import { useHistory } from 'react-router';
 
 const DefaultActionBar = ({
     classes,
@@ -19,12 +20,18 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
-    onOpenProjectMenu,
     teamColor,
     width
 }) => {
     const theme = useTheme();
     const name = useSelector(state => state.user.account.name);
+    const history = useHistory();
+
+    const onSelectItem = item => (event) => {
+        event.stopPropagation();
+        onCollapse();
+        history.push(item);
+    };
 
     const topActions = [
         isExpanded && (
@@ -37,7 +44,7 @@ const DefaultActionBar = ({
             </Typography>
         ),
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             expanded={isExpanded}
             description={config.text.mainMenu.teamName}
             icon={(
@@ -47,15 +54,15 @@ const DefaultActionBar = ({
                 />
             )}
             key="home1"
-            onClick={Function.prototype}
+            onClick={onSelectItem('/dashboard/home1')}
         />,
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             description={config.text.mainMenu.dataExplorer}
             expanded={isExpanded}
             icon="data_usage"
             key="home2"
-            onClick={Function.prototype}
+            onClick={onSelectItem('/dashboard/home2')}
         />,
         isExpanded && (
             <Divider
@@ -65,12 +72,12 @@ const DefaultActionBar = ({
             />
         ),
         <ActionItem
-            color={theme.palette.text.primary}
+            color={theme.palette.text.secondary}
             expanded={isExpanded}
             description={config.text.mainMenu.projects}
             icon="description"
             key="projects"
-            onClick={onOpenProjectMenu}
+            onClick={onSelectItem(config.routes.dashboard.projects.url)}
         />
     ].filter(Boolean);
 
@@ -91,7 +98,6 @@ DefaultActionBar.propTypes = {
     isExpanded: PropTypes.bool,
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
-    onOpenProjectMenu: PropTypes.func.isRequired,
     teamColor: PropTypes.string,
     id: PropTypes.string.isRequired,
     width: PropTypes.number
