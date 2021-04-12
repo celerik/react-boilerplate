@@ -25,13 +25,11 @@ const Item = ({
                 {text}
             </Typography>
             <div>
-            {iconButtons.map((iconButton, index) => (
-                <IconButton onClick={Function.prototype} key={index} className={classes.iconButton}>
+            <IconButton onClick={Function.prototype} key={index} className={classes.iconButton}>
                     <Icon>
                         {iconButton.icon}
                     </Icon>
-                </IconButton>
-            ))}
+            </IconButton>
             </div>
         </div>
     );

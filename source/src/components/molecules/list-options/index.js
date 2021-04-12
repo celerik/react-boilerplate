@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
+import AlertDialogSlide from '../../organisms/Dialog-Layout/index';
 
 // @scripts
 import Item from '../../atoms/item';
@@ -15,14 +16,17 @@ const ListActions = ({
     id,
     items
 }) => (
-    <div className={classes.mainContainer} id={`${id}-item-list`}>
+    <div className={classes.mainContainer} id={`${id}-item-list`} >
         {items.map((element, index) => (
-            <>
+            < >
                 <Item
                     className={classes.itemList}
                     key={index}
                     text={element.text}
-                    iconButtons={[{ icon: 'content_copy' }, { icon: 'east' }]}
+                    iconButtons={[
+                    {icon: "content_copy"},
+                    {icon: "east"}
+                    ]}
                 />
                 <Divider
                     className={classes.divider}
