@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import DefaultActionBar from '../../organisms/default-action-bar';
+import DefaultActionBar from '../../molecules/default-action-bar';
 import { dimensions } from '../../../styles/global';
 
 // @scripts

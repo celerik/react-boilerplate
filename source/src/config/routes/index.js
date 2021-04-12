@@ -1,3 +1,7 @@
-import routes from './routes.json';
+import applicationRoutes from './routes.json';
+import dashboardRoutes from './dashboard-routes.json';
 
-export default routes;
+export default {
+    application: applicationRoutes,
+    dashboard: dashboardRoutes
+};

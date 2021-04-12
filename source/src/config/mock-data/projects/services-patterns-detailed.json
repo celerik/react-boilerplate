@@ -1,0 +1,1152 @@
+[
+    {
+        "servicePatternId": "60723c69acdb304afedb395f",
+        "routeName": "Mcfarland",
+        "settings": {
+            "servicePatternName": "456 Blairstown",
+            "daysOfOperation": [
+                "Sun",
+                "Thu",
+                "Fri"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae06bb5d6dfb4971e6c",
+                "stopId": "60727ae0e5e4caee6d44abf1",
+                "stopName": "Dorothea",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae094e6b134a2a89b78",
+                "stopId": "60727ae099107f95139b84c3",
+                "stopName": "Cheryl",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae05de99a9e8e07f13f",
+                "stopId": "60727ae0408119809a049f2f",
+                "stopName": "Maribel",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e754f755d03111af",
+                "stopId": "60727ae0dc406778660521e1",
+                "stopName": "Avis",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae085b52f07bd51b8e8",
+                "stopId": "60727ae02e4f557f8ff491fd",
+                "stopName": "Jody",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69b69d0145548def43",
+        "routeName": "Phillips",
+        "settings": {
+            "servicePatternName": "324 Valmy",
+            "daysOfOperation": [
+                "Wed",
+                "Tue",
+                "Sat"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae05b594e492767e03b",
+                "stopId": "60727ae01ec54300987c79ca",
+                "stopName": "Alyce",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0b1252e03b90b8dca",
+                "stopId": "60727ae045cc29a3de372138",
+                "stopName": "Ofelia",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae063fa5bbbd46ab7d6",
+                "stopId": "60727ae06e8007278b20a6eb",
+                "stopName": "Sanford",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae020983203837810c0",
+                "stopId": "60727ae02615ffb9fce21cdd",
+                "stopName": "Leblanc",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0cf344e84ea7ed2cb",
+                "stopId": "60727ae068c0e9a148512ebc",
+                "stopName": "Blackwell",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c695e1daa481612087a",
+        "routeName": "Gilbert",
+        "settings": {
+            "servicePatternName": "265 Bluffview",
+            "daysOfOperation": [
+                "Mon",
+                "Fri",
+                "Mon"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0da5ce92759b3bc8a",
+                "stopId": "60727ae0893d8ff8353d247a",
+                "stopName": "Rosalie",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae076d6bf2da48c0670",
+                "stopId": "60727ae0fd8eabbce646cf9d",
+                "stopName": "Medina",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae099a44dc5b0ec8d8a",
+                "stopId": "60727ae02b81512aaed6db54",
+                "stopName": "Warren",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ad0d350619177062",
+                "stopId": "60727ae0deb40bebb571c2ee",
+                "stopName": "Allyson",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e6b7f10bd2b7cfc6",
+                "stopId": "60727ae00447eea76ab84873",
+                "stopName": "Boyle",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c696d30dc5677a665f8",
+        "routeName": "Mitzi",
+        "settings": {
+            "servicePatternName": "292 Stollings",
+            "daysOfOperation": [
+                "Fri",
+                "Thu",
+                "Sat"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae04e95cbeade345f25",
+                "stopId": "60727ae09eb6556d84820070",
+                "stopName": "Herrera",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0dd9b74ab46c14469",
+                "stopId": "60727ae055e0df61596f4e64",
+                "stopName": "Mcmahon",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e157aec33080a181",
+                "stopId": "60727ae000a1eb3d06338220",
+                "stopName": "Guerrero",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae04af661e10ee56f95",
+                "stopId": "60727ae017cf7133a3a1dbe2",
+                "stopName": "Brown",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae01f04ff08fd95df01",
+                "stopId": "60727ae0f4b1c5a5772fb532",
+                "stopName": "Ila",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c699ee7f399914ebb46",
+        "routeName": "Alexandria",
+        "settings": {
+            "servicePatternName": "814 Groveville",
+            "daysOfOperation": [
+                "Sun",
+                "Mon",
+                "Wed"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0b1e0adc28efc1136",
+                "stopId": "60727ae0f475979877f5d985",
+                "stopName": "Smith",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0677a5850eac61bf7",
+                "stopId": "60727ae0948df2700f1fb5eb",
+                "stopName": "Mack",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0d16e43b321c7b072",
+                "stopId": "60727ae0439cfd394be4ca85",
+                "stopName": "Carmella",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae03a804c80ae223d34",
+                "stopId": "60727ae065cda3f2a1424240",
+                "stopName": "White",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0d04892bbd7c65a73",
+                "stopId": "60727ae008fe93000380790f",
+                "stopName": "Norris",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69391fee1744d48b2a",
+        "routeName": "Jodi",
+        "settings": {
+            "servicePatternName": "264 Thomasville",
+            "daysOfOperation": [
+                "Tue",
+                "Fri",
+                "Sat"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0c9516cb84bbc2a1c",
+                "stopId": "60727ae03f61db631d6e2f7c",
+                "stopName": "Petra",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae03953849dfc8e55ba",
+                "stopId": "60727ae0eb28b05ac60249ba",
+                "stopName": "Carla",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0162bc7c60a746ec3",
+                "stopId": "60727ae0a46fc825ed05057d",
+                "stopName": "Rojas",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c01626e0d08e6ef5",
+                "stopId": "60727ae0e24b18b0cee408e3",
+                "stopName": "Silva",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0d4981c776a69f89b",
+                "stopId": "60727ae0192e54d21b593a34",
+                "stopName": "Rhonda",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6933d2c36cd95edb38",
+        "routeName": "Flora",
+        "settings": {
+            "servicePatternName": "666 Osage",
+            "daysOfOperation": [
+                "Sun",
+                "Sun",
+                "Thu"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae00a7de4f5fccba7e3",
+                "stopId": "60727ae0cf872f020e66d5c9",
+                "stopName": "Doreen",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0d3c0a99c22664b69",
+                "stopId": "60727ae0f1bb4f2a116e0ffd",
+                "stopName": "Reese",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0642011f8c2b3ffa1",
+                "stopId": "60727ae0c0291dda87148a79",
+                "stopName": "Stark",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0cfe62193c25b51a9",
+                "stopId": "60727ae005d1219edc8a06d6",
+                "stopName": "Paige",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae004a6b054d6c3378f",
+                "stopId": "60727ae0f1e0f913be5c57bd",
+                "stopName": "Burns",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6917e1a9fb8836cb9e",
+        "routeName": "Selena",
+        "settings": {
+            "servicePatternName": "277 Masthope",
+            "daysOfOperation": [
+                "Sat",
+                "Wed",
+                "Mon"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0497eb9e093050010",
+                "stopId": "60727ae07ab7caf03331e312",
+                "stopName": "Melton",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae074ec262fbb722218",
+                "stopId": "60727ae04dc6d3f050c4f687",
+                "stopName": "Judith",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0f7bae45f306a5335",
+                "stopId": "60727ae0ebe03d179c939058",
+                "stopName": "Rush",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae03b2955f7ede3d326",
+                "stopId": "60727ae03982af6a1629ba39",
+                "stopName": "Nita",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0a67e1cc1be5f4238",
+                "stopId": "60727ae068e6c3a85daf3f2a",
+                "stopName": "Dale",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69a80f5f0e3123865a",
+        "routeName": "Holcomb",
+        "settings": {
+            "servicePatternName": "927 Riceville",
+            "daysOfOperation": [
+                "Fri",
+                "Tue",
+                "Fri"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0e44ac327a9268b15",
+                "stopId": "60727ae0046365f453c3992f",
+                "stopName": "Aurelia",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0bc82bf3ec1f63008",
+                "stopId": "60727ae04714019ded1b9b0e",
+                "stopName": "George",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e6bcefbdc38461b1",
+                "stopId": "60727ae0e0fbdc18af0af47e",
+                "stopName": "Delacruz",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae04ba28300c7e5fe68",
+                "stopId": "60727ae08e3772b76de642bc",
+                "stopName": "Lindsey",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0a299448139cc731c",
+                "stopId": "60727ae0f2dce7f99022f51c",
+                "stopName": "Barbara",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6947b3336cda145db9",
+        "routeName": "Castillo",
+        "settings": {
+            "servicePatternName": "401 Klondike",
+            "daysOfOperation": [
+                "Fri",
+                "Wed",
+                "Sat"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0afe6f6a1b76cd30a",
+                "stopId": "60727ae08b97de8705801396",
+                "stopName": "Lora",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09fd29d0fe080e907",
+                "stopId": "60727ae0ce24ab168496df37",
+                "stopName": "Rae",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c3571e1b603d8b66",
+                "stopId": "60727ae084dc1985ba21b018",
+                "stopName": "Harrison",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0a50d0c15303c4664",
+                "stopId": "60727ae040b7347b42089254",
+                "stopName": "Winifred",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0f45c455beed75c34",
+                "stopId": "60727ae0e10907456573411c",
+                "stopName": "Stefanie",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69c372ab5cab64acc9",
+        "routeName": "Nikki",
+        "settings": {
+            "servicePatternName": "310 Jenkinsville",
+            "daysOfOperation": [
+                "Sun",
+                "Fri",
+                "Wed"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae05cfe015b698d55a9",
+                "stopId": "60727ae08de45022e433f112",
+                "stopName": "Ramona",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae033598780abd5bf75",
+                "stopId": "60727ae07f16f9f4cb00491d",
+                "stopName": "Ford",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0366017ec839f8fcb",
+                "stopId": "60727ae0b3083ef4864da8e9",
+                "stopName": "Marina",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae02c3a07a523be76fe",
+                "stopId": "60727ae0614cd69e78567c65",
+                "stopName": "Ruby",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae01d5832b856f62c7c",
+                "stopId": "60727ae0bcff7680f661ea59",
+                "stopName": "Rodriguez",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69d836bf3e58454fce",
+        "routeName": "Glenn",
+        "settings": {
+            "servicePatternName": "721 Canoochee",
+            "daysOfOperation": [
+                "Sat",
+                "Thu",
+                "Thu"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0a559f5428f61de4f",
+                "stopId": "60727ae01b81504652d0e045",
+                "stopName": "Roslyn",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c63ea422f3c84d87",
+                "stopId": "60727ae03ef6117850f32a9c",
+                "stopName": "Mcmillan",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e110ad36bf4da061",
+                "stopId": "60727ae0309d93d738046847",
+                "stopName": "Erin",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ba4e446e58f2c78e",
+                "stopId": "60727ae07d365096a59c867f",
+                "stopName": "Hodge",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae000d55eece3cf3c74",
+                "stopId": "60727ae00b01da4598323fe8",
+                "stopName": "Ivy",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6912a2185a1a730a60",
+        "routeName": "Ortega",
+        "settings": {
+            "servicePatternName": "338 Delwood",
+            "daysOfOperation": [
+                "Sat",
+                "Sat",
+                "Sun"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae000609901be1285cd",
+                "stopId": "60727ae0c52b4c373652767f",
+                "stopName": "Holt",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0019408ad7da4e4ba",
+                "stopId": "60727ae01a46fee41693e526",
+                "stopName": "Lila",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0d15ef6876bd813cc",
+                "stopId": "60727ae00e04357d677e2bbe",
+                "stopName": "Adrienne",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae002c89395f0d90146",
+                "stopId": "60727ae01a72ff269e30084c",
+                "stopName": "Henry",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae05674e336732b7670",
+                "stopId": "60727ae08f2101d9685bba88",
+                "stopName": "Avila",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69c7dd1f98c696b332",
+        "routeName": "Rhodes",
+        "settings": {
+            "servicePatternName": "531 Snowville",
+            "daysOfOperation": [
+                "Thu",
+                "Mon",
+                "Sat"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0cf531b0b737adaae",
+                "stopId": "60727ae015c06811979bc3bc",
+                "stopName": "Patti",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae018c67a76a8c8a029",
+                "stopId": "60727ae0c92e76960fc8eb3a",
+                "stopName": "Jeanette",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09ba2de424145d3a9",
+                "stopId": "60727ae03a2bba03b9cfab02",
+                "stopName": "Jill",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae001933f43f6a70e1d",
+                "stopId": "60727ae0f196b17801debbb8",
+                "stopName": "Bryan",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae062a040f9074b1c32",
+                "stopId": "60727ae0a5eebeb468a5ac68",
+                "stopName": "Eaton",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c693ac52109a979850a",
+        "routeName": "Mooney",
+        "settings": {
+            "servicePatternName": "226 Waiohinu",
+            "daysOfOperation": [
+                "Wed",
+                "Sun",
+                "Sun"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae02a38097a48c03773",
+                "stopId": "60727ae0834d505836c498b0",
+                "stopName": "Valeria",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ffe27606f67fb6f8",
+                "stopId": "60727ae05d181f1cf8c905be",
+                "stopName": "Angel",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae089702d8b3b0568b1",
+                "stopId": "60727ae0762221e508745f41",
+                "stopName": "Deena",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0980c73a0fe2c1957",
+                "stopId": "60727ae0924352d12eb454e4",
+                "stopName": "Kaufman",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0f765b4feca583759",
+                "stopId": "60727ae043723093bf943177",
+                "stopName": "Trujillo",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69727e8ef4a691b7ee",
+        "routeName": "Aurora",
+        "settings": {
+            "servicePatternName": "595 Yorklyn",
+            "daysOfOperation": [
+                "Tue",
+                "Tue",
+                "Thu"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0ae5e50527d39a0db",
+                "stopId": "60727ae0d65ea31eb50b2b04",
+                "stopName": "Berta",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ff8778fcef33f1a8",
+                "stopId": "60727ae0e152a0d625820664",
+                "stopName": "Owen",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c1548ae148b603da",
+                "stopId": "60727ae0897202c05da9ade8",
+                "stopName": "Lelia",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae090d32d8d9466a2b2",
+                "stopId": "60727ae037ec123e0444af80",
+                "stopName": "Lucinda",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e7fea920818dc11f",
+                "stopId": "60727ae05c7e8a5d27411f79",
+                "stopName": "Bray",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c697553f0fa39613424",
+        "routeName": "Millie",
+        "settings": {
+            "servicePatternName": "395 Mapletown",
+            "daysOfOperation": [
+                "Mon",
+                "Mon",
+                "Thu"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0496baddf21117400",
+                "stopId": "60727ae0153df3672f3a51f8",
+                "stopName": "Bailey",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ab444d118b3f6857",
+                "stopId": "60727ae09768c21d76a14683",
+                "stopName": "Bobbi",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae00ccafea92905710e",
+                "stopId": "60727ae06ac58fba58b884b6",
+                "stopName": "Wise",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0edbb1fda0a2d56b4",
+                "stopId": "60727ae07a3255cf72c62a7c",
+                "stopName": "Nunez",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0efa9cb836ad56ab4",
+                "stopId": "60727ae00f7dcda7c0c89107",
+                "stopName": "Knight",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69c614fd9f0d76e56a",
+        "routeName": "Parrish",
+        "settings": {
+            "servicePatternName": "438 Roderfield",
+            "daysOfOperation": [
+                "Tue",
+                "Thu",
+                "Tue"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae06e884b5fb7ba0c04",
+                "stopId": "60727ae0214c306bda62a4f4",
+                "stopName": "Carpenter",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae08e1d34ab584395bb",
+                "stopId": "60727ae000a50d004b05cc47",
+                "stopName": "Livingston",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09db806a6d4130eee",
+                "stopId": "60727ae086e13eaeeb1c677a",
+                "stopName": "Whitaker",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0face439255a7e309",
+                "stopId": "60727ae0814d21e98eb04460",
+                "stopName": "Joanne",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ffd0b71b00e197a5",
+                "stopId": "60727ae0a8b9c8d939bd584f",
+                "stopName": "Sherri",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6996e0ea28e0cdbc4a",
+        "routeName": "Albert",
+        "settings": {
+            "servicePatternName": "231 Zeba",
+            "daysOfOperation": [
+                "Tue",
+                "Wed",
+                "Wed"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0b32fb525b8ad131c",
+                "stopId": "60727ae0ad42163d1dc3a6f1",
+                "stopName": "Erica",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09d07c85a636841f5",
+                "stopId": "60727ae017fb27301efa070f",
+                "stopName": "Gross",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae07621c9ae9cf80a1f",
+                "stopId": "60727ae0f78b60649501988c",
+                "stopName": "Catalina",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae02aecbbeee90cbc34",
+                "stopId": "60727ae0f4915308080a1352",
+                "stopName": "Young",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae015a8dac9a9749704",
+                "stopId": "60727ae0783a4be2df9bf419",
+                "stopName": "Graves",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69e14ceeea177d1f13",
+        "routeName": "Rosella",
+        "settings": {
+            "servicePatternName": "321 Kieler",
+            "daysOfOperation": [
+                "Fri",
+                "Mon",
+                "Fri"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae015252911c43fc119",
+                "stopId": "60727ae0436d816165013156",
+                "stopName": "Lambert",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e04beee2926dbf05",
+                "stopId": "60727ae0959efbd93f8c4255",
+                "stopName": "Perez",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0bd6c108871daf240",
+                "stopId": "60727ae0ad8bcde4a94de58d",
+                "stopName": "Foreman",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0175b6b406381451a",
+                "stopId": "60727ae0e050e4d5696683e3",
+                "stopName": "Roseann",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae08098be66b8a7f9dc",
+                "stopId": "60727ae0a2e80eb93df71c10",
+                "stopName": "Diana",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6929deb61df8a5acbe",
+        "routeName": "Ortiz",
+        "settings": {
+            "servicePatternName": "504 Kaka",
+            "daysOfOperation": [
+                "Sun",
+                "Wed",
+                "Tue"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae055e34e0deebdcf11",
+                "stopId": "60727ae0ff1ef846d9944a08",
+                "stopName": "Monroe",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e54e69dd6b82dbb0",
+                "stopId": "60727ae0832f0122321391ac",
+                "stopName": "Oconnor",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae000a262cd89d39f6e",
+                "stopId": "60727ae041561f4ae2773290",
+                "stopName": "Beverley",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0cac4604f87c7a8bc",
+                "stopId": "60727ae020cd44845f3a7dc2",
+                "stopName": "Billie",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09632fcf4b7c3c895",
+                "stopId": "60727ae0e713cc76df60338a",
+                "stopName": "Milagros",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c69c01fd3a6d3d545bf",
+        "routeName": "Dolly",
+        "settings": {
+            "servicePatternName": "726 Sims",
+            "daysOfOperation": [
+                "Sat",
+                "Mon",
+                "Mon"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0e0aa0b75df42c732",
+                "stopId": "60727ae060e53c343be45583",
+                "stopName": "Elinor",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae03a5d7d97b8a02a68",
+                "stopId": "60727ae0db662992d9669973",
+                "stopName": "Burris",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae06e4bb7bcc0ed514d",
+                "stopId": "60727ae05fd1765a9e677747",
+                "stopName": "Morales",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae08b53c19b46d5c0ed",
+                "stopId": "60727ae0adcec1cb2179768b",
+                "stopName": "Key",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0ee3612d72851927e",
+                "stopId": "60727ae0dc46a75babe3ba84",
+                "stopName": "Carver",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c696a7f30ff67b40c0b",
+        "routeName": "Ava",
+        "settings": {
+            "servicePatternName": "599 Chesapeake",
+            "daysOfOperation": [
+                "Mon",
+                "Wed",
+                "Tue"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae0d41271a1b10943bc",
+                "stopId": "60727ae081af04335c0fe2fa",
+                "stopName": "Bowers",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c4ceabaffd4f207f",
+                "stopId": "60727ae0035af51752507ac6",
+                "stopName": "Dillard",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae060d10feeaaa72253",
+                "stopId": "60727ae06f62aabba801b094",
+                "stopName": "Mercado",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0f465b3748304b106",
+                "stopId": "60727ae0909ba0b6da8b08c8",
+                "stopName": "Gates",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae03d15449eb8d95693",
+                "stopId": "60727ae0f7ee150acf388dff",
+                "stopName": "Charity",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c693b77edda6faaa2bf",
+        "routeName": "Donovan",
+        "settings": {
+            "servicePatternName": "627 Hilltop",
+            "daysOfOperation": [
+                "Mon",
+                "Sun",
+                "Thu"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae066fa34b5d2259a65",
+                "stopId": "60727ae0232425b3f1ab3210",
+                "stopName": "Latisha",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae09d60bc20e4c1340a",
+                "stopId": "60727ae09f2da376c94cb2fd",
+                "stopName": "Ronda",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0e33e49cb48f2e512",
+                "stopId": "60727ae0829e8360834b3739",
+                "stopName": "Miriam",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0c4aee43e1dc0c737",
+                "stopId": "60727ae095fbbb31b79a578a",
+                "stopName": "Anastasia",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae001fdc7b0320b3985",
+                "stopId": "60727ae066d74f0291ac97c3",
+                "stopName": "Phoebe",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    },
+    {
+        "servicePatternId": "60723c6994b768d2e2e8859a",
+        "routeName": "Clare",
+        "settings": {
+            "servicePatternName": "757 Hinsdale",
+            "daysOfOperation": [
+                "Tue",
+                "Fri",
+                "Fri"
+            ]
+        },
+        "stops": [
+            {
+                "servicePatternStopId": "60727ae004d18c2ea5d7d27e",
+                "stopId": "60727ae028ade1ed4c274d5d",
+                "stopName": "Riddle",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae034cc7a965d6e44c0",
+                "stopId": "60727ae0280a2419e70b0c34",
+                "stopName": "Meghan",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae0f9129ab1c85282a4",
+                "stopId": "60727ae05e46d47fdac13862",
+                "stopName": "Lily",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae086fbccf8cdb04b0d",
+                "stopId": "60727ae00cc525ba2d8735e1",
+                "stopName": "Burgess",
+                "controlPointSettings": []
+            },
+            {
+                "servicePatternStopId": "60727ae08a5f19625c39910e",
+                "stopId": "60727ae0cad08a1d02a09ecb",
+                "stopName": "Kristine",
+                "controlPointSettings": []
+            }
+        ],
+        "segments": [],
+        "inactiveStops": []
+    }
+]

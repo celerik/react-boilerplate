@@ -16,9 +16,10 @@ const ActionItem = ({
     description,
     expanded,
     icon,
-    id
+    id,
+    onClick
 }) => (
-    <Button id={id} className={classes.itemContainer}>
+    <Button id={id} className={classes.itemContainer} onClick={onClick}>
         <div className={expanded ? classes.icon : classes.iconOnly} style={{ color }}>
             <Icon>
                 {typeof icon === 'string'
@@ -45,7 +46,8 @@ ActionItem.propTypes = {
     description: PropTypes.string.isRequired,
     expanded: PropTypes.bool,
     icon: PropTypes.node.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 };
 
 ActionItem.defaultProps = {

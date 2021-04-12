@@ -32,7 +32,7 @@ export default theme => ({
         width: 20
     },
     textName: {
-        color: theme.palette.text.hint,
+        color: theme.palette.text.disabled,
         lineHeight: '140%',
         width: '80%'
     }
