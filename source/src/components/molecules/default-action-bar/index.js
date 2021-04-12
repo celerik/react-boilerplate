@@ -28,7 +28,7 @@ const DefaultActionBar = ({
     const [team, setTeam] = useState({});
     const history = useHistory();
 
-    const onChangeUser = ({ item }) => {
+    const onChangeTeam = ({ item }) => {
         setTeam(item);
     };
 
@@ -50,7 +50,7 @@ const DefaultActionBar = ({
         ),
         <UserSelectorDropdown
             isExpanded={isExpanded}
-            onChange={onChangeUser}
+            onChange={onChangeTeam}
             team={team}
             items={[]}
             key="home1"
