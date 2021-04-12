@@ -1,6 +1,5 @@
 // @packages
 import Button from '@material-ui/core/Button';
-import { config } from '../../../config';
 import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -12,15 +11,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
+// @scripts
+import { config } from '../../../config';
+
 // @styles
 import styles from './styles';
 
 const AlertDialog = ({ classes, onClose, visible }) => (
       <Dialog
-          open={visible}
-          onClose={onClose}
           aria-labelledby="alert-dialog-title"
           aria-describedby="alert-dialog-description"
+          onClose={onClose}
+          open={visible}
       >
        {onClose && (
         <IconButton aria-label="close" className={classes.closeButton} onClick={onClose}>
@@ -28,35 +30,27 @@ const AlertDialog = ({ classes, onClose, visible }) => (
         </IconButton>
        )}
         <DialogTitle id="alert-dialog-title" className={classes.titleHeader}>
-{' '}
-{config.text.dialogLayout.cloneProject}
-{' '}
+          {config.text.dialogLayout.cloneProject}
         </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
-{' '}
-{config.text.dialogLayout.petition}
-{' '}
+            {config.text.dialogLayout.petition}
           </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} color="primary">
-{' '}
-{config.text.dialogLayout.cloneSnapshot}
-{' '}
+            {config.text.dialogLayout.cloneSnapshot}
           </Button>
           <Button onClick={onClose} color="primary" autoFocus>
-{' '}
-{config.text.dialogLayout.cloneServicePattern}
-{' '}
+            {config.text.dialogLayout.cloneServicePattern}
           </Button>
         </DialogActions>
       </Dialog>
 );
 
 AlertDialog.propTypes = {
-    classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+  classes: PropTypes.object.isRequired,
+  id: PropTypes.string.isRequired
 };
 
 AlertDialog.defaultProps = {};

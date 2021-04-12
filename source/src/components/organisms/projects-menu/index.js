@@ -76,8 +76,8 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                visible={setCloneModalVisible}
                 onClose={handleClose}
+                visible={setCloneModalVisible}
             />
         </>
     );
