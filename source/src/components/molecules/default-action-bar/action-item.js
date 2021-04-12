@@ -29,7 +29,7 @@ const ActionItem = ({
         </div>
         {expanded && (
             <Typography
-                className={!bottomItem ? classes.itemDescription : null}
+                className={!bottomItem && classes.itemDescription}
                 style={{ color }}
                 variant="body1"
             >
