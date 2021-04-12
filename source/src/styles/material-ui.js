@@ -2,10 +2,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const colors = {
     background: {
-        background1: '#FEFEFE',
+        background1: '#D8D8D8',
         background2: '#F7F7F7',
         background3: '#F1F1F1',
-        background4: '#E3E2E2'
+        background4: '#E3E2E2',
+        background5: '#F6F6F6'
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
@@ -29,14 +30,17 @@ const colors = {
 export const theme = createMuiTheme({
     palette: {
         background: {
-            default: colors.background.background2
+            default: colors.background.background5,
+            primary: colors.background.background1
         },
         primary: {
             main: colors.purple
         },
         text: {
-            primary: colors.text.text2,
-            hint: colors.text.text4
+            primary: colors.text.text1,
+            secondary: colors.text.text2,
+            hint: colors.text.text3,
+            disabled: colors.text.text4
         }
     },
     typography: {
@@ -51,12 +55,27 @@ export const theme = createMuiTheme({
             fontWeight: '600',
             fontSize: 24
         },
+        h4: {
+            fontWeight: 'bold',
+            fontSize: 14
+        },
         fontFamily: 'Poppins'
     },
     overrides: {
+        MuiCssBaseline: {
+            '@global': {
+                '::-webkit-scrollbar': {
+                    width: 6
+                },
+                '::-webkit-scrollbar-thumb': {
+                    backgroundColor: `${colors.text.text2}66`,
+                    borderRadius: 10
+                }
+            }
+        },
         MuiDivider: {
             root: {
-                backgroundColor: '#D8D8D8'
+                backgroundColor: colors.background.background1
             }
         }
     }

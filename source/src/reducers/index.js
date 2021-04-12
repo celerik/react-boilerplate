@@ -3,9 +3,13 @@ import { combineReducers } from 'redux';
 
 // @scripts
 import { LOGOUT } from '../actions';
+import { projectsReducer } from './projects';
+import { servicePatternsReducer } from './service-patterns';
 import { userReducer } from './user';
 
 const appReducer = combineReducers({
+    projects: projectsReducer,
+    servicePatterns: servicePatternsReducer,
     user: userReducer
 });
 

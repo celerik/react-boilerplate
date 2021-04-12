@@ -23,19 +23,19 @@ export default () => ({
     },
     icon: {
         alignItems: 'center',
-        marginRight: 10,
         marginLeft: 13,
-        width: 30,
-        minWidth: '0 !important'
+        marginRight: 10,
+        minWidth: '0 !important',
+        width: 30
     },
     itemContainer: {
         alignItems: 'center',
-        justifyContent: 'flex-start',
-        height: 44,
-        margin: 5,
-        minWidth: 70,
         display: 'flex',
         flexDirection: 'row',
+        height: 44,
+        justifyContent: 'flex-start',
+        margin: 5,
+        minWidth: 70,
         width: '90%'
     }
 });

@@ -1,0 +1,26 @@
+[
+    {
+        "icon": "table_rows",
+        "name": "servicePatterns"
+    },
+    {
+        "icon": "remove_red_eye",
+        "name": "observationPeriods"
+    },
+    {
+        "icon": "timer",
+        "name": "times"
+    },
+    {
+        "icon": "tune",
+        "name": "servicesParameters"
+    },
+    {
+        "icon": "bar_charts",
+        "name": "viewResults"
+    },
+    {
+        "icon": "directions_bus",
+        "name": "projectVehicles"
+    }
+]

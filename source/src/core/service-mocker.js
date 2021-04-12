@@ -4,13 +4,48 @@ import axios from 'axios';
 
 // @scripts
 import { config } from '../config';
-
+import { format } from '../util/string';
 import {
     createMockResponse,
     getMockParams
 } from '../util';
 
+// @constants
+const httpCodes = {
+    success: 200,
+    unauthorized: 401
+};
+
 const mockedServices = {
+    mockServiceGetProjects: (mockAdapter) => {
+        mockAdapter.onGet(config.services.projects.get).reply(() => createMockResponse({
+            data: config.mockData.projects,
+            httpCode: httpCodes.success
+        }));
+    },
+    mockServiceGetServicePattern: (mockAdapter) => {
+        const url = config.services.servicePatterns.getOne;
+        const pathRegexp = new RegExp(format(url, '.*', '.*'));
+        mockAdapter.onGet(pathRegexp).reply((call) => {
+            const servicePatternId = /([a-z]|[A-Z]|[0-9])*$/.exec(call.url)[0];
+            const servicePatterDetails = config.mockData.servicePatternsDetailed.find(
+                servicePattern => servicePattern.servicePatternId === servicePatternId
+            );
+
+            return createMockResponse({
+                data: servicePatterDetails,
+                httpCode: httpCodes.success
+            });
+        });
+    },
+    mockServiceGetServicePatterns: (mockAdapter) => {
+        const url = config.services.servicePatterns.get;
+        const pathRegexp = new RegExp(format(url, '.*'));
+        mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({
+            data: config.mockData.servicePatterns,
+            httpCode: httpCodes.success
+        }));
+    },
     mockServiceSecurityLogin: (mockAdapter) => {
         mockAdapter.onPost(config.services.security.login).reply((call) => {
             const { email, password } = getMockParams(call);
@@ -19,7 +54,7 @@ const mockedServices = {
             const success = (email === loginUserName) && (password === (loginPassword));
             return createMockResponse({
                 data: success ? config.mockData.security.user : null,
-                httpCode: success ? 200 : 401
+                httpCode: success ? httpCodes.success : httpCodes.unauthorized
             });
         });
     }

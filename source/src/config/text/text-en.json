@@ -31,6 +31,21 @@
     "showing": "Showing records from",
     "to": "to"
   },
+  "projectMenu": {
+    "backToProject": "Back to {0}",
+    "backToProjects": "Back to projects",
+    "clone": "Clone",
+    "edit": "Edit",
+    "existingProjects": "EXISTING PROJECTS",
+    "newProject": "NEW PROJECT",
+    "observationPeriods": "Observation periods",
+    "projectVehicles": "Project vehicles",
+    "searchProjectByname": "Search project by name...",
+    "servicePatterns": "Service patterns",
+    "servicesParameters": "Services parameters",
+    "times": "Times",
+    "viewResults": "View results"
+  },
   "validations": {
     "date": "Invalid date",
     "email": "Invalid email",
