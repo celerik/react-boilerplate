@@ -9,7 +9,7 @@ import { useTheme, withStyles } from '@material-ui/core';
 // @scripts
 import ActionBar from '../../atoms/action-bar';
 import ActionItem from './action-item';
-import UserSelectorDropdown from '../dropdown-selector';
+import TeamDropdown from '../dropdown-selector';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
@@ -48,7 +48,7 @@ const DefaultActionBar = ({
                 {name}
             </Typography>
         ),
-        <UserSelectorDropdown
+        <TeamDropdown
             isExpanded={isExpanded}
             onChange={onChangeTeam}
             team={team}
