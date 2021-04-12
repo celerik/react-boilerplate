@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
-import AlertDialogSlide from '../../organisms/Dialog-Layout/index';
 
 // @scripts
 import Item from '../../atoms/item';

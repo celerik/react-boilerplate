@@ -24,18 +24,18 @@ const ProjectBar = ({
 }) => {
     const history = useHistory();
     const projects = useSelector(state => state.projects);
-    const [open, setOpen] = useState(false);
+    const [setCloneModalVisible, setCloneModalVisibility] = useState(false);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
     };
 
     const handleClickOpen = () => {
-        setOpen(true);
+        setCloneModalVisibility(true);
     };
 
     const handleClose = () => {
-        setOpen(false);
+        setCloneModalVisibility(false);
     };
 
     const actions = [{
@@ -76,7 +76,7 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                visible={open}
+                visible={setCloneModalVisible}
                 onClose={handleClose}
             />
         </>
