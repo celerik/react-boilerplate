@@ -1,9 +1,9 @@
 [
     {
         "servicePatternId": "60723c69acdb304afedb395f",
-        "routeName": "Mcfarland",
+        "routeName": "456M",
         "settings": {
-            "servicePatternName": "456 Blairstown",
+            "servicePatternName": "Mcfarland Blairstown",
             "daysOfOperation": [
                 "Sun",
                 "Thu",
@@ -47,9 +47,9 @@
     },
     {
         "servicePatternId": "60723c69b69d0145548def43",
-        "routeName": "Phillips",
+        "routeName": "324P",
         "settings": {
-            "servicePatternName": "324 Valmy",
+            "servicePatternName": "Phillips Valmy",
             "daysOfOperation": [
                 "Wed",
                 "Tue",
@@ -93,9 +93,9 @@
     },
     {
         "servicePatternId": "60723c695e1daa481612087a",
-        "routeName": "Gilbert",
+        "routeName": "265G",
         "settings": {
-            "servicePatternName": "265 Bluffview",
+            "servicePatternName": "Gilbert Bluffview",
             "daysOfOperation": [
                 "Mon",
                 "Fri",
@@ -139,9 +139,9 @@
     },
     {
         "servicePatternId": "60723c696d30dc5677a665f8",
-        "routeName": "Mitzi",
+        "routeName": "292M",
         "settings": {
-            "servicePatternName": "292 Stollings",
+            "servicePatternName": "Mitzi Stollings",
             "daysOfOperation": [
                 "Fri",
                 "Thu",
@@ -185,9 +185,9 @@
     },
     {
         "servicePatternId": "60723c699ee7f399914ebb46",
-        "routeName": "Alexandria",
+        "routeName": "814A",
         "settings": {
-            "servicePatternName": "814 Groveville",
+            "servicePatternName": "Alexandria Groveville",
             "daysOfOperation": [
                 "Sun",
                 "Mon",
@@ -231,9 +231,9 @@
     },
     {
         "servicePatternId": "60723c69391fee1744d48b2a",
-        "routeName": "Jodi",
+        "routeName": "264J",
         "settings": {
-            "servicePatternName": "264 Thomasville",
+            "servicePatternName": "Jodi Thomasville",
             "daysOfOperation": [
                 "Tue",
                 "Fri",
@@ -277,9 +277,9 @@
     },
     {
         "servicePatternId": "60723c6933d2c36cd95edb38",
-        "routeName": "Flora",
+        "routeName": "666F",
         "settings": {
-            "servicePatternName": "666 Osage",
+            "servicePatternName": "Flora Osage",
             "daysOfOperation": [
                 "Sun",
                 "Sun",
@@ -323,9 +323,9 @@
     },
     {
         "servicePatternId": "60723c6917e1a9fb8836cb9e",
-        "routeName": "Selena",
+        "routeName": "277S",
         "settings": {
-            "servicePatternName": "277 Masthope",
+            "servicePatternName": "Selena Masthope",
             "daysOfOperation": [
                 "Sat",
                 "Wed",
@@ -369,9 +369,9 @@
     },
     {
         "servicePatternId": "60723c69a80f5f0e3123865a",
-        "routeName": "Holcomb",
+        "routeName": "927H",
         "settings": {
-            "servicePatternName": "927 Riceville",
+            "servicePatternName": "Holcomb Riceville",
             "daysOfOperation": [
                 "Fri",
                 "Tue",
@@ -415,9 +415,9 @@
     },
     {
         "servicePatternId": "60723c6947b3336cda145db9",
-        "routeName": "Castillo",
+        "routeName": "401C",
         "settings": {
-            "servicePatternName": "401 Klondike",
+            "servicePatternName": "Castillo Klondike",
             "daysOfOperation": [
                 "Fri",
                 "Wed",
@@ -461,9 +461,9 @@
     },
     {
         "servicePatternId": "60723c69c372ab5cab64acc9",
-        "routeName": "Nikki",
+        "routeName": "310N",
         "settings": {
-            "servicePatternName": "310 Jenkinsville",
+            "servicePatternName": "Nikki Jenkinsville",
             "daysOfOperation": [
                 "Sun",
                 "Fri",
@@ -507,9 +507,9 @@
     },
     {
         "servicePatternId": "60723c69d836bf3e58454fce",
-        "routeName": "Glenn",
+        "routeName": "721G",
         "settings": {
-            "servicePatternName": "721 Canoochee",
+            "servicePatternName": "Glenn Canoochee",
             "daysOfOperation": [
                 "Sat",
                 "Thu",
@@ -553,9 +553,9 @@
     },
     {
         "servicePatternId": "60723c6912a2185a1a730a60",
-        "routeName": "Ortega",
+        "routeName": "338O",
         "settings": {
-            "servicePatternName": "338 Delwood",
+            "servicePatternName": "Ortega Delwood",
             "daysOfOperation": [
                 "Sat",
                 "Sat",
@@ -599,9 +599,9 @@
     },
     {
         "servicePatternId": "60723c69c7dd1f98c696b332",
-        "routeName": "Rhodes",
+        "routeName": "531R",
         "settings": {
-            "servicePatternName": "531 Snowville",
+            "servicePatternName": "Rhodes Snowville",
             "daysOfOperation": [
                 "Thu",
                 "Mon",
@@ -645,9 +645,9 @@
     },
     {
         "servicePatternId": "60723c693ac52109a979850a",
-        "routeName": "Mooney",
+        "routeName": "226M",
         "settings": {
-            "servicePatternName": "226 Waiohinu",
+            "servicePatternName": "Mooney Waiohinu",
             "daysOfOperation": [
                 "Wed",
                 "Sun",
@@ -691,9 +691,9 @@
     },
     {
         "servicePatternId": "60723c69727e8ef4a691b7ee",
-        "routeName": "Aurora",
+        "routeName": "595A",
         "settings": {
-            "servicePatternName": "595 Yorklyn",
+            "servicePatternName": "Aurora Yorklyn",
             "daysOfOperation": [
                 "Tue",
                 "Tue",
@@ -737,9 +737,9 @@
     },
     {
         "servicePatternId": "60723c697553f0fa39613424",
-        "routeName": "Millie",
+        "routeName": "395M",
         "settings": {
-            "servicePatternName": "395 Mapletown",
+            "servicePatternName": "Millie Mapletown",
             "daysOfOperation": [
                 "Mon",
                 "Mon",
@@ -783,9 +783,9 @@
     },
     {
         "servicePatternId": "60723c69c614fd9f0d76e56a",
-        "routeName": "Parrish",
+        "routeName": "438P",
         "settings": {
-            "servicePatternName": "438 Roderfield",
+            "servicePatternName": "Parrish Roderfield",
             "daysOfOperation": [
                 "Tue",
                 "Thu",
@@ -829,9 +829,9 @@
     },
     {
         "servicePatternId": "60723c6996e0ea28e0cdbc4a",
-        "routeName": "Albert",
+        "routeName": "231A",
         "settings": {
-            "servicePatternName": "231 Zeba",
+            "servicePatternName": "Albert Zeba",
             "daysOfOperation": [
                 "Tue",
                 "Wed",
@@ -875,9 +875,9 @@
     },
     {
         "servicePatternId": "60723c69e14ceeea177d1f13",
-        "routeName": "Rosella",
+        "routeName": "321R",
         "settings": {
-            "servicePatternName": "321 Kieler",
+            "servicePatternName": "Rosella Kieler",
             "daysOfOperation": [
                 "Fri",
                 "Mon",
@@ -921,9 +921,9 @@
     },
     {
         "servicePatternId": "60723c6929deb61df8a5acbe",
-        "routeName": "Ortiz",
+        "routeName": "504O",
         "settings": {
-            "servicePatternName": "504 Kaka",
+            "servicePatternName": "Ortiz Kaka",
             "daysOfOperation": [
                 "Sun",
                 "Wed",
@@ -967,9 +967,9 @@
     },
     {
         "servicePatternId": "60723c69c01fd3a6d3d545bf",
-        "routeName": "Dolly",
+        "routeName": "726D",
         "settings": {
-            "servicePatternName": "726 Sims",
+            "servicePatternName": "Dolly Sims",
             "daysOfOperation": [
                 "Sat",
                 "Mon",
@@ -1013,9 +1013,9 @@
     },
     {
         "servicePatternId": "60723c696a7f30ff67b40c0b",
-        "routeName": "Ava",
+        "routeName": "599A",
         "settings": {
-            "servicePatternName": "599 Chesapeake",
+            "servicePatternName": "Ava Chesapeake",
             "daysOfOperation": [
                 "Mon",
                 "Wed",
@@ -1059,9 +1059,9 @@
     },
     {
         "servicePatternId": "60723c693b77edda6faaa2bf",
-        "routeName": "Donovan",
+        "routeName": "627D",
         "settings": {
-            "servicePatternName": "627 Hilltop",
+            "servicePatternName": "Donovan Hilltop",
             "daysOfOperation": [
                 "Mon",
                 "Sun",
@@ -1105,9 +1105,9 @@
     },
     {
         "servicePatternId": "60723c6994b768d2e2e8859a",
-        "routeName": "Clare",
+        "routeName": "757C",
         "settings": {
-            "servicePatternName": "757 Hinsdale",
+            "servicePatternName": "Clare Hinsdale",
             "daysOfOperation": [
                 "Tue",
                 "Fri",
