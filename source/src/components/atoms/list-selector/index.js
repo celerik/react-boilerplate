@@ -1,12 +1,12 @@
 // @packages
-import PropTypes from 'prop-types';
-import React from 'react';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core';
+import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
-import FormControl from '@material-ui/core/FormControl';
+import PropTypes from 'prop-types';
+import React from 'react';
 import Select from '@material-ui/core/Select';
+import classNames from 'classnames';
+import { withStyles } from '@material-ui/core';
 
 // @styles
 import styles from './styles';
@@ -15,10 +15,10 @@ const ListSelector = ({
     className,
     classes,
     id,
-    placeholder,
-    value,
     items,
-    onChange
+    onChange,
+    placeholder,
+    value
 }) => {
     const selectorList = classNames(classes.container, className);
 
@@ -53,23 +53,23 @@ const ListSelector = ({
 };
 
 ListSelector.propTypes = {
-    placeholder: PropTypes.string,
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    value: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.any.isRequired,
         text: PropTypes.string.isRequired
     })),
-    onChange: PropTypes.func.isRequired
+    onChange: PropTypes.func.isRequired,
+    placeholder: PropTypes.string,
+    value: PropTypes.string
 };
 
 ListSelector.defaultProps = {
     className: '',
+    items: Array.prototype,
     placeholder: '',
-    value: '',
-    items: Array.prototype
+    value: ''
 };
 
 export default withStyles(styles)(ListSelector);

@@ -5,11 +5,11 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
+import ListSelector from '../../atoms/list-selector';
 import styles from './styles';
 import { config } from '../../../config';
-import ListSelector from '../../atoms/list-selector';
-import Actionbutton from '../../atoms/button';
 import { useSelector } from 'react-redux';
 
 const ProjectMenu = ({
