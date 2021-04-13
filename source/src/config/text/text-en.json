@@ -21,7 +21,8 @@
     "logout": "Log out",
     "privacyPolicy": "Privacy policy",
     "projects": "Projects",
-    "teamName": "Team Name"
+    "teamName": "Team Name",
+    "manageTeams": "Manage Teams"
   },
   "pagination": {
     "items": "items",
@@ -54,6 +55,13 @@
     "servicesParameters": "Services parameters",
     "times": "Times",
     "viewResults": "View results"
+  },
+  "servicePatternsMenu": {
+    "copy": "Copy",
+    "delete": "Delete",
+    "edit": "Edit",
+    "runDays": "Runs on {0} and ",
+    "title": "SERVICE PATTERNS"
   },
   "validations": {
     "date": "Invalid date",

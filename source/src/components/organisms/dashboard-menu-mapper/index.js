@@ -10,7 +10,7 @@ import { withStyles } from '@material-ui/core';
 import AddServicePatternMenu from '../add-service-pattern-menu';
 import ProjectMenu from '../project-menu';
 import ProjectsMenu from '../projects-menu';
-import ServicePatterns from '../service-patterns';
+import ServicePatterns from '../service-patterns-menu';
 
 // @styles
 import styles from './styles';
