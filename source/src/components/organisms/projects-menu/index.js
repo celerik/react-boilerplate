@@ -7,7 +7,7 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import ActionButtom from '../../atoms/button';
+import Actionbutton from '../../atoms/button';
 import AlertDialog from '../clone-project-dialog';
 import { config } from '../../../config';
 import InputField from '../../molecules/input-field';
@@ -70,7 +70,7 @@ const ProjectBar = ({
                 id="list-project-actions"
                 items={projects}
             />
-            <ActionButtom
+            <Actionbutton
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
                 label={config.text.projectMenu.newProject}

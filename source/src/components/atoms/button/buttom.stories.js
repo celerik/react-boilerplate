@@ -2,19 +2,19 @@
 import React from 'react';
 
 // @scripts
-import Buttom from '.';
+import button from '.';
 
 export default {
-    title: 'Buttom',
-    component: Buttom
+    title: 'button',
+    component: button
 };
 
-const Template = (args) => <Buttom {...args} />;
+const Template = (args) => <button {...args} />;
 
 export const FirstStory = Template.bind({});
 
 FirstStory.args = {
-    id: 'Buttom 1',
+    id: 'Button 1',
     label: 'Testing',
     onClick: Function.prototype,
     startIcon: 'refresh'

@@ -9,7 +9,7 @@ import BackToButton from '../../molecules/back-to-button';
 import styles from './styles';
 import { config } from '../../../config';
 import ListSelector from '../../atoms/list-selector';
-import ActionButtom from '../../atoms/button';
+import Actionbutton from '../../atoms/button';
 import { useSelector } from 'react-redux';
 
 const ProjectMenu = ({
@@ -53,13 +53,13 @@ const ProjectMenu = ({
                 value={servicePeriod}
                 onChange={handleServicePeriod}
             />
-            <ActionButtom
+            <Actionbutton
                 startIcon="refresh"
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
                 label={config.text.projectMenu.addServicePattern}
             />
-            <ActionButtom
+            <Actionbutton
                 endIcon="file_upload"
                 className={classes.buttonImport}
                 onClick={Function.prototype}

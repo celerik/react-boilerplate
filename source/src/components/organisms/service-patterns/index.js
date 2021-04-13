@@ -6,7 +6,7 @@ import { useHistory } from 'react-router';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import ActionButtom from '../../atoms/button';
+import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
 import { bindActionCreators } from 'redux';
 import { format, formatUrlParam } from '../../../util/string';
@@ -42,7 +42,7 @@ const ServicePatterns = ({
     return (
         <div id={id}>
             <BackToButton label={format(config.text.projectMenu.backToProject, project.projectName)} />
-            <ActionButtom
+            <Actionbutton
                 startIcon="add"
                 className={classes.buttonAdd}
                 onClick={toNewServicePattern}

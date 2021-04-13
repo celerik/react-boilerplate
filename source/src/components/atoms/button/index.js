@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core';
 // @styles
 import styles from './styles';
 
-const ActionButtom = ({
+const Actionbutton = ({
     className,
     classes,
     endIcon,
@@ -41,7 +41,7 @@ const ActionButtom = ({
     );
 };
 
-ActionButtom.propTypes = {
+Actionbutton.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     endIcon: PropTypes.string,
@@ -51,7 +51,7 @@ ActionButtom.propTypes = {
     startIcon: PropTypes.string
 };
 
-ActionButtom.defaultProps = {
+Actionbutton.defaultProps = {
     className: null,
     endIcon: null,
     label: '',
@@ -59,4 +59,4 @@ ActionButtom.defaultProps = {
     startIcon: null
 };
 
-export default withStyles(styles)(ActionButtom);
+export default withStyles(styles)(Actionbutton);
