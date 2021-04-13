@@ -2,36 +2,46 @@
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import ActionButtom from '../../atoms/button';
+import AlertDialog from '../clone-project-dialog';
+import { config } from '../../../config';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
-import { config } from '../../../config';
 
 // @styles
+import { formatUrlParam } from '../../../util/string';
 import styles from './styles';
 import { useSelector } from 'react-redux';
 import { useHistory } from 'react-router';
-import { formatUrlParam } from '../../../util/string';
 
 const ProjectBar = ({
     classes
 }) => {
     const history = useHistory();
     const projects = useSelector(state => state.projects);
+    const [setCloneModalVisible, setCloneModalVisibility] = useState(false);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
     };
 
+    const handleClickOpen = () => {
+        setCloneModalVisibility(true);
+    };
+
+    const handleClose = () => {
+        setCloneModalVisibility(false);
+    };
+
     const actions = [{
         name: config.text.projectMenu.clone,
         icon: 'content_copy',
-        onClick: Function.prototype
+        onClick: handleClickOpen
     }, {
         name: config.text.projectMenu.edit,
         icon: 'east',
@@ -64,6 +74,10 @@ const ProjectBar = ({
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
                 label={config.text.projectMenu.newProject}
+            />
+            <AlertDialog
+                onClose={handleClose}
+                visible={setCloneModalVisible}
             />
         </>
     );
