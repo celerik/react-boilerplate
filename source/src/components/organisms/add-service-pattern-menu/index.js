@@ -1,6 +1,6 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -8,9 +8,14 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
 import ListSelector from '../../atoms/list-selector';
-import styles from './styles';
+import ServicePatternCard from '../../molecules/service-pattern-card';
 import { config } from '../../../config';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { getServicePatters } from '../../../actions/service-patterns';
+
+// @styles
+import styles from './styles';
 
 const ProjectMenu = ({
     classes,
@@ -20,8 +25,17 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const [route, setRoute] = useState('');
     const [servicePeriod, setServicePeriod] = useState('');
-    const projects = useSelector(state => state.projects);
+    const { projects, servicePatterns } = useSelector(state => ({
+        projects: state.projects,
+        servicePatterns: state.servicePatterns
+    }));
+    const dispatch = useDispatch();
+    const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
     const project = projects.find(project => project.projectId === projectId);
+
+    useEffect(() => {
+        onGetServicePatterns({ projectId });
+    }, [projectId]);
 
     if (!project) {
         return null;
@@ -36,11 +50,12 @@ const ProjectMenu = ({
     };
 
     return (
-        <div id={id}>
+        <div id={id} className={classes.mainContainer}>
             <BackToButton label={config.text.projectMenu.backToServicePatterns} />
             <Typography className={classes.title} variant="h4">
                 {config.text.projectMenu.addAServicePattern}
             </Typography>
+
             <ListSelector
                 placeholder={config.text.projectMenu.selectRoute}
                 items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
@@ -59,6 +74,17 @@ const ProjectMenu = ({
                 onClick={Function.prototype}
                 label={config.text.projectMenu.addServicePattern}
             />
+            <div className={classes.servicePatternsContainer}>
+                {servicePatterns.map((servicePattern, index) => (
+                    <ServicePatternCard
+                        key={`${id}-card-${index}`}
+                        routeName={servicePattern.routeName}
+                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
+                        servicePatternName={servicePattern.servicePatternName}
+                        operationDays={servicePattern.settings.daysOfOperation}
+                    />
+                ))}
+            </div>
             <Actionbutton
                 endIcon="file_upload"
                 className={classes.buttonImport}

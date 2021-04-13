@@ -12,6 +12,18 @@ export default () => ({
         marginTop: 15,
         border: '1px solid'
     },
+    mainContainer: {
+        position: 'relative',
+        height: '100%',
+        width: 440
+    },
+    servicePatternsContainer: {
+        height: '30%',
+        marginBottom: 15,
+        marginTop: 15,
+        minHeight: 300,
+        overflowY: 'auto'
+    },
     title: {
         letterSpacing: 1.6,
         marginBottom: 15,
