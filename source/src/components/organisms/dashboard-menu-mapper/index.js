@@ -16,7 +16,7 @@ import ServicePatterns from '../service-patterns-menu';
 import styles from './styles';
 
 const componentMapper = {
-    AddServicePattern: AddServicePatternMenu,
+    AddServicePatternMenu,
     ProjectMenu,
     ProjectsMenu,
     ServicePatterns
