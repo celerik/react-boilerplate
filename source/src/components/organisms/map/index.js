@@ -22,10 +22,13 @@ const CustomMap = ({
     useEffect(() => {
         const map = new Map({
             accessToken: config.settings.mapBox.token,
-            center: [-75.5674723, 6.2092601],
+            center: [
+                -0.04212516311508214,
+                51.52249290538935
+            ],
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/light-v10',
-            zoom: 19
+            zoom: 15
         });
 
         map.on('load', () => {
