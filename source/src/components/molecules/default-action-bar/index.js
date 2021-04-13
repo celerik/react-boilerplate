@@ -1,7 +1,7 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
@@ -9,6 +9,7 @@ import { useTheme, withStyles } from '@material-ui/core';
 // @scripts
 import ActionBar from '../../atoms/action-bar';
 import ActionItem from './action-item';
+import TeamDropdown from '../dropdown-selector';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
@@ -20,12 +21,16 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
-    teamColor,
     width
 }) => {
     const theme = useTheme();
     const name = useSelector(state => state.user.account.name);
+    const [team, setTeam] = useState({});
     const history = useHistory();
+
+    const onChangeTeam = ({ item }) => {
+        setTeam(item);
+    };
 
     const onSelectItem = item => (event) => {
         event.stopPropagation();
@@ -43,16 +48,11 @@ const DefaultActionBar = ({
                 {name}
             </Typography>
         ),
-        <ActionItem
-            color={theme.palette.text.secondary}
-            expanded={isExpanded}
-            description={config.text.mainMenu.teamName}
-            icon={(
-                <div
-                    className={classes.teamIcon}
-                    style={{ backgroundColor: teamColor }}
-                />
-            )}
+        <TeamDropdown
+            isExpanded={isExpanded}
+            onChange={onChangeTeam}
+            team={team}
+            items={[]}
             key="home1"
             onClick={onSelectItem('/dashboard/home1')}
         />,
@@ -133,14 +133,12 @@ DefaultActionBar.propTypes = {
     isExpanded: PropTypes.bool,
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
-    teamColor: PropTypes.string,
     id: PropTypes.string.isRequired,
     width: PropTypes.number
 };
 
 DefaultActionBar.defaultProps = {
     isExpanded: false,
-    teamColor: '#B4B4B4',
     width: dimensions.MAIN_MENU_EXPANDED_WIDTH
 };
 

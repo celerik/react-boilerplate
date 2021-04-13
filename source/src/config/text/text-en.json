@@ -21,7 +21,8 @@
     "logout": "Log out",
     "privacyPolicy": "Privacy policy",
     "projects": "Projects",
-    "teamName": "Team Name"
+    "teamName": "Team Name",
+    "manageTeams": "Manage Teams"
   },
   "pagination": {
     "items": "items",
