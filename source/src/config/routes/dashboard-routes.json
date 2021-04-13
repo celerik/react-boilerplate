@@ -1,4 +1,9 @@
 {
+    "newServicePatterns": {
+        "component": "AddServicePattern",
+        "name": "NewServicePatterns",
+        "url": "/dashboard/projects/:projectId/create-service-patterns"
+    },
     "observationPeriods": {
         "component": null,
         "name": "ObservationPeriods",

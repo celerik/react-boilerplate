@@ -1,5 +1,6 @@
 // @packages
 import Button from '@material-ui/core/Button';
+import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
@@ -11,17 +12,29 @@ import styles from './styles';
 const ActionButtom = ({
     className,
     classes,
+    endIcon,
     id,
     label,
-    onClick
+    onClick,
+    startIcon
 }) => {
-    const ButtonStyle = classNames(classes, className);
+    const ButtonStyle = classNames(classes.mainContainer, className);
 
     return (
         <Button
             className={ButtonStyle}
             id={id}
             onClick={onClick}
+            startIcon={startIcon && (
+                <Icon>
+                    {startIcon}
+                </Icon>
+            )}
+            endIcon={endIcon && (
+                <Icon>
+                    {endIcon}
+                </Icon>
+            )}
         >
             {label}
         </Button>
@@ -31,15 +44,19 @@ const ActionButtom = ({
 ActionButtom.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    endIcon: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    startIcon: PropTypes.string
 };
 
 ActionButtom.defaultProps = {
     className: null,
+    endIcon: null,
     label: '',
-    onClick: Function.prototype
+    onClick: Function.prototype,
+    startIcon: null
 };
 
 export default withStyles(styles)(ActionButtom);

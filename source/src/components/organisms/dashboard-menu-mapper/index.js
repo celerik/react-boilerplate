@@ -7,6 +7,7 @@ import { Route, Switch } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import AddServicePattern from '../add-service-pattern';
 import ProjectMenu from '../project-menu';
 import ProjectsMenu from '../projects-menu';
 import ServicePatterns from '../service-patterns';
@@ -15,6 +16,7 @@ import ServicePatterns from '../service-patterns';
 import styles from './styles';
 
 const componentMapper = {
+    AddServicePattern,
     ProjectMenu,
     ProjectsMenu,
     ServicePatterns
