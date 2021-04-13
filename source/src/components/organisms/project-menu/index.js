@@ -43,7 +43,7 @@ const ProjectMenu = ({
                 </Typography>
                 <Icon className={classes.settingsIcon}>settings</Icon>
             </div>
-            {config.masterData.projectMenu.map((menuOption) => (
+            {config.masterData.projectMenu.map((menuOption, index) => (
                 <div
                     className={classes.option}
                     onClick={onClickMenuItem(menuOption.name)}

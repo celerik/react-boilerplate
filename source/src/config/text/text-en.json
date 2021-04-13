@@ -49,6 +49,13 @@
     "times": "Times",
     "viewResults": "View results"
   },
+  "servicePatternsMenu": {
+    "copy": "Copy",
+    "delete": "Delete",
+    "edit": "Edit",
+    "runDays": "Runs on {0} and ",
+    "title": "SERVICE PATTERNS"
+  },
   "validations": {
     "date": "Invalid date",
     "email": "Invalid email",
