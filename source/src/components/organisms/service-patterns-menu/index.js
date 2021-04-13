@@ -65,6 +65,7 @@ const ServicePatterns = ({
                         actions={actions}
                         key={`${id}-card-${index}`}
                         routeName={servicePattern.routeName}
+                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
                         servicePatternName={servicePattern.servicePatternName}
                         operationDays={servicePattern.settings.daysOfOperation}
                     />

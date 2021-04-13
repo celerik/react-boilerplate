@@ -15,7 +15,7 @@ export const FirstStory = Template.bind({});
 
 FirstStory.args = {
     id: 'DropdownSelector 1',
-    isExpanded: true
+    isExpanded: true,
     items: [{ value: 'element2', label: 'test1', icon: 'visibility' }, { value: 'element1', label: 'test2', icon: 'visibility' }],
     user: { value: 'element2', label: 'test1', icon: 'visibility' },
 };

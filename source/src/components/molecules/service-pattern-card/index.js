@@ -2,7 +2,6 @@
 import PropTypes from 'prop-types';
 import React, { cloneElement, useState } from 'react';
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
@@ -10,24 +9,6 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import styles from './styles';
-
-const formatOperationDays = (days) => {
-    const createDays = (...strings) => (
-        <>
-            {strings[1]}
-            <strong>{strings[2]}</strong>
-            {strings[3]}
-            <strong>{strings[4]}</strong>
-        </>
-    );
-
-    const [str1, str2] = config.text.servicePatternsMenu.runDays.split('{0}');
-    const allDaysExceptLast = [...days];
-    const lastDay = allDaysExceptLast.pop();
-    const strDays = allDaysExceptLast.join(', ').replace(/, $/, '');
-
-    return createDays`${str1} ${strDays} ${str2} ${lastDay}`;
-};
 
 const ServicePatternCard = ({
     actions,
@@ -41,6 +22,24 @@ const ServicePatternCard = ({
     servicePatternName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
+
+    const formatOperationDays = (days) => {
+        const createDays = (...strings) => (
+            <>
+                {strings[1]}
+                <strong>{strings[2]}</strong>
+                {strings[3]}
+                <strong>{strings[4]}</strong>
+            </>
+        );
+
+        const [str1, str2] = config.text.servicePatternsMenu.runDays.split('{0}');
+        const allDaysExceptLast = [...days];
+        const lastDay = allDaysExceptLast.pop();
+        const strDays = allDaysExceptLast.join(', ').replace(/, $/, '');
+
+        return createDays`${str1} ${strDays} ${str2} ${lastDay}`;
+    };
 
     const onHoverCard = () => {
         setActionsVisibility(true);

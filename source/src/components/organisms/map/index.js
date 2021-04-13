@@ -26,7 +26,6 @@ const CustomMap = ({
                 -0.04212516311508214,
                 51.52249290538935
             ],
-            // center: [-75.5674723, 6.2092601],
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/light-v10',
             zoom: 15

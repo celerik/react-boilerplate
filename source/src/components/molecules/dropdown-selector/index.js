@@ -15,6 +15,16 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
+const IconItem = withStyles(styles)(({ icon }) => (
+    <ListItemIcon className={classes.icon}>
+        <Icon>
+            {typeof icon === 'string'
+                ? <Icon>{icon}</Icon>
+                : icon}
+        </Icon>
+    </ListItemIcon>
+));
+
 const DropdownUser = ({
     classes,
     id,
@@ -32,16 +42,6 @@ const DropdownUser = ({
             onChange({ item });
         }
     };
-
-    const IconItem = ({ icon }) => (
-        <ListItemIcon className={classes.icon}>
-            <Icon>
-                {typeof icon === 'string'
-                    ? <Icon>{icon}</Icon>
-                    : icon}
-            </Icon>
-        </ListItemIcon>
-    );
 
     return (
         <div className={classes.itemContainer} id={`${id}-selector-user`}>
@@ -105,7 +105,8 @@ DropdownUser.propTypes = {
         icon: PropTypes.any.isRequired,
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 };
 
 export default withStyles(styles)(DropdownUser);
