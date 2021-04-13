@@ -67,5 +67,11 @@
     "search": "Invalid search",
     "verification": "Verification doesn't match",
     "zip": "Invalid zip code"
+  },
+  "dialogLayout": {
+    "cloneSnapshot": "Clone a snapshot",
+    "cloneServicePattern": "Clone a Service Pattern",
+    "cloneProject": "Clone project",
+    "petition": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
   }
 }
