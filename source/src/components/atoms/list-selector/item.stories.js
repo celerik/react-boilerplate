@@ -2,19 +2,18 @@
 import React from 'react';
 
 // @scripts
-import Item from '.';
+import ListSelector from '.';
 
 export default {
-    title: 'Item Element',
-    component: Item
+    title: 'List selector',
+    component: ListSelector
 };
 
-const Template = (args) => <Item {...args} />;
+const Template = (args) => <ListSelector {...args} />;
 
 export const FirstStory = Template.bind({});
 
 FirstStory.args = {
-    id: 'Item 1',
-    iconButtons: [{ icon: 'content_copy' }, { icon: 'east' }],
-    text: 'Project Name'
+    id: 'List 1',
+    onChange: Function.prototype
 };

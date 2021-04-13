@@ -16,5 +16,6 @@ export const FirstStory = Template.bind({});
 FirstStory.args = {
     id: 'Buttom 1',
     label: 'Testing',
-    onClick: Function.prototype
+    onClick: Function.prototype,
+    startIcon: 'refresh'
 };

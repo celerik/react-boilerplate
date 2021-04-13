@@ -67,7 +67,7 @@ ListSelector.propTypes = {
 
 ListSelector.defaultProps = {
     className: '',
-    placeholder: 'selecciona prro',
+    placeholder: '',
     value: '',
     items: Array.prototype
 };

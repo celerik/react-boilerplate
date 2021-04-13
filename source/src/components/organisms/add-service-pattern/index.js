@@ -14,9 +14,8 @@ import { useSelector } from 'react-redux';
 
 const ProjectMenu = ({
     classes,
-    history,
-    match,
-    id
+    id,
+    match
 }) => {
     const { params: { projectId } } = match;
     const [route, setRoute] = useState('');
@@ -44,13 +43,13 @@ const ProjectMenu = ({
             </Typography>
             <ListSelector
                 placeholder={config.text.projectMenu.selectRoute}
-                items={[{text: 'Select route', value: 'Select route'}, {text: 'Select service period', value: 'Select service period'}]}
+                items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
                 value={route}
                 onChange={handleRoute}
             />
             <ListSelector
                 placeholder={config.text.projectMenu.selectServicePeriod}
-                items={[{text: 'Select route', value: 'Select route'}, {text: 'Select service period', value: 'Select service period'}]}
+                items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
                 value={servicePeriod}
                 onChange={handleServicePeriod}
             />
@@ -72,7 +71,6 @@ const ProjectMenu = ({
 
 ProjectMenu.propTypes = {
     classes: PropTypes.object.isRequired,
-    history: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired
 };
