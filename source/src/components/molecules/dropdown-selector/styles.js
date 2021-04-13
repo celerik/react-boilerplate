@@ -5,6 +5,7 @@ export default () => ({
         paddingLeft: '15px !important'
     },
     formControlContainer: {
+        cursor: 'pointer',
         width: '100%',
         '& .MuiSelect-select.MuiSelect-select': {
             display: 'contents'
@@ -18,7 +19,8 @@ export default () => ({
     },
     selector: {
         '& .MuiOutlinedInput-root': {
-            height: 50
+            height: 50,
+            paddingTop: 6
         },
         '& .MuiMenu-paper': {
             borderRadius: 0,
