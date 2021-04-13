@@ -1,6 +1,6 @@
 {
     "newServicePatterns": {
-        "component": "AddServicePattern",
+        "component": "AddServicePatternMenu",
         "name": "NewServicePatterns",
         "url": "/dashboard/projects/:projectId/create-service-patterns"
     },
