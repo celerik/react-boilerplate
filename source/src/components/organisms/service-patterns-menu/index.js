@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React, { useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
@@ -20,6 +19,7 @@ import { config } from '../../../config';
 
 const ServicePatterns = ({
     classes,
+    history,
     id,
     match
 }) => {
@@ -28,7 +28,6 @@ const ServicePatterns = ({
         projects: state.projects,
         servicePatterns: state.servicePatterns
     }));
-    const history = useHistory();
     const project = projects.find(project => project.projectId === projectId);
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
@@ -89,6 +88,7 @@ const ServicePatterns = ({
 
 ServicePatterns.propTypes = {
     classes: PropTypes.object.isRequired,
+    history: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     match: PropTypes.object.isRequired
 };
