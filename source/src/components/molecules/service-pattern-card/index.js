@@ -1,14 +1,32 @@
 // @packages
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import Checkbox from '@material-ui/core/Checkbox';
+import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { cloneElement, useState } from 'react';
-import Icon from '@material-ui/core/Icon';
+import Stop from '@material-ui/icons/Stop';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import { theme } from '../../../styles/material-ui';
+
+// @styles
 import styles from './styles';
+
+const IconStatus = withStyles(styles)(({ status }) => (
+    status === 'success' ? (
+        <Icon style={{ color: theme.palette.primary.success }}>
+            check_circle
+        </Icon>
+    ) : (
+        <Icon style={{ color: status === 'warning' ? theme.palette.primary.warn : theme.palette.primary.error }}>
+            warning
+        </Icon>
+    )
+));
 
 const ServicePatternCard = ({
     actions,
@@ -16,9 +34,11 @@ const ServicePatternCard = ({
     className,
     classes,
     id,
+    isCheckeable,
     operationDays,
     routeColor,
     routeName,
+    statusService,
     servicePatternName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
@@ -53,6 +73,17 @@ const ServicePatternCard = ({
             onFocus={onHoverCard}
             onMouseOver={onHoverCard}
         >
+            {isCheckeable && (
+                <Checkbox
+                    onChange={Function.prototype}
+                    color="primary"
+                    icon={<CheckBoxOutlineBlankIcon className={classes.checkboxUnSelect} />}
+                    checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
+                />
+            )}
+            {statusService && (
+                <IconStatus status={statusService} />
+            )}
             <div
                 className={classes.routeNameContainer}
                 style={{
@@ -93,18 +124,22 @@ ServicePatternCard.propTypes = {
     backgroundColor: PropTypes.string,
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    routeColor: PropTypes.string,
-    routeName: PropTypes.string.isRequired,
-    servicePatternName: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    isCheckeable: PropTypes.bool,
     operationDays: PropTypes.arrayOf(PropTypes.string),
-    id: PropTypes.string.isRequired
+    routeColor: PropTypes.string,
+    statusService: PropTypes.string,
+    routeName: PropTypes.string.isRequired,
+    servicePatternName: PropTypes.string.isRequired
 };
 
 ServicePatternCard.defaultProps = {
-    className: null,
     backgroundColor: '#FEF1E2',
+    className: null,
+    isCheckeable: false,
+    operationDays: [],
     routeColor: '#FDB561',
-    operationDays: []
+    statusService: null
 };
 
 export default withStyles(styles)(ServicePatternCard);

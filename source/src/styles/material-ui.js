@@ -15,6 +15,7 @@ const colors = {
     salmon: '#FF6481',
     sky: '#4DBEFF',
     spearl: '#E1E1E1',
+    light: '#E3E2E2',
     summer: '#FDB561',
     text: {
         text1: '#1C2026',
@@ -35,7 +36,12 @@ export const theme = createMuiTheme({
             primary: colors.background.background1
         },
         primary: {
-            main: colors.purple
+            error: colors.salmon,
+            light: colors.lile,
+            main: colors.purple,
+            success: colors.mint,
+            warn: colors.summer,
+            lightWhite: colors.light
         },
         text: {
             primary: colors.text.text1,
