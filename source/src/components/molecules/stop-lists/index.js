@@ -9,24 +9,24 @@ import stopsList from './stops-list.json';
 // @styles
 import styles from './styles';
 
-const BusStop = ({
+const StopList = ({
     classes,
     id,
     stops
 }) => (
-        <div className={classes.container} id={id}>
-            <ol className={classes.stops}>
-            {stops.map(stop => (
-                <li key={stop.name} className={classes.stopItem}>
-                    <span className={classes.stopNumber}>{stop.id}</span>
-                    {stop.name}
-                </li>
-            ))}
-            </ol>
-        </div>
+    <div className={classes.container} id={id}>
+        <ol className={classes.stops}>
+        {stops.map(stop => (
+            <li key={stop.name} className={classes.stopItem}>
+                <span className={classes.stopNumber}>{stop.id}</span>
+                {stop.name}
+            </li>
+        ))}
+        </ol>
+    </div>
 );
 
-BusStop.propTypes = {
+StopList.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
@@ -35,8 +35,8 @@ BusStop.propTypes = {
     }))
 };
 
-BusStop.defaultProps = {
+StopList.defaultProps = {
     stops: stopsList
 };
 
-export default withStyles(styles)(BusStop);
+export default withStyles(styles)(StopList);

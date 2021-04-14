@@ -1,4 +1,4 @@
-export default () => ({
+export default theme => Object.assign({}, {
     container: {
         display: 'flex',
         flexDirection: 'row',
@@ -7,14 +7,12 @@ export default () => ({
     stops: {
         display: 'flex',
         flexDirection: 'column',
-        padding: 0,
-        '& li': {
-            margin: '15px 0'
-        }
+        padding: 0
     },
     stopItem: {
         alignItems: 'center',
         display: 'flex',
+        margin: '15px 0',
         position: 'relative',
         '&:last-child, &:first-child': {
             '& $stopNumber': {
@@ -34,7 +32,7 @@ export default () => ({
     },
     stopNumber: {
         alignItems: 'center',
-        background: '#8675FF',
+        background: theme.palette.primary.light,
         borderRadius: '50%',
         color: 'white',
         display: 'flex',
@@ -45,7 +43,7 @@ export default () => ({
         position: 'relative',
         width: 25,
         '&:after': {
-            background: '#8675FF',
+            background: theme.palette.primary.light,
             bottom: '-100%',
             content: '""',
             height: '100%',
@@ -53,15 +51,15 @@ export default () => ({
             width: 2
         },
         '&:before': {
-            border: '#8675FF 2px solid',
+            border: `${theme.palette.primary.light}  2px solid`,
             borderRadius: '50%',
             borderStyle: 'dashed',
-            bottom: '-5px',
+            bottom: -5,
             content: '""',
-            left: '-5px',
+            left: -5,
             position: 'absolute',
-            right: '-5px',
-            top: '-5px;'
+            right: -5,
+            top: -5
         }
     }
 });
