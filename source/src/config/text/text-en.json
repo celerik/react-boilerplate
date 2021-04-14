@@ -3,6 +3,12 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
+  "editServicePattern": {
+    "backToServicePatterns": "Back to service patterns",
+    "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
+    "lock": "Lock",
+    "unlocked": "Unlocked"
+  },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
     "loginTitle": "Login page"
