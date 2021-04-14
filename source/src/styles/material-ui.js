@@ -31,6 +31,7 @@ export const theme = createMuiTheme({
     palette: {
         background: {
             default: colors.background.background5,
+            secondary: colors.background.background3,
             primary: colors.background.background1
         },
         primary: {
@@ -58,6 +59,10 @@ export const theme = createMuiTheme({
         h4: {
             fontWeight: 'bold',
             fontSize: 14
+        },
+        h6: {
+            fontSize: 10,
+            fontWeight: '300'
         },
         fontFamily: 'Poppins'
     },

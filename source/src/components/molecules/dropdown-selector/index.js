@@ -15,14 +15,25 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
+const IconItem = withStyles(styles)(({ icon }) => (
+    <ListItemIcon className={classes.icon}>
+        <Icon>
+            {typeof icon === 'string'
+                ? <Icon>{icon}</Icon>
+                : icon}
+        </Icon>
+    </ListItemIcon>
+));
+
 const DropdownUser = ({
     classes,
     id,
     isExpanded,
     items,
     onChange,
-    team
+    value
 }) => {
+    const selectedValue = items.find(item => item.value === value) ?? {};
     const handleSelectOnChange = (evt) => {
         const { value } = evt.target;
         if (value) {
@@ -32,55 +43,50 @@ const DropdownUser = ({
         }
     };
 
-    const IconItem = ({ icon }) => (
-        <ListItemIcon className={classes.icon}>
-            <Icon>
-                {typeof icon === 'string'
-                    ? <Icon>{icon}</Icon>
-                    : icon}
-            </Icon>
-        </ListItemIcon>
-    );
-
     return (
         <div className={classes.itemContainer} id={`${id}-selector-user`}>
-        {!isExpanded && (
-            <Icon className={classes.iconOnly}>
-                {typeof team.icon === 'string'
-                    ? <Icon>{team.icon}</Icon>
-                    : team.icon}
-            </Icon>
-        )}
-        {isExpanded && (
-            <FormControl className={classes.formControlContainer}>
-                <TextField
-                    select
-                    value={team.value}
-                    onChange={handleSelectOnChange}
-                    SelectProps={{
-                        MenuProps: { disablePortal: true }
-                    }}
-                    InputProps={{ disableUnderline: true }}
-                    variant="outlined"
-                    className={classes.selector}
-                >
-                    {items.map((item) => (
-                        <MenuItem value={item.value} key={item.value} id={item.value} className={classes.menuItem}>
-                            <div className={classes.itemList}>
-                                {item.icon && (
-                                    <IconItem icon={item.icon} />
-                                )}
-                                <Typography variant="inherit" className={classes.labelItem}>{item.label}</Typography>
-                            </div>
+            {!isExpanded && (
+                <Icon className={classes.iconOnly}>
+                    {typeof selectedValue.icon === 'string'
+                        ? <Icon>{selectedValue.icon}</Icon>
+                        : selectedValue.icon}
+                </Icon>
+            )}
+            {isExpanded && (
+                <FormControl className={classes.formControlContainer}>
+                    <TextField
+                        select
+                        value={value}
+                        onChange={handleSelectOnChange}
+                        SelectProps={{
+                            MenuProps: { disablePortal: true }
+                        }}
+                        InputProps={{ disableUnderline: true }}
+                        variant="outlined"
+                        className={classes.selector}
+                    >
+                        {items.map((item) => (
+                            <MenuItem value={item.value} key={item.value} id={item.value} className={classes.menuItem}>
+                                <div className={classes.itemList}>
+                                    {item.icon && (
+                                        <IconItem icon={item.icon} />
+                                    )}
+                                    <Typography
+                                        className={classes.labelItem}
+                                        variant="inherit"
+                                    >
+                                        {item.label}
+                                    </Typography>
+                                </div>
+                            </MenuItem>
+                        ))}
+                        <MenuItem className={classes.dropdownButton} onClick={Function.prototype}>
+                            <Typography variant="inherit">{config.text.mainMenu.manageTeams}</Typography>
+                            <IconItem icon="group" />
                         </MenuItem>
-                    ))}
-                    <MenuItem className={classes.dropdownButton} onClick={Function.prototype}>
-                        <Typography variant="inherit">{config.text.mainMenu.manageTeams}</Typography>
-                        <IconItem icon="group" />
-                    </MenuItem>
-                </TextField>
-            </FormControl>
-        )}
+                    </TextField>
+                </FormControl>
+            )}
         </div>
     );
 };
@@ -99,7 +105,8 @@ DropdownUser.propTypes = {
         icon: PropTypes.any.isRequired,
         label: PropTypes.string.isRequired,
         value: PropTypes.string.isRequired
-    }).isRequired
+    }).isRequired,
+    value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 };
 
 export default withStyles(styles)(DropdownUser);
