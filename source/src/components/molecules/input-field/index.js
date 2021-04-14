@@ -18,12 +18,17 @@ const InputField = ({
     icon,
     iconButton,
     id,
+    onChange,
     onClickIconButton,
     placeholder,
     size,
     value,
     variant
 }) => {
+    const handleChange = event => {
+        onChange(event.target.value);
+    };
+
     const inputStyle = classNames(classes, className);
 
     const inputProps = () => {
@@ -65,6 +70,7 @@ const InputField = ({
             size={size}
             value={value}
             variant={variant}
+            onChange={handleChange}
         />
     );
 };
