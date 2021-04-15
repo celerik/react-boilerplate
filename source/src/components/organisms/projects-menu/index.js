@@ -4,20 +4,20 @@ import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { useHistory } from 'react-router';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
 import AlertDialog from '../clone-project-dialog';
-import { config } from '../../../config';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
+import { config } from '../../../config';
+import { formatUrlParam } from '../../../util/string';
 
 // @styles
-import { formatUrlParam } from '../../../util/string';
 import styles from './styles';
-import { useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
 
 const ProjectBar = ({
     classes

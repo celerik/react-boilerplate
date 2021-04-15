@@ -3,6 +3,14 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
+  "createServicePattern": {
+    "addServicePattern": "Add Service Pattern",
+    "addAServicePattern":  "Add a service pattern",
+    "backToServicePatterns": "Back to service patterns",
+    "importServicePatterns": "Import Service Pattern",
+    "selectRoute": "Select route",
+    "selectServicePeriod": "Select service period"
+  },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
     "loginTitle": "Login page"
@@ -36,20 +44,14 @@
     "to": "to"
   },
   "projectMenu": {
-    "addServicePattern": "Add Service Pattern",
-    "addAServicePattern":  "Add a service pattern",
     "backToProject": "Back to {0}",
     "backToProjects": "Back to projects",
-    "backToServicePatterns": "Back to service patterns",
     "clone": "Clone",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
-    "importServicePatterns": "Import 2 Service Pattern",
     "newProject": "NEW PROJECT",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
-    "selectRoute": "Select route",
-    "selectServicePeriod": "Select service period",
     "searchProjectByname": "Search project by name...",
     "servicePatterns": "Service patterns",
     "servicesParameters": "Services parameters",

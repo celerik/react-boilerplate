@@ -69,18 +69,18 @@ const ServicePatterns = ({
                     <ServicePatternCard
                         actions={actions}
                         key={`${id}-card-${index}`}
-                        routeName={servicePattern.routeName}
-                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
-                        servicePatternName={servicePattern.servicePatternName}
                         operationDays={servicePattern.settings.daysOfOperation}
+                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
+                        routeName={servicePattern.routeName}
+                        servicePatternName={servicePattern.servicePatternName}
                     />
                 ))}
             </div>
             <Actionbutton
-                startIcon="add"
                 className={classes.buttonAdd}
+                label={config.text.createServicePattern.addServicePattern}
                 onClick={toNewServicePattern}
-                label={config.text.projectMenu.addServicePattern}
+                startIcon="add"
             />
         </div>
     );

@@ -9,15 +9,15 @@ import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
 import ListSelector from '../../atoms/list-selector';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { config } from '../../../config';
-import { useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { config } from '../../../config';
 import { getServicePatters } from '../../../actions/service-patterns';
+import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
 
-const ProjectMenu = ({
+const CreateServicePattern = ({
     classes,
     id,
     match
@@ -51,56 +51,55 @@ const ProjectMenu = ({
 
     return (
         <div id={id} className={classes.mainContainer}>
-            <BackToButton label={config.text.projectMenu.backToServicePatterns} />
+            <BackToButton label={config.text.createServicePattern.backToServicePatterns} />
             <Typography className={classes.title} variant="h4">
-                {config.text.projectMenu.addAServicePattern}
+                {config.text.createServicePattern.addAServicePattern}
             </Typography>
-
             <ListSelector
-                placeholder={config.text.projectMenu.selectRoute}
                 items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
-                value={route}
                 onChange={handleRoute}
+                placeholder={config.text.createServicePattern.selectRoute}
+                value={route}
             />
             <ListSelector
-                placeholder={config.text.projectMenu.selectServicePeriod}
                 items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
-                value={servicePeriod}
                 onChange={handleServicePeriod}
+                placeholder={config.text.createServicePattern.selectServicePeriod}
+                value={servicePeriod}
             />
             <Actionbutton
                 startIcon="refresh"
                 className={classes.buttonAdd}
                 onClick={Function.prototype}
-                label={config.text.projectMenu.addServicePattern}
+                label={config.text.createServicePattern.addServicePattern}
             />
             <div className={classes.servicePatternsContainer}>
                 {servicePatterns.map((servicePattern, index) => (
                     <ServicePatternCard
                         key={`${id}-card-${index}`}
-                        routeName={servicePattern.routeName}
-                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
-                        servicePatternName={servicePattern.servicePatternName}
                         operationDays={servicePattern.settings.daysOfOperation}
+                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
+                        routeName={servicePattern.routeName}
+                        servicePatternName={servicePattern.servicePatternName}
                     />
                 ))}
             </div>
             <Actionbutton
-                endIcon="file_upload"
                 className={classes.buttonImport}
+                endIcon="file_upload"
+                label={config.text.createServicePattern.importServicePatterns}
                 onClick={Function.prototype}
-                label={config.text.projectMenu.importServicePatterns}
             />
         </div>
     );
 };
 
-ProjectMenu.propTypes = {
+CreateServicePattern.propTypes = {
     classes: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired
 };
 
-ProjectMenu.defaultProps = {};
+CreateServicePattern.defaultProps = {};
 
-export default withStyles(styles)(ProjectMenu);
+export default withStyles(styles)(CreateServicePattern);

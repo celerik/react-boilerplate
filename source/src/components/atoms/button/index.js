@@ -25,14 +25,14 @@ const Actionbutton = ({
             className={ButtonStyle}
             id={id}
             onClick={onClick}
-            startIcon={startIcon && (
-                <Icon>
-                    {startIcon}
-                </Icon>
-            )}
             endIcon={endIcon && (
                 <Icon>
                     {endIcon}
+                </Icon>
+            )}
+            startIcon={startIcon && (
+                <Icon>
+                    {startIcon}
                 </Icon>
             )}
         >
