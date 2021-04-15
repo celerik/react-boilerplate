@@ -136,7 +136,7 @@ ServicePatternCard.propTypes = {
 ServicePatternCard.defaultProps = {
     backgroundColor: '#FEF1E2',
     className: null,
-    isCheckeable: false,
+    isCheckeable: true,
     operationDays: [],
     routeColor: '#FDB561',
     statusService: null

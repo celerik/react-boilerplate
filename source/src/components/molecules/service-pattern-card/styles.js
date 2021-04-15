@@ -33,7 +33,7 @@ export default theme => Object.assign({}, {
         width: 64
     },
     checkboxSelect: {
-        border: `2px solid ${theme.palette.background.tertiary}`,
+        border: `2px solid ${theme.palette.primary.contrastText}`,
         borderRadius: 4,
         height: 21,
         marginLeft: 1,
@@ -41,6 +41,6 @@ export default theme => Object.assign({}, {
         width: 21
     },
     checkboxUnSelect: {
-        color: `${theme.palette.background.tertiary}`
+        color: `${theme.palette.primary.contrastText}`
     }
 });

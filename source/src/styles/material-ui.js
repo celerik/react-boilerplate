@@ -32,15 +32,15 @@ export const theme = createMuiTheme({
         background: {
             default: colors.background.background5,
             secondary: colors.background.background3,
-            primary: colors.background.background1,
-            tertiary: colors.background.background4
+            primary: colors.background.background1
         },
         primary: {
             error: colors.salmon,
             light: colors.lile,
             main: colors.purple,
             success: colors.mint,
-            warn: colors.summer
+            warn: colors.summer,
+            contrastText: colors.background.background4
         },
         text: {
             primary: colors.text.text1,
