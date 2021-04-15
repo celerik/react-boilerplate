@@ -1,6 +1,6 @@
 // @packages
+import CheckBox from '@material-ui/core/Checkbox';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import Checkbox from '@material-ui/core/Checkbox';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { cloneElement, useState } from 'react';
@@ -74,11 +74,11 @@ const ServicePatternCard = ({
             onMouseOver={onHoverCard}
         >
             {isCheckeable && (
-                <Checkbox
-                    onChange={Function.prototype}
+                <CheckBox
+                    checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
                     color="primary"
                     icon={<CheckBoxOutlineBlankIcon className={classes.checkboxUnSelect} />}
-                    checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
+                    onChange={Function.prototype}
                 />
             )}
             {statusService && (
@@ -128,9 +128,9 @@ ServicePatternCard.propTypes = {
     isCheckeable: PropTypes.bool,
     operationDays: PropTypes.arrayOf(PropTypes.string),
     routeColor: PropTypes.string,
-    statusService: PropTypes.string,
     routeName: PropTypes.string.isRequired,
-    servicePatternName: PropTypes.string.isRequired
+    servicePatternName: PropTypes.string.isRequired,
+    statusService: PropTypes.string
 };
 
 ServicePatternCard.defaultProps = {

@@ -28,19 +28,19 @@ export default theme => Object.assign({}, {
         display: 'flex',
         height: 42,
         justifyContent: 'center',
-        marginRight: 11,
         marginLeft: 5,
+        marginRight: 11,
         width: 64
     },
     checkboxSelect: {
-        border: `2px solid ${theme.palette.primary.lightWhite}`,
-        width: 21,
-        height: 21,
+        border: `2px solid ${theme.palette.background.tertiary}`,
         borderRadius: 4,
+        height: 21,
         marginLeft: 1,
-        marginRight: 2
+        marginRight: 2,
+        width: 21
     },
     checkboxUnSelect: {
-        color: `${theme.palette.primary.lightWhite}`
+        color: `${theme.palette.background.tertiary}`
     }
 });

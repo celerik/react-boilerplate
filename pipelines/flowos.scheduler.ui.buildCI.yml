@@ -1,0 +1,37 @@
+trigger:
+  branches:
+    include:
+    - refs/heads/main
+    - refs/heads/feature/*
+  paths:
+    exclude:
+    - pipelines/*
+
+variables:
+- group: Environment Prod
+
+pool:
+  name: 'Celerik Ubuntu 1604'
+
+resources:
+- repo: self
+
+steps:
+- task: NodeTool@0
+  displayName: 'Install Node.js'
+  inputs:
+    versionSpec: '14.x'
+  
+- task: CmdLine@2
+  displayName: 'Npm install'
+  inputs:
+    script: |
+     cd source
+     npm install
+
+- task: CmdLine@2
+  displayName: 'Npm run lintj'
+  inputs:
+    script: |
+     cd source
+     npm run lintj
