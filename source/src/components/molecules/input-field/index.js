@@ -66,11 +66,11 @@ const InputField = ({
             className={inputStyle}
             disable={disable}
             id={`${id}-textField`}
+            onChange={handleChange}
             placeholder={placeholder}
             size={size}
             value={value}
             variant={variant}
-            onChange={handleChange}
         />
     );
 };

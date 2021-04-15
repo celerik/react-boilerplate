@@ -2,7 +2,7 @@
 import FilterListSharpIcon from '@material-ui/icons/FilterListSharp';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -23,15 +23,10 @@ const ProjectBar = ({
     classes
 }) => {
     const [cloneModalVisible, setCloneModalVisibility] = useState(false);
-    const [projectsState, setProjectsState] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
     const projects = useSelector(state => state.projects);
-
-    useEffect(() => {
-        setProjectsState([...projects]);
-    }, [projects]);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
@@ -47,15 +42,6 @@ const ProjectBar = ({
 
     const handleSortOpen = () => {
         setSortAsc(!sortAsc);
-        const copyProjects = [...projects];
-        let sortedProjects = [];
-
-        if (sortAsc) {
-            sortedProjects = copyProjects.sort((a, b) => (a.projectName > b.projectName) - (a.projectName < b.projectName));
-        } else {
-            sortedProjects = copyProjects.sort((a, b) => (a.projectName < b.projectName) - (a.projectName > b.projectName));
-        }
-        setProjectsState(sortedProjects);
     };
 
     const actions = [{
@@ -67,6 +53,14 @@ const ProjectBar = ({
         icon: 'east',
         onClick: onClickEditProject
     }];
+
+    const sortOrder = sortAsc ? 1 : -1;
+
+    const processedProjects = projects.sort(
+        (a, b) => (a.projectName > b.projectName
+            ? sortOrder
+            : -sortOrder)
+    ).filter(project => project.projectName.includes(searchValue));
 
     return (
         <>
@@ -90,7 +84,7 @@ const ProjectBar = ({
             <ListActions
                 actions={actions}
                 id="list-project-actions"
-                items={projectsState.filter(project => project.projectName.includes(searchValue))}
+                items={processedProjects}
             />
             <ActionButtom
                 className={classes.buttonAdd}
