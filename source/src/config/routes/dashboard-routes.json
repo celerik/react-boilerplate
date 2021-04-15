@@ -1,4 +1,9 @@
 {
+    "editServicePattern": {
+        "component": "EditServicePattern",
+        "name": "EditServicePattern",
+        "url": "/dashboard/projects/:projectId/edit-service-pattern"
+    },
     "observationPeriods": {
         "component": null,
         "name": "ObservationPeriods",

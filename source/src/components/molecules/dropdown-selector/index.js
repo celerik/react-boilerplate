@@ -15,7 +15,7 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
-const IconItem = withStyles(styles)(({ icon }) => (
+const IconItem = withStyles(styles)(({ icon, classes }) => (
     <ListItemIcon className={classes.icon}>
         <Icon>
             {typeof icon === 'string'
