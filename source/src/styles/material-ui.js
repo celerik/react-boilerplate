@@ -37,6 +37,7 @@ export const theme = createMuiTheme({
             tertiary: colors.background.background6
         },
         primary: {
+            light: colors.lile,
             main: colors.purple,
             summer: colors.summer
         },
