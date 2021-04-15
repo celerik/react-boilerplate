@@ -22,9 +22,11 @@ import styles from './styles';
 const ProjectBar = ({
     classes
 }) => {
+    const [cloneModalVisible, setCloneModalVisibility] = useState(false);
+    const [searchValue, setSearchValue] = useState('');
+    const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
     const projects = useSelector(state => state.projects);
-    const [setCloneModalVisible, setCloneModalVisibility] = useState(false);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
@@ -38,6 +40,10 @@ const ProjectBar = ({
         setCloneModalVisibility(false);
     };
 
+    const handleSortOpen = () => {
+        setSortAsc(!sortAsc);
+    };
+
     const actions = [{
         name: config.text.projectMenu.clone,
         icon: 'content_copy',
@@ -48,27 +54,37 @@ const ProjectBar = ({
         onClick: onClickEditProject
     }];
 
+    const sortOrder = sortAsc ? 1 : -1;
+
+    const processedProjects = projects.sort(
+        (a, b) => (a.projectName > b.projectName
+            ? sortOrder
+            : -sortOrder)
+    ).filter(project => project.projectName.includes(searchValue));
+
     return (
         <>
             <InputField
                 className={classes.searchBar}
+                icon="search"
+                onChange={setSearchValue}
                 placeholder={config.text.projectMenu.searchProjectByname}
                 size="small"
+                value={searchValue}
                 variant="outlined"
-                icon="search"
             />
             <div className={classes.titleHeader}>
                 <Typography className={classes.title} variant="h4">
                     {config.text.projectMenu.existingProjects}
                 </Typography>
                 <IconButton onClick={Function.prototype}>
-                    <FilterListSharpIcon />
+                    <FilterListSharpIcon onClick={handleSortOpen} />
                 </IconButton>
             </div>
             <ListActions
                 actions={actions}
                 id="list-project-actions"
-                items={projects}
+                items={processedProjects}
             />
             <Actionbutton
                 className={classes.buttonAdd}
@@ -77,7 +93,7 @@ const ProjectBar = ({
             />
             <AlertDialog
                 onClose={handleClose}
-                visible={setCloneModalVisible}
+                visible={cloneModalVisible}
             />
         </>
     );

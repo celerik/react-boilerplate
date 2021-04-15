@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import AddServicePatternMenu from '../add-service-pattern-menu';
+import EditServicePattern from '../edit-service-pattern';
 import ProjectMenu from '../project-menu';
 import ProjectsMenu from '../projects-menu';
 import ServicePatterns from '../service-patterns-menu';
@@ -17,6 +18,7 @@ import styles from './styles';
 
 const componentMapper = {
     AddServicePatternMenu,
+    EditServicePattern,
     ProjectMenu,
     ProjectsMenu,
     ServicePatterns
