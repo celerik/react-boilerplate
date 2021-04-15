@@ -35,6 +35,7 @@ export const theme = createMuiTheme({
             primary: colors.background.background1
         },
         primary: {
+            light: colors.lile,
             main: colors.purple
         },
         text: {
