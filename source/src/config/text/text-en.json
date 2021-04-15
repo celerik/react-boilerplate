@@ -51,7 +51,10 @@
     "viewResults": "View results"
   },
   "servicePatternsMenu": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
     "copy": "Copy",
+    "daysOfWeek": "Days of the week",
     "delete": "Delete",
     "edit": "Edit",
     "runDays": "Runs on {0} and ",

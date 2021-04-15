@@ -1,0 +1,30 @@
+[
+    {
+        "day": "Monday",
+        "dayValue": "mon"
+    },
+    {
+        "day": "Tuesday",
+        "dayValue": "tus"
+    },
+    {
+        "day": "Wednesday",
+        "dayValue": "wed"
+    },
+    {
+        "day": "Thursday",
+        "dayValue": "thu"
+    },
+    {
+        "day": "Friday",
+        "dayValue": "fri"
+    },
+    {
+        "day": "Saturday",
+        "dayValue": "sat"
+    },
+    {
+        "day": "Sunday",
+        "dayValue": "sun"
+    }
+]
