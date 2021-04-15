@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Stop from '@material-ui/icons/Stop';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
@@ -26,7 +26,7 @@ const ModalDaysWeek = ({
     onConfirm,
     open
 }) => {
-    const [daysChecked, setDaysChecked] = React.useState([...days]);
+    const [daysChecked, setDaysChecked] = useState([...days]);
 
     const handleCheckBoxes = (day) => {
         if (daysChecked.includes(day)) {
