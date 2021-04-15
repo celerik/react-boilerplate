@@ -37,15 +37,15 @@ const AlertDialog = ({
             {config.text.dialogLayout.cloneProject}
         </DialogTitle>
         <DialogContent>
-            <DialogContentText id={`${id}-description`}>
+            <DialogContentText id={`${id}-description`} className={classes.adjustText}>
                 {config.text.dialogLayout.petition}
             </DialogContentText>
         </DialogContent>
-        <DialogActions>
-            <Button onClick={onClose} color="primary">
+        <DialogActions className={classes.acctionContainer}>
+            <Button onClick={onClose} className={classes.button}>
                 {config.text.dialogLayout.cloneSnapshot}
             </Button>
-            <Button onClick={onClose} color="primary" autoFocus>
+            <Button onClick={onClose} className={classes.button}>
                 {config.text.dialogLayout.cloneServicePattern}
             </Button>
         </DialogActions>
