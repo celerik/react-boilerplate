@@ -24,6 +24,13 @@
     "teamName": "Team Name",
     "manageTeams": "Manage Teams"
   },
+  "observationPeriodsPage": {
+    "addObservationPeriod": "Add Observation period",
+    "observatioPeriods": "Observation Periods",
+    "observationPeriodsPage": "From",
+    "selectVersion": "Select a version and check the results",
+    "to": "to"
+  },
   "pagination": {
     "items": "items",
     "itemsPerPage": "Items per page",

@@ -9,14 +9,17 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import { config } from '../../../config';
+
+// @styles
 import styles from './styles';
 
 const HistoryCard = ({
     className,
     classes,
     from,
-    to,
-    id
+    id,
+    to
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
 
@@ -35,11 +38,11 @@ const HistoryCard = ({
             <div className={classes.infoTime}>
                 <CalendarTodayIcon />
                 <Typography className={classes.date}>
-                    From
+                    {config.text.observationPeriodsPage.from}
                     <strong>
                         { from }
                     </strong>
-                    to
+                    {config.text.observationPeriodsPage.to}
                     <strong>
                         { to }
                     </strong>
@@ -48,12 +51,12 @@ const HistoryCard = ({
             <div className={classes.actionsContainer}>
                 {actionsVisible && (
                     <Tooltip
-                        title="Delete"
-                        key={`${id}-delete-tooltip`}
                         enterDelay={500}
                         enterNextDelay={500}
+                        key={`${id}-delete-tooltip`}
+                        title="Delete"
                     >
-                        <DeleteIcon className={classes.icon} />
+                        <DeleteIcon className={classes.icon} id={`${id}-delete-action`} />
                     </Tooltip>
                 )}
             </div>
@@ -64,8 +67,8 @@ const HistoryCard = ({
 HistoryCard.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
     from: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired
 };
 

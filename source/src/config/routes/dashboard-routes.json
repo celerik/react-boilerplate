@@ -1,6 +1,6 @@
 {
     "observationPeriods": {
-        "component": null,
+        "component": "ObservationPeriods",
         "name": "ObservationPeriods",
         "url": "/dashboard/projects/:projectId/observation-periods"
     },

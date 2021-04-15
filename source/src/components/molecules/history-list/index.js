@@ -8,6 +8,7 @@ import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineItem from '@material-ui/lab/TimelineItem';
 import TimelineSeparator from '@material-ui/lab/TimelineSeparator';
 import VisibilityIcon from '@material-ui/icons/Visibility';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
@@ -17,11 +18,12 @@ import HistoryCard from '../../atoms/history-card';
 import styles from './styles';
 
 const HistoryList = ({
-    id,
+    className,
     classes,
+    id,
     items
 }) => (
-    <Timeline id={id}>
+    <Timeline id={id} className={classNames(classes.mainContainer, className)}>
       {items.map((item, index) => (
         <TimelineItem key={index} id={`${id}-${index}`}>
             <TimelineSeparator>
@@ -33,7 +35,11 @@ const HistoryList = ({
                 )}
             </TimelineSeparator>
             <TimelineContent>
-                <HistoryCard from={item.from} to={item.to} />
+                <HistoryCard
+                    from={item.from}
+                    to={item.to}
+                    id={`${id}-${index}-history-card`}
+                />
             </TimelineContent>
         </TimelineItem>
       ))}
@@ -42,6 +48,7 @@ const HistoryList = ({
 );
 
 HistoryList.propTypes = {
+    className: PropTypes.object,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
@@ -50,6 +57,8 @@ HistoryList.propTypes = {
     })).isRequired
 };
 
-HistoryList.defaultProps = {};
+HistoryList.defaultProps = {
+    className: Object.prototype
+};
 
 export default withStyles(styles)(HistoryList);
