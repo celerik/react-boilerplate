@@ -8,14 +8,16 @@ import { withStyles } from '@material-ui/core';
 // @styles
 import styles from './styles';
 
-const ZoomButtons = ({ classes, id }) => (
+const ZoomButtons = ({
+    classes, id, onZoomIn, onZoomOut
+}) => (
     <div className={classes.main} id={id}>
-        <Button className={classes.button}>
+        <Button className={classes.button} onClick={onZoomIn}>
             <Icon>
                 add
             </Icon>
         </Button>
-        <Button className={classes.button} id={id}>
+        <Button className={classes.button} onClick={onZoomOut}>
             <Icon>
                 remove
             </Icon>
@@ -25,7 +27,10 @@ const ZoomButtons = ({ classes, id }) => (
 
 ZoomButtons.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+    className: PropTypes.string.isRequired,
+    id: PropTypes.string.isRequired,
+    onZoomIn: PropTypes.func.isRequired,
+    onZoomOut: PropTypes.func.isRequired
 };
 
 ZoomButtons.defaultProps = {};
