@@ -4,25 +4,25 @@ export default () => ({
         width: '65%'
     },
     mainContainer: {
-        position: 'relative',
         height: '100%',
+        position: 'relative',
         width: 440
     },
     title: {
-        display: 'flex',
         alignItems: 'center',
-        marginTop: 31,
+        display: 'flex',
+        justifyContent: 'space-between',
         marginBottom: 11,
-        justifyContent: 'space-between'
+        marginTop: 31
     },
     label: {
-        width: 310,
         fontSize: 'inherit',
-        fontWeight: 200
+        fontWeight: 200,
+        width: 310
     },
     lockedStatus: {
-        display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        display: 'flex'
     },
     subtitle: {
         fontSize: 'x-large',

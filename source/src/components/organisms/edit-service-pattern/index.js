@@ -6,8 +6,8 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Icon from '@material-ui/core/Icon';
 import BackToButton from '../../molecules/back-to-button';
+import Icon from '@material-ui/core/Icon';
 import { config } from '../../../config';
 import { useSelector } from 'react-redux';
 
@@ -17,10 +17,10 @@ import styles from './styles';
 const ProjectMenu = ({
     classes,
     id,
+    locked,
     match,
     name,
-    route,
-    locked
+    route
 }) => {
     const { params: { projectId } } = match;
     const { projects } = useSelector(state => ({ projects: state.projects }));
