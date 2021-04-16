@@ -3,7 +3,8 @@ export default () => ({
         display: 'flex',
         flexDirection: 'column',
         position: 'absolute',
-        right: 15,
-        top: 0
+        right: 17,
+        top: 10,
+        widht: '50'
     }
 });
