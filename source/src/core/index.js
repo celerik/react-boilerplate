@@ -1,6 +1,7 @@
 // @scripts
 import { config } from '../config';
 import { constants } from './constants';
+import { initializeGlobalUI } from './global-ui';
 import { initializeReduxStore } from './redux-store';
 import { initializeServiceMocker } from './service-mocker';
 
@@ -17,8 +18,10 @@ const getEnvironment = () => ({
 const initializeApp = () => {
     const environment = getEnvironment();
     const store = initializeReduxStore(environment);
+    const globalUI = initializeGlobalUI(store);
     const serviceMocker = initializeServiceMocker(store);
     global.core = {
+        globalUI,
         serviceMocker,
         store
     };
@@ -26,4 +29,8 @@ const initializeApp = () => {
     return global.core;
 };
 
-export const { serviceMocker, store } = initializeApp();
+export const {
+    globalUI,
+    serviceMocker,
+    store
+} = initializeApp();
