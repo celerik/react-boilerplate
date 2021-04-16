@@ -30,7 +30,6 @@ const Logo = ({ classes, id }) => (
 
 Logo.propTypes = {
     classes: PropTypes.object.isRequired,
-    className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
 };
 

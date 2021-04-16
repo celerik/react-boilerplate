@@ -1,7 +1,13 @@
-export default () => Object.assign({}, {
+export default theme => Object.assign({}, {
+    buttonAdd: {
+        backgroundColor: theme.palette.primary.light,
+        color: 'white',
+        height: 47,
+        marginTop: 30
+    },
     mainContainer: {
-        position: 'relative',
         height: '100%',
+        position: 'relative',
         width: 440
     },
     title: {
@@ -11,8 +17,8 @@ export default () => Object.assign({}, {
         textTransform: 'uppercase'
     },
     servicePatternsContainer: {
-        overflowY: 'auto',
+        height: '60%',
         minHeight: 300,
-        height: '60%'
+        overflowY: 'auto'
     }
 });

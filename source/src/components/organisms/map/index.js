@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
-import ZoomButtons from '../zoom-buttons/index';
+import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';

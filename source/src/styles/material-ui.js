@@ -6,7 +6,8 @@ const colors = {
         background2: '#F7F7F7',
         background3: '#F1F1F1',
         background4: '#E3E2E2',
-        background5: '#F6F6F6'
+        background5: '#F6F6F6',
+        background6: '#FFFBF5'
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
@@ -30,9 +31,10 @@ const colors = {
 export const theme = createMuiTheme({
     palette: {
         background: {
+            contrastText: colors.background.background6,
             default: colors.background.background5,
-            secondary: colors.background.background3,
-            primary: colors.background.background1
+            primary: colors.background.background1,
+            secondary: colors.background.background3
         },
         primary: {
             contrastText: colors.background.background4,

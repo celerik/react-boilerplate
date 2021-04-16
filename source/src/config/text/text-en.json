@@ -3,6 +3,14 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
+  "createServicePattern": {
+    "addServicePattern": "Add Service Pattern",
+    "addAServicePattern":  "Add a service pattern",
+    "backToServicePatterns": "Back to service patterns",
+    "importServicePatterns": "Import Service Pattern",
+    "selectRoute": "Select route",
+    "selectServicePeriod": "Select service period"
+  },
   "editServicePattern": {
     "backToServicePatterns": "Back to service patterns",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
@@ -29,6 +37,13 @@
     "projects": "Projects",
     "teamName": "Team Name",
     "manageTeams": "Manage Teams"
+  },
+  "observationPeriodsPage": {
+    "addObservationPeriod": "Add Observation period",
+    "observatioPeriods": "Observation Periods",
+    "observationPeriodsPage": "From",
+    "selectVersion": "Select a version and check the results",
+    "to": "to"
   },
   "pagination": {
     "items": "items",
