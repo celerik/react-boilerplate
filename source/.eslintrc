@@ -44,6 +44,7 @@
         "react/prefer-stateless-function": [2, { "ignorePureComponents": true }],
         "react/prop-types": ["error"],
         "react/react-in-jsx-scope": 0,
-        "implicit-arrow-linebreak": 0
+        "implicit-arrow-linebreak": 0,
+        "import/no-cycle": 0
     }
 }
