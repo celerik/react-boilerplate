@@ -25,15 +25,17 @@ const IconItem = withStyles(styles)(({ classes, icon }) => (
     </ListItemIcon>
 ));
 
-const DropdownUser = ({
+const DropdownSelector = ({
     classes,
     id,
     isExpanded,
     items,
     onChange,
+    itemValueName,
+    itemDescriptionName,
     value
 }) => {
-    const selectedValue = items.find(item => item.value === value) ?? {};
+    const selectedValue = items.find(item => item[itemValueName] === value) ?? {};
     const handleSelectOnChange = (evt) => {
         const { value } = evt.target;
         if (value) {
@@ -42,6 +44,8 @@ const DropdownUser = ({
             onChange({ item });
         }
     };
+
+    console.log(items);
 
     return (
         <div className={classes.itemContainer} id={`${id}-selector-user`}>
@@ -75,13 +79,15 @@ const DropdownUser = ({
                                         className={classes.labelItem}
                                         variant="inherit"
                                     >
-                                        {item.label}
+                                        {item[itemDescriptionName]}
                                     </Typography>
                                 </div>
                             </MenuItem>
                         ))}
                         <MenuItem className={classes.dropdownButton} onClick={Function.prototype}>
-                            <Typography variant="inherit">{config.text.mainMenu.manageTeams}</Typography>
+                            <Typography variant="inherit">
+                                {config.text.mainMenu.manageTeams}
+                            </Typography>
                             <IconItem icon="group" />
                         </MenuItem>
                     </TextField>
@@ -91,10 +97,12 @@ const DropdownUser = ({
     );
 };
 
-DropdownUser.propTypes = {
+DropdownSelector.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExpanded: PropTypes.bool.isRequired,
+    itemDescriptionName: PropTypes.string,
+    itemValueName: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.any.isRequired,
         label: PropTypes.string.isRequired,
@@ -109,4 +117,9 @@ DropdownUser.propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 };
 
-export default withStyles(styles)(DropdownUser);
+DropdownSelector.defaultProps = {
+    itemDescriptionName: 'teamName',
+    itemValueName: 'teamId'
+};
+
+export default withStyles(styles)(DropdownSelector);

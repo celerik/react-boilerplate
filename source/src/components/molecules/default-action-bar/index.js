@@ -24,7 +24,11 @@ const DefaultActionBar = ({
     width
 }) => {
     const theme = useTheme();
-    const { account: { name }, teams } = useSelector(state => state.user);
+    const {
+        account: { name },
+        selectedTeam,
+        teams
+    } = useSelector(state => state.user);
     const [team, setTeam] = useState(0);
     const history = useHistory();
 
@@ -50,12 +54,14 @@ const DefaultActionBar = ({
         ),
         <TeamDropdown
             isExpanded={isExpanded}
-            onChange={onChangeTeam}
-            team={team}
+            itemDescriptionName="teamName"
+            itemValueName="teamId"
             items={teams}
             key="home1"
-            value={0}
+            onChange={onChangeTeam}
             onClick={onSelectItem('/dashboard/home1')}
+            team={team}
+            value={selectedTeam}
         />,
         <ActionItem
             color={theme.palette.text.secondary}
