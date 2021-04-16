@@ -23,13 +23,13 @@ const ActionItem = ({
         <div className={expanded ? classes.icon : classes.iconOnly} style={{ color }}>
             <Icon>
                 {typeof icon === 'string'
-                    ? <Icon>{icon}</Icon>
+                    ? <Icon fontSize={(expanded && bottomItem) ? 'small' : 'default'}>{icon}</Icon>
                     : icon}
             </Icon>
         </div>
         {expanded && (
             <Typography
-                className={!bottomItem && classes.itemDescription}
+                className={bottomItem ? classes.itemBottom : classes.itemDescription}
                 style={{ color }}
                 variant="body1"
             >

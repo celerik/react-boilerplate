@@ -26,6 +26,9 @@ export default theme => ({
     itemDescription: {
         fontWeight: 'bold'
     },
+    itemBottom: {
+        fontSize: 12
+    },
     teamIcon: {
         borderRadius: 5,
         height: 20,
