@@ -6,10 +6,11 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { config } from '../../../config';
-import ZoomButtons from '../zoom-buttons/index';
+import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
+import { theme } from '../../../styles/material-ui';
 
 const CustomMap = ({
     className,
@@ -17,15 +18,38 @@ const CustomMap = ({
     id
 }) => {
     const mapContainer = useRef();
+    const mapRef = useRef();
 
     useEffect(() => {
         const map = new Map({
             accessToken: config.settings.mapBox.token,
-            center: [-75.5674723, 6.2092601],
+            center: [
+                -0.04212516311508214,
+                51.52249290538935
+            ],
             container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            zoom: 19
+            style: 'mapbox://styles/mapbox/light-v10',
+            zoom: 15
         });
+
+        map.on('load', () => {
+            map.setPaintProperty('building', 'fill-color', [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                2,
+                theme.palette.background.default,
+                1,
+                theme.palette.background.default
+            ]);
+            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.default);
+            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.default);
+            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.default);
+            map.setPaintProperty('building', 'fill-color', theme.palette.background.default);
+            map.setPaintProperty('land', 'background-color', theme.palette.background.default);
+        });
+
+        mapRef.current = map;
 
         return () => map.remove();
     }, []);
@@ -33,7 +57,10 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
-            <ZoomButtons />
+            <ZoomButtons
+                onZoomIn={() => mapRef.current.zoomIn()}
+                onZoomOut={() => mapRef.current.zoomOut()}
+            />
         </div>
     );
 };
