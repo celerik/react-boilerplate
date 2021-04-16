@@ -1,9 +1,9 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
@@ -14,6 +14,7 @@ import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
 import { useHistory } from 'react-router';
+import { setSelectedTeam } from '../../../actions/teams';
 
 const DefaultActionBar = ({
     classes,
@@ -29,17 +30,18 @@ const DefaultActionBar = ({
         selectedTeam,
         teams
     } = useSelector(state => state.user);
-    const [team, setTeam] = useState(0);
-    const history = useHistory();
 
-    const onChangeTeam = ({ item }) => {
-        setTeam(item);
-    };
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const onSelectItem = item => (event) => {
         event.stopPropagation();
         onCollapse();
         history.push(item);
+    };
+
+    const onSelectTeam = (teamId) => {
+        dispatch(setSelectedTeam(teamId));
     };
 
     const topActions = [
@@ -58,9 +60,7 @@ const DefaultActionBar = ({
             itemValueName="teamId"
             items={teams}
             key="home1"
-            onChange={onChangeTeam}
-            onClick={onSelectItem('/dashboard/home1')}
-            team={team}
+            onChange={onSelectTeam}
             value={selectedTeam}
         />,
         <ActionItem

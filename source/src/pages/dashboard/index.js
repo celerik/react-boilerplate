@@ -13,12 +13,16 @@ import { getTeams } from '../../actions/teams';
 
 const DashboardPage = ({
     onGetTeams,
-    onGetProjects
+    onGetProjects,
+    selectedTeam
 }) => {
     useEffect(() => {
         onGetTeams();
-        onGetProjects();
     }, []);
+
+    useEffect(() => {
+        onGetProjects();
+    }, [selectedTeam]);
 
     return (
         <TemplateDashboard>
@@ -30,11 +34,13 @@ const DashboardPage = ({
 
 DashboardPage.propTypes = {
     onGetProjects: PropTypes.func.isRequired,
-    onGetTeams: PropTypes.func.isRequired
+    onGetTeams: PropTypes.func.isRequired,
+    selectedTeam: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
-    projects: state.projects
+    projects: state.projects,
+    selectedTeam: state.user.selectedTeam
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

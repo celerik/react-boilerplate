@@ -15,13 +15,22 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
-const IconItem = withStyles(styles)(({ classes, icon }) => (
+const IconItem = withStyles(styles)(({
+    classes,
+    icon
+}) => (
     <ListItemIcon className={classes.icon}>
-        <Icon>
-            {typeof icon === 'string'
-                ? <Icon>{icon}</Icon>
-                : icon}
-        </Icon>
+        {icon
+            ? (
+                <Icon>
+                    {typeof icon === 'string'
+                        ? <Icon>{icon}</Icon>
+                        : icon}
+                </Icon>
+            )
+            : (
+                <div className={classes.defaultIcon} />
+            )}
     </ListItemIcon>
 ));
 
@@ -37,15 +46,8 @@ const DropdownSelector = ({
 }) => {
     const selectedValue = items.find(item => item[itemValueName] === value) ?? {};
     const handleSelectOnChange = (evt) => {
-        const { value } = evt.target;
-        if (value) {
-            const item = items.find(item => item.value === value);
-
-            onChange({ item });
-        }
+        onChange(evt.target.value);
     };
-
-    console.log(items);
 
     return (
         <div className={classes.itemContainer} id={`${id}-selector-user`}>
@@ -70,11 +72,13 @@ const DropdownSelector = ({
                         className={classes.selector}
                     >
                         {items.map((item) => (
-                            <MenuItem value={item.value} key={item.value} id={item.value} className={classes.menuItem}>
+                            <MenuItem
+                                className={classes.menuItem}
+                                key={item[itemValueName]}
+                                value={item[itemValueName]}
+                            >
                                 <div className={classes.itemList}>
-                                    {item.icon && (
-                                        <IconItem icon={item.icon} />
-                                    )}
+                                    <IconItem icon={item.icon} />
                                     <Typography
                                         className={classes.labelItem}
                                         variant="inherit"
