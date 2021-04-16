@@ -31,15 +31,18 @@ const colors = {
 export const theme = createMuiTheme({
     palette: {
         background: {
+            contrastText: colors.background.background6,
             default: colors.background.background5,
-            secondary: colors.background.background3,
             primary: colors.background.background1,
-            tertiary: colors.background.background6
+            secondary: colors.background.background3
         },
         primary: {
+            contrastText: colors.background.background4,
+            error: colors.salmon,
             light: colors.lile,
             main: colors.purple,
-            summer: colors.summer
+            success: colors.mint,
+            warn: colors.summer
         },
         text: {
             primary: colors.text.text1,

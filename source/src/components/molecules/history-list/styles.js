@@ -3,9 +3,9 @@ export default theme => Object.assign({}, {
         backgroundColor: theme.palette.background.secondary
     },
     icon: {
-        background: theme.palette.primary.summer,
+        background: theme.palette.primary.warn,
         border: 'none',
-        color: theme.palette.background.tertiary
+        color: theme.palette.background.contrastText
     },
     paper: {
         padding: '6px 16px'

@@ -12,7 +12,7 @@ export default theme => Object.assign({}, {
         marginLeft: 10
     },
     icon: {
-        color: theme.palette.primary.summer
+        color: theme.palette.primary.warn
     },
     infoTime: {
         display: 'flex',
@@ -26,8 +26,8 @@ export default theme => Object.assign({}, {
         padding: 15,
         position: 'relative',
         '&:hover': {
-            backgroundColor: theme.palette.background.tertiary,
-            border: `1px solid ${theme.palette.primary.summer}`
+            backgroundColor: theme.palette.background.contrastText,
+            border: `1px solid ${theme.palette.primary.warn}`
         }
     }
 });

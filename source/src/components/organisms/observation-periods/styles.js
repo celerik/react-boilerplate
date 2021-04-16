@@ -1,6 +1,6 @@
 export default (theme) => Object.assign({}, {
     buttonAdd: {
-        backgroundColor: theme.palette.primary.summer,
+        backgroundColor: theme.palette.primary.warn,
         bottom: 5,
         color: 'white',
         height: 47,
