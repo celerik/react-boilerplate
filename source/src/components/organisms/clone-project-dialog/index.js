@@ -24,6 +24,7 @@ const AlertDialog = ({
     visible
 }) => (
     <Dialog
+        BackdropProps={{ className: classes.backdropClassName }}
         id={id}
         onClose={onClose}
         open={visible}
@@ -36,7 +37,7 @@ const AlertDialog = ({
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
             {config.text.dialogLayout.cloneProject}
         </DialogTitle>
-        <DialogContent>
+        <DialogContent className={classes.acctionContainer}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
                 {config.text.dialogLayout.petition}
             </DialogContentText>
