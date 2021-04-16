@@ -82,6 +82,7 @@ InputField.propTypes = {
     icon: PropTypes.string,
     iconButton: PropTypes.string,
     id: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     onClickIconButton: PropTypes.func,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium']),

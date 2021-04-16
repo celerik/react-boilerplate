@@ -120,7 +120,7 @@ ServicePatternCard.propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
         onClick: PropTypes.func.isRequired
-    })).isRequired,
+    })),
     backgroundColor: PropTypes.string,
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
@@ -134,6 +134,7 @@ ServicePatternCard.propTypes = {
 };
 
 ServicePatternCard.defaultProps = {
+    actions: Array.prototype,
     backgroundColor: '#FEF1E2',
     className: null,
     isCheckeable: true,

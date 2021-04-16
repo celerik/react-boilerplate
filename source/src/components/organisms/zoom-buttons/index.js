@@ -27,7 +27,6 @@ const ZoomButtons = ({
 
 ZoomButtons.propTypes = {
     classes: PropTypes.object.isRequired,
-    className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     onZoomIn: PropTypes.func.isRequired,
     onZoomOut: PropTypes.func.isRequired

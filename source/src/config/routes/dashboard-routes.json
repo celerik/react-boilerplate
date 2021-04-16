@@ -4,6 +4,11 @@
         "name": "EditServicePattern",
         "url": "/dashboard/projects/:projectId/edit-service-pattern"
     },
+    "newServicePatterns": {
+        "component": "AddServicePatternMenu",
+        "name": "NewServicePatterns",
+        "url": "/dashboard/projects/:projectId/create-service-patterns"
+    },
     "observationPeriods": {
         "component": null,
         "name": "ObservationPeriods",
