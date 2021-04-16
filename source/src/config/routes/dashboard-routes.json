@@ -10,7 +10,7 @@
         "url": "/dashboard/projects/:projectId/create-service-patterns"
     },
     "observationPeriods": {
-        "component": null,
+        "component": "ObservationPeriods",
         "name": "ObservationPeriods",
         "url": "/dashboard/projects/:projectId/observation-periods"
     },
