@@ -46,6 +46,14 @@ const mockedServices = {
             httpCode: httpCodes.success
         }));
     },
+    mockServiceGetTeams: (mockAdapter) => {
+        const url = config.services.teams.get;
+
+        mockAdapter.onGet(url).reply(() => createMockResponse({
+            data: config.mockData.teams,
+            httpCode: httpCodes.success
+        }));
+    },
     mockServiceSecurityLogin: (mockAdapter) => {
         mockAdapter.onPost(config.services.security.login).reply((call) => {
             const { email, password } = getMockParams(call);

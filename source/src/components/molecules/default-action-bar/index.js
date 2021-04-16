@@ -24,7 +24,7 @@ const DefaultActionBar = ({
     width
 }) => {
     const theme = useTheme();
-    const name = useSelector(state => state.user.account.name);
+    const { account: { name }, teams } = useSelector(state => state.user);
     const [team, setTeam] = useState(0);
     const history = useHistory();
 
@@ -52,11 +52,7 @@ const DefaultActionBar = ({
             isExpanded={isExpanded}
             onChange={onChangeTeam}
             team={team}
-            items={[{
-                icon: 'red',
-                label: 'Team 1',
-                value: 0
-            }]}
+            items={teams}
             key="home1"
             value={0}
             onClick={onSelectItem('/dashboard/home1')}

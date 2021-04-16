@@ -7,14 +7,16 @@
   },
   "serviceMocker": {
     "include": [
-      "mockServiceGetProjects",
       "mockServiceGetServicePattern",
       "mockServiceGetServicePatterns",
+      "mockServiceGetTeams",
       "mockServiceSecurityLogin"
     ]
   },
   "services": {
-    "root": "localhost:8080"
+    "root": "localhost:8080",
+    "projects": "https://project-service-mnxwmluifa-ew.a.run.app/project/v1",
+    "teams": "localhost:8080"
   },
   "reduxLogger": {
     "isEnabled": true
