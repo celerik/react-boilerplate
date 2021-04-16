@@ -43,7 +43,6 @@ const HistoryList = ({
             </TimelineContent>
         </TimelineItem>
       ))}
-
     </Timeline>
 );
 
