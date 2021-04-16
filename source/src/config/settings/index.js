@@ -14,12 +14,11 @@ import { constants } from '../../core/constants';
  */
 const getSettings = () => {
     switch (process.env.REACT_APP_ENV) {
-        case constants.environment.LOCAL:
-            return merge(globals, envLocal);
         case constants.environment.UNIT_TEST:
             return merge(globals, envUnitTest);
+        case constants.environment.LOCAL:
         default:
-            return globals;
+            return merge(globals, envLocal);
     }
 };
 

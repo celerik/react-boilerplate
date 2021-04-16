@@ -18,12 +18,17 @@ const InputField = ({
     icon,
     iconButton,
     id,
+    onChange,
     onClickIconButton,
     placeholder,
     size,
     value,
     variant
 }) => {
+    const handleChange = event => {
+        onChange(event.target.value);
+    };
+
     const inputStyle = classNames(classes, className);
 
     const inputProps = () => {
@@ -61,6 +66,7 @@ const InputField = ({
             className={inputStyle}
             disable={disable}
             id={`${id}-textField`}
+            onChange={handleChange}
             placeholder={placeholder}
             size={size}
             value={value}
@@ -76,6 +82,7 @@ InputField.propTypes = {
     icon: PropTypes.string,
     iconButton: PropTypes.string,
     id: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
     onClickIconButton: PropTypes.func,
     placeholder: PropTypes.string,
     size: PropTypes.oneOf(['small', 'medium']),

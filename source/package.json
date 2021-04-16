@@ -28,7 +28,7 @@
     "@testing-library/user-event": "12.8.3",
     "axios": "0.21.1",
     "axios-mock-adapter": "1.19.0",
-    "classnames": "^2.3.1",
+    "classnames": "2.3.1",
     "eslint-config-airbnb": "18.2.1",
     "eslint-plugin-jest": "24.3.2",
     "mapbox-gl": "2.2.0",
@@ -42,6 +42,7 @@
     "redux": "4.0.5",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
+    "storybook-addon-material-ui": "0.9.0-alpha.24",
     "web-vitals": "1.1.0"
   },
   "scripts": {
@@ -51,7 +52,7 @@
     "start": "cross-env DISABLE_ESLINT_PLUGIN=true REACT_APP_ENV=local npm-run-all -p start-js",
     "start-js": "react-scripts start",
     "test": "cross-env REACT_APP_ENV=unitTest CI=true react-scripts test --setupFiles ./src/setup-tests.js --colors --env=jsdom --coverage",
-    "storybook": "start-storybook -p 6006 -s public",
+    "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
     "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {

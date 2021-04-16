@@ -4,9 +4,11 @@ export default () => Object.assign({}, {
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
+        maxWidth: 474,
+        minWidth: 350,
         padding: '30px 20px',
         position: 'relative',
-        width: 350,
+        width: 'fit-content',
         zIndex: 5
     }
 });

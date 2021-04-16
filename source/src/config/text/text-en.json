@@ -3,6 +3,20 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
+  "createServicePattern": {
+    "addServicePattern": "Add Service Pattern",
+    "addAServicePattern":  "Add a service pattern",
+    "backToServicePatterns": "Back to service patterns",
+    "importServicePatterns": "Import Service Pattern",
+    "selectRoute": "Select route",
+    "selectServicePeriod": "Select service period"
+  },
+  "editServicePattern": {
+    "backToServicePatterns": "Back to service patterns",
+    "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
+    "lock": "Lock",
+    "unlocked": "Unlocked"
+  },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
     "loginTitle": "Login page"
@@ -16,9 +30,13 @@
     "update": "The record was successfully updated!"
   },
   "mainMenu": {
+    "account": "Account",
     "dataExplorer": "Data explorer",
+    "logout": "Log out",
+    "privacyPolicy": "Privacy policy",
     "projects": "Projects",
-    "teamName": "Team Name"
+    "teamName": "Team Name",
+    "manageTeams": "Manage Teams"
   },
   "pagination": {
     "items": "items",
@@ -45,6 +63,13 @@
     "servicesParameters": "Services parameters",
     "times": "Times",
     "viewResults": "View results"
+  },
+  "servicePatternsMenu": {
+    "copy": "Copy",
+    "delete": "Delete",
+    "edit": "Edit",
+    "runDays": "Runs on {0} and ",
+    "title": "SERVICE PATTERNS"
   },
   "validations": {
     "date": "Invalid date",

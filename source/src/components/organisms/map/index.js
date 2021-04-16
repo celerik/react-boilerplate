@@ -18,14 +18,18 @@ const CustomMap = ({
     id
 }) => {
     const mapContainer = useRef();
+    const mapRef = useRef();
 
     useEffect(() => {
         const map = new Map({
             accessToken: config.settings.mapBox.token,
-            center: [-75.5674723, 6.2092601],
+            center: [
+                -0.04212516311508214,
+                51.52249290538935
+            ],
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/light-v10',
-            zoom: 19
+            zoom: 15
         });
 
         map.on('load', () => {
@@ -45,13 +49,18 @@ const CustomMap = ({
             map.setPaintProperty('land', 'background-color', theme.palette.background.default);
         });
 
+        mapRef.current = map;
+
         return () => map.remove();
     }, []);
 
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
-            <ZoomButtons />
+            <ZoomButtons
+                onZoomIn={() => mapRef.current.zoomIn()}
+                onZoomOut={() => mapRef.current.zoomOut()}
+            />
         </div>
     );
 };
