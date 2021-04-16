@@ -39,6 +39,7 @@ export const theme = createMuiTheme({
         primary: {
             contrastText: colors.background.background4,
             error: colors.salmon,
+            info: colors.sky,
             light: colors.lile,
             main: colors.purple,
             success: colors.mint,
@@ -48,7 +49,8 @@ export const theme = createMuiTheme({
             primary: colors.text.text1,
             secondary: colors.text.text2,
             hint: colors.text.text3,
-            disabled: colors.text.text4
+            disabled: colors.text.text4,
+            contrastText: colors.text.text5
         }
     },
     typography: {
