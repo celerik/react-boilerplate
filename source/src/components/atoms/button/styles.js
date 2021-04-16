@@ -1,3 +1,6 @@
 export default () => ({
-    mainContainer: {}
+    mainContainer: {
+        paddingRight: 20,
+        paddingLeft: 20
+    }
 });

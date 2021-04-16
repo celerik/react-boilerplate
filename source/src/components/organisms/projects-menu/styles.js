@@ -4,7 +4,7 @@ export default () => ({
         color: 'white',
         height: 47,
         marginTop: 30,
-        width: 124
+        width: 140
     },
     searchBar: {
         margin: '0px 0px 30px 0px !Important',
