@@ -1,4 +1,11 @@
 export default (theme) => Object.assign({}, {
+    buttonAdd: {
+        backgroundColor: '#8675FF',
+        color: 'white',
+        height: 47,
+        marginTop: 60,
+        width: 140
+    },
     projectName: {
         letterSpacing: 1.6,
         textTransform: 'uppercase'

@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 
 // @scripts
+import CommonControls from './components/organisms/common-controls';
 import Routes from './config/routes/routes';
 import { store } from './core';
 import { theme } from './styles/material-ui';
@@ -16,6 +17,7 @@ const App = () => (
       <BrowserRouter>
         <CssBaseline />
         <Routes />
+        <CommonControls />
       </BrowserRouter>
     </ThemeProvider>
   </Provider>
