@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import DefaultActionBar from '../../molecules/default-action-bar';
 import { dimensions } from '../../../styles/global';
-import Logo from '../../molecules/logo/logo';
+import Logo from '../../molecules/logo/index';
 
 // @styles
 import styles from './styles';

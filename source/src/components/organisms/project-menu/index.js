@@ -2,10 +2,12 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
@@ -56,8 +58,14 @@ const ProjectMenu = ({
                     <Typography className={classes.optionText} variant="body1">
                         {config.text.projectMenu[menuOption.name]}
                     </Typography>
+
                 </div>
             ))}
+                <Actionbutton
+                    className={classes.buttonAdd}
+                    onClick={Function.prototype}
+                    label={config.text.projectMenu.newProject}
+                />
         </div>
     );
 };
