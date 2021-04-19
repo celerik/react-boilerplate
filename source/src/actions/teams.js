@@ -12,7 +12,7 @@ export const getTeams = () =>
 
         dispatch({
             type: GET_TEAMS,
-            payload: teams.data
+            payload: teams
         });
     };
 
