@@ -1,4 +1,5 @@
 // @scripts
+import { addAjaxInterceptors } from './ajax-interceptors';
 import { config } from '../config';
 import { constants } from './constants';
 import { initializeGlobalUI } from './global-ui';
@@ -20,6 +21,7 @@ const initializeApp = () => {
     const store = initializeReduxStore(environment);
     const globalUI = initializeGlobalUI(store);
     const serviceMocker = initializeServiceMocker(store);
+    addAjaxInterceptors();
     global.core = {
         globalUI,
         serviceMocker,

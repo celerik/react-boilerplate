@@ -17,6 +17,8 @@
             "name": "",
             "password": "",
             "userName": ""
-        }
+        },
+        "selectedTeam": null,
+        "teams": []
     }
 }
