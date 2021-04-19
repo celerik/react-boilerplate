@@ -11,17 +11,18 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-// @scripts
-import { config } from '../../../config';
-
 // @styles
 import styles from './styles';
 
 const AlertDialog = ({
+    buttonTimeboards,
+    buttonSchedule,
     classes,
+    content,
     id,
     onClose,
-    visible
+    visible,
+    title
 }) => (
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
@@ -36,28 +37,32 @@ const AlertDialog = ({
             </IconButton>
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
-            {config.text.dialogLayout.cloneProject}
+            {title}
         </DialogTitle>
         <DialogContent className={classes.container}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
-                {config.text.dialogLayout.petition}
+                {content}
             </DialogContentText>
         </DialogContent>
         <DialogActions className={classes.container}>
             <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneSnapshot}
+                {buttonTimeboards}
             </Button>
             <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneServicePattern}
+                {buttonSchedule}
             </Button>
         </DialogActions>
     </Dialog>
 );
 
 AlertDialog.propTypes = {
+    buttonSchedule: PropTypes.object.isRequired,
+    buttonTimeboards: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
+    title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 };
 

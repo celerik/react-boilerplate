@@ -2,7 +2,7 @@ export default (theme) => Object.assign({}, {
     buttonAdd: {
         backgroundColor: '#8675FF',
         color: 'white',
-        height: 47,
+        height: 'auto',
         marginTop: 60,
         width: 140
     },
