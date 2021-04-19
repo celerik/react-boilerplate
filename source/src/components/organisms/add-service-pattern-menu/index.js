@@ -12,6 +12,7 @@ import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
 import { config } from '../../../config';
 import { getServicePatters } from '../../../actions/service-patterns';
+import { setSelectedRouter } from '../../../actions/teams';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
@@ -23,14 +24,21 @@ const CreateServicePattern = ({
     match
 }) => {
     const { params: { projectId } } = match;
-    const [route, setRoute] = useState('');
     const [servicePeriod, setServicePeriod] = useState('');
-    const { projects, servicePatterns } = useSelector(state => ({
+    const {
+        projects,
+        servicePatterns,
+        routes,
+        selectedRoute
+    } = useSelector(state => ({
         projects: state.projects,
-        servicePatterns: state.servicePatterns
+        servicePatterns: state.servicePatterns,
+        routes: state.team.routes,
+        selectedRoute: state.team.selectedRoute
     }));
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
+    const onSetSelectedRoute = bindActionCreators(setSelectedRouter, dispatch);
     const project = projects.find(project => project.projectId === projectId);
 
     useEffect(() => {
@@ -42,7 +50,7 @@ const CreateServicePattern = ({
     }
 
     const handleRoute = ({ value }) => {
-        setRoute(value);
+        onSetSelectedRoute(value);
     };
 
     const handleServicePeriod = ({ value }) => {
@@ -56,12 +64,16 @@ const CreateServicePattern = ({
                 {config.text.createServicePattern.addAServicePattern}
             </Typography>
             <ListSelector
-                items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
+                itemDesProp="routeName"
+                itemValProp="routeId"
+                items={routes}
                 onChange={handleRoute}
                 placeholder={config.text.createServicePattern.selectRoute}
-                value={route}
+                value={selectedRoute}
             />
             <ListSelector
+                itemDesProp="text"
+                itemValProp="value"
                 items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
                 onChange={handleServicePeriod}
                 placeholder={config.text.createServicePattern.selectServicePeriod}

@@ -9,15 +9,17 @@ import { connect } from 'react-redux';
 import Map from '../../components/organisms/map';
 import TemplateDashboard from '../../components/templates/dashboard';
 import { getProjects } from '../../actions/projects';
-import { getTeams } from '../../actions/teams';
+import { getTeams, getRoutes } from '../../actions/teams';
 
 const DashboardPage = ({
-    onGetTeams,
     onGetProjects,
+    onGetRoutes,
+    onGetTeams,
     selectedTeam
 }) => {
     useEffect(() => {
         onGetTeams();
+        onGetRoutes();
     }, []);
 
     useEffect(() => {
@@ -34,6 +36,7 @@ const DashboardPage = ({
 
 DashboardPage.propTypes = {
     onGetProjects: PropTypes.func.isRequired,
+    onGetRoutes: PropTypes.func.isRequired,
     onGetTeams: PropTypes.func.isRequired,
     selectedTeam: PropTypes.string.isRequired
 };
@@ -44,8 +47,9 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-    onGetTeams: getTeams,
-    onGetProjects: getProjects
+    onGetProjects: getProjects,
+    onGetRoutes: getRoutes,
+    onGetTeams: getTeams
 }, dispatch);
 
 export default connect(

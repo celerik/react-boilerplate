@@ -15,6 +15,8 @@ const ListSelector = ({
     className,
     classes,
     id,
+    itemDesProp,
+    itemValProp,
     items,
     onChange,
     placeholder,
@@ -25,7 +27,7 @@ const ListSelector = ({
     const handleSelectOnChange = (evt) => {
         const { value } = evt.target;
         if (value) {
-            const item = items.find(item => item.value === value);
+            const item = items.find(item => item[itemValProp] === value);
             onChange({ item, value });
         }
     };
@@ -41,10 +43,10 @@ const ListSelector = ({
             >
                 {items.map((item, index) => (
                     <MenuItem
-                        value={item.value}
+                        value={item[itemValProp]}
                         key={`${id}-select-option-${index}`}
                     >
-                        {item.text}
+                        {item[itemDesProp]}
                     </MenuItem>
                 ))}
             </Select>
@@ -56,10 +58,12 @@ ListSelector.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    itemDesProp: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.any.isRequired,
         text: PropTypes.string.isRequired
     })),
+    itemValProp: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string

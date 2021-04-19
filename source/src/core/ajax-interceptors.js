@@ -46,16 +46,11 @@
 */
 
 // @packages
-import _ from 'lodash';
 import axios from 'axios';
 
 // @scripts
-import { config } from '../config';
 import { store } from '.';
-import { copyObjInCamelCase, copyObjInPascalCase, printError } from '../util';
-
-// @constants
-const SORT_KEY = 'sortKey';
+import { printError } from '../util';
 
 /**
  * @param {Object} error - Error object received from Axios.

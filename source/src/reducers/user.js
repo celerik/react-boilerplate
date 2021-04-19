@@ -3,7 +3,10 @@ import { combineReducers } from 'redux';
 
 // @scripts
 import { LOGIN } from '../actions';
-import { GET_TEAMS, SET_SELECTED_TEAM } from '../actions/teams';
+import {
+    GET_TEAMS,
+    SET_SELECTED_TEAM
+} from '../actions/teams';
 import { config } from '../config';
 
 /**

@@ -7,11 +7,13 @@ import { alertNotificationReducer } from './alert-notification';
 import { projectsReducer } from './projects';
 import { servicePatternsReducer } from './service-patterns';
 import { userReducer } from './user';
+import { teamReducer } from './teams';
 
 const appReducer = combineReducers({
     alert: alertNotificationReducer,
     projects: projectsReducer,
     servicePatterns: servicePatternsReducer,
+    team: teamReducer,
     user: userReducer
 });
 

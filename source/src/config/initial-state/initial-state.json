@@ -8,6 +8,10 @@
     "language": "en",
     "menu":  {},
     "projects": [],
+    "team": {
+        "routes": [],
+        "selectedRoute": null
+    },
     "servicePatterns": [],
     "user": {
         "account": {
