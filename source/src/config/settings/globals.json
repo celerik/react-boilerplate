@@ -16,5 +16,8 @@
     "isEnabled": true,
     "loginPassword": "123",
     "loginUserName": "user@flowos.com"
+  },
+  "alertNotification": {
+    "autoHideDuration": 5000
   }
 }

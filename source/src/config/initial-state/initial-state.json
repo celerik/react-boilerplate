@@ -1,4 +1,10 @@
 {
+    "alertNotification": {
+        "isVisible": false,
+        "msg": null,
+        "title": null,
+        "type": null
+    },
     "language": "en",
     "menu":  {},
     "projects": [],
