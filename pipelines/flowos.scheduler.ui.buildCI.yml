@@ -1,37 +1,127 @@
 trigger:
   branches:
     include:
-    - refs/heads/main
-    - refs/heads/feature/*
-  paths:
-    exclude:
-    - pipelines/*
+    - main
+    - staging
+    - develop
+    - qa
+    - feature/*
 
 variables:
-- group: Environment Prod
-
-pool:
-  name: 'Celerik Ubuntu 1604'
+- group: Environment Dev
+- ${{ if eq(variables['build.SourceBranchName'], 'main') }}:
+  - group: Environment Prod
+- ${{ if eq(variables['build.SourceBranchName'], 'staging') }}:
+  - group: Environment Stg
+- ${{ if eq(variables['build.SourceBranchName'], 'qa') }}:
+  - group: Environment Qa
+ 
+- name: npm_config_cache
+  value: "$(Pipeline.Workspace)/.npm"
+- name: project_name
+  value: "scheduler-first-ui"
+- name: region
+  value: "europe-west2"
+- name: isFeature
+  value: $[startsWith(variables['Build.SourceBranch'], 'refs/heads/feature')]
 
 resources:
 - repo: self
 
-steps:
-- task: NodeTool@0
-  displayName: 'Install Node.js'
-  inputs:
-    versionSpec: '14.x'
-  
-- task: CmdLine@2
-  displayName: 'Npm install'
-  inputs:
-    script: |
-     cd source
-     npm install
+stages:
+- stage: Lintj
+  displayName: Validate lintj
+  condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isFeature, true))
+  jobs:  
+  - job: Lintj
+    displayName: Validate lintj
+    pool:
+      name: 'Celerik Ubuntu 1604'
+    steps:
 
-- task: CmdLine@2
-  displayName: 'Npm run lintj'
-  inputs:
-    script: |
-     cd source
-     npm run lintj
+    - task: NodeTool@0
+      displayName: 'Install Node.js'
+      inputs:
+        versionSpec: '14.x'
+      
+    - task: CmdLine@2
+      displayName: 'Npm install'
+      inputs:
+        script: |
+         cd source
+         npm install
+
+    - task: CmdLine@2
+      displayName: 'Npm run lintj'
+      inputs:
+        script: |
+         cd source
+         npm run lintj
+
+- stage: CloudRun
+  displayName: Cloud run
+  condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
+  jobs:  
+  - job: CloudRun
+    displayName: Cloud run
+    pool:
+      vmImage: ubuntu-20.04
+
+    steps:
+    - task: Cache@2
+      inputs:
+        key: 'npm | "$(Agent.OS)" | source/package-lock.json'
+        restoreKeys: |
+          npm | "$(Agent.OS)"
+        path: $(npm_config_cache)
+      displayName: Cache npm
+
+    - task: Npm@1
+      displayName: 'Npm run lintj'
+      inputs:
+        command: 'custom'
+        workingDir: './source'
+        customCommand: 'run lintj'
+
+    - task: Npm@1
+      displayName: 'Npm run build'
+      inputs:
+        command: 'custom'
+        workingDir: './source'
+        customCommand: 'run build'
+
+    - task: Docker@2
+      displayName: 'Login to Container Registry'
+      inputs:
+        containerRegistry: 'sc-gcr'
+        command: 'login'
+
+    - task: Docker@2
+      displayName: 'Build and push image'
+      inputs:
+        containerRegistry: 'sc-gcr'
+        repository: '$(project_name)/$(image_repository)'
+        command: 'buildAndPush'
+        Dockerfile: './source/Dockerfile'
+
+    - task: CmdLine@2
+      displayName: 'Deploy in cloud run service'
+      inputs:
+        script: |
+          gcloud auth activate-service-account \
+              --quiet \
+              --key-file <(echo $ServiceAccountKey | base64 -d) && \
+          gcloud run deploy $DeployName\
+              --quiet \
+              --service-account=terraform@$ProjectName.iam.gserviceaccount.com \
+              --allow-unauthenticated \
+              --image=gcr.io/$ProjectName/$ImageName:$BUILD_BUILDID \
+              --platform=managed \
+              --region=$Region \
+              --project=$ProjectName
+      env:
+        DeployName: $(image_repository)
+        ImageName: $(image_repository)
+        ServiceAccountKey: "$(GOOGLE_CREDENTIALS_BASE_64)"
+        ProjectName: $(project_name)
+        Region: $(region)
