@@ -1,17 +1,10 @@
-export default () => ({
-    acctionContainer: {
-        display: 'flex',
-        justifyContent: 'center',
-        paddingBottom: 0,
-        radius: 5,
-        width: 434
-    },
+export default (theme) => Object.assign({}, {
     adjustText: {
-        color: 'gray',
+        color: theme.palette.text.disable,
         display: 'flex',
         fontSize: 15,
         margin: 'auto',
-        paddingTop: 0,
+        marginTop: -13,
         textAlign: '-webkit-center',
         width: '100%'
     },
@@ -25,26 +18,36 @@ export default () => ({
         margin: 10,
         marginBottom: 21,
         padding: '8px 15px 8px 15px',
-        textTransform: 'capitalize',
-        width: '40'
+        textTransform: 'capitalize'
+    },
+    container: {
+        display: 'flex',
+        justifyContent: 'center',
+        paddingBottom: 0,
+        radius: 5
     },
     closeButton: {
-        color: '#293131',
-        marginRight: 5,
-        marginTop: 10,
-        padding: 3,
+        color: '#323232',
+        height: 11,
         position: 'absolute',
-        right: 0
+        right: 11,
+        top: 10,
+        width: 11
+    },
+    paper: {
+        width: 434,
+        height: 198
     },
     titleHeader: {
         alignItems: 'center',
         color: 'black',
         display: 'flex',
         justifyContent: 'center',
-        paddingTop: 25,
+        marginBottom: 15,
+        marginTop: 25,
+        padding: 0,
         '& .MuiTypography-h6': {
             fontSize: 'x-large',
-            fontWeight: 'bolder',
             fontWeight: 600
         }
     }

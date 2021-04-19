@@ -25,24 +25,25 @@ const AlertDialog = ({
 }) => (
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
+        classes={{ paper: classes.paper }}
         id={id}
         onClose={onClose}
         open={visible}
     >
         {onClose && (
             <IconButton className={classes.closeButton} onClick={onClose}>
-                <CloseIcon className={classes.closeButton} />
+                <CloseIcon />
             </IconButton>
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
             {config.text.dialogLayout.cloneProject}
         </DialogTitle>
-        <DialogContent className={classes.acctionContainer}>
+        <DialogContent className={classes.container}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
                 {config.text.dialogLayout.petition}
             </DialogContentText>
         </DialogContent>
-        <DialogActions className={classes.acctionContainer}>
+        <DialogActions className={classes.container}>
             <Button onClick={onClose} className={classes.button}>
                 {config.text.dialogLayout.cloneSnapshot}
             </Button>
