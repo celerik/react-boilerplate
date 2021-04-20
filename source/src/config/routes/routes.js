@@ -14,32 +14,28 @@ const componentMapper = {
 };
 
 const Routes = () => {
-    const { permissions } = useSelector(state => state.user.account);
+    const { authToken, permissions } = useSelector(state => state.user.account);
     const checkPermission = (route) => route.permissions?.every(
         permissionRequired => permissions.includes(permissionRequired)
     );
+
+    const isLoggedIn = authToken?.length && permissions?.length;
 
     return (
         <Switch>
             {Object.values(routes).map((route) => (
                 checkPermission(route) && (
-                    <>
-                        <Route
-                            key={route.name}
-                            path={route.url}
-                            component={componentMapper[route.component]}
-                        />
-                        {route.redirectedBy?.map((redirectUrl) => (
-                            <Redirect
-                                exact
-                                key={`redirect-${redirectUrl}-${route.name}`}
-                                path={redirectUrl}
-                                to={route.url}
-                            />
-                        ))}
-                    </>
+                    <Route
+                        key={route.name}
+                        path={route.url}
+                        component={componentMapper[route.component]}
+                    />
                 )
             ))}
+            <Redirect
+                from="/"
+                to={isLoggedIn ? routes.home.url : routes.login.url}
+            />
         </Switch>
     );
 };
