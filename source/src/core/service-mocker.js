@@ -26,11 +26,10 @@ const mockedServices = {
     mockServiceGetServicePattern: (mockAdapter) => {
         const url = config.services.servicePatterns.getOne;
         const pathRegexp = new RegExp(format(url, '.*', '.*'));
-        mockAdapter.onGet(pathRegexp).reply((call) => {
-            const servicePatternId = /([a-z]|[A-Z]|[0-9])*$/.exec(call.url)[0];
-            const servicePatterDetails = config.mockData.servicePatternsDetailed.find(
-                servicePattern => servicePattern.servicePatternId === servicePatternId
-            );
+        mockAdapter.onGet(pathRegexp).reply(() => {
+            const servicePatterDetails = config.mockData.servicePatternsDetailed[
+                Math.floor(Math.random() * config.mockData.servicePatternsDetailed.length)
+            ];
 
             return createMockResponse({
                 data: servicePatterDetails,
