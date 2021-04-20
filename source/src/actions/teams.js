@@ -6,7 +6,7 @@ import { format } from '../util/string';
 // @actions
 export const GET_ROUTES = 'GET_ROUTES';
 export const GET_TEAMS = 'GET_TEAMS';
-export const SET_SELECTED_ROUTER = 'SET_SELECTED_ROUTER';
+export const SET_SELECTED_ROUTE = 'SET_SELECTED_ROUTE';
 export const SET_SELECTED_TEAM = 'SET_SELECTED_TEAM';
 
 export const getRoutes = () =>
@@ -32,8 +32,8 @@ export const getTeams = () =>
 /**
  * @param {String|Number} selectedRouterId
  */
-export const setSelectedRouter = (selectedRouterId) => ({
-    type: SET_SELECTED_ROUTER,
+export const setSelectedRoute = (selectedRouterId) => ({
+    type: SET_SELECTED_ROUTE,
     payload: selectedRouterId
 });
 

@@ -58,12 +58,12 @@ ListSelector.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    itemDesProp: PropTypes.string.isRequired,
+    itemDesProp: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         value: PropTypes.any.isRequired,
         text: PropTypes.string.isRequired
     })),
-    itemValProp: PropTypes.string.isRequired,
+    itemValProp: PropTypes.string,
     onChange: PropTypes.func.isRequired,
     placeholder: PropTypes.string,
     value: PropTypes.string
@@ -71,6 +71,8 @@ ListSelector.propTypes = {
 
 ListSelector.defaultProps = {
     className: '',
+    itemDesProp: 'description',
+    itemValProp: 'id',
     items: Array.prototype,
     placeholder: '',
     value: ''

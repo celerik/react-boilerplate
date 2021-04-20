@@ -4,7 +4,7 @@ import { combineReducers } from 'redux';
 // @scripts
 import {
     GET_ROUTES,
-    SET_SELECTED_ROUTER
+    SET_SELECTED_ROUTE
 } from '../actions/teams';
 import { config } from '../config';
 
@@ -12,14 +12,14 @@ const selectedRouteReducer = (
     state = config.initialState.team.selectedRoute, action
 ) => {
     switch (action.type) {
-        case SET_SELECTED_ROUTER:
+        case SET_SELECTED_ROUTE:
             return action.payload;
         default:
             return state;
     }
 };
 
-const routesReducer = (
+const listRoutesReducer = (
     state = config.initialState.team.routes, action
 ) => {
     switch (action.type) {
@@ -30,7 +30,7 @@ const routesReducer = (
     }
 };
 
-export const teamReducer = combineReducers({
-    routes: routesReducer,
+export const routesReducer = combineReducers({
+    routes: listRoutesReducer,
     selectedRoute: selectedRouteReducer
 });

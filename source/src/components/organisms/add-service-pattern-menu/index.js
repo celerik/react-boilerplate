@@ -12,7 +12,7 @@ import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
 import { config } from '../../../config';
 import { getServicePatters } from '../../../actions/service-patterns';
-import { setSelectedRouter } from '../../../actions/teams';
+import { setSelectedRoute } from '../../../actions/teams';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
@@ -38,7 +38,7 @@ const CreateServicePattern = ({
     }));
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
-    const onSetSelectedRoute = bindActionCreators(setSelectedRouter, dispatch);
+    const onSetSelectedRoute = bindActionCreators(setSelectedRoute, dispatch);
     const project = projects.find(project => project.projectId === projectId);
 
     useEffect(() => {
