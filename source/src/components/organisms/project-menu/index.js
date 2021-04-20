@@ -76,8 +76,7 @@ const ProjectMenu = ({
                 onClick={handleClickOpen}
             />
             <AlertDialog
-                actions={[{ name: config.text.projectMenu.createSchedule, disable: false },
-                    { name: config.text.projectMenu.createTimeboards, disable: false }]}
+                actions={[{ name: config.text.projectMenu.createTimeboards, disable: false }, { name: config.text.projectMenu.createSchedule, disable: false }]}
                 content={config.text.projectMenu.contents}
                 onClose={handleClose}
                 title={config.text.projectMenu.title}

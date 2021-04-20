@@ -92,8 +92,7 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                actions={[{ name: config.text.projectMenu.cloneSnapshot, disable: false },
-                    { name: config.text.projectMenu.cloneServicePattern, disable: false }]}
+                actions={[{ name: config.text.projectMenu.cloneSnapshot, disable: false }, { name: config.text.projectMenu.cloneServicePattern, disable: false }]}
                 content={config.text.projectMenu.content}
                 onClose={handleClose}
                 title={config.text.projectMenu.cloneProject}
