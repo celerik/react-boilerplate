@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 
 // @scripts
-import { LOGIN } from '../actions';
+import { LOGIN, LOGOUT } from '../actions';
 import { GET_TEAMS, SET_SELECTED_TEAM } from '../actions/teams';
 import { config } from '../config';
 
@@ -21,6 +21,8 @@ const accountReducer = (
     switch (action.type) {
         case LOGIN:
             return action.payload;
+        case LOGOUT:
+            return config.initialState.user.account;
         default:
             return state;
     }

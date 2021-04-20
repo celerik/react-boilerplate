@@ -2,6 +2,10 @@
   "environment": {
     "name": "local"
   },
+  "google": {
+    "clientId": "763525612202-6vemcfa6nnu0385fe3814hsbeau4d9bv.apps.googleusercontent.com",
+    "secret": "sUTlKgJTot6hLNTcCg-41cuo"
+  },
   "mapBox": {
     "token": "pk.eyJ1Ijoic2NiOTkwOCIsImEiOiJja212aXk5eG4wNWpnMnZxcDY5OW0zcWRwIn0.mXiBqOeM_V6O4tBo_vu2Bg"
   },

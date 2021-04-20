@@ -12,6 +12,7 @@ const colors = {
     lile: '#8675FF',
     mint: '#7FE3A7',
     night: '#3B3664',
+    pearl: '#FEFEFE',
     purple: '#7469D9',
     salmon: '#FF6481',
     sky: '#4DBEFF',
@@ -35,6 +36,9 @@ export const theme = createMuiTheme({
             default: colors.background.background5,
             primary: colors.background.background1,
             secondary: colors.background.background3
+        },
+        common: {
+            pearl: colors.pearl
         },
         primary: {
             contrastText: colors.background.background4,
