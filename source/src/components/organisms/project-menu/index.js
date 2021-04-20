@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
-import AlertDialog from '../clone-project-dialog';
+import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
@@ -22,7 +22,7 @@ const ProjectMenu = ({
     match,
     id
 }) => {
-    const [cloneModalVisible, setCloneModalVisibility] = useState(false);
+    const [runModalVisible, setRunModalVisibility] = useState(false);
     const { params: { projectId } } = match;
 
     const projects = useSelector(state => state.projects);
@@ -33,11 +33,11 @@ const ProjectMenu = ({
     }
 
     const handleClickOpen = () => {
-        setCloneModalVisibility(true);
+        setRunModalVisibility(true);
     };
 
     const handleClose = () => {
-        setCloneModalVisibility(false);
+        setRunModalVisibility(false);
     };
 
     const onClickMenuItem = optionName => () => {
@@ -72,16 +72,16 @@ const ProjectMenu = ({
             ))}
             <Actionbutton
                 className={classes.buttonAdd}
+                label={config.text.projectMenu.title}
                 onClick={handleClickOpen}
-                label={config.text.runProject.runProject}
             />
             <AlertDialog
-                buttonSchedule={config.text.runProject.createSchedule}
-                buttonTimeboards={config.text.runProject.createTimeboards}
-                content={config.text.runProject.petition}
+                actions={[{ name: config.text.projectMenu.createSchedule, disable: false },
+                    { name: config.text.projectMenu.createTimeboards, disable: false }]}
+                content={config.text.projectMenu.contents}
                 onClose={handleClose}
-                title={config.text.runProject.runProject}
-                visible={cloneModalVisible}
+                title={config.text.projectMenu.title}
+                visible={runModalVisible}
             />
         </div>
     );

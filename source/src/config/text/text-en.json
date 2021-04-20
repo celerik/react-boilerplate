@@ -11,12 +11,6 @@
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"
   },
-  "dialogLayout": {
-    "cloneSnapshot": "Clone a snapshot",
-    "cloneServicePattern": "Clone a Service Pattern",
-    "cloneProject": "Clone project",
-    "petition": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
-  },
   "editServicePattern": {
     "backToServicePatterns": "Back to service patterns",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
@@ -66,6 +60,13 @@
     "backToProject": "Back to {0}",
     "backToProjects": "Back to projects",
     "clone": "Clone",
+    "cloneProject": "Clone project",
+    "cloneServicePattern": "Clone a Service Pattern",
+    "cloneSnapshot": "Clone a snapshot",
+    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
+    "contents": "You can create a timeboards table or a full schedule. Select one:",
+    "createSchedule": "Create schedule",
+    "createTimeboards": "Create timeboards",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
     "newProject": "NEW PROJECT",
@@ -75,13 +76,8 @@
     "servicePatterns": "Service patterns",
     "servicesParameters": "Services parameters",
     "times": "Times",
+    "title": "Run project",
     "viewResults": "View results"
-  },
-  "runProject": {
-    "createTimeboards": "Create timeboards",
-    "createSchedule": "Create schedule",
-    "runProject": "Run project",
-    "petition": "You can create a timeboards table or a full schedule. Select one:"
   },
   "servicePatternsMenu": {
     "copy": "Copy",
