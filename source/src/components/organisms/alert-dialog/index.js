@@ -24,7 +24,6 @@ const AlertDialog = ({
     title,
     visible
 }) => (
-
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
         classes={{ paper: classes.paper }}

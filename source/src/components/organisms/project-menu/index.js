@@ -76,7 +76,18 @@ const ProjectMenu = ({
                 onClick={handleClickOpen}
             />
             <AlertDialog
-                actions={[{ name: config.text.projectMenu.createTimeboards, disable: false }, { name: config.text.projectMenu.createSchedule, disable: false }]}
+                actions={
+                    [
+                        {
+                            name: config.text.projectMenu.createTimeboards,
+                            disable: false
+                        },
+                        {
+                            name: config.text.projectMenu.createSchedule,
+                            disable: false
+                        }
+                    ]
+                }
                 content={config.text.projectMenu.contents}
                 onClose={handleClose}
                 title={config.text.projectMenu.title}
@@ -89,8 +100,8 @@ const ProjectMenu = ({
 ProjectMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired
 };
 
 ProjectMenu.defaultProps = {};

@@ -4,7 +4,10 @@ export default (theme) => Object.assign({}, {
         color: 'white',
         height: 'auto',
         marginTop: 60,
-        width: 140
+        width: 140,
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     projectName: {
         letterSpacing: 1.6,

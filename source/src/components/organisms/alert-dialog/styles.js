@@ -11,7 +11,7 @@ export default (theme) => Object.assign({}, {
     bottom: {
         border: '1px solid mediumpurple',
         color: '#161c3a',
-        height: '40px',
+        height: 40,
         marginBottom: 21,
         marginLeft: 9,
         marginRight: 9,
@@ -27,7 +27,7 @@ export default (theme) => Object.assign({}, {
     },
     content: {
         display: 'flex',
-        height: '40px',
+        height: 40,
         marginLeft: '34px',
         marginRight: '34px',
         padding: 0,
@@ -49,7 +49,7 @@ export default (theme) => Object.assign({}, {
         alignItems: 'center',
         color: 'black',
         display: 'flex',
-        height: '36px',
+        height: 36,
         justifyContent: 'center',
         marginBottom: 15,
         marginTop: 25,
