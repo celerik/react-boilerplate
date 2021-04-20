@@ -61,6 +61,13 @@
     "backToProject": "Back to {0}",
     "backToProjects": "Back to projects",
     "clone": "Clone",
+    "cloneProject": "Clone project",
+    "cloneServicePattern": "Clone a Service Pattern",
+    "cloneSnapshot": "Clone a snapshot",
+    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
+    "contents": "You can create a timebands table or a full schedule. Select one:",
+    "createSchedule": "Create schedule",
+    "createTimeboards": "Create timebands",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
     "newProject": "NEW PROJECT",
@@ -70,6 +77,7 @@
     "servicePatterns": "Service patterns",
     "servicesParameters": "Services parameters",
     "times": "Times",
+    "title": "Run project",
     "viewResults": "View results"
   },
   "servicePatternsMenu": {
@@ -103,11 +111,5 @@
     "search": "Invalid search",
     "verification": "Verification doesn't match",
     "zip": "Invalid zip code"
-  },
-  "dialogLayout": {
-    "cloneSnapshot": "Clone a snapshot",
-    "cloneServicePattern": "Clone a Service Pattern",
-    "cloneProject": "Clone project",
-    "petition": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
   }
 }
