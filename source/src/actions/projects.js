@@ -1,6 +1,7 @@
 // @packages
 import axios from 'axios';
 import { config } from '../config';
+import { format } from '../util/string';
 
 // @actions
 export const GET_PROJECTS = 'GET_PROJECTS';
@@ -24,9 +25,10 @@ export const getProjects = () =>
         });
     };
 
-export const cloneProject = ({ projectId }) =>
-    (dispatch) => {
-        axios.post(format(config.services.projects.clone, projectId))
-            .then(() => getProjects()(dispatch))
-            .catch(Promise.reject);
+export const cloneProject = ({ projectId, projectName }) =>
+    async (dispatch, getState) => {
+        await axios.post(format(config.services.projects.clone, projectId), {
+            projectName: `${projectName} (Copy)`
+        });
+        await getProjects()(dispatch, getState);
     };
