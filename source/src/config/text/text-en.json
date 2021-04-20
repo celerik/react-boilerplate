@@ -4,10 +4,14 @@
     "helloWorld": "Hello World!"
   },
   "createServicePattern": {
-    "addServicePattern": "Add Service Pattern",
     "addAServicePattern":  "Add a service pattern",
+    "addServicePattern": "Add Service Pattern",
     "backToServicePatterns": "Back to service patterns",
+    "cancel": "cancel",
     "importServicePatterns": "Import Service Pattern",
+    "lock": "lock",
+    "lockServicePattern": "Lock service pattern",
+    "content": "Are you sure you want to lock the service Patterns of this project?",
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"
   },
@@ -95,6 +99,6 @@
     "cloneSnapshot": "Clone a snapshot",
     "cloneServicePattern": "Clone a Service Pattern",
     "cloneProject": "Clone project",
-    "petition": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
+    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
   }
 }

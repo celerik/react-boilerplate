@@ -1,4 +1,4 @@
-export default (theme) => Object.assign({}, {
+export default theme => Object.assign({}, {
     adjustText: {
         color: theme.palette.text.disable,
         display: 'flex',
@@ -14,7 +14,15 @@ export default (theme) => Object.assign({}, {
     },
     button: {
         border: '1px solid mediumpurple',
-        color: '#161c3a',
+        color: theme.palette.text.darkBlue,
+        margin: 10,
+        marginBottom: 21,
+        padding: '8px 15px 8px 15px',
+        textTransform: 'capitalize'
+    },
+    buttonLock: {
+        backgroundColor: '#8675FF',
+        color: 'white',
         margin: 10,
         marginBottom: 21,
         padding: '8px 15px 8px 15px',

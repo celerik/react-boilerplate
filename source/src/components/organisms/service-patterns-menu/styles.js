@@ -3,7 +3,19 @@ export default theme => Object.assign({}, {
         backgroundColor: theme.palette.primary.light,
         color: 'white',
         height: 47,
-        marginTop: 30
+        marginTop: 30,
+        width: 208,
+        textTransform: 'capitalize'
+    },
+    buttonBlock: {
+        backgroundColor: 'white',
+        border: '1px solid',
+        color: theme.palette.primary.lila,
+        display: 'flex',
+        height: 47,
+        marginTop: 14,
+        textTransform: 'capitalize',
+        width: 210
     },
     mainContainer: {
         height: '100%',

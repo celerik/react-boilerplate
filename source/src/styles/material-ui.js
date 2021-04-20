@@ -9,6 +9,7 @@ const colors = {
         background5: '#F6F6F6',
         background6: '#FFFBF5'
     },
+    darkBlue: '#161c3a',
     lile: '#8675FF',
     mint: '#7FE3A7',
     night: '#3B3664',

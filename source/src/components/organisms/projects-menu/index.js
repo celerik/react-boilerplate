@@ -92,7 +92,11 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
+                actions={[{ name: config.text.dialogLayout.cloneSnapshot, disable: false },
+                    { name: config.text.dialogLayout.cloneServicePattern, disable: false }]}
+                content={config.text.dialogLayout.content}
                 onClose={handleClose}
+                title={config.text.dialogLayout.cloneProject}
                 visible={cloneModalVisible}
             />
         </>
@@ -100,7 +104,8 @@ const ProjectBar = ({
 };
 
 ProjectBar.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    title: PropTypes.object.isRequired
 };
 
 ProjectBar.defaultProps = {};

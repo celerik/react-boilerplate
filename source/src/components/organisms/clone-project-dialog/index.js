@@ -1,6 +1,7 @@
 // @packages
 import Button from '@material-ui/core/Button';
 import CloseIcon from '@material-ui/icons/Close';
+import classNames from 'classnames';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -11,18 +12,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-// @scripts
-import { config } from '../../../config';
-
 // @styles
 import styles from './styles';
 
 const AlertDialog = ({
+    actions,
     classes,
+    className,
+    content,
     id,
     onClose,
+    title,
     visible
-}) => (
+}) => {
+    classNames(classes.buttonLock, className);
+
+    return (
+
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
         classes={{ paper: classes.paper }}
@@ -36,29 +42,41 @@ const AlertDialog = ({
             </IconButton>
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
-            {config.text.dialogLayout.cloneProject}
+            {title}
         </DialogTitle>
         <DialogContent className={classes.container}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
-                {config.text.dialogLayout.petition}
+                {content}
             </DialogContentText>
         </DialogContent>
         <DialogActions className={classes.container}>
-            <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneSnapshot}
-            </Button>
-            <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneServicePattern}
-            </Button>
+            {actions?.map(action => (
+                <Button
+                    key={id}
+                    onClick={onClose}
+                    className={classNames(
+                        classes.button,
+                        action.disable ? classes.buttonLock : null
+                    )}
+                >
+                    {action.name}
+                </Button>
+            ))}
         </DialogActions>
     </Dialog>
-);
+    );
+};
 
 AlertDialog.propTypes = {
+    actions: PropTypes.object.isRequired,
+    className: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    content: PropTypes.object.isRequired,
+    title: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
     visible: PropTypes.func.isRequired
+
 };
 
 AlertDialog.defaultProps = {};

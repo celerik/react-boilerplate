@@ -1,12 +1,13 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch, useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
+import AlertDialog from '../clone-project-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
@@ -23,6 +24,7 @@ const ServicePatterns = ({
     id,
     match
 }) => {
+    const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
     const { params: { projectId } } = match;
     const { projects, servicePatterns } = useSelector(state => ({
         projects: state.projects,
@@ -31,6 +33,14 @@ const ServicePatterns = ({
     const project = projects.find(project => project.projectId === projectId);
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
+
+    const handleClickOpen = () => {
+        setServicePatternCloneModalVisibility(true);
+    };
+
+    const handleClose = () => {
+        setServicePatternCloneModalVisibility(false);
+    };
 
     useEffect(() => {
         onGetServicePatterns({ projectId });
@@ -82,6 +92,21 @@ const ServicePatterns = ({
                 onClick={toNewServicePattern}
                 startIcon="add"
             />
+            <Actionbutton
+                className={classes.buttonBlock}
+                label={config.text.createServicePattern.lockServicePattern}
+                onClick={handleClickOpen}
+                startIcon="lock_outlined"
+            />
+            <AlertDialog
+                actions={[{ name: config.text.createServicePattern.cancel, disable: false },
+                    { name: config.text.createServicePattern.lock, disable: true }]}
+                content={config.text.createServicePattern.content}
+                onClose={handleClose}
+                title={config.text.createServicePattern.lockServicePattern}
+                visible={servicePatternModalVisible}
+                className={classes.buttonLock}
+            />
         </div>
     );
 };
@@ -90,7 +115,8 @@ ServicePatterns.propTypes = {
     classes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    match: PropTypes.object.isRequired
+    match: PropTypes.object.isRequired,
+    title: PropTypes.object.isRequired
 };
 
 ServicePatterns.defaultProps = {};
