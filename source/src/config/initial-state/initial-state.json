@@ -15,8 +15,7 @@
             "email": "",
             "id": "",
             "name": "",
-            "password": "",
-            "userName": ""
+            "permissions": []
         },
         "selectedTeam": null,
         "teams": []

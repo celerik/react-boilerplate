@@ -19,7 +19,8 @@
   },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
-    "loginTitle": "Login page"
+    "loginTitle": "Login page",
+    "loginWithGoogle": "Login with Google"
   },
   "notFoundPage": {
     "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
@@ -72,7 +73,19 @@
     "viewResults": "View results"
   },
   "servicePatternsMenu": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
     "copy": "Copy",
+    "daysOfWeek": "Days of the week",
+    "days": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    },
     "delete": "Delete",
     "edit": "Edit",
     "runDays": "Runs on {0} and ",

@@ -2,11 +2,14 @@
     "home": {
         "component": "DashBoard",
         "name": "Dashboard",
-        "url": "/dashboard"
+        "url": "/dashboard",
+        "permissions": ["Dashboard"]
     },
     "login": {
         "component": "Login",
         "name": "Login",
-        "url": "/login"
+        "url": "/login",
+        "permissions": [],
+        "redirectedBy": ["/"]
     }
 }

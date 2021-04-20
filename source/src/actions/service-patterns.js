@@ -21,7 +21,7 @@ export const getServicePatters = ({ projectId }) =>
             ))
                 .then(response => resolve({
                     ...servicePattern,
-                    ...response.data
+                    ...response
                 }))
                 .catch(reject)
         ));

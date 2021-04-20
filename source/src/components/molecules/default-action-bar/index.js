@@ -99,7 +99,7 @@ const DefaultActionBar = ({
         />,
         isExpanded && (
             <Divider
-                className={classes.divider}
+                className={classes.dividerBottom}
                 key="divider"
                 variant="fullWidth"
             />

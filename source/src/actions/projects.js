@@ -14,6 +14,10 @@ export const getProjects = () =>
             }
         });
 
+        if (!selectedTeam) {
+            return;
+        }
+
         dispatch({
             type: GET_PROJECTS,
             payload: projects

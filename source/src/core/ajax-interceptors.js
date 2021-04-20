@@ -79,7 +79,7 @@ const addRequestInterceptors = () => {
 const addResponseInterceptors = () => {
     axios.interceptors.response.use(
         (response) => {
-            if (!response.config) {
+            if (!response?.config) {
                 return response;
             }
 

@@ -1,7 +1,6 @@
 export default () => ({
-    logo: {
-        position: 'absolute',
-        right: 17,
-        top: 10
+    rounded: {
+        backgroundColor: 'white',
+        borderRadius: 100
     }
 });

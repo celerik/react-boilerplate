@@ -1,5 +1,6 @@
 // @packages
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { Redirect, Route, Switch } from 'react-router-dom';
 
 // @scripts
@@ -12,17 +13,31 @@ const componentMapper = {
     Login
 };
 
-const Routes = () => (
-    <Switch>
-        {Object.values(routes).map((route) => (
-            <Route
-                key={route.name}
-                path={route.url}
-                component={componentMapper[route.component]}
+const Routes = () => {
+    const { authToken, permissions } = useSelector(state => state.user.account);
+    const checkPermission = (route) => route.permissions?.every(
+        permissionRequired => permissions.includes(permissionRequired)
+    );
+
+    const isLoggedIn = authToken?.length && permissions?.length;
+
+    return (
+        <Switch>
+            {Object.values(routes).map((route) => (
+                checkPermission(route) && (
+                    <Route
+                        key={route.name}
+                        path={route.url}
+                        component={componentMapper[route.component]}
+                    />
+                )
+            ))}
+            <Redirect
+                from="/"
+                to={isLoggedIn ? routes.home.url : routes.login.url}
             />
-        ))}
-        <Redirect exact path="/" to="/dashboard" />
-    </Switch>
-);
+        </Switch>
+    );
+};
 
 export default Routes;
