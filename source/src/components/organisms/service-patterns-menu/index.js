@@ -40,6 +40,9 @@ const ServicePatterns = ({
         return null;
     }
 
+    const onClickEditServicePattern = (servicePatternId) => {
+    };
+
     const actions = [{
         icon: 'content_copy',
         name: config.text.servicePatternsMenu.copy,

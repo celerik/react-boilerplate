@@ -77,6 +77,7 @@ const CreateServicePattern = ({
                 {servicePatterns.map((servicePattern, index) => (
                     <ServicePatternCard
                         key={`${id}-card-${index}`}
+                        isCheckeable
                         operationDays={servicePattern.settings.daysOfOperation}
                         operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
                         routeName={servicePattern.routeName}

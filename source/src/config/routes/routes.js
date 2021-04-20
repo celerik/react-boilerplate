@@ -16,7 +16,7 @@ const componentMapper = {
 const Routes = () => {
     const { authToken, permissions } = useSelector(state => state.user.account);
     const checkPermission = (route) => route.permissions?.every(
-        permissionRequired => permissions.includes(permissionRequired)
+        permissionRequired => permissions?.includes(permissionRequired)
     );
 
     const isLoggedIn = authToken?.length && permissions?.length;

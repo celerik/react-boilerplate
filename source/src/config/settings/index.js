@@ -4,6 +4,7 @@ import merge from 'deepmerge';
 // @json
 import envLocal from './env-local.json';
 import envUnitTest from './env-unit-test.json';
+import envProduction from './env-production.json';
 import globals from './globals.json';
 
 // @scripts
@@ -16,6 +17,8 @@ const getSettings = () => {
     switch (process.env.REACT_APP_ENV) {
         case constants.environment.UNIT_TEST:
             return merge(globals, envUnitTest);
+        case constants.environment.PRODUCTION:
+            return merge(globals, envProduction);
         case constants.environment.LOCAL:
         default:
             return merge(globals, envLocal);

@@ -137,7 +137,7 @@ ServicePatternCard.defaultProps = {
     actions: Array.prototype,
     backgroundColor: '#FEF1E2',
     className: null,
-    isCheckeable: true,
+    isCheckeable: false,
     operationDays: [],
     routeColor: '#FDB561',
     statusService: null
