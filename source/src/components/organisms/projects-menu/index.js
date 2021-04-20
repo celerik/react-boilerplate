@@ -23,6 +23,7 @@ const ProjectBar = ({
     classes
 }) => {
     const [cloneModalVisible, setCloneModalVisibility] = useState(false);
+    const [projectId, setProjectId] = useState('');
     const [searchValue, setSearchValue] = useState('');
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
@@ -32,7 +33,8 @@ const ProjectBar = ({
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
     };
 
-    const handleClickOpen = () => {
+    const handleClickOpen = (projectId) => {
+        setProjectId(projectId);
         setCloneModalVisibility(true);
     };
 
@@ -53,6 +55,10 @@ const ProjectBar = ({
         icon: 'east',
         onClick: onClickEditProject
     }];
+
+    const onClickCloneProjet = () => {
+        
+    }
 
     const sortOrder = sortAsc ? 1 : -1;
 
