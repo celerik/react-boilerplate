@@ -19,7 +19,8 @@
   },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
-    "loginTitle": "Login page"
+    "loginTitle": "Login page",
+    "loginWithGoogle": "Login with Google"
   },
   "notFoundPage": {
     "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
