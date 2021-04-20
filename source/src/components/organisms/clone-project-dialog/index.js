@@ -21,6 +21,7 @@ const AlertDialog = ({
     classes,
     id,
     onClose,
+    onClickRight,
     visible
 }) => (
     <Dialog
@@ -47,7 +48,7 @@ const AlertDialog = ({
             <Button onClick={onClose} className={classes.button}>
                 {config.text.dialogLayout.cloneSnapshot}
             </Button>
-            <Button onClick={onClose} className={classes.button}>
+            <Button onClick={onClickRight} className={classes.button}>
                 {config.text.dialogLayout.cloneServicePattern}
             </Button>
         </DialogActions>
@@ -57,6 +58,7 @@ const AlertDialog = ({
 AlertDialog.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    onClickRight: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     visible: PropTypes.func.isRequired
 };

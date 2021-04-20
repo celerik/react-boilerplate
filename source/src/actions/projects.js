@@ -19,3 +19,10 @@ export const getProjects = () =>
             payload: projects
         });
     };
+
+export const cloneProject = ({ projectId }) =>
+    (dispatch) => {
+        axios.post(format(config.services.projects.clone, projectId))
+            .then(() => getProjects()(dispatch))
+            .catch(Promise.reject);
+    };

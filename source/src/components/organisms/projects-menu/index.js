@@ -5,8 +5,9 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
+import { bindActionCreators } from 'redux';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
@@ -14,6 +15,7 @@ import AlertDialog from '../clone-project-dialog';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
 import { config } from '../../../config';
+import { cloneProject } from '../../../actions/projects';
 import { formatUrlParam } from '../../../util/string';
 
 // @styles
@@ -28,6 +30,8 @@ const ProjectBar = ({
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
     const projects = useSelector(state => state.projects);
+    const dispatch = useDispatch();
+    const onCloneProject = bindActionCreators(cloneProject, dispatch);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
@@ -36,10 +40,6 @@ const ProjectBar = ({
     const handleClickOpen = (projectId) => {
         setProjectId(projectId);
         setCloneModalVisibility(true);
-    };
-
-    const handleClose = () => {
-        setCloneModalVisibility(false);
     };
 
     const handleSortOpen = () => {
@@ -57,8 +57,9 @@ const ProjectBar = ({
     }];
 
     const onClickCloneProjet = () => {
-        
-    }
+        onCloneProject({ projectId });
+        setCloneModalVisibility(false);
+    };
 
     const sortOrder = sortAsc ? 1 : -1;
 
@@ -98,8 +99,9 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                onClose={handleClose}
+                onClose={() => setCloneModalVisibility(false)}
                 visible={cloneModalVisible}
+                onClickRight={onClickCloneProjet}
             />
         </>
     );
