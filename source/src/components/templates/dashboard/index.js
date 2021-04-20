@@ -35,7 +35,7 @@ const TemplateDashboard = ({
             >
                 {children}
             </div>
-            <Logo />
+            <Logo className={classes.logo} rounded />
         </div>
     );
 };

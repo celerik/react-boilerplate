@@ -3,7 +3,6 @@ import { config } from '../../config';
 import {
     LOGIN,
     LOGOUT,
-    login,
     logout
 } from '../../actions';
 
