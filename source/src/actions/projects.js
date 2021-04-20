@@ -28,7 +28,7 @@ export const getProjects = () =>
 export const cloneProject = ({ projectId, projectName }) =>
     async (dispatch, getState) => {
         await axios.post(format(config.services.projects.clone, projectId), {
-            projectName: `${projectName} (Copy)`
+            projectName: `${projectName} ${config.text.projectMenu.copy}`
         });
         await getProjects()(dispatch, getState);
     };

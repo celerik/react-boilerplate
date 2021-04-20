@@ -35,7 +35,7 @@ const Item = ({
                 >
                     <IconButton
                         className={classes.iconButton}
-                        onClick={(event) => iconButton.onClick(id, text, event)}
+                        onClick={(event) => iconButton.onClick(id, event)}
                     >
                         <Icon>
                             {iconButton.icon}

@@ -24,8 +24,7 @@ import styles from './styles';
 const ProjectBar = ({
     classes
 }) => {
-    const [cloneModalVisible, setCloneModalVisibility] = useState(false);
-    const [projectInfo, setProjectInfo] = useState({});
+    const [cloneProjectId, setCloneProjectId] = useState(null);
     const [searchValue, setSearchValue] = useState('');
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
@@ -37,9 +36,8 @@ const ProjectBar = ({
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
     };
 
-    const handleClickOpen = (projectId, projectName) => {
-        setProjectInfo({ projectId, projectName });
-        setCloneModalVisibility(true);
+    const handleClickOpen = (projectId) => {
+        setCloneProjectId(projectId);
     };
 
     const handleSortOpen = () => {
@@ -57,8 +55,9 @@ const ProjectBar = ({
     }];
 
     const onClickCloneProjet = () => {
-        onCloneProject(projectInfo);
-        setCloneModalVisibility(false);
+        const cloneProject = projects.find(({ projectId }) => projectId === cloneProjectId);
+        onCloneProject(cloneProject);
+        setCloneProjectId(null);
     };
 
     const sortOrder = sortAsc ? 1 : -1;
@@ -99,8 +98,8 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                onClose={() => setCloneModalVisibility(false)}
-                visible={cloneModalVisible}
+                onClose={() => setCloneProjectId(null)}
+                visible={Boolean(cloneProjectId)}
                 onClickRight={onClickCloneProjet}
             />
         </>
