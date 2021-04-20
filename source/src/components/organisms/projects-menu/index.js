@@ -4,10 +4,10 @@ import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router';
 import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-import { bindActionCreators } from 'redux';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
@@ -29,8 +29,8 @@ const ProjectBar = ({
     const [searchValue, setSearchValue] = useState('');
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
-    const projects = useSelector(state => state.projects);
     const dispatch = useDispatch();
+    const projects = useSelector(state => state.projects);
     const onCloneProject = bindActionCreators(cloneProject, dispatch);
 
     const onClickEditProject = (projectId) => {
