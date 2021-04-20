@@ -3,6 +3,10 @@ export default theme => ({
         margin: '10px 0',
         width: '80%'
     },
+    dividerBottom: {
+        margin: 0,
+        width: '80%'
+    },
     iconOnly: {
         alignItems: 'center',
         display: 'flex',
@@ -27,7 +31,9 @@ export default theme => ({
         fontWeight: 'bold'
     },
     itemBottom: {
-        fontSize: 12
+        fontSize: 12,
+        marginTop: 5,
+        textTransform: 'capitalize'
     },
     teamIcon: {
         borderRadius: 5,

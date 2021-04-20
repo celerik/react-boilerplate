@@ -76,6 +76,15 @@
     "confirm": "Confirm",
     "copy": "Copy",
     "daysOfWeek": "Days of the week",
+    "days": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    },
     "delete": "Delete",
     "edit": "Edit",
     "runDays": "Runs on {0} and ",

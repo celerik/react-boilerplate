@@ -55,7 +55,7 @@ const ModalDaysWeek = ({
                     </Typography>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
-                    {config.masterData.daysOfWeek.map(({ day, dayValue }, index) => (
+                    {config.masterData.daysOfWeek.map((dayValue, index) => (
                         <div className={classes.checkContainer} key={index}>
                             <CheckBox
                                 defaultChecked={days.includes(dayValue)}
@@ -65,7 +65,7 @@ const ModalDaysWeek = ({
                                 icon={<CheckBoxOutlineBlankIcon className={classes.checkboxUnSelect} />}
                                 onChange={() => handleCheckBoxes(dayValue)}
                             />
-                            <Typography>{day}</Typography>
+                            <Typography>{config.text.servicePatternsMenu.days[dayValue]}</Typography>
                         </div>
                     ))}
                 </DialogContent>
