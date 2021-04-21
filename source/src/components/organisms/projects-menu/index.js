@@ -26,7 +26,7 @@ const ProjectBar = ({
 }) => {
     const [cloneProjectId, setCloneProjectId] = useState(null);
     const [searchValue, setSearchValue] = useState('');
-    const [sortAsc, setSortAsc] = useState(false);
+    const [sortAsc, setSortAsc] = useState(true);
     const history = useHistory();
     const dispatch = useDispatch();
     const projects = useSelector(state => state.projects);

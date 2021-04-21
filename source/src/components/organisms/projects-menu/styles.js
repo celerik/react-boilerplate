@@ -4,11 +4,7 @@ export default theme => Object.assign({}, {
         color: 'white',
         height: 47,
         marginTop: 30,
-        textTransform: 'none',
-        width: 140,
-        '&::first-letter': {
-            textTransform: 'capitalize'
-        }
+        width: 140
     },
     searchBar: {
         margin: '0px 0px 30px 0px !Important',

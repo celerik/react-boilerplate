@@ -16,10 +16,6 @@ export default theme => Object.assign({}, {
         marginLeft: 9,
         marginRight: 9,
         padding: '10px 15px 10px 15px',
-        textTransform: 'none',
-        '&::first-letter': {
-            textTransform: 'capitalize'
-        }
     },
     bottomActions: {
         display: 'flex',

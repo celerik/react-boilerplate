@@ -4,11 +4,7 @@ export default theme => Object.assign({}, {
         color: 'white',
         height: 'auto',
         marginTop: 60,
-        textTransform: 'none',
-        width: 140,
-        '&::first-letter': {
-            textTransform: 'capitalize'
-        }
+        width: 140
     },
     option: {
         alignItems: 'center',

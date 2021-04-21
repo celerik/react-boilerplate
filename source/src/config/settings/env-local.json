@@ -20,7 +20,7 @@
     "baseline": "https://baseline-connect-service-mnxwmluifa-ew.a.run.app/baseline/v1",
     "projects": "https://project-service-mnxwmluifa-ew.a.run.app/project/v1",
     "root": "localhost:8080",
-    "teams": "localhost:8080"
+    "teams": "https://scheduler-apis-site-eurr2avxrq-ew.a.run.app/users/v1/users/{0}/teams"
   },
   "reduxLogger": {
     "isEnabled": true

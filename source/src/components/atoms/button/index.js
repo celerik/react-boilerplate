@@ -13,18 +13,24 @@ const Actionbutton = ({
     className,
     classes,
     endIcon,
+    disabled,
     id,
     label,
     onClick,
     startIcon
 }) => {
-    const ButtonStyle = classNames(classes.mainContainer, className);
+    const ButtonStyle = classNames(
+        classes.mainContainer,
+        className
+    );
 
     return (
         <Button
             className={ButtonStyle}
             id={id}
+            // disabled={disabled}
             onClick={onClick}
+            variant="filled"
             endIcon={endIcon && (
                 <Icon>
                     {endIcon}

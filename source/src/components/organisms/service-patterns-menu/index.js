@@ -12,7 +12,7 @@ import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
 import { format, formatUrlParam } from '../../../util/string';
-import { getServicePatters } from '../../../actions/service-patterns';
+import { getServicePatterns } from '../../../actions/service-patterns';
 
 // @styles
 import styles from './styles';
@@ -32,7 +32,7 @@ const ServicePatterns = ({
     }));
     const project = projects.find(project => project.projectId === projectId);
     const dispatch = useDispatch();
-    const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
+    const onGetServicePatterns = bindActionCreators(getServicePatterns, dispatch);
 
     const handleClickOpen = () => {
         setServicePatternCloneModalVisibility(true);
