@@ -48,7 +48,7 @@ const AlertDialog = ({
             {actions?.map(action => (
                 <Button
                     key={id}
-                    onClick={onClose}
+                    onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
                         action.disabled && classes.bottomDisabled

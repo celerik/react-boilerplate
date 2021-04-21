@@ -69,6 +69,7 @@
     "cloneSnapshot": "Clone a snapshot",
     "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
     "contents": "You can create a timebands table or a full schedule. Select one:",
+    "copy": "(Copy)",
     "createSchedule": "Create schedule",
     "createTimeboards": "Create timebands",
     "edit": "Edit",
