@@ -66,7 +66,10 @@ const ProjectBar = ({
         (a, b) => (a.projectName > b.projectName
             ? sortOrder
             : -sortOrder)
-    ).filter(project => project.projectName.includes(searchValue));
+    ).filter(project => project
+        .projectName
+        .toLowerCase()
+        .includes(searchValue.toLowerCase()));
 
     return (
         <>

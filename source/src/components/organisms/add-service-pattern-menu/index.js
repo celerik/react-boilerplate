@@ -121,6 +121,7 @@ const CreateServicePattern = ({
                 {servicePatterns.map((servicePattern, index) => (
                     <ServicePatternCard
                         backgroundColor={`${servicePattern.colour}77`}
+                        isCheckeable
                         key={`${id}-card-${index}`}
                         operationDays={servicePattern.daysOfOperation}
                         operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}

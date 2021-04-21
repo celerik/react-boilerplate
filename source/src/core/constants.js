@@ -1,7 +1,8 @@
 export const constants = {
     environment: {
         LOCAL: 'local',
-        UNIT_TEST: 'unitTest'
+        UNIT_TEST: 'unitTest',
+        PRODUCTION: 'production'
     },
     notificationType: {
         ERROR: 'error',
