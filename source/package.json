@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "lintj": "./node_modules/.bin/eslint --ext .js src/",
-    "start": "cross-env DISABLE_ESLINT_PLUGIN=true REACT_APP_ENV=production npm-run-all -p start-js",
+    "start": "cross-env DISABLE_ESLINT_PLUGIN=true REACT_APP_ENV=local npm-run-all -p start-js",
     "start-js": "react-scripts start",
     "test": "cross-env REACT_APP_ENV=unitTest CI=true react-scripts test --setupFiles ./src/setup-tests.js --colors --env=jsdom --coverage",
     "storybook": "start-storybook -p 6006 -c .storybook watch-css -s ./src",
