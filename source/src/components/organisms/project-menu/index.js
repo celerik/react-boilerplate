@@ -1,12 +1,13 @@
 // @packages
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
+import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ProjectSettingsModal from '../project-settings';
 import { config } from '../../../config';
@@ -22,6 +23,7 @@ const ProjectMenu = ({
     match,
     id
 }) => {
+    const [runModalVisible, setRunModalVisibility] = useState(false);
     const { params: { projectId } } = match;
 
     const projects = useSelector(state => state.projects);
@@ -30,6 +32,14 @@ const ProjectMenu = ({
     if (!project) {
         return null;
     }
+
+    const handleClickOpen = () => {
+        setRunModalVisibility(true);
+    };
+
+    const handleClose = () => {
+        setRunModalVisibility(false);
+    };
 
     const onClickMenuItem = optionName => () => {
         const optionUrl = config.routes.dashboard[optionName];
@@ -45,7 +55,7 @@ const ProjectMenu = ({
                 </Typography>
                 <Icon className={classes.settingsIcon}>settings</Icon>
             </div>
-            <div style={{ overflowY: 'auto' }}>
+            <div className={classes.containerCards}>
                 {config.masterData.projectMenu.map((menuOption, index) => (
                     <div
                         className={classes.option}
@@ -59,15 +69,33 @@ const ProjectMenu = ({
                         <Typography className={classes.optionText} variant="body1">
                             {config.text.projectMenu[menuOption.name]}
                         </Typography>
+
                     </div>
                 ))}
             </div>
             <Actionbutton
                 className={classes.buttonAdd}
-                onClick={Function.prototype}
-                label={config.text.projectMenu.newProject}
+                label={config.text.projectMenu.title}
+                onClick={handleClickOpen}
             />
-            <ProjectSettingsModal />
+            <AlertDialog
+                actions={
+                    [
+                        {
+                            name: config.text.projectMenu.createTimeboards,
+                            disable: false
+                        },
+                        {
+                            name: config.text.projectMenu.createSchedule,
+                            disable: false
+                        }
+                    ]
+                }
+                content={config.text.projectMenu.contents}
+                onClose={handleClose}
+                title={config.text.projectMenu.title}
+                visible={runModalVisible}
+            />
         </>
     );
 };
@@ -75,8 +103,8 @@ const ProjectMenu = ({
 ProjectMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    match: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    match: PropTypes.object.isRequired
 };
 
 ProjectMenu.defaultProps = {};

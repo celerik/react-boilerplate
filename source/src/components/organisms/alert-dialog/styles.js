@@ -1,30 +1,37 @@
 export default (theme) => Object.assign({}, {
     adjustText: {
         color: theme.palette.text.disable,
-        display: 'flex',
-        fontSize: 15,
-        margin: 'auto',
-        marginTop: -13,
-        textAlign: '-webkit-center',
-        width: '100%'
+        fontSize: 14,
+        textAlign: 'center'
     },
     backdropClassName: {
         backgroundColor: 'rgba(254, 254, 254, 0.1)',
         backdropFilter: 'blur(15px)'
     },
-    button: {
+    bottom: {
         border: '1px solid mediumpurple',
         color: '#161c3a',
-        margin: 10,
+        height: 40,
         marginBottom: 21,
-        padding: '8px 15px 8px 15px',
-        textTransform: 'capitalize'
+        marginLeft: 9,
+        marginRight: 9,
+        padding: '10px 15px 10px 15px',
+        textTransform: 'none',
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
-    container: {
+    bottomActions: {
         display: 'flex',
-        justifyContent: 'center',
-        paddingBottom: 0,
-        radius: 5
+        justifyContent: 'center'
+    },
+    content: {
+        display: 'flex',
+        height: 40,
+        marginLeft: '34px',
+        marginRight: '34px',
+        padding: 0,
+        width: '355px'
     },
     closeButton: {
         color: '#323232',
@@ -35,13 +42,14 @@ export default (theme) => Object.assign({}, {
         width: 11
     },
     paper: {
-        width: 434,
-        height: 198
+        height: 198,
+        width: 434
     },
     titleHeader: {
         alignItems: 'center',
         color: 'black',
         display: 'flex',
+        height: 36,
         justifyContent: 'center',
         marginBottom: 15,
         marginTop: 25,

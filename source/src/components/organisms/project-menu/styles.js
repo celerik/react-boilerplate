@@ -1,10 +1,16 @@
 export default (theme) => Object.assign({}, {
+    containerCards: {
+        overflowY: 'auto'
+    },
     buttonAdd: {
-        backgroundColor: '#8675FF',
+        backgroundColor: theme.palette.primary.light,
         color: 'white',
-        height: 47,
+        height: 'auto',
         marginTop: 60,
-        width: 140
+        width: 140,
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     projectName: {
         letterSpacing: 1.6,
