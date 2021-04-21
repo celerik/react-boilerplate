@@ -80,11 +80,11 @@ const ProjectMenu = ({
                     [
                         {
                             name: config.text.projectMenu.createTimeboards,
-                            disable: false
+                            disabled: false
                         },
                         {
                             name: config.text.projectMenu.createSchedule,
-                            disable: false
+                            disabled: false
                         }
                     ]
                 }
