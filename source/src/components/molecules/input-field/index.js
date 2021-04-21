@@ -22,6 +22,7 @@ const InputField = ({
     rootClass,
     size,
     startAdornment,
+    type,
     underline,
     value,
     variant
@@ -67,6 +68,7 @@ const InputField = ({
             onChange={handleChange}
             placeholder={placeholder}
             size={size}
+            type={type}
             value={value}
             variant={variant}
         />
@@ -85,6 +87,7 @@ InputField.propTypes = {
     rootClass: PropTypes.object,
     size: PropTypes.oneOf(['small', 'medium']),
     startAdornment: PropTypes.string,
+    type: PropTypes.string,
     underline: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
     variant: PropTypes.oneOf(['filled', 'outlined', 'standard'])
@@ -99,6 +102,7 @@ InputField.defaultProps = {
     rootClass: null,
     size: 'medium',
     startAdornment: '',
+    type: 'string',
     underline: false,
     value: null,
     variant: 'standard'

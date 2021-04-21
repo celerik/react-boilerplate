@@ -34,9 +34,10 @@ export default theme => Object.assign({}, {
         borderRadius: 4,
         margin: 0,
         marginLeft: 10,
+        borderBottom: `1px solid ${theme.palette.primary.main}`,
         width: 'min-content',
         '& .MuiInputBase-root': {
-            padding: '0px 5px'
+            padding: '0px 2px'
         },
         border: `2px solid ${theme.palette.background.secondary}`,
         '& .MuiTypography-root': {
@@ -47,16 +48,19 @@ export default theme => Object.assign({}, {
                 borderBottom: `1px solid ${theme.palette.primary.main}`
 
             }
+        },
+        '& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
+            display: 'none'
         }
     },
     inputLarge: {
-        minWidth: 95
+        minWidth: 100
     },
     inputMedium: {
-        minWidth: 75
+        minWidth: 87
     },
     inputSmall: {
-        minWidth: 55
+        minWidth: 65
     },
     subTitle: {
         fontWeight: 500,

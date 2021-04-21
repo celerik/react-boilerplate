@@ -1,7 +1,9 @@
 // @packages
+import Icon from '@material-ui/core/Icon';
+import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Icon from '@material-ui/core/Icon';
+import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -13,6 +15,7 @@ import ProjectSettingsModal from '../project-settings';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { useSelector } from 'react-redux';
+import { theme } from '../../../styles/material-ui';
 
 // @styles
 import styles from './styles';
@@ -24,6 +27,7 @@ const ProjectMenu = ({
     id
 }) => {
     const [runModalVisible, setRunModalVisibility] = useState(false);
+    const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
 
     const projects = useSelector(state => state.projects);
@@ -53,7 +57,23 @@ const ProjectMenu = ({
                 <Typography className={classes.projectName} variant="h4">
                     {project.projectName}
                 </Typography>
-                <Icon className={classes.settingsIcon}>settings</Icon>
+                <Tooltip
+                    title="settings"
+                    key={`${id}-settings-tooltip`}
+                    enterDelay={500}
+                    enterNextDelay={500}
+                >
+                    <IconButton
+                        onClick={() => setModalSettingsVisibility(true)}
+                    >
+                        <Icon
+                            className={classes.settingsIcon}
+                            style={{ color: !modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light }}
+                        >
+                            settings
+                        </Icon>
+                    </IconButton>
+                </Tooltip>
             </div>
             <div className={classes.containerCards}>
                 {config.masterData.projectMenu.map((menuOption, index) => (
@@ -99,7 +119,12 @@ const ProjectMenu = ({
                 title={config.text.projectMenu.title}
                 visible={runModalVisible}
             />
-            <ProjectSettingsModal id={`${id}-settings-modal`} />
+            <ProjectSettingsModal
+                id={`${id}-settings-modal`}
+                onClose={() => setModalSettingsVisibility(false)}
+                open={modalSettingsVisibility}
+                projectId={projectId}
+            />
         </div>
     );
 };
