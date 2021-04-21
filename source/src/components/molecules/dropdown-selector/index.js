@@ -15,32 +15,38 @@ import { config } from '../../../config';
 // @styles
 import styles from './styles';
 
-const IconItem = withStyles(styles)(({ classes, icon }) => (
+const IconItem = withStyles(styles)(({
+    classes,
+    icon
+}) => (
     <ListItemIcon className={classes.icon}>
-        <Icon>
-            {typeof icon === 'string'
-                ? <Icon>{icon}</Icon>
-                : icon}
-        </Icon>
+        {icon
+            ? (
+                <Icon>
+                    {typeof icon === 'string'
+                        ? <Icon>{icon}</Icon>
+                        : icon}
+                </Icon>
+            )
+            : (
+                <div className={classes.defaultIcon} />
+            )}
     </ListItemIcon>
 ));
 
-const DropdownUser = ({
+const DropdownSelector = ({
     classes,
     id,
     isExpanded,
     items,
     onChange,
+    itemValueName,
+    itemDescriptionName,
     value
 }) => {
-    const selectedValue = items.find(item => item.value === value) ?? {};
+    const selectedValue = items.find(item => item[itemValueName] === value) ?? {};
     const handleSelectOnChange = (evt) => {
-        const { value } = evt.target;
-        if (value) {
-            const item = items.find(item => item.value === value);
-
-            onChange({ item });
-        }
+        onChange(evt.target.value);
     };
 
     return (
@@ -66,22 +72,26 @@ const DropdownUser = ({
                         className={classes.selector}
                     >
                         {items.map((item) => (
-                            <MenuItem value={item.value} key={item.value} id={item.value} className={classes.menuItem}>
+                            <MenuItem
+                                className={classes.menuItem}
+                                key={item[itemValueName]}
+                                value={item[itemValueName]}
+                            >
                                 <div className={classes.itemList}>
-                                    {item.icon && (
-                                        <IconItem icon={item.icon} />
-                                    )}
+                                    <IconItem icon={item.icon} />
                                     <Typography
                                         className={classes.labelItem}
                                         variant="inherit"
                                     >
-                                        {item.label}
+                                        {item[itemDescriptionName]}
                                     </Typography>
                                 </div>
                             </MenuItem>
                         ))}
                         <MenuItem className={classes.dropdownButton} onClick={Function.prototype}>
-                            <Typography variant="inherit">{config.text.mainMenu.manageTeams}</Typography>
+                            <Typography variant="inherit">
+                                {config.text.mainMenu.manageTeams}
+                            </Typography>
                             <IconItem icon="group" />
                         </MenuItem>
                     </TextField>
@@ -91,10 +101,12 @@ const DropdownUser = ({
     );
 };
 
-DropdownUser.propTypes = {
+DropdownSelector.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExpanded: PropTypes.bool.isRequired,
+    itemDescriptionName: PropTypes.string,
+    itemValueName: PropTypes.string,
     items: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.any.isRequired,
         label: PropTypes.string.isRequired,
@@ -109,4 +121,9 @@ DropdownUser.propTypes = {
     value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
 };
 
-export default withStyles(styles)(DropdownUser);
+DropdownSelector.defaultProps = {
+    itemDescriptionName: 'teamName',
+    itemValueName: 'teamId'
+};
+
+export default withStyles(styles)(DropdownSelector);

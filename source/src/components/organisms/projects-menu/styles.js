@@ -1,10 +1,14 @@
-export default () => ({
+export default theme => Object.assign({}, {
     buttonAdd: {
-        backgroundColor: '#8675FF',
+        backgroundColor: theme.palette.primary.light,
         color: 'white',
         height: 47,
         marginTop: 30,
-        width: 140
+        textTransform: 'none',
+        width: 140,
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     searchBar: {
         margin: '0px 0px 30px 0px !Important',

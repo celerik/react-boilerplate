@@ -1,30 +1,27 @@
-// @packages
-import axios from 'axios';
-
-// @scripts
-import { config } from '../config';
-
 // @constants
 export const LOGIN = 'LOGIN';
 export const LOGOUT = 'LOGOUT';
 
 /**
- * @param {string} userName
- * @param {string} password
+ * @param {string} authToken
+ * @param {string} email
+ * @param {string} name
  */
-export const login = ({ email, password }) => dispatch => axios
-    .post(config.services.security.login, {
-        password,
-        email
-    })
-    .then((response) => {
-        dispatch({
-            type: LOGIN,
-            payload: response.data
-        });
-        return response;
-    })
-    .catch(Promise.reject);
+export const loginWithGoogle = ({
+    authToken,
+    email,
+    name
+}) => ({
+    type: LOGIN,
+    payload: {
+        authToken,
+        email,
+        name,
+        permissions: [
+            'Dashboard'
+        ]
+    }
+});
 
 export const logout = () => ({
     type: LOGOUT

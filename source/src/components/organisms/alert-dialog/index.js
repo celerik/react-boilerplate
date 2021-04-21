@@ -1,7 +1,7 @@
 // @packages
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 import classNames from 'classnames';
+import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -18,17 +18,12 @@ import styles from './styles';
 const AlertDialog = ({
     actions,
     classes,
-    className,
     content,
     id,
     onClose,
     title,
     visible
-}) => {
-    classNames(classes.buttonLock, className);
-
-    return (
-
+}) => (
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
         classes={{ paper: classes.paper }}
@@ -44,37 +39,36 @@ const AlertDialog = ({
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
             {title}
         </DialogTitle>
-        <DialogContent className={classes.container}>
+        <DialogContent className={classes.content}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
                 {content}
             </DialogContentText>
         </DialogContent>
-        <DialogActions className={classes.container}>
+        <DialogActions className={classes.bottomActions}>
             {actions?.map(action => (
                 <Button
                     key={id}
                     onClick={onClose}
                     className={classNames(
-                        classes.button,
-                        action.disable ? classes.buttonLock : null
+                        classes.bottom,
+                        action.disabled && (classes.bottomDisabled
+                        )
                     )}
                 >
-                    {action.name}
+                {action.name}
                 </Button>
             ))}
         </DialogActions>
     </Dialog>
-    );
-};
+);
 
 AlertDialog.propTypes = {
     actions: PropTypes.object.isRequired,
-    className: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
-    title: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
+    title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 
 };

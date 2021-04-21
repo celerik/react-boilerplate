@@ -11,7 +11,7 @@ export const GET_SERVICE_PATTERNS = 'GET_SERVICE_PATTERNS';
  */
 export const getServicePatters = ({ projectId }) =>
     async (dispatch) => {
-        const servicePatterns = (await axios.get(format(config.services.servicePatterns.get, projectId))).data;
+        const servicePatterns = await axios.get(format(config.services.servicePatterns.get, projectId));
 
         const servicesPatternsDetailsRequests = servicePatterns.map(servicePattern => new Promise(
             (resolve, reject) => axios.get(format(
@@ -21,7 +21,7 @@ export const getServicePatters = ({ projectId }) =>
             ))
                 .then(response => resolve({
                     ...servicePattern,
-                    ...response.data
+                    ...response
                 }))
                 .catch(reject)
         ));

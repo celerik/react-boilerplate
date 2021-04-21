@@ -5,5 +5,10 @@ export default () => ({
     },
     infoContainer: {
         position: 'relative'
+    },
+    logo: {
+        position: 'absolute',
+        right: 10,
+        top: 9
     }
 });

@@ -1,4 +1,5 @@
 // @packages
+import LoginForm from '../../components/organisms/login-form';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { bindActionCreators } from 'redux';
@@ -6,30 +7,25 @@ import { connect } from 'react-redux';
 
 // @scripts
 import Login from '../../components/templates/login';
-import {
-    login
-} from '../../actions';
+import Map from '../../components/organisms/map';
 
-const LoginPage = ({ infoUser, onLogin }) => (
+const LoginPage = ({
+    id
+}) => (
     <Login
-        user={infoUser}
-        login={onLogin}
-    />
+        id={id}
+        backgroundComponent={<Map controls={[]} />}
+    >
+        <LoginForm />
+    </Login>
 );
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-    onLogin: login
-}, dispatch);
+const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 
-const mapStateToProps = ({
-    user
-}) => ({
-    infoUser: user.account
-});
+const mapStateToProps = () => ({});
 
 LoginPage.propTypes = {
-    infoUser: PropTypes.object.isRequired,
-    onLogin: PropTypes.func.isRequired
+    id: PropTypes.string.isRequired
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

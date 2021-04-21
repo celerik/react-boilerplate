@@ -9,13 +9,20 @@ import { connect } from 'react-redux';
 import Map from '../../components/organisms/map';
 import TemplateDashboard from '../../components/templates/dashboard';
 import { getProjects } from '../../actions/projects';
+import { getTeams } from '../../actions/teams';
 
 const DashboardPage = ({
-    onGetProjects
+    onGetTeams,
+    onGetProjects,
+    selectedTeam
 }) => {
     useEffect(() => {
-        onGetProjects();
+        onGetTeams();
     }, []);
+
+    useEffect(() => {
+        onGetProjects();
+    }, [selectedTeam]);
 
     return (
         <TemplateDashboard>
@@ -26,14 +33,18 @@ const DashboardPage = ({
 };
 
 DashboardPage.propTypes = {
-    onGetProjects: PropTypes.func.isRequired
+    onGetProjects: PropTypes.func.isRequired,
+    onGetTeams: PropTypes.func.isRequired,
+    selectedTeam: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
-    projects: state.projects
+    projects: state.projects,
+    selectedTeam: state.user.selectedTeam
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
+    onGetTeams: getTeams,
     onGetProjects: getProjects
 }, dispatch);
 

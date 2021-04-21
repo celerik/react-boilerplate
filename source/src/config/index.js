@@ -8,7 +8,8 @@ import settings from './settings';
 import { getServices } from './services';
 
 const getConfiguration = () => {
-    const services = getServices(settings.services.root);
+    const servicesPlaceholders = settings.services;
+    const services = getServices(servicesPlaceholders);
     const config = {
         initialState,
         masterData,

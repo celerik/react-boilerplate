@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
-import AlertDialog from '../clone-project-dialog';
+import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
@@ -93,19 +93,29 @@ const ServicePatterns = ({
                 startIcon="add"
             />
             <Actionbutton
-                className={classes.buttonBlock}
+                className={classes.buttonLock}
                 label={config.text.createServicePattern.lockServicePattern}
                 onClick={handleClickOpen}
                 startIcon="lock_outlined"
             />
             <AlertDialog
-                actions={[{ name: config.text.createServicePattern.cancel, disable: false },
-                    { name: config.text.createServicePattern.lock, disable: true }]}
+                actions={
+                    [
+                        {
+                            name: config.text.createServicePattern.cancel,
+                            disabled: false
+                        },
+                        {
+                            name: config.text.createServicePattern.lock,
+                            disabled: true
+                        }
+                    ]
+                }
+                className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}
                 title={config.text.createServicePattern.lockServicePattern}
                 visible={servicePatternModalVisible}
-                className={classes.buttonLock}
             />
         </div>
     );

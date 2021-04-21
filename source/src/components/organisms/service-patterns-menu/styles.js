@@ -4,18 +4,24 @@ export default theme => Object.assign({}, {
         color: 'white',
         height: 47,
         marginTop: 30,
+        textTransform: 'none',
         width: 208,
-        textTransform: 'capitalize'
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
-    buttonBlock: {
+    buttonLock: {
         backgroundColor: 'white',
         border: '1px solid',
         color: theme.palette.primary.lila,
         display: 'flex',
         height: 47,
         marginTop: 14,
-        textTransform: 'capitalize',
-        width: 210
+        width: 210,
+        textTransform: 'none',
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     mainContainer: {
         height: '100%',
@@ -26,7 +32,10 @@ export default theme => Object.assign({}, {
         letterSpacing: 1.6,
         marginBottom: 15,
         marginTop: 28,
-        textTransform: 'uppercase'
+        textTransform: 'none',
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     servicePatternsContainer: {
         height: '60%',

@@ -1,4 +1,4 @@
-export default () => ({
+export default theme => ({
     dropdownButton: {
         backgroundColor: '#8675FF',
         color: 'white',
@@ -19,8 +19,7 @@ export default () => ({
     },
     selector: {
         '& .MuiOutlinedInput-root': {
-            height: 50,
-            paddingTop: 6
+            height: 50
         },
         '& .MuiMenu-paper': {
             borderRadius: 0,
@@ -36,6 +35,9 @@ export default () => ({
         },
         '& .MuiListItem-root.Mui-selected': {
             fontWeight: 'bold'
+        },
+        '& .MuiTypography-root': {
+            alignSelf: 'center'
         }
     },
     iconOnly: {
@@ -49,6 +51,12 @@ export default () => ({
         marginRight: 10,
         minWidth: '0 !important',
         width: 30
+    },
+    defaultIcon: {
+        height: 21,
+        backgroundColor: theme.palette.background.default,
+        borderRadius: 5,
+        width: 21
     },
     itemContainer: {
         alignItems: 'center',

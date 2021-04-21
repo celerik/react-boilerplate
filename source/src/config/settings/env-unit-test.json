@@ -12,6 +12,9 @@
     "delayResponse": 0,
     "isEnabled": true,
     "include": [
+      "mockServiceGetServicePattern",
+      "mockServiceGetServicePatterns",
+      "mockServiceGetTeams",
       "mockServiceSecurityLogin"
     ]
   },

@@ -23,7 +23,8 @@
   },
   "loginPage": {
     "invalidCredentials": "Invalid credentials",
-    "loginTitle": "Login page"
+    "loginTitle": "Login page",
+    "loginWithGoogle": "Login with Google"
   },
   "notFoundPage": {
     "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
@@ -64,19 +65,39 @@
     "backToProject": "Back to {0}",
     "backToProjects": "Back to projects",
     "clone": "Clone",
+    "cloneProject": "Clone project",
+    "cloneServicePattern": "Clone a Service Pattern",
+    "cloneSnapshot": "Clone a snapshot",
+    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
+    "contents": "You can create a timebands table or a full schedule. Select one:",
+    "createSchedule": "Create schedule",
+    "createTimeboards": "Create timebands",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
-    "newProject": "NEW PROJECT",
+    "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
     "searchProjectByname": "Search project by name...",
     "servicePatterns": "Service patterns",
     "servicesParameters": "Services parameters",
     "times": "Times",
+    "title": "Run project",
     "viewResults": "View results"
   },
   "servicePatternsMenu": {
+    "cancel": "Cancel",
+    "confirm": "Confirm",
     "copy": "Copy",
+    "daysOfWeek": "Days of the week",
+    "days": {
+      "mon": "Monday",
+      "tue": "Tuesday",
+      "wed": "Wednesday",
+      "thu": "Thursday",
+      "fri": "Friday",
+      "sat": "Saturday",
+      "sun": "Sunday"
+    },
     "delete": "Delete",
     "edit": "Edit",
     "runDays": "Runs on {0} and ",
@@ -94,11 +115,5 @@
     "search": "Invalid search",
     "verification": "Verification doesn't match",
     "zip": "Invalid zip code"
-  },
-  "dialogLayout": {
-    "cloneSnapshot": "Clone a snapshot",
-    "cloneServicePattern": "Clone a Service Pattern",
-    "cloneProject": "Clone project",
-    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
   }
 }

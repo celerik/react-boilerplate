@@ -1,6 +1,6 @@
 {
   "projects": {
-    "get": "{root}/projects"
+    "get": "{projects}/projects"
   },
   "servicePatterns": {
     "get": "{root}/projects/{0}/servicePatterns",
@@ -8,5 +8,8 @@
   },
   "security": {
     "login": "{root}/login"
+  },
+  "teams": {
+    "get": "{teams}/teams"
   }
 }

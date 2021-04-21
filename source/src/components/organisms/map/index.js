@@ -12,9 +12,12 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 import styles from './styles';
 import { theme } from '../../../styles/material-ui';
 
+const AVALIABLE_CONTROLS = ['zoom'];
+
 const CustomMap = ({
     className,
     classes,
+    controls,
     id
 }) => {
     const mapContainer = useRef();
@@ -57,20 +60,25 @@ const CustomMap = ({
     return (
         <div className={className} id={id}>
             <div className={classes.map} ref={mapContainer} />
-            <ZoomButtons
-                onZoomIn={() => mapRef.current.zoomIn()}
-                onZoomOut={() => mapRef.current.zoomOut()}
-            />
+            {controls.includes('zoom') && (
+                <ZoomButtons
+                    onZoomIn={() => mapRef.current.zoomIn()}
+                    onZoomOut={() => mapRef.current.zoomOut()}
+                />
+            )}
         </div>
     );
 };
 
 CustomMap.propTypes = {
     classes: PropTypes.object.isRequired,
+    controls: PropTypes.arrayOf(PropTypes.oneOf(AVALIABLE_CONTROLS)),
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
 };
 
-CustomMap.defaultProps = {};
+CustomMap.defaultProps = {
+    controls: AVALIABLE_CONTROLS
+};
 
 export default withStyles(styles)(CustomMap);
