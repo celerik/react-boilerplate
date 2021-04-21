@@ -1,6 +1,5 @@
 // @packages
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -15,13 +14,15 @@ const InputField = ({
     className,
     classes,
     disable,
+    endAdornment,
     icon,
-    iconButton,
     id,
     onChange,
-    onClickIconButton,
     placeholder,
+    rootClass,
     size,
+    startAdornment,
+    underline,
     value,
     variant
 }) => {
@@ -33,30 +34,27 @@ const InputField = ({
 
     const inputProps = () => {
         const defaultProps = {};
-
-        if (icon) {
+        if (endAdornment || icon) {
             defaultProps.endAdornment = (
                 <InputAdornment position="end">
-                    <Icon>
-                        {icon}
-                    </Icon>
+                    {icon
+                        ? (
+                            <Icon>
+                                {icon}
+                            </Icon>
+                        )
+                        : endAdornment }
                 </InputAdornment>
             );
         }
 
-        if (iconButton) {
-            defaultProps.endAdornment = (
-                <InputAdornment position="end">
-                    <IconButton onClick={onClickIconButton} key={index}>
-                        <Icon>
-                            {iconButton}
-                        </Icon>
-                    </IconButton>
-                </InputAdornment>
+        if (startAdornment) {
+            defaultProps.startAdornment = (
+                <InputAdornment position="start">{startAdornment}</InputAdornment>
             );
         }
 
-        return { ...defaultProps };
+        return { ...defaultProps, disableUnderline: !underline, inputProps: { className: rootClass } };
     };
 
     return (
@@ -76,16 +74,18 @@ const InputField = ({
 };
 
 InputField.propTypes = {
-    className: PropTypes.string,
+    className: PropTypes.object,
     classes: PropTypes.object.isRequired,
     disable: PropTypes.bool,
+    endAdornment: PropTypes.string,
     icon: PropTypes.string,
-    iconButton: PropTypes.string,
     id: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    onClickIconButton: PropTypes.func,
     placeholder: PropTypes.string,
+    rootClass: PropTypes.object,
     size: PropTypes.oneOf(['small', 'medium']),
+    startAdornment: PropTypes.string,
+    underline: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.bool, PropTypes.number, PropTypes.string]),
     variant: PropTypes.oneOf(['filled', 'outlined', 'standard'])
 };
@@ -93,11 +93,13 @@ InputField.propTypes = {
 InputField.defaultProps = {
     className: null,
     disable: false,
+    endAdornment: '',
     icon: null,
-    iconButton: null,
-    onClickIconButton: Function.prototype,
     placeholder: '',
+    rootClass: null,
     size: 'medium',
+    startAdornment: '',
+    underline: false,
     value: null,
     variant: 'standard'
 };

@@ -8,6 +8,7 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
+import ProjectSettingsModal from '../project-settings';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { useSelector } from 'react-redux';
@@ -36,7 +37,7 @@ const ProjectMenu = ({
     };
 
     return (
-        <div id={id}>
+        <>
             <BackToButton label={config.text.projectMenu.backToProjects} />
             <div className={classes.titleContainer}>
                 <Typography className={classes.projectName} variant="h4">
@@ -44,28 +45,30 @@ const ProjectMenu = ({
                 </Typography>
                 <Icon className={classes.settingsIcon}>settings</Icon>
             </div>
-            {config.masterData.projectMenu.map((menuOption, index) => (
-                <div
-                    className={classes.option}
-                    onClick={onClickMenuItem(menuOption.name)}
-                    tabIndex={index}
-                    role="button"
-                    onKeyDown={Function.prototype}
-                    key={`${id}-option-${menuOption.name}`}
-                >
-                    <Icon>{menuOption.icon}</Icon>
-                    <Typography className={classes.optionText} variant="body1">
-                        {config.text.projectMenu[menuOption.name]}
-                    </Typography>
-
-                </div>
-            ))}
-                <Actionbutton
-                    className={classes.buttonAdd}
-                    onClick={Function.prototype}
-                    label={config.text.projectMenu.newProject}
-                />
-        </div>
+            <div style={{ overflowY: 'auto' }}>
+                {config.masterData.projectMenu.map((menuOption, index) => (
+                    <div
+                        className={classes.option}
+                        onClick={onClickMenuItem(menuOption.name)}
+                        tabIndex={index}
+                        role="button"
+                        onKeyDown={Function.prototype}
+                        key={`${id}-option-${menuOption.name}`}
+                    >
+                        <Icon>{menuOption.icon}</Icon>
+                        <Typography className={classes.optionText} variant="body1">
+                            {config.text.projectMenu[menuOption.name]}
+                        </Typography>
+                    </div>
+                ))}
+            </div>
+            <Actionbutton
+                className={classes.buttonAdd}
+                onClick={Function.prototype}
+                label={config.text.projectMenu.newProject}
+            />
+            <ProjectSettingsModal />
+        </>
     );
 };
 
