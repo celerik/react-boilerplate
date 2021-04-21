@@ -11,7 +11,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
-import AlertDialog from '../clone-project-dialog';
+import AlertDialog from '../alert-dialog';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
 import { config } from '../../../config';
@@ -98,16 +98,32 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
+                actions={
+                    [
+                        {
+                            disable: false,
+                            name: config.text.projectMenu.cloneSnapshot,
+                            onClick: Function.prototype
+                        },
+                        {
+                            disable: false,
+                            name: config.text.projectMenu.cloneServicePattern,
+                            onClick: onClickCloneProjet
+                        }
+                    ]
+                }
+                content={config.text.projectMenu.content}
+                title={config.text.projectMenu.cloneProject}
                 onClose={() => setCloneProjectId(null)}
                 visible={Boolean(cloneProjectId)}
-                onClickRight={onClickCloneProjet}
             />
         </>
     );
 };
 
 ProjectBar.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    title: PropTypes.object.isRequired
 };
 
 ProjectBar.defaultProps = {};

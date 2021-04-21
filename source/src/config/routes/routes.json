@@ -3,8 +3,7 @@
         "component": "DashBoard",
         "name": "Dashboard",
         "url": "/dashboard",
-        "permissions": ["Dashboard"],
-        "redirectedBy": ["/"]
+        "permissions": ["Dashboard"]
     },
     "login": {
         "component": "Login",
