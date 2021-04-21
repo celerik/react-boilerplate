@@ -1,4 +1,4 @@
-export default (theme) => Object.assign({}, {
+export default theme => Object.assign({}, {
     adjustText: {
         color: theme.palette.text.disable,
         fontSize: 14,
@@ -25,13 +25,17 @@ export default (theme) => Object.assign({}, {
         display: 'flex',
         justifyContent: 'center'
     },
+    bottomDisabled: {
+        backgroundColor: theme.palette.primary.light,
+        color: 'white'
+    },
     content: {
         display: 'flex',
         height: 40,
         marginLeft: '34px',
         marginRight: '34px',
         padding: 0,
-        width: '355px'
+        width: 343
     },
     closeButton: {
         color: '#323232',

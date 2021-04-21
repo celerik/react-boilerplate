@@ -82,12 +82,10 @@ const ProjectMenu = ({
                 actions={
                     [
                         {
-                            name: config.text.projectMenu.createTimeboards,
-                            disable: false
+                            name: config.text.projectMenu.createTimeboards
                         },
                         {
-                            name: config.text.projectMenu.createSchedule,
-                            disable: false
+                            name: config.text.projectMenu.createSchedule
                         }
                     ]
                 }
@@ -96,7 +94,7 @@ const ProjectMenu = ({
                 title={config.text.projectMenu.title}
                 visible={runModalVisible}
             />
-            <ProjectSettingsModal />
+            <ProjectSettingsModal open={false} />
         </>
     );
 };
