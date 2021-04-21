@@ -9,18 +9,19 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
-
-// @scripts
-import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
 
 const AlertDialog = ({
+    actions,
     classes,
+    content,
     id,
     onClose,
+    title,
     visible
 }) => (
     <Dialog
@@ -36,28 +37,37 @@ const AlertDialog = ({
             </IconButton>
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
-            {config.text.dialogLayout.cloneProject}
+            {title}
         </DialogTitle>
-        <DialogContent className={classes.container}>
+        <DialogContent className={classes.content}>
             <DialogContentText id={`${id}-description`} className={classes.adjustText}>
-                {config.text.dialogLayout.petition}
+                {content}
             </DialogContentText>
         </DialogContent>
-        <DialogActions className={classes.container}>
-            <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneSnapshot}
-            </Button>
-            <Button onClick={onClose} className={classes.button}>
-                {config.text.dialogLayout.cloneServicePattern}
-            </Button>
+        <DialogActions className={classes.bottomActions}>
+            {actions?.map(action => (
+                <Button
+                    key={id}
+                    onClick={onClose}
+                    className={classNames(
+                        classes.bottom,
+                        action.disabled && classes.bottomDisabled
+                    )}
+                >
+                {action.name}
+                </Button>
+            ))}
         </DialogActions>
     </Dialog>
 );
 
 AlertDialog.propTypes = {
+    actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClose: PropTypes.func.isRequired,
+    title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 };
 

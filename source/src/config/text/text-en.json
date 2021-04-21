@@ -5,9 +5,12 @@
   },
   "createServicePattern": {
     "addServicePattern": "Add Service Pattern",
-    "addAServicePattern":  "Add a service pattern",
     "backToServicePatterns": "Back to service patterns",
+    "cancel": "Cancel",
     "importServicePatterns": "Import Service Pattern",
+    "lock": "Lock",
+    "lockServicePattern": "Lock Service Pattern",
+    "content": "Are you sure you want to lock the service Patterns of this project?",
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"
   },
@@ -61,15 +64,23 @@
     "backToProject": "Back to {0}",
     "backToProjects": "Back to projects",
     "clone": "Clone",
+    "cloneProject": "Clone project",
+    "cloneServicePattern": "Clone a Service Pattern",
+    "cloneSnapshot": "Clone a snapshot",
+    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
+    "contents": "You can create a timebands table or a full schedule. Select one:",
+    "createSchedule": "Create schedule",
+    "createTimeboards": "Create timebands",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
-    "newProject": "NEW PROJECT",
+    "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
     "searchProjectByname": "Search project by name...",
     "servicePatterns": "Service patterns",
     "servicesParameters": "Services parameters",
     "times": "Times",
+    "title": "Run project",
     "viewResults": "View results"
   },
   "servicePatternsMenu": {
@@ -103,11 +114,5 @@
     "search": "Invalid search",
     "verification": "Verification doesn't match",
     "zip": "Invalid zip code"
-  },
-  "dialogLayout": {
-    "cloneSnapshot": "Clone a snapshot",
-    "cloneServicePattern": "Clone a Service Pattern",
-    "cloneProject": "Clone project",
-    "petition": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:"
   }
 }
