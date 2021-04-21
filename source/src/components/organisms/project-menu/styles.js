@@ -1,28 +1,14 @@
-export default (theme) => Object.assign({}, {
+export default theme => Object.assign({}, {
     buttonAdd: {
         backgroundColor: theme.palette.primary.light,
         color: 'white',
         height: 'auto',
         marginTop: 60,
+        textTransform: 'none',
         width: 140,
         '&::first-letter': {
             textTransform: 'capitalize'
         }
-    },
-    projectName: {
-        letterSpacing: 1.6,
-        textTransform: 'uppercase'
-    },
-    titleContainer: {
-        alignItems: 'center',
-        display: 'flex',
-        marginBottom: 41,
-        marginTop: 31
-    },
-    settingsIcon: {
-        color: theme.palette.text.hint,
-        fontSize: 14,
-        marginLeft: 14
     },
     option: {
         alignItems: 'center',
@@ -43,5 +29,20 @@ export default (theme) => Object.assign({}, {
         color: theme.palette.text.secondary,
         fontWeight: 'bold',
         marginLeft: 19
+    },
+    projectName: {
+        letterSpacing: 1.6,
+        textTransform: 'uppercase'
+    },
+    settingsIcon: {
+        color: theme.palette.text.hint,
+        fontSize: 14,
+        marginLeft: 14
+    },
+    titleContainer: {
+        alignItems: 'center',
+        display: 'flex',
+        marginBottom: 41,
+        marginTop: 31
     }
 });
