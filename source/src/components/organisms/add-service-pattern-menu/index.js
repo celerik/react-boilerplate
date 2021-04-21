@@ -27,12 +27,12 @@ const CreateServicePattern = ({
     const [route, setRoute] = useState('');
     const {
         projects,
-        servicePatterns,
-        routes
+        routes,
+        servicePatterns
     } = useSelector(state => ({
         projects: state.projects,
-        servicePatterns: state.servicePatterns,
-        routes: state.routes
+        routes: state.routes,
+        servicePatterns: state.servicePatterns
     }));
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
@@ -77,10 +77,10 @@ const CreateServicePattern = ({
                 value={servicePeriod}
             />
             <Actionbutton
-                startIcon="refresh"
                 className={classes.buttonAdd}
-                onClick={Function.prototype}
                 label={config.text.createServicePattern.addServicePattern}
+                onClick={Function.prototype}
+                startIcon="refresh"
             />
             <div className={classes.servicePatternsContainer}>
                 {servicePatterns.map((servicePattern, index) => (

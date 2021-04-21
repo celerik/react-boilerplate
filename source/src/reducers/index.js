@@ -5,9 +5,9 @@ import { combineReducers } from 'redux';
 import { LOGOUT } from '../actions';
 import { alertNotificationReducer } from './alert-notification';
 import { projectsReducer } from './projects';
+import { routesReducer } from './routes';
 import { servicePatternsReducer } from './service-patterns';
 import { userReducer } from './user';
-import { routesReducer } from './routes';
 
 const appReducer = combineReducers({
     alert: alertNotificationReducer,
