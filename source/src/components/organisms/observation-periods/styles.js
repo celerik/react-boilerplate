@@ -1,11 +1,15 @@
-export default (theme) => Object.assign({}, {
+export default theme => Object.assign({}, {
     buttonAdd: {
         backgroundColor: theme.palette.primary.warn,
         bottom: 5,
         color: 'white',
         height: 47,
         marginTop: 30,
-        position: 'absolute'
+        position: 'absolute',
+        textTransform: 'none',
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     mainContainer: {
         height: '100%',
