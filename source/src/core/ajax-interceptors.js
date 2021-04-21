@@ -58,7 +58,7 @@ import { printError } from '../util';
  */
 const handleError = (error) => {
     printError(error);
-    Promise.reject(error);
+    throw error;
 };
 
 const addRequestInterceptors = () => {

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
+import { globalUI } from '../../../core';
 
 const CreateServicePattern = ({
     classes,
@@ -81,14 +82,22 @@ const CreateServicePattern = ({
         setServicePatterns(newServicePatterns);
     };
 
-    const onImportServicePatterns = async () => {
+    const onImportServicePatterns = () => {
         const baselineServicePatternIds = servicePatterns
             .filter(item => selectedServicePatterns.includes(item.servicePatternId))
             .map(item => ({
                 servicePatternId: item.servicePatternId,
                 date: selectedServicePeriod
             }));
-        Project.importServicePatterns(projectId, baselineServicePatternIds);
+            
+        Project.importServicePatterns(projectId, baselineServicePatternIds)
+            .then(() => {
+                globalUI.showAlertNotificationSuccess(
+                    config.text.createServicePattern.importServicePatterns,
+                    config.text.createServicePattern.importedSuccess
+                );
+                selectServicePatterns([]);
+            });
     };
 
     const processedServicePeriods = servicePeriods.map(data => ({
