@@ -95,11 +95,9 @@ const ProjectBar = ({
                 actions={
                     [
                         {
-                            disable: false,
                             name: config.text.projectMenu.cloneSnapshot
                         },
                         {
-                            disable: false,
                             name: config.text.projectMenu.cloneServicePattern
                         }
                     ]

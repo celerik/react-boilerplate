@@ -51,8 +51,7 @@ const AlertDialog = ({
                     onClick={onClose}
                     className={classNames(
                         classes.bottom,
-                        action.disabled && (classes.buttonLock
-                        )
+                        action.disabled && classes.bottomDisabled
                     )}
                 >
                 {action.name}

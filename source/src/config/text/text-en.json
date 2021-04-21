@@ -5,9 +5,12 @@
   },
   "createServicePattern": {
     "addServicePattern": "Add Service Pattern",
-    "addAServicePattern":  "Add a service pattern",
     "backToServicePatterns": "Back to service patterns",
+    "cancel": "Cancel",
     "importServicePatterns": "Import Service Pattern",
+    "lock": "Lock",
+    "lockServicePattern": "Lock Service Pattern",
+    "content": "Are you sure you want to lock the service Patterns of this project?",
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"
   },
@@ -70,7 +73,7 @@
     "createTimeboards": "Create timebands",
     "edit": "Edit",
     "existingProjects": "EXISTING PROJECTS",
-    "newProject": "NEW PROJECT",
+    "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
     "searchProjectByname": "Search project by name...",
