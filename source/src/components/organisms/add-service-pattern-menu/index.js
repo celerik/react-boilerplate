@@ -23,10 +23,15 @@ const CreateServicePattern = ({
     match
 }) => {
     const { params: { projectId } } = match;
-    const [route, setRoute] = useState('');
     const [servicePeriod, setServicePeriod] = useState('');
-    const { projects, servicePatterns } = useSelector(state => ({
+    const [route, setRoute] = useState('');
+    const {
+        projects,
+        routes,
+        servicePatterns
+    } = useSelector(state => ({
         projects: state.projects,
+        routes: state.routes,
         servicePatterns: state.servicePatterns
     }));
     const dispatch = useDispatch();
@@ -56,22 +61,26 @@ const CreateServicePattern = ({
                 {config.text.createServicePattern.addAServicePattern}
             </Typography>
             <ListSelector
-                items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
+                itemDesProp="routeName"
+                itemValProp="routeId"
+                items={routes}
                 onChange={handleRoute}
                 placeholder={config.text.createServicePattern.selectRoute}
                 value={route}
             />
             <ListSelector
+                itemDesProp="text"
+                itemValProp="value"
                 items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
                 onChange={handleServicePeriod}
                 placeholder={config.text.createServicePattern.selectServicePeriod}
                 value={servicePeriod}
             />
             <Actionbutton
-                startIcon="refresh"
                 className={classes.buttonAdd}
-                onClick={Function.prototype}
                 label={config.text.createServicePattern.addServicePattern}
+                onClick={Function.prototype}
+                startIcon="refresh"
             />
             <div className={classes.servicePatternsContainer}>
                 {servicePatterns.map((servicePattern, index) => (

@@ -5,12 +5,14 @@ import { combineReducers } from 'redux';
 import { LOGOUT } from '../actions';
 import { alertNotificationReducer } from './alert-notification';
 import { projectsReducer } from './projects';
+import { routesReducer } from './routes';
 import { servicePatternsReducer } from './service-patterns';
 import { userReducer } from './user';
 
 const appReducer = combineReducers({
     alert: alertNotificationReducer,
     projects: projectsReducer,
+    routes: routesReducer,
     servicePatterns: servicePatternsReducer,
     user: userReducer
 });
