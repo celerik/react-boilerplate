@@ -1,4 +1,4 @@
-export default (theme) => Object.assign({}, {
+export default theme => ({
     containerCards: {
         overflowY: 'auto'
     },
@@ -12,6 +12,9 @@ export default (theme) => Object.assign({}, {
         '&::first-letter': {
             textTransform: 'capitalize'
         }
+    },
+    mainContainer: {
+        display: 'content'
     },
     option: {
         alignItems: 'center',

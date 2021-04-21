@@ -11,7 +11,7 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Attribute from '../../molecules/attribute';
+import Attribute from '../../molecules/project-attribute';
 import ButtonAction from '../../atoms/button';
 import { config } from '../../../config';
 
@@ -29,13 +29,14 @@ const ProjectSettings = ({
 
     const firstAttributes = [
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultTopLevel,
+            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultOtpLevel,
             content: [
                 <Inputfield
-                    key="input-0"
                     className={inputSmall}
-                    rootClass={classes.input}
                     endAdornment="%"
+                    id={`${id}-default-top-input`}
+                    key="input-0"
+                    rootClass={classes.input}
                     value="10"
                 />
             ]
@@ -44,18 +45,20 @@ const ProjectSettings = ({
             nameProperty: config.text.projectMenu.projetcSettingsModal.defaultOtpThresholds,
             content: [
                 <Inputfield
-                    key="input-1"
                     className={inputMedium}
+                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    id={`${id}-default-otp-thresholds-input-1`}
+                    key="input-1"
                     rootClass={classes.input}
                     value="10"
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                 />,
                 <Inputfield
-                    key="input-2"
                     className={inputMedium}
+                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    id={`${id}-default-otp-thresholds-input-2`}
+                    key="input-2"
                     rootClass={classes.input}
                     value="10"
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                 />
             ]
         },
@@ -63,10 +66,11 @@ const ProjectSettings = ({
             nameProperty: config.text.projectMenu.projetcSettingsModal.defaultRecoveryLevel,
             content: [
                 <Inputfield
-                    key="input-3"
                     className={inputSmall}
-                    rootClass={classes.input}
                     endAdornment="%"
+                    id={`${id}-default-recovery-level-input`}
+                    key="input-3"
+                    rootClass={classes.input}
                     value="10"
                 />
             ]
@@ -75,11 +79,12 @@ const ProjectSettings = ({
             nameProperty: config.text.projectMenu.projetcSettingsModal.defaultRliefTime,
             content: [
                 <Inputfield
-                    key="input-4"
                     className={inputMedium}
+                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    id={`${id}-default-rlief-time-input`}
+                    key="input-4"
                     rootClass={classes.input}
                     value="10"
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                 />
             ]
         }
@@ -87,15 +92,16 @@ const ProjectSettings = ({
 
     const secondAttributes = [
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultVechicleOperating,
+            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultVehicleDepreciation,
             content: [
                 <Inputfield
-                    key="input-5"
                     className={largeInput}
-                    value="10"
-                    rootClass={classes.input}
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    id={`${id}-default-vehicle-depreciation-input`}
+                    key="input-5"
+                    rootClass={classes.input}
                     startAdornment="£"
+                    value="10"
                 />
             ]
         },
@@ -104,12 +110,13 @@ const ProjectSettings = ({
             secondarytext: config.text.projectMenu.projetcSettingsModal.running,
             content: [
                 <Inputfield
-                    key="input-6"
                     className={largeInput}
-                    value="10"
-                    rootClass={classes.input}
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    id={`${id}-default-vehicle-operating-running-input`}
+                    key="input-6"
+                    rootClass={classes.input}
                     startAdornment="£"
+                    value="10"
                 />
             ]
         },
@@ -118,12 +125,13 @@ const ProjectSettings = ({
             secondarytext: config.text.projectMenu.projetcSettingsModal.resting,
             content: [
                 <Inputfield
-                    key="input-7"
                     className={largeInput}
-                    value="10"
-                    rootClass={classes.input}
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    id={`${id}-default-vehicle-operating-resting-input`}
+                    key="input-7"
+                    rootClass={classes.input}
                     startAdornment="£"
+                    value="10"
                 />
             ]
         }
@@ -153,6 +161,7 @@ const ProjectSettings = ({
                     </Typography>
                     <Inputfield
                         className={classes.nameProject}
+                        id={`${id}-name-project-input`}
                         underline
                         value="Project name"
                         variant="standard"
@@ -167,6 +176,7 @@ const ProjectSettings = ({
                         <Attribute
                             attribute={value.nameProperty}
                             key={index}
+                            id={`${id}-attribute-${index}-1`}
                             secondarytext={value.secondarytext}
                         >
                             {value.content}
@@ -181,6 +191,7 @@ const ProjectSettings = ({
                     {secondAttributes.map((value, index) => (
                         <Attribute
                             attribute={value.nameProperty}
+                            id={`${id}-attribute-${index}-2`}
                             key={index}
                             secondarytext={value.secondarytext}
                         >

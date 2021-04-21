@@ -82,7 +82,7 @@
       "defaultOtpThresholds": "Default OTP thresholds",
       "defaultRecoveryLevel": "Default recovery level",
       "defaultRliefTime": "Default rlief time",
-      "defaultTopLevel": "Default OTP level",
+      "defaultOtpLevel": "Default OTP level",
       "defaultVechicleOperating": "Default vehicle operating cost",
       "defaultVehicleCost": "Default vehicle costs",
       "defaultVehicleDepreciation": "Default vehicle depreciation",

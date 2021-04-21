@@ -47,8 +47,8 @@ const ProjectMenu = ({
     };
 
     return (
-        <>
-            <BackToButton label={config.text.projectMenu.backToProjects} />
+        <div classNames={classes.mainContainer} id={id}>
+            <BackToButton label={config.text.projectMenu.backToProjects} id={`${id}-back-button`} />
             <div className={classes.titleContainer}>
                 <Typography className={classes.projectName} variant="h4">
                     {project.projectName}
@@ -62,6 +62,7 @@ const ProjectMenu = ({
                         onClick={onClickMenuItem(menuOption.name)}
                         tabIndex={index}
                         role="button"
+                        id={`${id}-option-${menuOption.name}`}
                         onKeyDown={Function.prototype}
                         key={`${id}-option-${menuOption.name}`}
                     >
@@ -75,6 +76,7 @@ const ProjectMenu = ({
             </div>
             <Actionbutton
                 className={classes.buttonAdd}
+                id={`${id}-run-project`}
                 label={config.text.projectMenu.title}
                 onClick={handleClickOpen}
             />
@@ -90,12 +92,13 @@ const ProjectMenu = ({
                     ]
                 }
                 content={config.text.projectMenu.contents}
+                id={`${id}-run-project-modal`}
                 onClose={handleClose}
                 title={config.text.projectMenu.title}
                 visible={runModalVisible}
             />
-            <ProjectSettingsModal open={false} />
-        </>
+            <ProjectSettingsModal id={`${id}-settings-modal`} />
+        </div>
     );
 };
 
