@@ -84,10 +84,12 @@ const ProjectMenu = ({
                 actions={
                     [
                         {
-                            name: config.text.projectMenu.createTimeboards
+                            name: config.text.projectMenu.createTimeboards,
+                            onClick: Function.prototype
                         },
                         {
-                            name: config.text.projectMenu.createSchedule
+                            name: config.text.projectMenu.createSchedule,
+                            onClick: Function.prototype
                         }
                     ]
                 }

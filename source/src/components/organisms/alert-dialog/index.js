@@ -49,7 +49,7 @@ const AlertDialog = ({
                 <Button
                     id={`${id}-action-${id}`}
                     key={index}
-                    onClick={onClose}
+                    onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
                         action.disabled && classes.bottomDisabled

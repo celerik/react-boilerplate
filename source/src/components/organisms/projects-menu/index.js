@@ -4,8 +4,9 @@ import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { bindActionCreators } from 'redux';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
@@ -14,6 +15,7 @@ import AlertDialog from '../alert-dialog';
 import InputField from '../../molecules/input-field';
 import ListActions from '../../molecules/list-options';
 import { config } from '../../../config';
+import { cloneProject } from '../../../actions/projects';
 import { formatUrlParam } from '../../../util/string';
 
 // @styles
@@ -22,22 +24,20 @@ import styles from './styles';
 const ProjectBar = ({
     classes
 }) => {
-    const [cloneModalVisible, setCloneModalVisibility] = useState(false);
+    const [cloneProjectId, setCloneProjectId] = useState(null);
     const [searchValue, setSearchValue] = useState('');
     const [sortAsc, setSortAsc] = useState(false);
     const history = useHistory();
+    const dispatch = useDispatch();
     const projects = useSelector(state => state.projects);
+    const onCloneProject = bindActionCreators(cloneProject, dispatch);
 
     const onClickEditProject = (projectId) => {
         history.push(formatUrlParam(config.routes.dashboard.project.url, projectId));
     };
 
-    const handleClickOpen = () => {
-        setCloneModalVisibility(true);
-    };
-
-    const handleClose = () => {
-        setCloneModalVisibility(false);
+    const handleClickOpen = (projectId) => {
+        setCloneProjectId(projectId);
     };
 
     const handleSortOpen = () => {
@@ -53,6 +53,12 @@ const ProjectBar = ({
         icon: 'east',
         onClick: onClickEditProject
     }];
+
+    const onClickCloneProjet = () => {
+        const cloneProject = projects.find(({ projectId }) => projectId === cloneProjectId);
+        onCloneProject(cloneProject);
+        setCloneProjectId(null);
+    };
 
     const sortOrder = sortAsc ? 1 : -1;
 
@@ -95,17 +101,19 @@ const ProjectBar = ({
                 actions={
                     [
                         {
-                            name: config.text.projectMenu.cloneSnapshot
+                            name: config.text.projectMenu.cloneSnapshot,
+                            onClick: Function.prototype
                         },
                         {
-                            name: config.text.projectMenu.cloneServicePattern
+                            name: config.text.projectMenu.cloneServicePattern,
+                            onClick: onClickCloneProjet
                         }
                     ]
                 }
                 content={config.text.projectMenu.content}
-                onClose={handleClose}
                 title={config.text.projectMenu.cloneProject}
-                visible={cloneModalVisible}
+                onClose={() => setCloneProjectId(null)}
+                visible={Boolean(cloneProjectId)}
             />
         </>
     );
