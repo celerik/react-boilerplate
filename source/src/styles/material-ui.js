@@ -103,6 +103,6 @@ export const theme = createMuiTheme({
             root: {
                 backgroundColor: colors.background.background1
             }
-        },
+        }
     }
 });

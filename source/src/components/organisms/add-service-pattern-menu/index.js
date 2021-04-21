@@ -89,7 +89,7 @@ const CreateServicePattern = ({
                 servicePatternId: item.servicePatternId,
                 date: selectedServicePeriod
             }));
-            
+
         Project.importServicePatterns(projectId, baselineServicePatternIds)
             .then(() => {
                 globalUI.showAlertNotificationSuccess(

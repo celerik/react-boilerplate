@@ -13,7 +13,6 @@ const Actionbutton = ({
     className,
     classes,
     endIcon,
-    disabled,
     id,
     label,
     onClick,
@@ -28,7 +27,6 @@ const Actionbutton = ({
         <Button
             className={ButtonStyle}
             id={id}
-            // disabled={disabled}
             onClick={onClick}
             variant="filled"
             endIcon={endIcon && (
