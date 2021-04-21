@@ -137,7 +137,7 @@ const ProjectSettings = ({
             disableEscapeKeyDown
             id={id}
             onClose={Function.prototype}
-            open={open}
+            open={true}
         >
                 <DialogTitle className={classes.actions}>
                     <Typography variant="h3">

@@ -84,7 +84,7 @@ export default theme => Object.assign({}, {
         color: 'white',
         height: 47,
         padding: '0px 15px',
-        textTransform: 'capitalize'
+        textTransform: 'initial'
     },
     title: {
         color: theme.palette.text.secondary,

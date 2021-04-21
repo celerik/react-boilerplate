@@ -96,6 +96,7 @@ const ProjectMenu = ({
                 title={config.text.projectMenu.title}
                 visible={runModalVisible}
             />
+            <ProjectSettingsModal />
         </>
     );
 };

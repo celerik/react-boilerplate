@@ -6,8 +6,8 @@ export default theme => Object.assign({}, {
         marginRight: 8
     },
     attributeContainer: {
-        display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        display: 'flex'
     },
     icon: {
         fontSize: 13
@@ -15,9 +15,9 @@ export default theme => Object.assign({}, {
     mainContainer: {
         alignItems: 'center',
         display: 'flex',
+        height: 56,
         justifyContent: 'space-between',
         padding: '7px 5px',
-        height: 56,
         '&:hover': {
             backgroundColor: theme.palette.background.secondary
         }
@@ -28,7 +28,7 @@ export default theme => Object.assign({}, {
     },
     textSecondary: {
         color: theme.palette.text.contrastText,
-        marginRight: 8,
-        fontSize: 13
+        fontSize: 13,
+        marginRight: 8
     }
 });
