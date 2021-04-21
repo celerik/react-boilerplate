@@ -101,12 +101,10 @@ const ProjectBar = ({
                 actions={
                     [
                         {
-                            disable: false,
                             name: config.text.projectMenu.cloneSnapshot,
                             onClick: Function.prototype
                         },
                         {
-                            disable: false,
                             name: config.text.projectMenu.cloneServicePattern,
                             onClick: onClickCloneProjet
                         }

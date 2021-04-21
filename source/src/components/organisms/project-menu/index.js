@@ -80,12 +80,10 @@ const ProjectMenu = ({
                     [
                         {
                             name: config.text.projectMenu.createTimeboards,
-                            disable: false,
                             onClick: Function.prototype
                         },
                         {
                             name: config.text.projectMenu.createSchedule,
-                            disable: false,
                             onClick: Function.prototype
                         }
                     ]
