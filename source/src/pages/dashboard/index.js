@@ -9,7 +9,8 @@ import { connect } from 'react-redux';
 import Map from '../../components/organisms/map';
 import TemplateDashboard from '../../components/templates/dashboard';
 import { getProjects } from '../../actions/projects';
-import { getTeams, getRoutes } from '../../actions/teams';
+import { getTeams } from '../../actions/teams';
+import { getRoutes } from '../../actions/routes';
 
 const DashboardPage = ({
     onGetProjects,

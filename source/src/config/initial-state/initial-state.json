@@ -8,6 +8,7 @@
     "language": "en",
     "menu":  {},
     "projects": [],
+    "routes": [],
     "servicePatterns": [],
     "user": {
         "account": {
@@ -19,9 +20,5 @@
         },
         "selectedTeam": null,
         "teams": []
-    },
-    "team": {
-        "routes": [],
-        "selectedRoute": null
     }
 }

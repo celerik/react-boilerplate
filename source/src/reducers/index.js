@@ -12,7 +12,7 @@ import { routesReducer } from './routes';
 const appReducer = combineReducers({
     alert: alertNotificationReducer,
     projects: projectsReducer,
-    team: routesReducer,
+    routes: routesReducer,
     servicePatterns: servicePatternsReducer,
     user: userReducer
 });

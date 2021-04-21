@@ -12,7 +12,6 @@ import ServicePatternCard from '../../molecules/service-pattern-card';
 import { bindActionCreators } from 'redux';
 import { config } from '../../../config';
 import { getServicePatters } from '../../../actions/service-patterns';
-import { setSelectedRoute } from '../../../actions/teams';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
@@ -25,20 +24,18 @@ const CreateServicePattern = ({
 }) => {
     const { params: { projectId } } = match;
     const [servicePeriod, setServicePeriod] = useState('');
+    const [route, setRoute] = useState('');
     const {
         projects,
         servicePatterns,
-        routes,
-        selectedRoute
+        routes
     } = useSelector(state => ({
         projects: state.projects,
         servicePatterns: state.servicePatterns,
-        routes: state.team.routes,
-        selectedRoute: state.team.selectedRoute
+        routes: state.routes
     }));
     const dispatch = useDispatch();
     const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
-    const onSetSelectedRoute = bindActionCreators(setSelectedRoute, dispatch);
     const project = projects.find(project => project.projectId === projectId);
 
     useEffect(() => {
@@ -50,7 +47,7 @@ const CreateServicePattern = ({
     }
 
     const handleRoute = ({ value }) => {
-        onSetSelectedRoute(value);
+        setRoute(value);
     };
 
     const handleServicePeriod = ({ value }) => {
@@ -69,7 +66,7 @@ const CreateServicePattern = ({
                 items={routes}
                 onChange={handleRoute}
                 placeholder={config.text.createServicePattern.selectRoute}
-                value={selectedRoute}
+                value={route}
             />
             <ListSelector
                 itemDesProp="text"
