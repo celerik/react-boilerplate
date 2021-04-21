@@ -35,7 +35,7 @@ export default theme => Object.assign({}, {
         marginLeft: '34px',
         marginRight: '34px',
         padding: 0,
-        width: '343px'
+        width: 343
     },
     closeButton: {
         color: '#323232',

@@ -4,13 +4,12 @@
     "helloWorld": "Hello World!"
   },
   "createServicePattern": {
-    "addAServicePattern":  "Add a service pattern",
     "addServicePattern": "Add Service Pattern",
     "backToServicePatterns": "Back to service patterns",
-    "cancel": "cancel",
+    "cancel": "Cancel",
     "importServicePatterns": "Import Service Pattern",
-    "lock": "lock",
-    "lockServicePattern": "Lock service pattern",
+    "lock": "Lock",
+    "lockServicePattern": "Lock Service Pattern",
     "content": "Are you sure you want to lock the service Patterns of this project?",
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"

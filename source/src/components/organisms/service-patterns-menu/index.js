@@ -102,8 +102,7 @@ const ServicePatterns = ({
                 actions={
                     [
                         {
-                            name: config.text.createServicePattern.cancel,
-                            disabled: false
+                            name: config.text.createServicePattern.cancel
                         },
                         {
                             name: config.text.createServicePattern.lock,
