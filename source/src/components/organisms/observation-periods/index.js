@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ButtonAction from '../../atoms/button';
-import Calendar from '../../organisms/calendar';
+import Calendar from '../calendar';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
 import { format } from '../../../util/string';
