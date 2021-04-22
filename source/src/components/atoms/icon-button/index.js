@@ -16,6 +16,7 @@ const IconComponent = ({
     classes,
     id,
     label,
+    color,
     onClick,
     icon
 }) => {
@@ -41,7 +42,10 @@ const IconComponent = ({
                 className={buttonClass}
                 onClick={onClick}
             >
-                <Icon className={iconClass}>
+                <Icon
+                    className={iconClass}
+                    style={color && { color }}
+                >
                     {icon}
                 </Icon>
             </IconButton>
@@ -55,6 +59,7 @@ IconComponent.propTypes = {
     iconClassname: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
+    color: PropTypes.string,
     onClick: PropTypes.func,
     icon: PropTypes.string.isRequired
 };
@@ -63,6 +68,7 @@ IconComponent.defaultProps = {
     buttonClassname: null,
     iconClassname: null,
     label: '',
+    color: null,
     onClick: Function.prototype
 };
 
