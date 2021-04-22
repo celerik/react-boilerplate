@@ -10,6 +10,11 @@ export const getRoutes = () =>
     async (dispatch, getState) => {
         const { selectedTeam } = getState().user;
         const routes = await axios.get(format(config.services.routes.getRoutes, selectedTeam));
+
+        if (!routes) {
+            return;
+        }
+
         dispatch({
             type: GET_ROUTES,
             payload: routes
