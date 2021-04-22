@@ -15,7 +15,7 @@ export const getServicePatterns = ({ projectId }) =>
 
         const servicesPatternsDetailsRequests = servicePatterns.map(servicePattern => new Promise(
             (resolve, reject) => axios.get(format(
-                config.services.servicePatterns.getOne,
+                config.services.servicePatterns.getServicePattern,
                 projectId,
                 servicePattern.servicePatternId
             ))

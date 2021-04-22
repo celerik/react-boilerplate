@@ -15,4 +15,7 @@ export const format = (str, ...args) => {
     return formatedStr;
 };
 
-export const formatUrlParam = (url, paramValue) => url.replace(/:[a-zA-Z]+/, paramValue);
+export const formatUrlParam = (url, ...paramValues) => paramValues.reduce(
+    (url, value) => url.replace(/:[a-zA-Z]+/, value),
+    url
+);

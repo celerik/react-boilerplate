@@ -1,7 +1,7 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -13,28 +13,34 @@ import { useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
+import Project from '../../../services/project';
 
-const ProjectMenu = ({
+const ServicePatternMenu = ({
     classes,
     id,
     locked,
     match,
-    name,
     route
 }) => {
-    const { params: { projectId } } = match;
-    const { projects } = useSelector(state => ({ projects: state.projects }));
-    const project = projects.find(project => project.projectId === projectId);
+    const { projectId, servicePatternId } = match.params;
+    const [servicePattern, setServicePattern] = useState(null);
 
-    if (!project) {
+    useEffect(async () => {
+        const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
+        setServicePattern(servicePattern);
+    }, []);
+
+    if (!servicePattern) {
         return null;
     }
 
     return (
         <div id={id} className={classes.mainContainer}>
-            <BackToButton label={config.text.projectMenu.backToServicePatterns} />
+            <BackToButton label={config.text.createServicePattern.backToServicePatterns} />
             <div className={classes.title}>
-                <Typography variant="h3">{name}</Typography>
+                <Typography variant="h3">
+                    {servicePattern.settings.servicePatternName}
+                </Typography>
                 <div className={classes.lockedStatus}>
                     <Icon fontSize="small">
                         {locked ? 'lock' : 'lock_open'}
@@ -44,9 +50,9 @@ const ProjectMenu = ({
                     </Typography>
                 </div>
             </div>
-            <div className={classes.title}>
-                <Typography className={classes.subtitle}>{route}</Typography>
-            </div>
+            <Typography className={classes.subtitle} variant="body1">
+                {servicePattern.routeName}
+            </Typography>
             <Typography className={classes.label}>
                 {config.text.editServicePattern.editServicePatternInfo}
             </Typography>
@@ -58,7 +64,7 @@ const ProjectMenu = ({
     );
 };
 
-ProjectMenu.propTypes = {
+ServicePatternMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool,
@@ -67,8 +73,8 @@ ProjectMenu.propTypes = {
     route: PropTypes.string.isRequired
 };
 
-ProjectMenu.defaultProps = {
+ServicePatternMenu.defaultProps = {
     locked: false
 };
 
-export default withStyles(styles)(ProjectMenu);
+export default withStyles(styles)(ServicePatternMenu);

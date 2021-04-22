@@ -13,7 +13,8 @@ export default () => ({
         display: 'flex',
         justifyContent: 'space-between',
         marginBottom: 11,
-        marginTop: 31
+        marginTop: 31,
+        width: '100%'
     },
     label: {
         fontSize: 'inherit',
@@ -25,7 +26,6 @@ export default () => ({
         display: 'flex'
     },
     subtitle: {
-        fontSize: 'x-large',
-        fontWeight: 100
+        fontSize: 20
     }
 });

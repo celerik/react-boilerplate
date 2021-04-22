@@ -56,7 +56,9 @@ const ServicePatterns = ({
     }, {
         icon: 'edit',
         name: config.text.servicePatternsMenu.edit,
-        onClick: Function.prototype
+        onClick: (servicePatternId) => history.push(
+            formatUrlParam(config.routes.dashboard.editServicePattern.url, projectId, servicePatternId)
+        )
     }, {
         icon: 'delete',
         name: config.text.servicePatternsMenu.delete,
@@ -77,6 +79,8 @@ const ServicePatterns = ({
                 {servicePatterns.map((servicePattern, index) => (
                     <ServicePatternCard
                         actions={actions}
+                        color={servicePattern.colour}
+                        id={servicePattern.servicePatternId}
                         key={`${id}-card-${index}`}
                         operationDays={servicePattern.settings.daysOfOperation}
                         operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}

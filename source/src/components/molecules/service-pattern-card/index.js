@@ -70,7 +70,7 @@ const ServicePatternCard = ({
     return (
         <div
             className={classNames(classes.mainContainer, className)}
-            id={id}
+            id={`service-pattern-card-${id}`}
             onMouseLeave={() => setActionsVisibility(false)}
             onFocus={onHoverCard}
             onMouseOver={onHoverCard}
@@ -106,6 +106,7 @@ const ServicePatternCard = ({
                     <Tooltip
                         title={action.name}
                         key={`${id}-${action.name}-tooltip`}
+                        onClick={() => action.onClick(id)}
                         enterDelay={500}
                         enterNextDelay={500}
                     >

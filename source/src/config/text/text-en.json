@@ -4,6 +4,7 @@
     "helloWorld": "Hello World!"
   },
   "createServicePattern": {
+    "addServicePattern": "Add Service Pattern",
     "backToServicePatterns": "Back to service patterns",
     "cancel": "Cancel",
     "content": "Are you sure you want to lock the service Patterns of this project?",
@@ -17,6 +18,8 @@
     "selectServicePeriod": "Select service period"
   },
   "editServicePattern": {
+    "title": "Edit Service Pattern",
+    "getServicePatternError": "There's been an error while fetching your service pattern",
     "backToServicePatterns": "Back to service patterns",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
     "lock": "Lock",
