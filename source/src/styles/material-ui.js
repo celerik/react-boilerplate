@@ -91,6 +91,14 @@ export const theme = createMuiTheme({
                 }
             }
         },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+                '&::first-letter': {
+                    textTransform: 'uppercase'
+                }
+            }
+        },
         MuiDivider: {
             root: {
                 backgroundColor: colors.background.background1

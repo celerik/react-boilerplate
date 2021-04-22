@@ -9,7 +9,7 @@ export const GET_SERVICE_PATTERNS = 'GET_SERVICE_PATTERNS';
 /**
  * @param {String} param0
  */
-export const getServicePatters = ({ projectId }) =>
+export const getServicePatterns = ({ projectId }) =>
     async (dispatch) => {
         const servicePatterns = await axios.get(format(config.services.servicePatterns.get, projectId));
 

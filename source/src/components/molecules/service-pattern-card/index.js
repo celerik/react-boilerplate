@@ -30,16 +30,18 @@ const IconStatus = withStyles(styles)(({ status }) => (
 
 const ServicePatternCard = ({
     actions,
-    backgroundColor,
     className,
     classes,
     id,
     isCheckeable,
+    isChecked,
+    onCheck,
     operationDays,
-    routeColor,
+    color,
     routeName,
+    servicePatternName,
     statusService,
-    servicePatternName
+    value
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
 
@@ -75,10 +77,11 @@ const ServicePatternCard = ({
         >
             {isCheckeable && (
                 <CheckBox
+                    checked={isChecked}
                     checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
                     color="primary"
                     icon={<CheckBoxOutlineBlankIcon className={classes.checkboxUnSelect} />}
-                    onChange={Function.prototype}
+                    onChange={() => onCheck(value)}
                 />
             )}
             {statusService && (
@@ -87,9 +90,9 @@ const ServicePatternCard = ({
             <div
                 className={classes.routeNameContainer}
                 style={{
-                    border: `1px solid ${routeColor}`,
-                    color: routeColor,
-                    backgroundColor
+                    backgroundColor: `${color}33`,
+                    border: `1px solid ${color}`,
+                    color
                 }}
             >
                 {routeName}
@@ -121,25 +124,28 @@ ServicePatternCard.propTypes = {
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
         onClick: PropTypes.func.isRequired
     })),
-    backgroundColor: PropTypes.string,
     className: PropTypes.string,
+    color: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isCheckeable: PropTypes.bool,
+    isChecked: PropTypes.bool,
+    onCheck: PropTypes.func,
     operationDays: PropTypes.arrayOf(PropTypes.string),
-    routeColor: PropTypes.string,
     routeName: PropTypes.string.isRequired,
     servicePatternName: PropTypes.string.isRequired,
-    statusService: PropTypes.string
+    statusService: PropTypes.string,
+    value: PropTypes.string.isRequired
 };
 
 ServicePatternCard.defaultProps = {
     actions: Array.prototype,
-    backgroundColor: '#FEF1E2',
     className: null,
-    isCheckeable: true,
+    color: '#FDB561',
+    isCheckeable: false,
+    isChecked: undefined,
+    onCheck: undefined,
     operationDays: [],
-    routeColor: '#FDB561',
     statusService: null
 };
 

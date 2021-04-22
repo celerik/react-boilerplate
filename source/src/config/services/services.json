@@ -2,6 +2,7 @@
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
     "get": "{projects}/projects",
+    "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
     "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
@@ -12,7 +13,9 @@
     "login": "{root}/login"
   },
   "routes": {
-    "getRoutes": "{baseline}/teams/{0}/routes"
+    "getDateRanges": "{baseline}/teams/{0}/routes/{1}/dateRanges",
+    "getRoutes": "{baseline}/teams/{0}/routes",
+    "getServicePatterns": "{baseline}/teams/{0}/routes/{1}/servicePatterns"
   },
   "teams": {
     "get": "{teams}/teams"

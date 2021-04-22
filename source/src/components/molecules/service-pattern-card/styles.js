@@ -30,6 +30,7 @@ export default theme => Object.assign({}, {
         justifyContent: 'center',
         marginLeft: 5,
         marginRight: 11,
+        minWidth: 64,
         width: 64
     },
     checkboxSelect: {
