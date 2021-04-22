@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ButtonAction from '../../atoms/button';
-import Calendar from '../../atoms/calendar/index';
+import Calendar from '../../organisms/calendar';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
 import { format } from '../../../util/string';
@@ -75,8 +75,7 @@ const ServicePatterns = ({
                 content={(
                     <>
                         {config.text.observationPeriodsPage.content}
-
-                <Calendar />
+                        <Calendar />
                     </>
                 )}
                 onClose={handleClose}
