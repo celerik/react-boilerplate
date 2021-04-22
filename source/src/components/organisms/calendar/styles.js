@@ -2,8 +2,8 @@ const buttonStyle = {
     backgroundColor: 'transparent'
 };
 
-const removedButtonsStyle = {
-    display: 'none'
+const rangeLimitsStyles = {
+    backgroundColor: 'red'
 };
 
 export default theme => ({
@@ -12,12 +12,7 @@ export default theme => ({
         width: 304,
         backgroundColor: 'white',
         boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
-
         '& .react-calendar__navigation__arrow': buttonStyle,
-
-        // '& .react-calendar__navigation__prev2-button': removedButtonsStyle,
-        // '& .react-calendar__navigation__next2-button': removedButtonsStyle,
-
         '& .react-calendar__tile': {
             // STYLES FOR THE DAYS CELLS
             backgroundColor: 'transparent',
@@ -30,6 +25,8 @@ export default theme => ({
             backgroundColor: 'yellow'
         },
 
+        '& .react-calendar__tile--rangeStart': rangeLimitsStyles,
+        '& .react-calendar__tile--rangeEnd': rangeLimitsStyles,
         '& .react-calendar__month-view__days__day--neighboringMonth': {
             // STYLES FOR DAYS THAT DOESN'T BELONG TO THE ACTUAL MONTH
             color: 'red'
