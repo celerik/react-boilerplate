@@ -1,7 +1,8 @@
 {
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
-    "get": "{projects}/projects"
+    "get": "{projects}/projects",
+    "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
     "get": "{projects}/projects/{0}/servicePatterns",

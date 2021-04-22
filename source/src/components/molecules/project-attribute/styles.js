@@ -20,6 +20,9 @@ export default theme => Object.assign({}, {
         padding: '7px 5px',
         '&:hover': {
             backgroundColor: theme.palette.background.secondary
+        },
+        '&:hover $attribute': {
+            fontWeight: 500
         }
     },
     nameProject: {

@@ -42,8 +42,7 @@ export default theme => ({
     },
     settingsIcon: {
         color: theme.palette.text.hint,
-        fontSize: 14,
-        marginLeft: 14
+        fontSize: 14
     },
     titleContainer: {
         alignItems: 'center',

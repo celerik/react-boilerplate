@@ -5,7 +5,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
@@ -13,6 +13,8 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import Attribute from '../../molecules/project-attribute';
 import ButtonAction from '../../atoms/button';
+import infoMock from './settingsProject.json';
+import project from '../../../services/projects';
 import { config } from '../../../config';
 
 // @styles
@@ -20,12 +22,37 @@ import styles from './styles';
 
 const ProjectSettings = ({
     classes,
+    id,
+    onClose,
     open,
-    id
+    projectId
 }) => {
     const inputMedium = classNames(classes.inputfield, classes.inputMedium);
     const inputSmall = classNames(classes.inputfield, classes.inputSmall);
     const largeInput = classNames(classes.inputfield, classes.inputLarge);
+    const [infoProject, setInfoProject] = useState(infoMock);
+
+    useEffect(async () => {
+        if (open) {
+            const result = await project.getProjectSettings(projectId);
+            const settings = Object.assign({ ...infoProject }, result);
+            setInfoProject(settings);
+        }
+    }, [open]);
+
+    const handleSettings = (value, property) => {
+        infoProject[property] = value;
+        setInfoProject({ ...infoProject });
+    };
+
+    const handleOtpWindow = (value, index) => {
+        infoProject.otpWindow[index] = value;
+        setInfoProject({ ...infoProject });
+    };
+
+    const onSubmit = async () => {
+        await project.putProjectSettings(projectId, infoProject);
+    };
 
     const firstAttributes = [
         {
@@ -36,8 +63,10 @@ const ProjectSettings = ({
                     endAdornment="%"
                     id={`${id}-default-top-input`}
                     key="input-0"
+                    onChange={(e) => handleSettings(e, 'targetOTP')}
                     rootClass={classes.input}
-                    value="10"
+                    type="number"
+                    value={infoProject.targetOTP}
                 />
             ]
         },
@@ -49,16 +78,20 @@ const ProjectSettings = ({
                     endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                     id={`${id}-default-otp-thresholds-input-1`}
                     key="input-1"
+                    onChange={(e) => handleOtpWindow(e, 0)}
                     rootClass={classes.input}
-                    value="10"
+                    type="number"
+                    value={infoProject.otpWindow[0]}
                 />,
                 <Inputfield
                     className={inputMedium}
                     endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                     id={`${id}-default-otp-thresholds-input-2`}
                     key="input-2"
+                    onChange={(e) => handleOtpWindow(e, 1)}
                     rootClass={classes.input}
-                    value="10"
+                    type="number"
+                    value={infoProject.otpWindow[1]}
                 />
             ]
         },
@@ -70,8 +103,10 @@ const ProjectSettings = ({
                     endAdornment="%"
                     id={`${id}-default-recovery-level-input`}
                     key="input-3"
+                    onChange={(e) => handleSettings(e, 'recoveryTargetLevel')}
                     rootClass={classes.input}
-                    value="10"
+                    type="number"
+                    value={infoProject.recoveryTargetLevel}
                 />
             ]
         },
@@ -83,8 +118,10 @@ const ProjectSettings = ({
                     endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
                     id={`${id}-default-rlief-time-input`}
                     key="input-4"
+                    onChange={(e) => handleSettings(e, 'reliefTime')}
                     rootClass={classes.input}
-                    value="10"
+                    type="number"
+                    value={infoProject.reliefTime}
                 />
             ]
         }
@@ -99,9 +136,11 @@ const ProjectSettings = ({
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
                     id={`${id}-default-vehicle-depreciation-input`}
                     key="input-5"
+                    onChange={(e) => handleSettings(e, 'defaultVehicleDepreciation')}
                     rootClass={classes.input}
                     startAdornment="£"
-                    value="10"
+                    type="number"
+                    value={infoProject.defaultVehicleDepreciation}
                 />
             ]
         },
@@ -114,9 +153,11 @@ const ProjectSettings = ({
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
                     id={`${id}-default-vehicle-operating-running-input`}
                     key="input-6"
+                    onChange={(e) => handleSettings(e, 'defaultOperatingCostWhileRunning')}
                     rootClass={classes.input}
                     startAdornment="£"
-                    value="10"
+                    type="number"
+                    value={infoProject.defaultOperatingCostWhileRunning}
                 />
             ]
         },
@@ -129,9 +170,11 @@ const ProjectSettings = ({
                     endAdornment={config.text.projectMenu.projetcSettingsModal.day}
                     id={`${id}-default-vehicle-operating-resting-input`}
                     key="input-7"
+                    onChange={(e) => handleSettings(e, 'defaultOperatingCostWhileResting')}
                     rootClass={classes.input}
                     startAdornment="£"
-                    value="10"
+                    type="number"
+                    value={infoProject.defaultOperatingCostWhileResting}
                 />
             ]
         }
@@ -144,7 +187,6 @@ const ProjectSettings = ({
             disableBackdropClick
             disableEscapeKeyDown
             id={id}
-            onClose={Function.prototype}
             open={open}
         >
                 <DialogTitle className={classes.actions}>
@@ -162,6 +204,7 @@ const ProjectSettings = ({
                     <Inputfield
                         className={classes.nameProject}
                         id={`${id}-name-project-input`}
+                        onChange={Function.prototype}
                         underline
                         value="Project name"
                         variant="standard"
@@ -205,13 +248,13 @@ const ProjectSettings = ({
                         endIcon="save"
                         id={`${id}-confirm`}
                         label={config.text.projectMenu.projetcSettingsModal.saveSettings}
-                        onClick={Function.prototype}
+                        onClick={onSubmit}
                     />
                     <ButtonAction
                         className={classes.cancel}
                         id={`${id}-cancel`}
                         label={config.text.projectMenu.projetcSettingsModal.cancel}
-                        onClick={Function.prototype}
+                        onClick={onClose}
                     />
                 </DialogActions>
         </Dialog>
@@ -221,7 +264,9 @@ const ProjectSettings = ({
 ProjectSettings.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    open: PropTypes.bool.isRequired
+    onClose: PropTypes.func.isRequired,
+    open: PropTypes.bool.isRequired,
+    projectId: PropTypes.string.isRequired
 };
 
 ProjectSettings.defaultProps = {};

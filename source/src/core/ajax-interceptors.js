@@ -70,6 +70,8 @@ const addRequestInterceptors = () => {
                 request.headers.Authorization = `Bearer ${authToken}`;
             }
 
+            request.headers['Content-Type'] = 'application/json';
+
             return request;
         },
         error => handleError(error)
