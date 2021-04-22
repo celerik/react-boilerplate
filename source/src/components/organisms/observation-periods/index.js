@@ -72,13 +72,12 @@ const ServicePatterns = ({
                     ]
                 }
                 className={classes.buttonLock}
-                content={(
-                    <>
-                        {config.text.observationPeriodsPage.content}
+                content={<>
+                    {config.text.observationPeriodsPage.content}
 
-                <Calendar />
-                    </>
-                )}
+                <Calendar/>
+                </>
+                }
                 onClose={handleClose}
                 title={config.text.observationPeriodsPage.addObservationPeriods}
                 visible={observationPeriodsModalVisible}
