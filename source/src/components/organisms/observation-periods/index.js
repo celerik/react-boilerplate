@@ -74,7 +74,7 @@ const ServicePatterns = ({
                 className={classes.buttonLock}
                 content={(
                     <>
-                        {config.text.observationPeriodsPage.content}
+                        <p>{config.text.observationPeriodsPage.content}</p>
                         <Calendar />
                     </>
                 )}

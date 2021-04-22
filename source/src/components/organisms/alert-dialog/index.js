@@ -40,7 +40,7 @@ const AlertDialog = ({
             {title}
         </DialogTitle>
         <DialogContent className={classes.content}>
-            <div className={classes.adjustText}>{content}</div>
+            {content}
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
             {actions?.map((action, index) => (
