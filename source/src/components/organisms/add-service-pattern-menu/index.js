@@ -26,6 +26,7 @@ const CreateServicePattern = ({
     const [selectedRoute, selectRoute] = useState(null);
     const [servicePeriods, setServicePeriods] = useState([]);
     const [selectedServicePeriod, selectServicePeriod] = useState(null);
+    const [selectedServicePatterns, selectServicePatterns] = useState([]);
     const [servicePatterns, setServicePatterns] = useState([]);
     const dispatch = useDispatch();
     const { projectId } = match.params;
@@ -59,6 +60,18 @@ const CreateServicePattern = ({
         selectServicePeriod(value);
     };
 
+    const onCheckServicePattern = (servicePatternId) => {
+        const filterServicePatterns = selectedServicePatterns.filter(
+            selectedId => selectedId !== servicePatternId
+        );
+
+        if (filterServicePatterns.length === selectedServicePatterns.length) {
+            selectServicePatterns([...selectedServicePatterns, servicePatternId]);
+        } else {
+            selectServicePatterns(filterServicePatterns);
+        }
+    };
+
     const onLoadServicePatterns = async () => {
         const newServicePatterns = await BaselineConnect.getRouteServicePatterns(
             selectedTeam,
@@ -69,10 +82,12 @@ const CreateServicePattern = ({
     };
 
     const onImportServicePatterns = async () => {
-        const baselineServicePatternIds = servicePatterns.map(data => ({
-            servicePatternId: data.servicePatternId,
-            date: selectedServicePeriod
-        }));
+        const baselineServicePatternIds = servicePatterns
+            .filter(item => selectedServicePatterns.includes(item.servicePatternId))
+            .map(item => ({
+                servicePatternId: item.servicePatternId,
+                date: selectedServicePeriod
+            }));
         Project.importServicePatterns(projectId, baselineServicePatternIds);
     };
 
@@ -117,25 +132,34 @@ const CreateServicePattern = ({
                 onClick={onLoadServicePatterns}
                 startIcon="refresh"
             />
-            <div className={classes.servicePatternsContainer}>
-                {servicePatterns.map((servicePattern, index) => (
-                    <ServicePatternCard
-                        backgroundColor={`${servicePattern.colour}77`}
-                        isCheckeable
-                        key={`${id}-card-${index}`}
-                        operationDays={servicePattern.daysOfOperation}
-                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
-                        routeName={servicePattern.routeName}
-                        servicePatternName={servicePattern.servicePatternName}
+            {Boolean(servicePatterns.length) && (
+                <>
+                    <div className={classes.servicePatternsContainer}>
+                        {servicePatterns.map((servicePattern, index) => (
+                            <ServicePatternCard
+                                backgroundColor={`${servicePattern.colour}77`}
+                                id={`${id}-card-${index}`}
+                                isCheckeable
+                                isChecked={selectedServicePatterns.includes(servicePattern.servicePatternId)}
+                                key={`${id}-card-${index}`}
+                                onCheck={onCheckServicePattern}
+                                operationDays={servicePattern.daysOfOperation}
+                                operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
+                                routeName={servicePattern.routeName}
+                                servicePatternName={servicePattern.servicePatternName}
+                                value={servicePattern.servicePatternId}
+                            />
+                        ))}
+                    </div>
+                    <Actionbutton
+                        className={classes.buttonImport}
+                        endIcon="file_upload"
+                        label={config.text.createServicePattern.importServicePatterns}
+                        onClick={onImportServicePatterns}
                     />
-                ))}
-            </div>
-            <Actionbutton
-                className={classes.buttonImport}
-                endIcon="file_upload"
-                label={config.text.createServicePattern.importServicePatterns}
-                onClick={onImportServicePatterns}
-            />
+                </>
+            )}
+
         </div>
     );
 };

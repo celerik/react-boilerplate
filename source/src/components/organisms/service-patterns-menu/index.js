@@ -10,7 +10,6 @@ import Actionbutton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { bindActionCreators } from 'redux';
 import { format, formatUrlParam } from '../../../util/string';
 import { getServicePatterns } from '../../../actions/service-patterns';
 
@@ -25,14 +24,14 @@ const ServicePatterns = ({
     match
 }) => {
     const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
-    const { params: { projectId } } = match;
+    const dispatch = useDispatch();
+    const { projectId } = match.params;
     const { projects, servicePatterns } = useSelector(state => ({
         projects: state.projects,
         servicePatterns: state.servicePatterns
     }));
+
     const project = projects.find(project => project.projectId === projectId);
-    const dispatch = useDispatch();
-    const onGetServicePatterns = bindActionCreators(getServicePatterns, dispatch);
 
     const handleClickOpen = () => {
         setServicePatternCloneModalVisibility(true);
@@ -43,15 +42,12 @@ const ServicePatterns = ({
     };
 
     useEffect(() => {
-        onGetServicePatterns({ projectId });
+        dispatch(getServicePatterns({ projectId }));
     }, [projectId]);
 
     if (!project) {
         return null;
     }
-
-    const onClickEditServicePattern = (servicePatternId) => {
-    };
 
     const actions = [{
         icon: 'content_copy',
@@ -102,17 +98,13 @@ const ServicePatterns = ({
                 startIcon="lock_outlined"
             />
             <AlertDialog
-                actions={
-                    [
-                        {
-                            name: config.text.createServicePattern.cancel
-                        },
-                        {
-                            name: config.text.createServicePattern.lock,
-                            disabled: true
-                        }
-                    ]
-                }
+                actions={[
+                    { name: config.text.createServicePattern.cancel },
+                    {
+                        name: config.text.createServicePattern.lock,
+                        disabled: true
+                    }
+                ]}
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}
