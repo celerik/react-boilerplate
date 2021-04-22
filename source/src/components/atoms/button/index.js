@@ -12,6 +12,7 @@ import styles from './styles';
 const Actionbutton = ({
     className,
     classes,
+    disabled,
     endIcon,
     id,
     label,
@@ -26,6 +27,7 @@ const Actionbutton = ({
     return (
         <Button
             className={ButtonStyle}
+            disabled={disabled}
             id={id}
             onClick={onClick}
             variant="filled"
@@ -48,6 +50,7 @@ const Actionbutton = ({
 Actionbutton.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    disabled: PropTypes.bool,
     endIcon: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
@@ -57,6 +60,7 @@ Actionbutton.propTypes = {
 
 Actionbutton.defaultProps = {
     className: null,
+    disabled: false,
     endIcon: null,
     label: '',
     onClick: Function.prototype,

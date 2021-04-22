@@ -2,7 +2,8 @@
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
     "get": "{projects}/projects",
-    "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import"
+    "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
+    "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
     "get": "{projects}/projects/{0}/servicePatterns",
