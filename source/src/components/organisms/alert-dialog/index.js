@@ -20,6 +20,7 @@ const AlertDialog = ({
     classes,
     content,
     id,
+    isExitButtonVisible,
     onClose,
     title,
     visible
@@ -31,7 +32,7 @@ const AlertDialog = ({
         onClose={onClose}
         open={visible}
     >
-        {onClose && (
+        {isExitButtonVisible && (
             <IconButton className={classes.closeButton} onClick={onClose} id={`${id}-close-modal`}>
                 <CloseIcon />
             </IconButton>
@@ -66,11 +67,14 @@ AlertDialog.propTypes = {
     classes: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    isExitButtonVisible: PropTypes.bool,
     onClose: PropTypes.func.isRequired,
     title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 };
 
-AlertDialog.defaultProps = {};
+AlertDialog.defaultProps = {
+    isExitButtonVisible: true
+};
 
 export default withStyles(styles)(AlertDialog);

@@ -72,6 +72,7 @@ const ServicePatterns = ({
                     ]
                 }
                 className={classes.buttonLock}
+                isExitButtonVisible={false}
                 content={(
                     <>
                         <p>{config.text.observationPeriodsPage.content}</p>
