@@ -32,7 +32,7 @@ const AlertDialog = ({
         open={visible}
     >
         {onClose && (
-            <IconButton className={classes.closeButton} onClick={onClose}>
+            <IconButton className={classes.closeButton} onClick={onClose} id={`${id}-close-modal`}>
                 <CloseIcon />
             </IconButton>
         )}
@@ -43,10 +43,11 @@ const AlertDialog = ({
             <div className={classes.adjustText}>{content}</div>
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
-            {actions?.map(action => (
+            {actions?.map((action, index) => (
                 <Button
-                    key={id}
-                    onClick={onClose}
+                    id={`${id}-action-${id}`}
+                    key={index}
+                    onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
                         action.disabled && classes.bottomDisabled,

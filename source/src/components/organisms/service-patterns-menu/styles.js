@@ -39,7 +39,6 @@ export default theme => Object.assign({}, {
     },
     servicePatternsContainer: {
         height: '60%',
-        minHeight: 300,
         overflowY: 'auto'
     }
 });

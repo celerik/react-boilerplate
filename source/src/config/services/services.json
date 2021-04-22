@@ -1,13 +1,18 @@
 {
   "projects": {
-    "get": "{projects}/projects"
+    "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
+    "get": "{projects}/projects",
+    "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
-    "get": "{root}/projects/{0}/servicePatterns",
+    "get": "{projects}/projects/{0}/servicePatterns",
     "getOne": "{root}/projects/{0}/servicePatterns/{1}"
   },
   "security": {
     "login": "{root}/login"
+  },
+  "routes": {
+    "getRoutes": "{baseline}/teams/{0}/routes"
   },
   "teams": {
     "get": "{teams}/teams"
