@@ -12,10 +12,10 @@ import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { format, formatUrlParam } from '../../../util/string';
 import { getServicePatterns } from '../../../actions/service-patterns';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
-import { config } from '../../../config';
 
 const ServicePatterns = ({
     classes,

@@ -13,11 +13,11 @@ import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { config } from '../../../config';
 import { getServicePatterns } from '../../../actions';
+import { globalUI } from '../../../core';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
-import { globalUI } from '../../../core';
 
 const CreateServicePattern = ({
     classes,
