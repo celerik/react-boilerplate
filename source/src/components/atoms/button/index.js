@@ -19,18 +19,17 @@ const Actionbutton = ({
     onClick,
     startIcon
 }) => {
-    const ButtonStyle = classNames(
+    const buttonStyle = classNames(
         classes.mainContainer,
         className
     );
 
     return (
         <Button
-            className={ButtonStyle}
+            className={buttonStyle}
             disabled={disabled}
             id={id}
             onClick={onClick}
-            variant="filled"
             endIcon={endIcon && (
                 <Icon>
                     {endIcon}
