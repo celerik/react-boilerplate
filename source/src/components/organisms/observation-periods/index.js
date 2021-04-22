@@ -1,13 +1,14 @@
 // @packages
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
-
 // @scripts
+import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ButtonAction from '../../atoms/button';
+import Calendar from '../../atoms/calendar/index';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
 import { format } from '../../../util/string';
@@ -20,10 +21,19 @@ const ServicePatterns = ({
     id,
     match
 }) => {
+    const [observationPeriodsModalVisible, setObservationPeriodsCloneModalVisibility] = useState(false);
     const { params: { projectId } } = match;
     const { projects } = useSelector(state => ({
         projects: state.projects
     }));
+
+    const handleClickOpen = () => {
+        setObservationPeriodsCloneModalVisibility(true);
+    };
+
+    const handleClose = () => {
+        setObservationPeriodsCloneModalVisibility(false);
+    };
 
     const project = projects.find(project => project.projectId === projectId);
 
@@ -49,10 +59,35 @@ const ServicePatterns = ({
                     { from: '12/02/21 ', to: '21/02/21' }
                 ]}
             />
+            <AlertDialog
+                actions={
+                    [
+                        {
+                            name: config.text.observationPeriodsPage.cancel
+                        },
+                        {
+                            name: config.text.observationPeriodsPage.observationPeriods,
+                            disabledObservation: true
+                        }
+                    ]
+                }
+                className={classes.buttonLock}
+                content={(
+                    <>
+                        {config.text.observationPeriodsPage.content}
+
+                <Calendar />
+                    </>
+                )}
+                onClose={handleClose}
+                title={config.text.observationPeriodsPage.addObservationPeriods}
+                visible={observationPeriodsModalVisible}
+            />
             <ButtonAction
                 className={classes.buttonAdd}
                 id={`${id}-add-observer-period`}
                 label={config.text.observationPeriodsPage.addObservationPeriod}
+                onClick={handleClickOpen}
                 startIcon="add"
             />
         </div>

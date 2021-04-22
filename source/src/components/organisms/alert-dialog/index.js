@@ -40,9 +40,7 @@ const AlertDialog = ({
             {title}
         </DialogTitle>
         <DialogContent className={classes.content}>
-            <DialogContentText id={`${id}-description`} className={classes.adjustText}>
-                {content}
-            </DialogContentText>
+            <div className={classes.adjustText}>{content}</div>
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
             {actions?.map(action => (
@@ -51,7 +49,8 @@ const AlertDialog = ({
                     onClick={onClose}
                     className={classNames(
                         classes.bottom,
-                        action.disabled && classes.bottomDisabled
+                        action.disabled && classes.bottomDisabled,
+                        action.disabledObservation && classes.bottomDisabledObservation
                     )}
                 >
                 {action.name}
