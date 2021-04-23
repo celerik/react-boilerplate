@@ -1,9 +1,7 @@
 // @packages
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -11,11 +9,12 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import IconButton from '../../atoms/icon-button';
 import ProjectSettingsModal from '../project-settings';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-import { useSelector } from 'react-redux';
 import { theme } from '../../../styles/material-ui';
+import { useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
@@ -57,23 +56,13 @@ const ProjectMenu = ({
                 <Typography className={classes.projectName} variant="h4">
                     {project.projectName}
                 </Typography>
-                <Tooltip
-                    title="settings"
-                    key={`${id}-settings-tooltip`}
-                    enterDelay={500}
-                    enterNextDelay={500}
-                >
-                    <IconButton
-                        onClick={() => setModalSettingsVisibility(true)}
-                    >
-                        <Icon
-                            className={classes.settingsIcon}
-                            style={{ color: !modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light }}
-                        >
-                            settings
-                        </Icon>
-                    </IconButton>
-                </Tooltip>
+                <IconButton
+                    label="settings"
+                    onClick={() => setModalSettingsVisibility(true)}
+                    iconClassname={classes.settingsIcon}
+                    icon="settings"
+                    color={!modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light}
+                />
             </div>
             <div className={classes.containerCards}>
                 {config.masterData.projectMenu.map((menuOption, index) => (

@@ -7,11 +7,13 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
+import BaselineConnect from '../../../services/baseline-connect';
 import ListSelector from '../../atoms/list-selector';
+import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { bindActionCreators } from 'redux';
 import { config } from '../../../config';
-import { getServicePatters } from '../../../actions/service-patterns';
+import { getServicePatterns } from '../../../actions';
+import { globalUI } from '../../../core';
 import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
@@ -22,37 +24,93 @@ const CreateServicePattern = ({
     id,
     match
 }) => {
-    const { params: { projectId } } = match;
-    const [servicePeriod, setServicePeriod] = useState('');
-    const [route, setRoute] = useState('');
+    const [selectedRoute, selectRoute] = useState(null);
+    const [servicePeriods, setServicePeriods] = useState([]);
+    const [selectedServicePeriod, selectServicePeriod] = useState(null);
+    const [selectedServicePatterns, selectServicePatterns] = useState([]);
+    const [servicePatterns, setServicePatterns] = useState([]);
+    const dispatch = useDispatch();
+    const { projectId } = match.params;
     const {
         projects,
         routes,
-        servicePatterns
+        selectedTeam
     } = useSelector(state => ({
         projects: state.projects,
         routes: state.routes,
-        servicePatterns: state.servicePatterns
+        selectedTeam: state.user.selectedTeam
     }));
-    const dispatch = useDispatch();
-    const onGetServicePatterns = bindActionCreators(getServicePatters, dispatch);
+
     const project = projects.find(project => project.projectId === projectId);
 
     useEffect(() => {
-        onGetServicePatterns({ projectId });
+        dispatch(getServicePatterns({ projectId }));
     }, [projectId]);
 
     if (!project) {
         return null;
     }
 
-    const handleRoute = ({ value }) => {
-        setRoute(value);
+    const handleRoute = async ({ value }) => {
+        selectRoute(value);
+        const newServicePeriods = await BaselineConnect.getRoutesDateRanges(selectedTeam, value);
+        setServicePeriods(newServicePeriods);
     };
 
-    const handleServicePeriod = ({ value }) => {
-        setServicePeriod(value);
+    const handleServicePeriod = async ({ value }) => {
+        selectServicePeriod(value);
     };
+
+    const onCheckServicePattern = (servicePatternId) => {
+        const filterServicePatterns = selectedServicePatterns.filter(
+            selectedId => selectedId !== servicePatternId
+        );
+
+        if (filterServicePatterns.length === selectedServicePatterns.length) {
+            selectServicePatterns([...selectedServicePatterns, servicePatternId]);
+        } else {
+            selectServicePatterns(filterServicePatterns);
+        }
+    };
+
+    const onLoadServicePatterns = async () => {
+        const newServicePatterns = await BaselineConnect.getRouteServicePatterns(
+            selectedTeam,
+            selectedRoute,
+            selectedServicePeriod
+        ) ?? [];
+        setServicePatterns(newServicePatterns);
+    };
+
+    const onImportServicePatterns = () => {
+        const baselineServicePatternIds = servicePatterns
+            .filter(item => selectedServicePatterns.includes(item.servicePatternId))
+            .map(item => ({
+                servicePatternId: item.servicePatternId,
+                date: selectedServicePeriod
+            }));
+
+        Project.importServicePatterns(projectId, baselineServicePatternIds)
+            .then(() => {
+                globalUI.showAlertNotificationSuccess(
+                    config.text.createServicePattern.importServicePatterns,
+                    config.text.createServicePattern.importedSuccess
+                );
+                selectServicePatterns([]);
+            });
+    };
+
+    const processedServicePeriods = servicePeriods.map(data => ({
+        name: (
+            <>
+                <strong>Start: </strong>
+                {data.start}
+                <strong>End: </strong>
+                {data.end}
+            </>
+        ),
+        value: data.start
+    }));
 
     return (
         <div id={id} className={classes.mainContainer}>
@@ -66,39 +124,51 @@ const CreateServicePattern = ({
                 items={routes}
                 onChange={handleRoute}
                 placeholder={config.text.createServicePattern.selectRoute}
-                value={route}
+                value={selectedRoute}
             />
             <ListSelector
-                itemDesProp="text"
+                itemDesProp="name"
                 itemValProp="value"
-                items={[{ text: 'Select route', value: 'Select route' }, { text: 'Select service period', value: 'Select service period' }]}
+                items={processedServicePeriods}
                 onChange={handleServicePeriod}
                 placeholder={config.text.createServicePattern.selectServicePeriod}
-                value={servicePeriod}
+                value={selectedServicePeriod}
             />
             <Actionbutton
                 className={classes.buttonAdd}
-                label={config.text.createServicePattern.addServicePattern}
-                onClick={Function.prototype}
+                disabled={!selectedServicePeriod}
+                label={config.text.createServicePattern.loadServicePattern}
+                onClick={onLoadServicePatterns}
                 startIcon="refresh"
             />
-            <div className={classes.servicePatternsContainer}>
-                {servicePatterns.map((servicePattern, index) => (
-                    <ServicePatternCard
-                        key={`${id}-card-${index}`}
-                        operationDays={servicePattern.settings.daysOfOperation}
-                        operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
-                        routeName={servicePattern.routeName}
-                        servicePatternName={servicePattern.servicePatternName}
+            {Boolean(servicePatterns.length) && (
+                <>
+                    <div className={classes.servicePatternsContainer}>
+                        {servicePatterns.map((servicePattern, index) => (
+                            <ServicePatternCard
+                                backgroundColor={`${servicePattern.colour}77`}
+                                id={`${id}-card-${index}`}
+                                isCheckeable
+                                isChecked={selectedServicePatterns.includes(servicePattern.servicePatternId)}
+                                key={`${id}-card-${index}`}
+                                onCheck={onCheckServicePattern}
+                                operationDays={servicePattern.daysOfOperation}
+                                operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
+                                routeName={servicePattern.routeName}
+                                servicePatternName={servicePattern.servicePatternName}
+                                value={servicePattern.servicePatternId}
+                            />
+                        ))}
+                    </div>
+                    <Actionbutton
+                        className={classes.buttonImport}
+                        endIcon="file_upload"
+                        label={config.text.createServicePattern.importServicePatterns}
+                        onClick={onImportServicePatterns}
                     />
-                ))}
-            </div>
-            <Actionbutton
-                className={classes.buttonImport}
-                endIcon="file_upload"
-                label={config.text.createServicePattern.importServicePatterns}
-                onClick={Function.prototype}
-            />
+                </>
+            )}
+
         </div>
     );
 };

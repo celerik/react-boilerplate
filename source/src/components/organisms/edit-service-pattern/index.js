@@ -1,40 +1,57 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
 import Icon from '@material-ui/core/Icon';
 import { config } from '../../../config';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // @styles
 import styles from './styles';
+import Project from '../../../services/project';
+import StopsList from '../../molecules/stops-list';
+import { setMapServicePatterns } from '../../../actions';
+import { formatUrlParam } from '../../../util';
 
-const ProjectMenu = ({
+const ServicePatternMenu = ({
     classes,
     id,
     locked,
-    match,
-    name,
-    route
+    match
 }) => {
-    const { params: { projectId } } = match;
-    const { projects } = useSelector(state => ({ projects: state.projects }));
-    const project = projects.find(project => project.projectId === projectId);
+    const theme = useTheme();
+    const { projectId, servicePatternId } = match.params;
+    const [servicePattern, setServicePattern] = useState(null);
+    const dispatch = useDispatch();
 
-    if (!project) {
+    const fetchServicePatternData = async () => {
+        const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
+        servicePattern.colour = theme.palette.primary.light;
+        setServicePattern(servicePattern);
+        dispatch(setMapServicePatterns([servicePattern]));
+    };
+
+    useEffect(fetchServicePatternData, []);
+
+    if (!servicePattern) {
         return null;
     }
 
     return (
         <div id={id} className={classes.mainContainer}>
-            <BackToButton label={config.text.projectMenu.backToServicePatterns} />
-            <div className={classes.title}>
-                <Typography variant="h3">{name}</Typography>
+            <BackToButton
+                label={config.text.createServicePattern.backToServicePatterns}
+                to={formatUrlParam(config.routes.dashboard.servicePatterns.url, projectId)}
+            />
+            <div className={classes.header}>
+                <Typography variant="h3">
+                    {servicePattern.settings.servicePatternName}
+                </Typography>
                 <div className={classes.lockedStatus}>
                     <Icon fontSize="small">
                         {locked ? 'lock' : 'lock_open'}
@@ -44,31 +61,34 @@ const ProjectMenu = ({
                     </Typography>
                 </div>
             </div>
-            <div className={classes.title}>
-                <Typography className={classes.subtitle}>{route}</Typography>
-            </div>
-            <Typography className={classes.label}>
+            <Typography className={classes.subtitle} variant="body1">
+                {config.text.editServicePattern.route}
+                {servicePattern.routeName}
+            </Typography>
+            <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
             </Typography>
             <Divider
                 className={classes.divider}
                 variant="fullWidth"
             />
+            <StopsList
+                id={`${id}-stoplist`}
+                stops={servicePattern.stops}
+            />
         </div>
     );
 };
 
-ProjectMenu.propTypes = {
+ServicePatternMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool,
-    match: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    route: PropTypes.string.isRequired
+    match: PropTypes.object.isRequired
 };
 
-ProjectMenu.defaultProps = {
+ServicePatternMenu.defaultProps = {
     locked: false
 };
 
-export default withStyles(styles)(ProjectMenu);
+export default withStyles(styles)(ServicePatternMenu);

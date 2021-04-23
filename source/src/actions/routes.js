@@ -1,9 +1,5 @@
-// @packages
-import axios from 'axios';
-
 // @scripts
-import { config } from '../config';
-import { format } from '../util/string';
+import BaselineConnect from '../services/baseline-connect';
 
 // @actions
 export const GET_ROUTES = 'GET_ROUTES';
@@ -11,12 +7,7 @@ export const GET_ROUTES = 'GET_ROUTES';
 export const getRoutes = () =>
     async (dispatch, getState) => {
         const { selectedTeam } = getState().user;
-        const routes = await axios.get(format(config.services.routes.getRoutes, selectedTeam));
-
-        if (!routes) {
-            return;
-        }
-
+        const routes = await BaselineConnect.getRoutes(selectedTeam);
         dispatch({
             type: GET_ROUTES,
             payload: routes

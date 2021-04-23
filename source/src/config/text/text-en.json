@@ -7,17 +7,23 @@
     "addServicePattern": "Add Service Pattern",
     "backToServicePatterns": "Back to service patterns",
     "cancel": "Cancel",
-    "importServicePatterns": "Import Service Pattern",
+    "content": "Are you sure you want to lock the service Patterns of this project?",
+    "importServicePatterns": "Import service pattern",
+    "importedError": "There's been an error while importing service patterns",
+    "importedSuccess": "Service patterns imported successfully",
+    "loadServicePattern": "Load Service Pattern",
     "lock": "Lock",
     "lockServicePattern": "Lock Service Pattern",
-    "content": "Are you sure you want to lock the service Patterns of this project?",
     "selectRoute": "Select route",
     "selectServicePeriod": "Select service period"
   },
   "editServicePattern": {
     "backToServicePatterns": "Back to service patterns",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
+    "getServicePatternError": "There's been an error while fetching your service pattern",
     "lock": "Lock",
+    "route": "Route",
+    "title": "Edit Service Pattern",
     "unlocked": "Unlocked"
   },
   "loginPage": {

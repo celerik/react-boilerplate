@@ -15,6 +15,7 @@ export default theme => Object.assign({}, {
         margin: '15px 0',
         position: 'relative',
         '&:last-child, &:first-child': {
+            fontWeight: 'bold',
             '& $stopNumber': {
                 height: 35,
                 marginLeft: 0,
@@ -39,9 +40,12 @@ export default theme => Object.assign({}, {
         height: 25,
         justifyContent: 'center',
         marginLeft: 5,
-        marginRight: 10,
+        marginRight: 23,
         position: 'relative',
         width: 25,
+        '& svg': {
+            fontSize: 22
+        },
         '&:after': {
             background: theme.palette.primary.light,
             bottom: '-100%',

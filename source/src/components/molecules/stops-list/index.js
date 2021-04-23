@@ -1,4 +1,5 @@
 // @packages
+import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
@@ -9,24 +10,28 @@ import stopsList from './stops-list.json';
 // @styles
 import styles from './styles';
 
-const StopList = ({
+const StopsList = ({
     classes,
     id,
     stops
 }) => (
     <div className={classes.container} id={id}>
         <ol className={classes.stops}>
-        {stops.map(stop => (
-            <li key={stop.name} className={classes.stopItem}>
-                <span className={classes.stopNumber}>{stop.id}</span>
-                {stop.name}
+        {stops.map((stop, index) => (
+            <li key={`${id}-item-${stop.stopName}`} className={classes.stopItem}>
+                <span className={classes.stopNumber}>
+                    {index < stops.length - 1
+                        ? index + 1
+                        : <LocationOnIcon />}
+                </span>
+                {stop.stopName}
             </li>
         ))}
         </ol>
     </div>
 );
 
-StopList.propTypes = {
+StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
@@ -35,8 +40,8 @@ StopList.propTypes = {
     }))
 };
 
-StopList.defaultProps = {
+StopsList.defaultProps = {
     stops: stopsList
 };
 
-export default withStyles(styles)(StopList);
+export default withStyles(styles)(StopsList);

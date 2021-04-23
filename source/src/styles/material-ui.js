@@ -70,8 +70,12 @@ export const theme = createMuiTheme({
             fontSize: 24
         },
         h4: {
-            fontWeight: 'bold',
-            fontSize: 14
+            fontSize: 14,
+            fontWeight: 'bold'
+        },
+        h5: {
+            fontSize: 12,
+            fontWeight: '300'
         },
         h6: {
             fontSize: 10,
@@ -88,6 +92,14 @@ export const theme = createMuiTheme({
                 '::-webkit-scrollbar-thumb': {
                     backgroundColor: `${colors.text.text2}66`,
                     borderRadius: 10
+                }
+            }
+        },
+        MuiButton: {
+            root: {
+                textTransform: 'none',
+                '&::first-letter': {
+                    textTransform: 'uppercase'
                 }
             }
         },

@@ -9,28 +9,13 @@ export const GET_SERVICE_PATTERNS = 'GET_SERVICE_PATTERNS';
 /**
  * @param {String} param0
  */
-export const getServicePatters = ({ projectId }) =>
+export const getServicePatterns = ({ projectId }) =>
     async (dispatch) => {
         const servicePatterns = await axios.get(format(config.services.servicePatterns.get, projectId));
 
-        const servicesPatternsDetailsRequests = servicePatterns.map(servicePattern => new Promise(
-            (resolve, reject) => axios.get(format(
-                config.services.servicePatterns.getOne,
-                projectId,
-                servicePattern.servicePatternId
-            ))
-                .then(response => resolve({
-                    ...servicePattern,
-                    ...response
-                }))
-                .catch(reject)
-        ));
-
-        const servicePatternsDetailed = await Promise.all(servicesPatternsDetailsRequests);
-
         dispatch({
             type: GET_SERVICE_PATTERNS,
-            payload: servicePatternsDetailed
+            payload: servicePatterns
         });
 
         return servicePatterns;

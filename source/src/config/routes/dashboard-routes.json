@@ -2,7 +2,7 @@
     "editServicePattern": {
         "component": "EditServicePattern",
         "name": "EditServicePattern",
-        "url": "/dashboard/projects/:projectId/edit-service-pattern"
+        "url": "/dashboard/projects/:projectId/edit-service-pattern/:servicePatternId"
     },
     "newServicePatterns": {
         "component": "AddServicePatternMenu",

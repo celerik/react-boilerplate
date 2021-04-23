@@ -14,11 +14,11 @@ export default () => ({
     },
     mainContainer: {
         position: 'relative',
-        height: '100%',
+        overflowY: 'auto',
         width: 440
     },
     servicePatternsContainer: {
-        height: '30%',
+        height: 100,
         marginBottom: 15,
         marginTop: 15,
         minHeight: 300,
