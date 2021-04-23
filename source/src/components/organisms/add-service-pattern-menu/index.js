@@ -136,7 +136,7 @@ const CreateServicePattern = ({
             />
             <Actionbutton
                 className={classes.buttonAdd}
-                disabled
+                disabled={!selectedServicePeriod}
                 label={config.text.createServicePattern.loadServicePattern}
                 onClick={onLoadServicePatterns}
                 startIcon="refresh"

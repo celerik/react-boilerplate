@@ -70,8 +70,12 @@ export const theme = createMuiTheme({
             fontSize: 24
         },
         h4: {
-            fontWeight: 'bold',
-            fontSize: 14
+            fontSize: 14,
+            fontWeight: 'bold'
+        },
+        h5: {
+            fontSize: 12,
+            fontWeight: '300'
         },
         h6: {
             fontSize: 10,

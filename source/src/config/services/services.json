@@ -7,7 +7,7 @@
   },
   "servicePatterns": {
     "get": "{projects}/projects/{0}/servicePatterns",
-    "getOne": "{root}/projects/{0}/servicePatterns/{1}"
+    "getServicePattern": "{projects}/projects/{0}/servicePatterns/{1}"
   },
   "security": {
     "login": "{root}/login"
