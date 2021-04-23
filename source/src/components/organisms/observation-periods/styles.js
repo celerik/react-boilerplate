@@ -36,5 +36,19 @@ export default theme => Object.assign({}, {
         marginBottom: 10,
         marginTop: 28,
         textTransform: 'uppercase'
+    },
+    titleContainer: {
+        color: '#878F9E',
+        marginBottom: '18px'
+    },
+    titleHeader: {
+        fontFamily: 'Poppins',
+        fontSize: '24px',
+        fontStyle: 'normal',
+        fontWeight: 600,
+        letterSpacing: '-0.04em',
+        lineHeight: '36px',
+        marginBottom: '-12px',
+        textAlign: 'center'
     }
 });

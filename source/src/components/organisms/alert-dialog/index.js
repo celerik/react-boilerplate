@@ -17,7 +17,7 @@ import styles from './styles';
 const AlertDialog = ({
     actions,
     classes,
-    color,
+    colorChange,
     content,
     id,
     isExitButtonVisible,
@@ -57,8 +57,8 @@ const AlertDialog = ({
                     style={{
                         backgroundColor: index === 0
                             ? 'transparent'
-                            : color,
-                        borderColor: color
+                            : colorChange,
+                        borderColor: colorChange
                     }}
                 >
                 {action.name}
@@ -71,6 +71,7 @@ const AlertDialog = ({
 AlertDialog.propTypes = {
     actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
+    colorChange: PropTypes.string.isRequired,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExitButtonVisible: PropTypes.bool,
@@ -80,7 +81,7 @@ AlertDialog.propTypes = {
 };
 
 AlertDialog.defaultProps = {
-    color: 'green',
+    colorChange: '#8675FF',
     isExitButtonVisible: true
 };
 

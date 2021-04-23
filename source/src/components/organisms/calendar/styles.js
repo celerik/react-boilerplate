@@ -1,117 +1,99 @@
-const buttonStyle = {
-    backgroundColor: 'transparent'
-};
-
-const rangeLimitsStyles = {
-    backgroundColor: 'red'
-};
-
 export default theme => ({
     calendar: {
-        height: 'fit-content',
-        width: 304,
         backgroundColor: 'white',
-        padding: '0 20px',
         boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
-        position: 'static',
+        height: 'fit-content',
         left: '122.5px',
+        padding: '0 20px',
+        position: 'static',
         top: '117px',
-        marginBottom: 16,
-        '& .react-calendar__navigation__arrow': buttonStyle,
-        '& .react-calendar__tile': {
-            pointer: 'cursor',
-            // STYLES FOR THE DAYS CELLS
-            backgroundColor: 'transparent',
-            borderWidth: 0,
-            height: 36,
-            border: '1px solid #FDB561',
-            //styleName: Body;
-            fontFamily: 'Poppins',
-            fontSize: '14px',
-            fontStyle: 'normal',
-            fontWeight: '400',
-            lineHeight: '20px',
-            letterSpacing: '0em',
-            textAlign: 'center'
-
-        },
-        contenedor:{
-            fontWeight: '100',
-            fontSize: '400px',
-            fontFamily: 'auto',
-            fontWeight: 1000
+        width: 304,
+        '& .react-calendar__month-view__days__day--neighboringMonth': {
+            color: '#383C44'
         },
         '& div .react-calendar__month-view__weekdays__weekday abbr': {
-            // DIAS DE LA SEMANA
-            textDecoration: 'none',
-            color: 'red'
+            color: 'black',
+            textDecoration: 'none'
         },
-        '& .react-calendar__tile--range': {
-            background: "#FDB561",
+        '& .react-calendar__navigation__label': {
+            backgroundColor: 'transparent',
+            borderWidth: '0px',
+            flexGrow: 1,
+            marginTop: 16
         },
-        '& .react-calendar__tile--rangeStart':{
-            //styleName: Body;
-            borderRadius: '100px',
-            background: '#FDB561',
-            border: '1px solid #FDB561',
-            color: "white"
-        },
-        '& .react-calendar__tile--rangeEnd': {
-            borderRadius: '100px',
-            background: '#FDB561',
-            border: '1px solid #FDB561',
-            color: 'white'
-        },
-        '& .react-calendar__month-view__days__day--neighboringMonth': {
-            // STYLES FOR DAYS THAT DOESN'T BELONG TO THE ACTUAL MONTH
-            color: '#383C44',
-
-        },
-
         '& .react-calendar__navigation__label__labelText': {
-            //styleName: Body/Big Body Bold;
+            color: 'black',
             fontFamily: 'Poppins',
             fontSize: '16px',
             fontStyle: 'normal',
-            fontWeight: 600,
-            lineHeight: '22px',
+            fontWeight: 500,
+            height: 24,
             letterSpacing: '0em',
+            lineHeight: '22px',
             textAlign: 'center',
-            color: 'black',
-            width:88,
-            height: 24
-        },
-        '& .react-calendar__navigation__label': {
-            flexGrow: 1,
-            backgroundColor: 'transparent',
-            borderWidth: '0px',
-            marginTop: 16
+            width: 88
         },
         '& .react-calendar__navigation__arrow': {
             backgroundColor: 'transparent',
             borderColor: 'transparent'
         },
-        "& .react-calendar__month-view__weekdays": {
+        '& .react-calendar__navigation__next-button': {
+            marginLeft: '235px',
+            marginTop: '12px',
+            position: 'absolute'
+        },
+        '& .react-calendar__navigation__prev-button': {
+            marginRight: '250px',
+            marginTop: '12px',
+            position: 'absolute',
+            transform: 'rotate(180deg)'
+        },
+        '& .react-calendar__month-view__weekdays': {
             backgroundColor: 'transparent',
-            textTransform: 'capitalize',
-            textDecoration: 'none',
-            marginTop: 16,
             color: 'black',
-            marginBottom: 19,
             fontFamily: 'Poppins',
+            fontSize: '12px',
             fontStyle: 'normal',
             fontWeight: 300,
-            fontSize: '12px',
             lineHeight: '120%',
+            marginBottom: 19,
+            marginTop: 16,
             textAlign: 'center',
-
-        },
-        '& .react-calendar__month-view':{
-            color: 'white',
             textDecoration: 'none',
+            textTransform: 'capitalize'
         },
-        '& .body':{
-            color: "white"
+        '& .react-calendar__month-view': {
+            color: 'white',
+            textDecoration: 'none'
+        },
+        '& .react-calendar__tile': {
+            backgroundColor: 'transparent',
+            border: '1px solid #FDB561',
+            borderWidth: 0,
+            fontFamily: 'Poppins',
+            fontSize: '14px',
+            fontStyle: 'normal',
+            fontWeight: '400',
+            height: 36,
+            letterSpacing: '0em',
+            lineHeight: '20px',
+            pointer: 'cursor',
+            textAlign: 'center'
+        },
+        '& .react-calendar__tile--rangeEnd': {
+            background: theme.palette.primary.warn,
+            border: '1px solid #FDB561',
+            borderRadius: '100px',
+            color: 'white'
+        },
+        '& .react-calendar__tile--range': {
+            background: theme.palette.primary.warn
+        },
+        '& .react-calendar__tile--rangeStart': {
+            background: theme.palette.primary.warn,
+            border: '1px solid #FDB561',
+            borderRadius: '100px',
+            color: 'white'
         }
     }
 });

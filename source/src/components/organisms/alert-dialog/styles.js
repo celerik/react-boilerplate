@@ -35,7 +35,7 @@ export default theme => Object.assign({}, {
         flexDirection: 'column',
         fontSize: 14,
         margin: '0 34px',
-        textAlign: 'center',
+        textAlign: 'center'
     },
     closeButton: {
         color: '#323232',

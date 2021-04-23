@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import ReactCalendar from 'react-calendar';
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
-
+import moment from 'moment';
 // @styles
 import styles from './styles';
+import { ReactComponent as Image } from './image.svg';
 
 const Calendar = ({
     classes,
@@ -16,17 +17,17 @@ const Calendar = ({
     return (
         <div className={classes.calendar} id={id}>
             <ReactCalendar
-                prev2AriaLabel={null}
-                prev2Label={null}
-                prevLabel={<h1 > {"<"} </h1>}
-                nextLabel={<h1 >  {">"} </h1>}
-                next2Label={null}
-                calendarType={"ISO 8601"}
-                navigationLabel={({ date }) => (
+                calendarType="US"
+                navigationLabel={() => (
                     <div>
-                        December{date.toString}
+                       {moment().format('MMMM')}
                     </div>
                 )}
+                next2Label={null}
+                nextLabel={<Image />}
+                prev2AriaLabel={null}
+                prev2Label={null}
+                prevLabel={<Image />}
                 minDetail="month"
                 onChange={onChange}
                 selectRange

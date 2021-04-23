@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
+
 // @scripts
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
@@ -17,23 +18,22 @@ import { format } from '../../../util/string';
 import styles from './styles';
 
 const ServicePatterns = ({
-    color,
     classes,
     id,
     match
 }) => {
-    const [observationPeriodsModalVisible, setObservationPeriodsCloneModalVisibility] = useState(false);
+    const [observationModalVisible, setObservationModalVisibility] = useState(false);
     const { params: { projectId } } = match;
     const { projects } = useSelector(state => ({
         projects: state.projects
     }));
 
     const handleClickOpen = () => {
-        setObservationPeriodsCloneModalVisibility(true);
+        setObservationModalVisibility(true);
     };
 
     const handleClose = () => {
-        setObservationPeriodsCloneModalVisibility(false);
+        setObservationModalVisibility(false);
     };
 
     const project = projects.find(project => project.projectId === projectId);
@@ -76,13 +76,18 @@ const ServicePatterns = ({
                 isExitButtonVisible={false}
                 content={(
                     <>
-                        <div>{config.text.observationPeriodsPage.content}</div>
+                        <div className={classes.titleContainer}>{config.text.observationPeriodsPage.content}</div>
                         <Calendar />
                     </>
                 )}
                 onClose={handleClose}
-                title={config.text.observationPeriodsPage.addObservationPeriods}
-                visible={observationPeriodsModalVisible}
+                title={(
+                    <>
+                        <div className={classes.titleHeader}>{config.text.observationPeriodsPage.addObservationPeriods}</div>
+                    </>
+                )}
+                colorChange="#FDB561"
+                visible={observationModalVisible}
             />
             <ButtonAction
                 className={classes.buttonAdd}

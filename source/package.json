@@ -33,6 +33,7 @@
     "eslint-config-airbnb": "18.2.1",
     "eslint-plugin-jest": "24.3.2",
     "mapbox-gl": "2.2.0",
+    "moment": "^2.29.1",
     "prop-types": "15.7.2",
     "react": "17.0.1",
     "react-calendar": "^3.4.0",
