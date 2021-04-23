@@ -1,14 +1,15 @@
 // @packages
 import { Map } from 'mapbox-gl';
-
-// @scripts
-import mockPath from './mock-path-geometry';
+import { globalUI } from '../../../core';
 
 class CustomMap extends Map {
     constructor(mapContainer, theme) {
         super({
             accessToken: config.settings.mapBox.token,
-            center: mockPath.testPainting[0],
+            center: [
+                -0.04212516311508214,
+                51.52249290538935
+            ],
             container: mapContainer,
             style: 'mapbox://styles/mapbox/light-v10',
             zoom: 15
@@ -34,6 +35,11 @@ class CustomMap extends Map {
         name
     }) {
         if (!this.loaded()) {
+            globalUI.showAlertNotificationInfo('Map', 'Map is still loading');
+            setTimeout(() => this.paintRoute(geojson, {
+                color,
+                name
+            }), 3000);
             return;
         }
 
@@ -41,7 +47,9 @@ class CustomMap extends Map {
             try {
                 if (this.getLayer(routeId)) this.removeLayer(routeId);
                 if (this.getSource(routeId)) this.removeSource(routeId);
-            } catch (error) {}
+            } catch (error) {
+                globalUI.showAlertNotificationInfo('Map', 'Map is still loading');
+            }
         });
 
         const routeId = `route-${name}`;
