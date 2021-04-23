@@ -1,11 +1,9 @@
 // @packages
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import Tooltip from '@material-ui/core/Tooltip';
 import classNames from 'classnames';
+import IconButton from '../icon-button';
 import { withStyles } from '@material-ui/core';
 
 // @styles
@@ -19,29 +17,32 @@ const Item = ({
     text
 }) => {
     const itemContainer = classNames(classes.itemContainer, className);
+    const [actionsVisible, setActionsVisibility] = useState(false);
+
+    const onHoverCard = () => {
+        setActionsVisibility(true);
+    };
 
     return (
-        <div className={itemContainer} id={`${id}-item-element`}>
+        <div
+            className={itemContainer}
+            id={`${id}-item-element`}
+            onFocus={onHoverCard}
+            onMouseLeave={() => setActionsVisibility(false)}
+            onMouseOver={onHoverCard}
+        >
             <Typography>
                 {text}
             </Typography>
             <div>
-            {iconButtons.map((iconButton) => (
-                <Tooltip
-                    title={iconButton.name}
+            {actionsVisible && iconButtons.map((iconButton) => (
+                <IconButton
+                    buttonClassname={classes.iconButton}
+                    icon={iconButton.icon}
                     key={`${id}-${iconButton.name}-tooltip`}
-                    enterDelay={500}
-                    enterNextDelay={500}
-                >
-                    <IconButton
-                        className={classes.iconButton}
-                        onClick={(event) => iconButton.onClick(id, event)}
-                    >
-                        <Icon>
-                            {iconButton.icon}
-                        </Icon>
-                    </IconButton>
-                </Tooltip>
+                    label={iconButton.name}
+                    onClick={(event) => iconButton.onClick(id, event)}
+                />
             ))}
             </div>
         </div>
