@@ -3,7 +3,7 @@ import Divider from '@material-ui/core/Divider';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
@@ -24,12 +24,14 @@ const ServicePatternMenu = ({
     locked,
     match
 }) => {
+    const theme = useTheme();
     const { projectId, servicePatternId } = match.params;
     const [servicePattern, setServicePattern] = useState(null);
     const dispatch = useDispatch();
 
     const fetchServicePatternData = async () => {
         const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
+        servicePattern.colour = theme.palette.primary.light;
         setServicePattern(servicePattern);
         dispatch(setMapServicePatterns([servicePattern]));
     };

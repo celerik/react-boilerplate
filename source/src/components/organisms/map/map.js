@@ -51,18 +51,21 @@ class CustomMap extends Map {
 
         this.addSource(routeId, {
             data: geojson,
-            type: 'geojson'
+            maxzoom: 24,
+            type: 'geojson',
+            tolerance: 1
         });
 
         this.addLayer({ 
             id: routeId,
+            minzoom: 0,
+            maxzoom: 24,
             type: 'line',
             source: routeId,
             layout: {
                 'line-join': 'round',
                 'line-cap': 'round'
             },
-            maxzoom: 24,
             paint: {
                 'line-color': color,
                 'line-width': 5
