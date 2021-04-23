@@ -19,6 +19,7 @@ export default theme => ({
         marginBottom: 16,
         '& .react-calendar__navigation__arrow': buttonStyle,
         '& .react-calendar__tile': {
+            pointer: 'cursor',
             // STYLES FOR THE DAYS CELLS
             backgroundColor: 'transparent',
             borderWidth: 0,
@@ -46,7 +47,7 @@ export default theme => ({
             color: 'red'
         },
         '& .react-calendar__tile--range': {
-            background: "transparent",
+            background: "#FDB561",
         },
         '& .react-calendar__tile--rangeStart':{
             //styleName: Body;
