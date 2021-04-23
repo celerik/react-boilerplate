@@ -38,7 +38,12 @@ export default theme => ({
             fontWeight: '100',
             fontSize: '400px',
             fontFamily: 'auto',
-            fontWeight: 1000,
+            fontWeight: 1000
+        },
+        '& div .react-calendar__month-view__weekdays__weekday abbr': {
+            // DIAS DE LA SEMANA
+            textDecoration: 'none',
+            color: 'red'
         },
         '& .react-calendar__tile--range': {
             background: "transparent",
@@ -98,16 +103,12 @@ export default theme => ({
             fontSize: '12px',
             lineHeight: '120%',
             textAlign: 'center',
-            
-        },
-        '& .abbr.react-calendar__month-view__weekdays__weekday': {
-            textDecoration: 'none',
+
         },
         '& .react-calendar__month-view':{
             color: 'white',
             textDecoration: 'none',
         },
-
         '& .body':{
             color: "white"
         }
