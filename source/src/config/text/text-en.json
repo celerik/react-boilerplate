@@ -80,10 +80,14 @@
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
     "projectsVehiclesModal": {
-      "title": "Projects Vehicles",
-      "vehiclesTypes": "VEHICLES TYPES({0})",
+      "addFromLibrary": "Add from library",
       "createVehicleType": "Create vehicle type",
-      "addFromLibrary": "Add from library"
+      "forVehicles": "4 Vehicles",
+      "needUpdate": "Need pdate",
+      "title": "Projects Vehicles",
+      "typeDays": "Type of days", 
+      "update": "update",
+      "vehiclesTypes": "VEHICLES TYPES({0})"
     },
     "projetcSettingsModal": {
       "cancel": "Cancel",
@@ -108,7 +112,6 @@
     "times": "Times",
     "title": "Run project",
     "viewResults": "View results"
-    
   },
   "servicePatternsMenu": {
     "cancel": "Cancel",

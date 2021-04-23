@@ -29,11 +29,16 @@ const ProjectsVehiclesList = ({ projects }) => (
     <List>
         {projects.map(({ id, vehicleType }, index) => (
             <VehicleTypeCard
-                key={`${id}-${index}`}
                 id={id}
+                key={`${id}-${index}`}
                 vehicleType={vehicleType}
             />
         ))}
+        <VehicleTypeCard
+            id="d345"
+            vehicleType="vehicle type 4"
+            needUpdate
+        />
     </List>
 );
 

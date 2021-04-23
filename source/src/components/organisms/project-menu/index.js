@@ -32,7 +32,6 @@ const ProjectMenu = ({
     const [openVehiclesModal, setOpenVehiclesModal] = useState(isDialogOpen);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
-
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
 

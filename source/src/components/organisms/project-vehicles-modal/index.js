@@ -12,8 +12,8 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
-import { config } from '../../../config';
 import ProjectsVehiclesList from '../../molecules/projects-vehicles-list';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';

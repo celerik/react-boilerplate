@@ -19,5 +19,16 @@ export default theme => ({
     itemContainer: {
         marginLeft: 10,
         marginRight: 5
+    },
+    tooltip: {
+        backgroundColor: 'white',
+        border: 1,
+        borderColor: theme.palette.background.default,
+        borderRadius: 0,
+        boxShadow: `1px 3px 1px ${theme.palette.primary.contrastText}`,
+        color: 'black'
+    },
+    tooltipButton: {
+        color: theme.palette.primary.main
     }
 });
