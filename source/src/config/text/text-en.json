@@ -79,7 +79,13 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
-    "projetcSettingsModal":{
+    "projectsVehiclesModal": {
+      "title": "Projects Vehicles",
+      "vehiclesTypes": "VEHICLES TYPES({0})",
+      "createVehicleType": "Create vehicle type",
+      "addFromLibrary": "Add from library"
+    },
+    "projetcSettingsModal": {
       "cancel": "Cancel",
       "day": "/day",
       "defaultOtpThresholds": "Default OTP thresholds",
@@ -102,6 +108,7 @@
     "times": "Times",
     "title": "Run project",
     "viewResults": "View results"
+    
   },
   "servicePatternsMenu": {
     "cancel": "Cancel",

@@ -12,10 +12,11 @@ import Actionbutton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ProjectSettingsModal from '../project-settings';
+import ProjectVehiclesModal from '../project-vehicles-modal';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-import { useSelector } from 'react-redux';
 import { theme } from '../../../styles/material-ui';
+import { useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
@@ -26,7 +27,9 @@ const ProjectMenu = ({
     match,
     id
 }) => {
+    const isDialogOpen = history.location.pathname.match(/vehicles$/ig);
     const [runModalVisible, setRunModalVisibility] = useState(false);
+    const [openVehiclesModal, setOpenVehiclesModal] = useState(isDialogOpen);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
 
@@ -36,6 +39,11 @@ const ProjectMenu = ({
     if (!project) {
         return null;
     }
+
+    const handelCloseProjectsVehiclesModal = () => {
+        setOpenVehiclesModal(false);
+        history.goBack();
+    };
 
     const handleClickOpen = () => {
         setRunModalVisibility(true);
@@ -90,7 +98,6 @@ const ProjectMenu = ({
                         <Typography className={classes.optionText} variant="body1">
                             {config.text.projectMenu[menuOption.name]}
                         </Typography>
-
                     </div>
                 ))}
             </div>
@@ -125,6 +132,7 @@ const ProjectMenu = ({
                 open={modalSettingsVisibility}
                 projectId={projectId}
             />
+            <ProjectVehiclesModal open={openVehiclesModal} setOpen={handelCloseProjectsVehiclesModal} />
         </div>
     );
 };
