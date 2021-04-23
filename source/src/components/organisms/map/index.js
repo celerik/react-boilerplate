@@ -1,17 +1,20 @@
 // @packages
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef } from 'react';
-import { Map } from 'mapbox-gl';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import Map from './map';
 import { config } from '../../../config';
 import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
 import { theme } from '../../../styles/material-ui';
+import { formatSegmentsPath } from '../../../util';
 
+// @constants
 const AVALIABLE_CONTROLS = ['zoom'];
 
 const CustomMap = ({
@@ -22,40 +25,44 @@ const CustomMap = ({
 }) => {
     const mapContainer = useRef();
     const mapRef = useRef();
+    const { servicePatterns } = useSelector(state => ({
+        servicePatterns: state.map.servicePatterns
+    }));
 
     useEffect(() => {
-        const map = new Map({
-            accessToken: config.settings.mapBox.token,
-            center: [
-                -0.04212516311508214,
-                51.52249290538935
-            ],
-            container: mapContainer.current,
-            style: 'mapbox://styles/mapbox/light-v10',
-            zoom: 15
-        });
-
-        map.on('load', () => {
-            map.setPaintProperty('building', 'fill-color', [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                2,
-                theme.palette.background.default,
-                1,
-                theme.palette.background.default
-            ]);
-            map.setPaintProperty('building', 'fill-opacity', theme.palette.background.default);
-            map.setPaintProperty('building', 'fill-outline-color', theme.palette.background.default);
-            map.setPaintProperty('landuse', 'fill-color', theme.palette.background.default);
-            map.setPaintProperty('building', 'fill-color', theme.palette.background.default);
-            map.setPaintProperty('land', 'background-color', theme.palette.background.default);
-        });
-
+        const map = new Map(mapContainer.current, theme);
         mapRef.current = map;
-
         return () => map.remove();
     }, []);
+
+    useEffect(() => {
+        servicePatterns.forEach((servicePattern) => {
+            const geojson = {
+                type: 'FeatureCollection',
+                features: []
+            };
+
+            geojson.features = servicePattern.segments
+                .map(segment => ({
+                    type: 'Feature',
+                    geometry: {
+                        type: 'LineString',
+                        properties: {},
+                        coordinates: formatSegmentsPath(segment.path).coordinates
+                    }
+                }));
+
+            mapRef.current.paintRoute(geojson, { 
+                color: servicePattern.colour,
+                name: `route-${servicePattern.servicePatternName}`
+            });
+
+            console.log(geojson);
+            mapRef.current.setCenter(
+                geojson.features[0].geometry.coordinates[0]
+            )
+        });
+    }, [servicePatterns]);
 
     return (
         <div className={className} id={id}>

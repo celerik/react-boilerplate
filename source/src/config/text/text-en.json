@@ -18,11 +18,12 @@
     "selectServicePeriod": "Select service period"
   },
   "editServicePattern": {
-    "title": "Edit Service Pattern",
-    "getServicePatternError": "There's been an error while fetching your service pattern",
     "backToServicePatterns": "Back to service patterns",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
+    "getServicePatternError": "There's been an error while fetching your service pattern",
     "lock": "Lock",
+    "route": "Route",
+    "title": "Edit Service Pattern",
     "unlocked": "Unlocked"
   },
   "loginPage": {

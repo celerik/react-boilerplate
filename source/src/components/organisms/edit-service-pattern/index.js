@@ -9,26 +9,32 @@ import { withStyles } from '@material-ui/core';
 import BackToButton from '../../molecules/back-to-button';
 import Icon from '@material-ui/core/Icon';
 import { config } from '../../../config';
-import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 // @styles
 import styles from './styles';
 import Project from '../../../services/project';
+import StopsList from '../../molecules/stops-list';
+import { setMapServicePatterns } from '../../../actions';
+import { formatUrlParam } from '../../../util';
 
 const ServicePatternMenu = ({
     classes,
     id,
     locked,
-    match,
-    route
+    match
 }) => {
     const { projectId, servicePatternId } = match.params;
     const [servicePattern, setServicePattern] = useState(null);
+    const dispatch = useDispatch();
 
-    useEffect(async () => {
+    const fetchServicePatternData = async () => {
         const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
         setServicePattern(servicePattern);
-    }, []);
+        dispatch(setMapServicePatterns([servicePattern]));
+    };
+
+    useEffect(fetchServicePatternData, []);
 
     if (!servicePattern) {
         return null;
@@ -36,8 +42,11 @@ const ServicePatternMenu = ({
 
     return (
         <div id={id} className={classes.mainContainer}>
-            <BackToButton label={config.text.createServicePattern.backToServicePatterns} />
-            <div className={classes.title}>
+            <BackToButton 
+                label={config.text.createServicePattern.backToServicePatterns} 
+                to={formatUrlParam(config.routes.dashboard.servicePatterns.url, projectId)}
+            />
+            <div className={classes.header}>
                 <Typography variant="h3">
                     {servicePattern.settings.servicePatternName}
                 </Typography>
@@ -51,14 +60,18 @@ const ServicePatternMenu = ({
                 </div>
             </div>
             <Typography className={classes.subtitle} variant="body1">
-                {servicePattern.routeName}
+                {config.text.editServicePattern.route} {servicePattern.routeName}
             </Typography>
-            <Typography className={classes.label}>
+            <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
             </Typography>
             <Divider
                 className={classes.divider}
                 variant="fullWidth"
+            />
+            <StopsList 
+                id={`${id}-stoplist`}
+                stops={servicePattern.stops}
             />
         </div>
     );

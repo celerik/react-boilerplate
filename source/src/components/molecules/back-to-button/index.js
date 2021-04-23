@@ -12,11 +12,17 @@ import styles from './styles';
 const BackToButton = ({
     classes,
     id,
-    label
+    label,
+    to
 }) => {
     const history = useHistory();
 
     const onClick = () => {
+        if (to) {
+            history.push(to);
+            return;
+        }
+        
         history.goBack();
     };
 
@@ -44,9 +50,12 @@ const BackToButton = ({
 BackToButton.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
+    label: PropTypes.string.isRequired,
+    to: PropTypes.string
 };
 
-BackToButton.defaultProps = {};
+BackToButton.defaultProps = {
+    to: undefined
+};
 
 export default withStyles(styles)(BackToButton);
