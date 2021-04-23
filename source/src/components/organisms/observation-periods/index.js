@@ -17,6 +17,7 @@ import { format } from '../../../util/string';
 import styles from './styles';
 
 const ServicePatterns = ({
+    color,
     classes,
     id,
     match
