@@ -1,0 +1,12 @@
+{
+    "targetOTP": 0,
+    "otpWindow": [
+      0,
+      0
+    ],
+    "recoveryTargetLevel": 0,
+    "reliefTime": 0,
+    "defaultVehicleDepreciation": 0,
+    "defaultOperatingCostWhileRunning": 0,
+    "defaultOperatingCostWhileResting": 0
+}

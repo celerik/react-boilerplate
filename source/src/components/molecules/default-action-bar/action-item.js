@@ -23,7 +23,7 @@ const ActionItem = ({
         <div className={expanded ? classes.icon : classes.iconOnly} style={{ color }}>
             <Icon>
                 {typeof icon === 'string'
-                    ? <Icon fontSize={(expanded && bottomItem) ? 'small' : 'default'}>{icon}</Icon>
+                    ? <Icon fontSize={bottomItem ? 'small' : 'default'}>{icon}</Icon>
                     : icon}
             </Icon>
         </div>

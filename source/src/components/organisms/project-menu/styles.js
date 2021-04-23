@@ -1,4 +1,7 @@
-export default theme => Object.assign({}, {
+export default theme => ({
+    containerCards: {
+        overflowY: 'auto'
+    },
     buttonAdd: {
         backgroundColor: theme.palette.primary.light,
         color: 'white',
@@ -9,6 +12,9 @@ export default theme => Object.assign({}, {
         '&::first-letter': {
             textTransform: 'capitalize'
         }
+    },
+    mainContainer: {
+        display: 'content'
     },
     option: {
         alignItems: 'center',
@@ -36,8 +42,7 @@ export default theme => Object.assign({}, {
     },
     settingsIcon: {
         color: theme.palette.text.hint,
-        fontSize: 14,
-        marginLeft: 14
+        fontSize: 14
     },
     titleContainer: {
         alignItems: 'center',

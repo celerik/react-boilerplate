@@ -20,6 +20,7 @@ const AlertDialog = ({
     classes,
     content,
     id,
+    isExitButtonVisible,
     onClose,
     title,
     visible
@@ -31,8 +32,8 @@ const AlertDialog = ({
         onClose={onClose}
         open={visible}
     >
-        {onClose && (
-            <IconButton className={classes.closeButton} onClick={onClose}>
+        {isExitButtonVisible && (
+            <IconButton className={classes.closeButton} onClick={onClose} id={`${id}-close-modal`}>
                 <CloseIcon />
             </IconButton>
         )}
@@ -40,13 +41,14 @@ const AlertDialog = ({
             {title}
         </DialogTitle>
         <DialogContent className={classes.content}>
-            <div className={classes.adjustText}>{content}</div>
+            {content}
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
-            {actions?.map(action => (
+            {actions?.map((action, index) => (
                 <Button
-                    key={id}
-                    onClick={onClose}
+                    id={`${id}-action-${id}`}
+                    key={index}
+                    onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
                         action.disabled && classes.bottomDisabled,
@@ -65,11 +67,14 @@ AlertDialog.propTypes = {
     classes: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    isExitButtonVisible: PropTypes.bool,
     onClose: PropTypes.func.isRequired,
     title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 };
 
-AlertDialog.defaultProps = {};
+AlertDialog.defaultProps = {
+    isExitButtonVisible: true
+};
 
 export default withStyles(styles)(AlertDialog);

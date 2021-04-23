@@ -23,6 +23,14 @@ const mockedServices = {
             httpCode: httpCodes.success
         }));
     },
+    mockServiceGetRoutes: (mockAdapter) => {
+        const url = config.services.routes.getRoutes;
+        const pathRegexp = new RegExp(format(url, '.*'));
+        mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({
+            data: config.mockData.routes,
+            httpCode: httpCodes.success
+        }));
+    },
     mockServiceGetServicePattern: (mockAdapter) => {
         const url = config.services.servicePatterns.getOne;
         const pathRegexp = new RegExp(format(url, '.*', '.*'));

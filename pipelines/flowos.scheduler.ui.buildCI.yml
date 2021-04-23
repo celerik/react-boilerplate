@@ -15,7 +15,7 @@ variables:
   - group: Environment Stg
 - ${{ if eq(variables['build.SourceBranchName'], 'qa') }}:
   - group: Environment Qa
- 
+
 - name: npm_config_cache
   value: "$(Pipeline.Workspace)/.npm"
 - name: project_name
@@ -32,7 +32,7 @@ stages:
 - stage: Lintj
   displayName: Validate lintj
   condition: and(ne(variables['Build.Reason'], 'PullRequest'), eq(variables.isFeature, true))
-  jobs:  
+  jobs:
   - job: Lintj
     displayName: Validate lintj
     pool:
@@ -43,13 +43,13 @@ stages:
       displayName: 'Install Node.js'
       inputs:
         versionSpec: '14.x'
-      
+
     - task: CmdLine@2
-      displayName: 'Npm install'
+      displayName: 'Npm CI'
       inputs:
         script: |
          cd source
-         npm install
+         npm ci
 
     - task: CmdLine@2
       displayName: 'Npm run lintj'
@@ -61,20 +61,20 @@ stages:
 - stage: CloudRun
   displayName: Cloud run
   condition: and(succeeded(), eq(variables['Build.Reason'], 'PullRequest'))
-  jobs:  
+  jobs:
   - job: CloudRun
     displayName: Cloud run
     pool:
       vmImage: ubuntu-20.04
 
     steps:
-    - task: Cache@2
-      inputs:
-        key: 'npm | "$(Agent.OS)" | source/package-lock.json'
-        restoreKeys: |
-          npm | "$(Agent.OS)"
-        path: $(npm_config_cache)
-      displayName: Cache npm
+    # - task: Cache@2
+    #   inputs:
+    #     key: 'npm | "$(Agent.OS)" | source/package-lock.json'
+    #     restoreKeys: |
+    #       npm | "$(Agent.OS)"
+    #     path: $(npm_config_cache)
+    #   displayName: Cache npm
 
     - task: Npm@1
       displayName: 'Npm run lintj'

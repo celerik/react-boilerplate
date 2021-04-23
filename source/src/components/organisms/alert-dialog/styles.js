@@ -1,11 +1,4 @@
 export default theme => Object.assign({}, {
-    adjustText: {
-        color: theme.palette.text.disable,
-        fontSize: 14,
-        textAlign: 'center',
-        height: 'auto',
-        width: '85%'
-    },
     backdropClassName: {
         backgroundColor: 'rgba(254, 254, 254, 0.1)',
         backdropFilter: 'blur(15px)'
@@ -36,13 +29,13 @@ export default theme => Object.assign({}, {
         color: 'white'
     },
     content: {
-        margin: 'auto',
+        alignItems: 'center',
+        color: theme.palette.text.disable,
         display: 'flex',
-        height: 'auto',
-        marginLeft: '34px',
-        marginRight: '34px',
-        padding: 0,
-        width: 'auto'
+        flexDirection: 'column',
+        fontSize: 14,
+        margin: '0 34px',
+        textAlign: 'center',
     },
     closeButton: {
         color: '#323232',
