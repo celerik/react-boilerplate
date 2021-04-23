@@ -4,7 +4,6 @@ import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
@@ -18,6 +17,7 @@ import styles from './styles';
 const AlertDialog = ({
     actions,
     classes,
+    color,
     content,
     id,
     isExitButtonVisible,
@@ -54,6 +54,12 @@ const AlertDialog = ({
                         action.disabled && classes.bottomDisabled,
                         action.disabledObservation && classes.bottomDisabledObservation
                     )}
+                    style={{
+                        backgroundColor: index === 0
+                            ? 'transparent'
+                            : color,
+                        borderColor: color
+                    }}
                 >
                 {action.name}
                 </Button>
@@ -74,6 +80,7 @@ AlertDialog.propTypes = {
 };
 
 AlertDialog.defaultProps = {
+    color: 'green',
     isExitButtonVisible: true
 };
 

@@ -4,7 +4,7 @@ export default theme => Object.assign({}, {
         backdropFilter: 'blur(15px)'
     },
     bottom: {
-        border: '1px solid mediumpurple',
+        border: '1px solid',
         color: '#161c3a',
         height: 40,
         marginBottom: 21,
