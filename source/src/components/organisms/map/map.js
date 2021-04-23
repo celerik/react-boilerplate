@@ -25,9 +25,8 @@ class CustomMap extends Map {
             ['linear'],
             ['zoom'],
             2,
-            theme.palette.background.default,
+            theme.palette.background.default
         ]);
-
     }
 
     paintRoute(geojson, {
@@ -40,14 +39,12 @@ class CustomMap extends Map {
 
         this.routes.forEach(routeId => {
             try {
-                if (this.getLayer(routeId))
-                    this.removeLayer(routeId);
-                if (this.getSource(routeId))
-                    this.removeSource(routeId);
+                if (this.getLayer(routeId)) this.removeLayer(routeId);
+                if (this.getSource(routeId)) this.removeSource(routeId);
             } catch (error) {}
         });
 
-        const routeId = `route-${name}`
+        const routeId = `route-${name}`;
 
         this.addSource(routeId, {
             data: geojson,
@@ -56,7 +53,7 @@ class CustomMap extends Map {
             tolerance: 1
         });
 
-        this.addLayer({ 
+        this.addLayer({
             id: routeId,
             minzoom: 0,
             maxzoom: 24,

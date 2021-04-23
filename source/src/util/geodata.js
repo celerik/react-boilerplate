@@ -2,9 +2,9 @@
  * @param {String} pathGeometry
  * @param {String} pathId
  */
-export const formatSegmentsPath = ({ 
-    pathGeometry, 
-    pathId 
+export const formatSegmentsPath = ({
+    pathGeometry,
+    pathId
 }) => {
     const [geometryType, strCoordinates] = pathGeometry.replace(')', ', ').split('(');
     const coordinates = strCoordinates.split(',')
@@ -15,5 +15,5 @@ export const formatSegmentsPath = ({
         coordinates: Array.from(removedDuplicated, JSON.parse),
         geometryType,
         pathId
-    }
+    };
 };

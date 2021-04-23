@@ -44,8 +44,8 @@ const ServicePatternMenu = ({
 
     return (
         <div id={id} className={classes.mainContainer}>
-            <BackToButton 
-                label={config.text.createServicePattern.backToServicePatterns} 
+            <BackToButton
+                label={config.text.createServicePattern.backToServicePatterns}
                 to={formatUrlParam(config.routes.dashboard.servicePatterns.url, projectId)}
             />
             <div className={classes.header}>
@@ -62,7 +62,9 @@ const ServicePatternMenu = ({
                 </div>
             </div>
             <Typography className={classes.subtitle} variant="body1">
-                {config.text.editServicePattern.route} {servicePattern.routeName}
+                {config.text.editServicePattern.route}
+{' '}
+{servicePattern.routeName}
             </Typography>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
@@ -71,7 +73,7 @@ const ServicePatternMenu = ({
                 className={classes.divider}
                 variant="fullWidth"
             />
-            <StopsList 
+            <StopsList
                 id={`${id}-stoplist`}
                 stops={servicePattern.stops}
             />

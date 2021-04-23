@@ -52,7 +52,7 @@ const CustomMap = ({
                     }
                 }));
 
-            mapRef.current.paintRoute(geojson, { 
+            mapRef.current.paintRoute(geojson, {
                 color: servicePattern.colour,
                 name: `route-${servicePattern.servicePatternName}`
             });
@@ -60,7 +60,7 @@ const CustomMap = ({
             console.log(geojson);
             mapRef.current.setCenter(
                 geojson.features[0].geometry.coordinates[0]
-            )
+            );
         });
     }, [servicePatterns]);
 

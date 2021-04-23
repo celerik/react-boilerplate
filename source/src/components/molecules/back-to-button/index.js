@@ -22,7 +22,7 @@ const BackToButton = ({
             history.push(to);
             return;
         }
-        
+
         history.goBack();
     };
 

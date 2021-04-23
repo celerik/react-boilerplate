@@ -22,8 +22,7 @@ const StopsList = ({
                 <span className={classes.stopNumber}>
                     {index < stops.length - 1
                         ? index + 1
-                        : <LocationOnIcon />
-                    }
+                        : <LocationOnIcon />}
                 </span>
                 {stop.stopName}
             </li>
