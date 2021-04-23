@@ -24,8 +24,5 @@ export default () => ({
     lockedStatus: {
         alignItems: 'center',
         display: 'flex'
-    },
-    subtitle: {
-        fontSize: 20
     }
 });

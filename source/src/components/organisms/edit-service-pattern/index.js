@@ -50,7 +50,7 @@ const ServicePatternMenu = ({
                     </Typography>
                 </div>
             </div>
-            <Typography className={classes.subtitle} variant="body1">
+            <Typography className={classes.subtitle} variant="h5">
                 {servicePattern.routeName}
             </Typography>
             <Typography className={classes.label}>
