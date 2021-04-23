@@ -62,6 +62,7 @@ class CustomMap extends Map {
                 'line-join': 'round',
                 'line-cap': 'round'
             },
+            maxzoom: 24,
             paint: {
                 'line-color': color,
                 'line-width': 5
