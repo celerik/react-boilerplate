@@ -8,9 +8,10 @@ const rangeLimitsStyles = {
 
 export default theme => ({
     calendar: {
-        height: 297,
+        height: 'fit-content',
         width: 304,
         backgroundColor: 'white',
+        padding: '0 20px',
         boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
         position: 'static',
         left: '122.5px',
@@ -21,8 +22,7 @@ export default theme => ({
             // STYLES FOR THE DAYS CELLS
             backgroundColor: 'transparent',
             borderWidth: 0,
-            height: 32,
-            width: 32,
+            height: 36,
             border: '1px solid #FDB561',
             //styleName: Body;
             fontFamily: 'Poppins',
