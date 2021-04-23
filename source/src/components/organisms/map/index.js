@@ -56,7 +56,6 @@ const CustomMap = ({
                 name: `route-${servicePattern.servicePatternName}`
             });
 
-            console.log(geojson);
             mapRef.current.setCenter(
                 geojson.features[0].geometry.coordinates[0]
             );

@@ -63,8 +63,7 @@ const ServicePatternMenu = ({
             </div>
             <Typography className={classes.subtitle} variant="body1">
                 {config.text.editServicePattern.route}
-{' '}
-{servicePattern.routeName}
+                {servicePattern.routeName}
             </Typography>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
@@ -85,9 +84,7 @@ ServicePatternMenu.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     locked: PropTypes.bool,
-    match: PropTypes.object.isRequired,
-    name: PropTypes.string.isRequired,
-    route: PropTypes.string.isRequired
+    match: PropTypes.object.isRequired
 };
 
 ServicePatternMenu.defaultProps = {
