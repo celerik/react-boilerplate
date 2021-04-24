@@ -1,5 +1,7 @@
 // @packages
-import { Map } from 'mapbox-gl';
+import ReactDOM from 'react-dom';
+import StopIcon from '../../atoms/stop-icon';
+import { Map, Marker } from 'mapbox-gl';
 import { globalUI } from '../../../core';
 
 class CustomMap extends Map {
@@ -78,6 +80,18 @@ class CustomMap extends Map {
         });
 
         this.routes.push(routeId);
+    }
+
+    paintMarkers(geojson) {
+        geojson.features.forEach((geojsonMarker) => {
+            const el = document.createElement('div');
+
+            new Marker(el)
+                .setLngLat(geojsonMarker.geometry.coordinates)
+                .addTo(this);
+
+            ReactDOM.render(<StopIcon />, el);
+        });
     }
 }
 

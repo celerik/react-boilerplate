@@ -12,6 +12,7 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 import styles from './styles';
 import { theme } from '../../../styles/material-ui';
 import { formatSegmentsPath } from '../../../util';
+import StopIcon from '../../atoms/stop-icon';
 
 // @constants
 const AVALIABLE_CONTROLS = ['zoom'];
@@ -34,30 +35,81 @@ const CustomMap = ({
         return () => map.remove();
     }, []);
 
+    const formatSegmentPath = (path) => {
+        const { coordinates } = formatSegmentsPath(path);
+
+        return [
+            {
+                type: 'Feature',
+                geometry: {
+                    type: 'LineString',
+                    properties: {},
+                    coordinates
+                }
+            }
+        ];
+    };
+
+    const formatMarkers = (path) => {
+        const { coordinates } = formatSegmentsPath(path);
+        const iconSize = [10, 10];
+
+        return [
+            {
+                type: 'Feature',
+                properties: {
+                    message: 'Foo',
+                    iconSize
+                },
+                geometry: {
+                    type: 'Point',
+                    coordinates: coordinates[0]
+                }
+            },
+            {
+                type: 'Feature',
+                properties: {
+                    message: 'Foo',
+                    iconSize
+                },
+                geometry: {
+                    type: 'Point',
+                    coordinates: coordinates[coordinates.length - 1]
+                }
+            }
+        ];
+    };
+
     useEffect(() => {
         servicePatterns.forEach((servicePattern) => {
-            const geojson = {
+            const geojsonPath = {
                 type: 'FeatureCollection',
                 features: []
             };
 
-            geojson.features = servicePattern.segments
+            const geojsonMarker = {
+                type: 'FeatureCollection',
+                features: []
+            };
+
+            const data = servicePattern.segments
                 .map(segment => ({
-                    type: 'Feature',
-                    geometry: {
-                        type: 'LineString',
-                        properties: {},
-                        coordinates: formatSegmentsPath(segment.path).coordinates
-                    }
+                    path: formatSegmentPath(segment.path),
+                    markers: formatMarkers(segment.path)
                 }));
 
-            mapRef.current.paintRoute(geojson, {
+            geojsonPath.features = data.flatMap(item => item.path);
+            geojsonMarker.features = data.flatMap(item => item.markers);
+
+            mapRef.current.paintRoute(geojsonPath, {
                 color: servicePattern.colour,
                 name: `route-${servicePattern.servicePatternName}`
             });
 
+            mapRef.current.paintMarkers(geojsonMarker);
+
             mapRef.current.setCenter(
-                geojson.features[0].geometry.coordinates[0]
+                geojsonPath.features[0].geometry.coordinates[0]
             );
         });
     }, [servicePatterns]);
