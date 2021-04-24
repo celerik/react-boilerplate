@@ -1,8 +1,11 @@
 // @packages
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom'
 import StopIcon from '../../atoms/stop-icon';
 import { Map, Marker } from 'mapbox-gl';
 import { globalUI } from '../../../core';
+import React from 'react';
+import { useRef } from 'react';
+import { forwardRef } from 'react';
 
 class CustomMap extends Map {
     constructor(mapContainer, theme) {
@@ -84,13 +87,23 @@ class CustomMap extends Map {
 
     paintMarkers(geojson) {
         geojson.features.forEach((geojsonMarker) => {
-            const el = document.createElement('div');
+            const div = document.createElement('div');
+            const aaa = this.getCanvasContainer().appendChild(div);
 
-            new Marker(el)
+            new Marker(div)
                 .setLngLat(geojsonMarker.geometry.coordinates)
                 .addTo(this);
 
-            ReactDOM.render(<StopIcon />, el);
+            const node = React.createElement(
+                'div', 
+                { className:'bar' }, 
+                <h1>hola</h1>);
+
+            // ReactDOM.createPortal(
+            ReactDOM.render(
+                <StopIcon />,
+                aaa
+            );
         });
     }
 }

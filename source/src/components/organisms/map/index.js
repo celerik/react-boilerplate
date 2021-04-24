@@ -1,11 +1,11 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Map from './map';
+// import Map from './map';
 import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
@@ -13,9 +13,14 @@ import styles from './styles';
 import { theme } from '../../../styles/material-ui';
 import { formatSegmentsPath } from '../../../util';
 import StopIcon from '../../atoms/stop-icon';
+import ReactMapboxGl, { Feature, Layer } from 'react-mapbox-gl';
 
 // @constants
 const AVALIABLE_CONTROLS = ['zoom'];
+    
+const Map = ReactMapboxGl({
+    accessToken: config.settings.mapBox.token
+});
 
 const CustomMap = ({
     className,
@@ -23,104 +28,84 @@ const CustomMap = ({
     controls,
     id
 }) => {
-    const mapContainer = useRef();
+    const [center, setCenter] = useState([
+        -0.04212516311508214,
+        51.52249290538935
+    ]);
+
     const mapRef = useRef();
+
     const { servicePatterns } = useSelector(state => ({
         servicePatterns: state.map.servicePatterns
     }));
 
-    useEffect(() => {
-        const map = new Map(mapContainer.current, theme);
-        mapRef.current = map;
-        return () => map.remove();
-    }, []);
+    const processedServicePatterns = React.useMemo(() => servicePatterns.map((servicePattern) => ({
+        ...servicePattern,
+        coordinates: servicePattern.segments
+            .flatMap(segment => formatSegmentsPath(segment.path).coordinates)
+    })), [servicePatterns]);
 
-    const formatSegmentPath = (path) => {
-        const { coordinates } = formatSegmentsPath(path);
+    if (servicePatterns.length) console.log(processedServicePatterns);
 
-        return [
-            {
-                type: 'Feature',
-                geometry: {
-                    type: 'LineString',
-                    properties: {},
-                    coordinates
-                }
-            }
-        ];
-    };
-
-    const formatMarkers = (path) => {
-        const { coordinates } = formatSegmentsPath(path);
-        const iconSize = [10, 10];
-
-        return [
-            {
-                type: 'Feature',
-                properties: {
-                    message: 'Foo',
-                    iconSize
-                },
-                geometry: {
-                    type: 'Point',
-                    coordinates: coordinates[0]
-                }
-            },
-            {
-                type: 'Feature',
-                properties: {
-                    message: 'Foo',
-                    iconSize
-                },
-                geometry: {
-                    type: 'Point',
-                    coordinates: coordinates[coordinates.length - 1]
-                }
-            }
-        ];
-    };
+    console.log(servicePatterns, processedServicePatterns, mapRef);
 
     useEffect(() => {
-        servicePatterns.forEach((servicePattern) => {
-            const geojsonPath = {
-                type: 'FeatureCollection',
-                features: []
-            };
+        if (processedServicePatterns.length) {
+            setCenter(processedServicePatterns[0].coordinates[0]);
+        }
+    }, [processedServicePatterns]);
 
-            const geojsonMarker = {
-                type: 'FeatureCollection',
-                features: []
-            };
-
-            const data = servicePattern.segments
-                .map(segment => ({
-                    path: formatSegmentPath(segment.path),
-                    markers: formatMarkers(segment.path)
-                }));
-
-            geojsonPath.features = data.flatMap(item => item.path);
-            geojsonMarker.features = data.flatMap(item => item.markers);
-
-            mapRef.current.paintRoute(geojsonPath, {
-                color: servicePattern.colour,
-                name: `route-${servicePattern.servicePatternName}`
-            });
-
-            mapRef.current.paintMarkers(geojsonMarker);
-
-            mapRef.current.setCenter(
-                geojsonPath.features[0].geometry.coordinates[0]
-            );
-        });
-    }, [servicePatterns]);
+    global.a = mapRef
 
     return (
         <div className={className} id={id}>
-            <div className={classes.map} ref={mapContainer} />
+            <Map 
+                ref={mapRef}
+                style="mapbox://styles/mapbox/light-v10"
+                className={classes.map}
+                center={center}
+            >
+                {processedServicePatterns.map(servicePattern => (
+                    <Layer 
+                        id={`line-${servicePattern.routeName}`}
+                        type="line" 
+                        maxZoom={24}
+                        minZoom={0}
+                        paint={{
+                            'line-color': '#ffff00',
+                            'line-width': 10
+                        }}
+                        layout={{
+                            'line-join': 'round',
+                            'line-cap': 'round',
+                            visibility: 'visible'
+                        }}
+                    >
+                        <Feature 
+                            coordinates={servicePattern.coordinates}
+                        />
+                    </Layer>
+                ))}
+                <Layer 
+                    id={`line-test`}
+                    type="line" 
+
+                    paint={{
+                        'line-color': '#ffff00',
+                        'line-width': 12
+                    }}
+                    layout={{
+                        'line-join': 'round',
+                        'line-cap': 'round',
+                        visibility: 'visible'
+                    }}
+                >
+                </Layer>
+            </Map>
             {controls.includes('zoom') && (
                 <ZoomButtons
-                    onZoomIn={() => mapRef.current.zoomIn()}
-                    onZoomOut={() => mapRef.current.zoomOut()}
+                    onZoomIn={() => mapRef.current.state.map.zoomIn()}
+                    onZoomOut={() => mapRef.current.state.map.zoomOut()}
                 />
             )}
         </div>
