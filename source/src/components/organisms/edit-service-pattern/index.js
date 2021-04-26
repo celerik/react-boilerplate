@@ -15,8 +15,9 @@ import { useDispatch } from 'react-redux';
 import styles from './styles';
 import Project from '../../../services/project';
 import StopsList from '../../molecules/stops-list';
-import { setMapServicePatterns } from '../../../actions';
+import { setMapServicePatterns, setMapStops } from '../../../actions';
 import { formatUrlParam } from '../../../util';
+import BaselineConnect from '../../../services/baseline-connect';
 
 const ServicePatternMenu = ({
     classes,
@@ -32,8 +33,24 @@ const ServicePatternMenu = ({
     const fetchServicePatternData = async () => {
         const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
         servicePattern.colour = theme.palette.primary.light;
+        const stops = await Promise.all(
+            servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))
+        );
+
+        const servicePatternGeojson = {
+            type: 'FeatureCollection',
+            features: servicePattern.features
+        };
+
+        const geojsonStops = {
+            type: 'FeatureCollection',
+            features: stops.flatMap(stop => stop.features)
+        };
+
+        const listItems  =
         setServicePattern(servicePattern);
-        dispatch(setMapServicePatterns([servicePattern]));
+        dispatch(setMapServicePatterns([servicePatternGeojson]));
+        dispatch(setMapStops());
     };
 
     useEffect(fetchServicePatternData, []);
