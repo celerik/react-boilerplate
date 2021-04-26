@@ -103,12 +103,17 @@ const ServicePatterns = ({
             />
             <AlertDialog
                 actions={[
-                    { name: config.text.createServicePattern.cancel },
+                    {
+                        name: config.text.createServicePattern.cancel,
+                        onClick: Function.prototype
+                    },
                     {
                         name: config.text.createServicePattern.lock,
-                        disabled: true
+                        disabled: true,
+                        onClick: Function.prototype
                     }
                 ]}
+                id={`${id}-lock-service-pattern`}
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}
