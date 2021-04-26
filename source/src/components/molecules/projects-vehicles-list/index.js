@@ -43,7 +43,10 @@ const ProjectsVehiclesList = ({ projects }) => (
 );
 
 ProjectsVehiclesList.propTypes = {
-    projects: PropTypes.any
+    projects: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        vehicleType: PropTypes.string.isRequired
+    }))
 };
 
 ProjectsVehiclesList.defaultProps = {

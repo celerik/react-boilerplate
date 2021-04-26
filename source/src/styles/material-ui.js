@@ -47,14 +47,15 @@ export const theme = createMuiTheme({
             light: colors.lile,
             main: colors.purple,
             success: colors.mint,
-            warn: colors.summer
+            warn: colors.summer,
+            dark: colors.night
         },
         text: {
             primary: colors.text.text1,
             secondary: colors.text.text2,
             hint: colors.text.text3,
             disabled: colors.text.text4,
-            contrastText: colors.text.text5
+            contrastText: colors.text.text5 
         }
     },
     typography: {

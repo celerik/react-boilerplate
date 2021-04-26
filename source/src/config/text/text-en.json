@@ -82,14 +82,14 @@
     "projectsVehiclesModal": {
       "addFromLibrary": "Add from library",
       "createVehicleType": "Create vehicle type",
-      "forVehicles": "4 Vehicles",
-      "needUpdate": "Need pdate",
+      "needUpdate": "Need update",
       "title": "Projects Vehicles",
-      "typeDays": "Type of days", 
+      "typeDays": "Type of days...", 
       "update": "update",
+      "vehicles": "Vehicles",
       "vehiclesTypes": "VEHICLES TYPES({0})"
     },
-    "projetcSettingsModal": {
+    "projectSettingsModal": {
       "cancel": "Cancel",
       "day": "/day",
       "defaultOtpThresholds": "Default OTP thresholds",

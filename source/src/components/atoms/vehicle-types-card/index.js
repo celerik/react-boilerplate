@@ -1,16 +1,15 @@
 // @packages
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
+import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Actionbutton from '../button';
 import SelectorList from '../list-selector';
 import { config } from '../../../config';
 
@@ -35,10 +34,10 @@ const typeDays = [
 ];
 
 const Tooltipcontainer = (classes) => (
-    <div>
-        <Typography>{text.needUpdate}</Typography>
-        <Actionbutton label={text.update} className={classes.tooltipButton} />
-    </div>
+    <>
+        <Typography className={classes.tooltipTitle}>{text.needUpdate}</Typography>
+        <Typography className={classes.tooltipSubtitle}>{text.update}</Typography>
+    </>
 );
 
 const VehicleTypeCard = ({
@@ -46,63 +45,66 @@ const VehicleTypeCard = ({
     id,
     needUpdate,
     vehicleType
-}) => (
-    <Tooltip
-        classes={{ tooltip: classes.tooltip }}
-        interactive
-        placement="bottom-start"
-        title={needUpdate && Tooltipcontainer(classes)}
-    >
-        <div
-            className={classes.containerCard}
-            id={id}
+}) => {
+    const [infoValue, setInfoValue] = useState(4);
+
+    return (
+        <Tooltip
+            classes={{ tooltip: classes.tooltip }}
+            interactive
+            placement="bottom-start"
+            title={needUpdate && Tooltipcontainer(classes)}
         >
             <Grid
                 alignItems="center"
+                className={classes.containerCard}
                 container
+                id={id}
                 justify="center"
                 row
             >
                 <Grid
-                    className={classes.itemContainer}
                     container
                     item
-                    xs={3}
+                    xs={4}
                 >
                     {needUpdate && (
                         <IconButton className={classes.refreshIcon}>
                             <RefreshIcon />
                         </IconButton>
                     )}
-                    <Typography>{vehicleType}</Typography>
+                    <Typography variant="body2">{vehicleType}</Typography>
                 </Grid>
                 <Grid
-                    className={classes.itemContainer}
                     item
                     xs={4}
                 >
                     <SelectorList
                         id={id}
                         items={typeDays}
+                        itemValProp="value"
+                        itemDesProp="text"
                         placeholder={text.typeDays}
                     />
                 </Grid>
-                <Grid item xs={3} className={classes.itemContainer}>
-                    <Actionbutton
-                        className={classes.disabledButton}
-                        disabled
-                        label={text.forVehicles}
+                <Grid item xs={2}>
+                    <Inputfield
+                        className={classes.inputfield}
+                        endAdornment={text.vehicles}
+                        onChange={(e) => setInfoValue(e.target.value)}
+                        value={infoValue}
                     />
                 </Grid>
-                <Grid item xs={1}>
-                    <IconButton>
-                        <FileCopyOutlinedIcon />
-                    </IconButton>
+                <Grid item xs={2}>
+                    <Inputfield
+                        icon="content_copy"
+                        className={classes.icon}
+                    />
                 </Grid>
             </Grid>
-        </div>
-    </Tooltip>
-);
+        </Tooltip>
+    );
+};
 
 VehicleTypeCard.propTypes = {
     classes: PropTypes.object.isRequired,

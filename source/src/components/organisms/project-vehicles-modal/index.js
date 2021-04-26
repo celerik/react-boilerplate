@@ -1,10 +1,11 @@
 // @packages
-import AddIcon from '@material-ui/icons/Add';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import DirectionsBusIcon from '@material-ui/icons/DirectionsBus';
+import Grid from '@material-ui/core/Grid';
+import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -20,46 +21,56 @@ import styles from './styles';
 
 const text = config.text.projectMenu.projectsVehiclesModal;
 
-const ProjectsVehicles = ({ classes, open, setOpen }) => (
+const ProjectsVehicles = ({
+    classes,
+    open,
+    onClose
+}) => (
     <Dialog
-        BackdropProps={{ timeout: 500 }}
-        classes={{ paper: classes.dialogPaper }}
-        onClose={() => setOpen(false)}
+        BackdropProps={{ className: classes.backdropClassName }}
+        className={classes.mainContainer}
+        disableBackdropClick
+        disableEscapeKeyDown
+        onClose={onClose}
         open={open}
     >
-        <DialogTitle onClose={() => setOpen(false)}>
-            <Typography variant="h3">{text.title}</Typography>
+        <DialogTitle onClose={onClose} className={classes.actionsDialog}>
+            <Grid container spacing={12}>
+                <Grid item xs={11}>
+                    <Typography variant="h3">{text.title}</Typography>
+                </Grid>
+                <Grid item xs={1}>
+                    <IconButton onClick={onClose} className={classes.backIcon}>
+                        <ArrowBackIcon />
+                    </IconButton>
+                </Grid>
+            </Grid>
         </DialogTitle>
 
         <DialogContent>
-            <Typography>{text.vehiclesTypes}</Typography>
-            <div>
-                <ProjectsVehiclesList />
-            </div>
+            <Typography variant="h4">{text.vehiclesTypes}</Typography>
+            <ProjectsVehiclesList />
         </DialogContent>
 
         <DialogActions className={classes.actionsDialog}>
             <Actionbutton
                 className={classes.outlineButton}
-                endIcon={<DirectionsBusIcon />}
+                endIcon="directions_bus"
                 label={text.createVehicleType}
             />
-
             <Actionbutton
                 className={classes.outlineButton}
-                endIcon={<AddIcon />}
+                endIcon="add"
                 label={text.addFromLibrary}
             />
-
         </DialogActions>
-
     </Dialog>
 );
 
 ProjectsVehicles.propTypes = {
     classes: PropTypes.object.isRequired,
     open: PropTypes.bool.isRequired,
-    setOpen: PropTypes.func.isRequired
+    onClose: PropTypes.func.isRequired
 };
 
 export default withStyles(styles)(ProjectsVehicles);

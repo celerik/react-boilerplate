@@ -39,7 +39,7 @@ const ProjectMenu = ({
         return null;
     }
 
-    const handelCloseProjectsVehiclesModal = () => {
+    const handleCloseProjectsVehiclesModal = () => {
         setOpenVehiclesModal(false);
         history.goBack();
     };
@@ -131,7 +131,10 @@ const ProjectMenu = ({
                 open={modalSettingsVisibility}
                 projectId={projectId}
             />
-            <ProjectVehiclesModal open={openVehiclesModal} setOpen={handelCloseProjectsVehiclesModal} />
+            <ProjectVehiclesModal
+                open={openVehiclesModal}
+                onClose={handleCloseProjectsVehiclesModal}
+            />
         </div>
     );
 };
