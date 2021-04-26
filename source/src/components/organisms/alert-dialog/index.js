@@ -1,15 +1,14 @@
 // @packages
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '../../atoms/icon-button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { theme } from '../../../styles/material-ui';
 import { withStyles } from '@material-ui/core';
 
 // @styles
@@ -18,8 +17,10 @@ import styles from './styles';
 const AlertDialog = ({
     actions,
     classes,
+    colorChange,
     content,
     id,
+    isExitButtonVisible,
     onClose,
     title,
     visible
@@ -31,29 +32,36 @@ const AlertDialog = ({
         onClose={onClose}
         open={visible}
     >
-        {onClose && (
-            <IconButton className={classes.closeButton} onClick={onClose} id={`${id}-close-modal`}>
-                <CloseIcon />
-            </IconButton>
+        {isExitButtonVisible && (
+            <IconButton
+                buttonClassname={classes.closeButton}
+                icon="close"
+                id={`${id}-close-modal`}
+                onClick={onClose}
+            />
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
             {title}
         </DialogTitle>
         <DialogContent className={classes.content}>
-            <DialogContentText id={`${id}-description`} className={classes.adjustText}>
-                {content}
-            </DialogContentText>
+            {content}
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
             {actions.map((action, index) => (
                 <Button
-                    id={`${id}-actions-${index}`}
+                    id={`${id}-action-${index}`}
                     key={index}
                     onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
                         action.disabled && classes.bottomDisabled
                     )}
+                    style={{
+                        backgroundColor: action.disabled
+                            ? colorChange
+                            : 'transparent',
+                        borderColor: colorChange
+                    }}
                 >
                 {action.name}
                 </Button>
@@ -69,15 +77,19 @@ AlertDialog.propTypes = {
         disabled: PropTypes.bool
     })),
     classes: PropTypes.object.isRequired,
+    colorChange: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    isExitButtonVisible: PropTypes.bool,
     onClose: PropTypes.func.isRequired,
     title: PropTypes.object.isRequired,
     visible: PropTypes.func.isRequired
 };
 
 AlertDialog.defaultProps = {
-    actions: []
+    actions: [],
+    colorChange: theme.palette.primary.light,
+    isExitButtonVisible: true
 };
 
 export default withStyles(styles)(AlertDialog);

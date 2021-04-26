@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Actionbutton from '../../atoms/button';
+import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
@@ -89,13 +89,13 @@ const ServicePatterns = ({
                     />
                 ))}
             </div>
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonAdd}
                 label={config.text.createServicePattern.addServicePattern}
                 onClick={toNewServicePattern}
                 startIcon="add"
             />
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonLock}
                 label={config.text.createServicePattern.lockServicePattern}
                 onClick={handleClickOpen}
