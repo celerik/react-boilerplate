@@ -43,5 +43,8 @@ export default theme => Object.assign({}, {
     },
     checkboxUnSelect: {
         color: `${theme.palette.primary.contrastText}`
+    },
+    textContainer: {
+        width: '55%'
     }
 });

@@ -11,22 +11,10 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import { theme } from '../../../styles/material-ui';
+import IconStatus from '../../atoms/icon-status';
 
 // @styles
 import styles from './styles';
-
-const IconStatus = withStyles(styles)(({ status }) => (
-    status === 'success' ? (
-        <Icon style={{ color: theme.palette.primary.success }}>
-            check_circle
-        </Icon>
-    ) : (
-        <Icon style={{ color: status === 'warning' ? theme.palette.primary.warn : theme.palette.primary.error }}>
-            warning
-        </Icon>
-    )
-));
 
 const ServicePatternCard = ({
     actions,
@@ -97,7 +85,7 @@ const ServicePatternCard = ({
             >
                 {routeName}
             </div>
-            <div>
+            <div className={classes.textContainer}>
                 <Typography variant="h4">{servicePatternName}</Typography>
                 <Typography variant="h6">{formatOperationDays(operationDays)}</Typography>
             </div>
