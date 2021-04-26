@@ -14,7 +14,6 @@ const servicePatternsReducer = (
     }
 };
 
-
 const stopsReducer = (
     state = config.initialState.map.stops, action
 ) => {

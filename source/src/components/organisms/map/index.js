@@ -24,7 +24,7 @@ const shapes = {
             'line-cap': 'round'
         }
     }
-}    
+};
 
 const Map = ReactMapBoxGl({
     accessToken: config.settings.mapBox.token
@@ -54,28 +54,29 @@ const CustomMap = ({
 
     return (
         <div className={className} id={id}>
-            <Map 
+            <Map
                 id={`${id}-map`}
                 ref={mapRef}
+                // eslint-disable-next-line
                 style="mapbox://styles/mapbox/light-v10"
                 className={classes.map}
                 center={center}
             >
-                {servicePatterns.map(featureCollection => (
+                {servicePatterns.map((featureCollection, index) => (
                     <GeoJSONLayer
                         data={featureCollection}
+                        key={`route-${index}`}
                         lineLayout={shapes.line.layout}
                         linePaint={{
                             ...shapes.line.paint,
                             'line-color': theme.palette.primary.main
                         }}
-                    /> 
+                    />
                 ))}
-                <Cluster 
+                <Cluster
                     ClusterMarkerFactory={(coordinates, pointCount) => (
                         <Marker coordinates={coordinates}>
-                            <StopIcon 
-                                // label={index < featureCollection.features.length - 1 && index + 1}
+                            <StopIcon
                                 label={`+${pointCount}`}
                             />
                         </Marker>
@@ -84,8 +85,11 @@ const CustomMap = ({
                 >
                     {stops.flatMap(featureCollection => featureCollection.features.map(
                         (feature, index) => (
-                            <Marker coordinates={feature.geometry.coordinates}>
-                                <StopIcon 
+                            <Marker
+                                key={`marker-${index}`}
+                                coordinates={feature.geometry.coordinates}
+                            >
+                                <StopIcon
                                     label={index < featureCollection.features.length - 1 && index + 1}
                                 />
                             </Marker>

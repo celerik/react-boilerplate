@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
@@ -11,7 +11,6 @@ import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { format, formatUrlParam } from '../../../util/string';
-import { getServicePatterns } from '../../../actions/service-patterns';
 import { config } from '../../../config';
 
 // @styles
@@ -25,7 +24,7 @@ const ServicePatterns = ({
     match
 }) => {
     const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
-    const [servicePatterns, setServicesPatterns] = useState([])
+    const [servicePatterns, setServicesPatterns] = useState([]);
     const { projectId } = match.params;
     const { projects } = useSelector(state => ({
         projects: state.projects

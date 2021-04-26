@@ -9,16 +9,12 @@ export const GET_SERVICE_PATTERNS = 'GET_SERVICE_PATTERNS';
  */
 export const getServicePatterns = (projectId) =>
     async (dispatch) => {
-        try {
-            const servicePatterns = await Project.getServicePatterns(projectId);
-    
-            dispatch({
-                type: GET_SERVICE_PATTERNS,
-                payload: servicePatterns
-            });
-    
-            return servicePatterns;
-        } catch (error) {
-            throw error;
-        }
+        const servicePatterns = await Project.getServicePatterns(projectId);
+
+        dispatch({
+            type: GET_SERVICE_PATTERNS,
+            payload: servicePatterns
+        });
+
+        return servicePatterns;
     };

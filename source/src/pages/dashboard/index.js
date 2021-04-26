@@ -18,7 +18,6 @@ const DashboardPage = ({
     onGetTeams,
     selectedTeam
 }) => {
-
     useEffect(() => {
         onGetTeams();
         onGetRoutes();
