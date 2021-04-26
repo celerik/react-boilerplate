@@ -20,12 +20,13 @@ const ServicePatternCard = ({
     actions,
     className,
     classes,
+    color,
     id,
     isCheckeable,
     isChecked,
+    issues,
     onCheck,
     operationDays,
-    color,
     routeName,
     servicePatternName,
     statusService,
@@ -72,9 +73,7 @@ const ServicePatternCard = ({
                     onChange={() => onCheck(value)}
                 />
             )}
-            {statusService && (
-                <IconStatus status={statusService} />
-            )}
+            {statusService && <IconStatus status={statusService} />}
             <div
                 className={classes.routeNameContainer}
                 style={{
@@ -90,6 +89,7 @@ const ServicePatternCard = ({
                 <Typography variant="h6">{formatOperationDays(operationDays)}</Typography>
             </div>
             <div className={classes.actionsContainer}>
+                {issues && <IconStatus status="warning" />}
                 {actionsVisible && actions.map((action) => (
                     <Tooltip
                         title={action.name}
@@ -114,11 +114,12 @@ ServicePatternCard.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     className: PropTypes.string,
-    color: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    color: PropTypes.string,
     id: PropTypes.string.isRequired,
     isCheckeable: PropTypes.bool,
     isChecked: PropTypes.bool,
+    issues: PropTypes.objectOf(PropTypes.string).isRequired,
     onCheck: PropTypes.func,
     operationDays: PropTypes.arrayOf(PropTypes.string),
     routeName: PropTypes.string.isRequired,

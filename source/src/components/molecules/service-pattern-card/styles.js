@@ -3,7 +3,7 @@ export default theme => Object.assign({}, {
         alignItems: 'center',
         display: 'flex',
         position: 'absolute',
-        right: 25,
+        right: 5,
         '& span': {
             color: theme.palette.text.secondary,
             marginLeft: 10
