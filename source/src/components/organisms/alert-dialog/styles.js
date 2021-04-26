@@ -20,7 +20,7 @@ export default theme => Object.assign({}, {
         backgroundColor: theme.palette.primary.light,
         color: 'white'
     },
-    bottomDisabledObservation: {
+    bottomFilled: {
         backgroundColor: theme.palette.primary.warn,
         color: 'white'
     },

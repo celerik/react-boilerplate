@@ -13,6 +13,7 @@ import Calendar from '../calendar';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
 import { format } from '../../../util/string';
+import { theme } from '../../../styles/material-ui';
 
 // @styles
 import styles from './styles';
@@ -67,8 +68,7 @@ const ServicePatterns = ({
                             name: config.text.observationPeriodsPage.cancel
                         },
                         {
-                            name: config.text.observationPeriodsPage.observationPeriods,
-                            disabledObservation: true
+                            name: config.text.observationPeriodsPage.observationPeriods
                         }
                     ]
                 }
@@ -82,11 +82,9 @@ const ServicePatterns = ({
                 )}
                 onClose={handleClose}
                 title={(
-                    <>
                         <div className={classes.titleHeader}>{config.text.observationPeriodsPage.addObservationPeriods}</div>
-                    </>
                 )}
-                colorChange="#FDB561"
+                colorChange={theme.palette.primary.warn}
                 visible={observationModalVisible}
             />
             <ButtonAction

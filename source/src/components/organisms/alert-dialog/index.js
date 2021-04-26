@@ -1,14 +1,14 @@
 // @packages
 import Button from '@material-ui/core/Button';
-import CloseIcon from '@material-ui/icons/Close';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import IconButton from '@material-ui/core/IconButton';
+import IconButton from '../../atoms/icon-button';
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
+import { theme } from '../../../styles/material-ui';
 import { withStyles } from '@material-ui/core';
 
 // @styles
@@ -33,9 +33,12 @@ const AlertDialog = ({
         open={visible}
     >
         {isExitButtonVisible && (
-            <IconButton className={classes.closeButton} onClick={onClose} id={`${id}-close-modal`}>
-                <CloseIcon />
-            </IconButton>
+            <IconButton
+                buttonClassname={classes.closeButton}
+                icon="close"
+                id={`${id}-close-modal`}
+                onClick={onClose}
+            />
         )}
         <DialogTitle id={`${id}-title`} className={classes.titleHeader}>
             {title}
@@ -51,8 +54,7 @@ const AlertDialog = ({
                     onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
-                        action.disabled && classes.bottomDisabled,
-                        action.disabledObservation && classes.bottomDisabledObservation
+                        action.disabled && classes.bottomDisabled
                     )}
                     style={{
                         backgroundColor: index === 0
@@ -81,7 +83,7 @@ AlertDialog.propTypes = {
 };
 
 AlertDialog.defaultProps = {
-    colorChange: '#8675FF',
+    colorChange: theme.palette.primary.light,
     isExitButtonVisible: true
 };
 

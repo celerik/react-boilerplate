@@ -38,17 +38,16 @@ export default theme => Object.assign({}, {
         textTransform: 'uppercase'
     },
     titleContainer: {
-        color: '#878F9E',
-        marginBottom: '18px'
+        color: theme.palette.text.text4,
+        marginBottom: 18
     },
     titleHeader: {
         fontFamily: 'Poppins',
-        fontSize: '24px',
+        fontSize: 24,
         fontStyle: 'normal',
         fontWeight: 600,
         letterSpacing: '-0.04em',
-        lineHeight: '36px',
-        marginBottom: '-12px',
+        marginBottom: -12,
         textAlign: 'center'
     }
 });

@@ -1,12 +1,15 @@
 // @packages
 import PropTypes from 'prop-types';
-import ReactCalendar from 'react-calendar';
 import React, { useState } from 'react';
-import { withStyles } from '@material-ui/core';
+import ReactCalendar from 'react-calendar';
 import moment from 'moment';
+import { withStyles } from '@material-ui/core';
+
+// @scripts
+import { ReactComponent as Image } from './image.svg';
+
 // @styles
 import styles from './styles';
-import { ReactComponent as Image } from './image.svg';
 
 const Calendar = ({
     classes,
@@ -20,7 +23,7 @@ const Calendar = ({
                 calendarType="US"
                 navigationLabel={() => (
                     <div>
-                       {moment().format('MMMM')}
+                    {moment().format('MMMM')}
                     </div>
                 )}
                 next2Label={null}
