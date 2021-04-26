@@ -30,7 +30,7 @@ export default theme => Object.assign({}, {
         display: 'flex',
         flexDirection: 'column',
         fontSize: 14,
-        margin: '0 34px',
+        margin: '0 18px',
         textAlign: 'center'
     },
     closeButton: {
@@ -43,7 +43,7 @@ export default theme => Object.assign({}, {
     },
     paper: {
         height: 'auto',
-        width: 'auto'
+        width: '45%'
     },
     titleHeader: {
         alignItems: 'center',
