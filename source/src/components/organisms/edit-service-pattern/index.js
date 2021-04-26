@@ -47,7 +47,6 @@ const ServicePatternMenu = ({
             features: stops.flatMap(stop => stop.features)
         };
 
-        const listItems  =
         setServicePattern(servicePattern);
         dispatch(setMapServicePatterns([servicePatternGeojson]));
         dispatch(setMapStops());
