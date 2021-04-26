@@ -1,5 +1,5 @@
 // @actions
-import { SET_MAP_SERVICE_PATTERNS } from '../actions';
+import { SET_MAP_SERVICE_PATTERNS, SET_MAP_STOPS } from '../actions';
 import { combineReducers } from 'redux';
 import { config } from '../config';
 
@@ -14,6 +14,19 @@ const servicePatternsReducer = (
     }
 };
 
+
+const stopsReducer = (
+    state = config.initialState.map.stops, action
+) => {
+    switch (action.type) {
+        case SET_MAP_STOPS:
+            return action.payload;
+        default:
+            return state;
+    }
+};
+
 export const mapReducer = combineReducers({
-    servicePatterns: servicePatternsReducer
+    servicePatterns: servicePatternsReducer,
+    stops: stopsReducer
 });

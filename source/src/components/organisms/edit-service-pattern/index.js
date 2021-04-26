@@ -30,6 +30,7 @@ const ServicePatternMenu = ({
 }) => {
     const theme = useTheme();
     const { projectId, servicePatternId } = match.params;
+    const [editModalVisible, openEditModal] = useState(false);
     const [servicePattern, setServicePattern] = useState(null);
     const dispatch = useDispatch();
 
@@ -52,7 +53,7 @@ const ServicePatternMenu = ({
 
         setServicePattern(servicePattern);
         dispatch(setMapServicePatterns([servicePatternGeojson]));
-        dispatch(setMapStops());
+        dispatch(setMapStops([geojsonStops]));
     };
 
     useEffect(fetchServicePatternData, []);
@@ -103,7 +104,7 @@ const ServicePatternMenu = ({
                     iconClassName={classes.icon}
                     id={`${id}-edit-icon`}
                     label="edit"
-                    onClick={() => setModaDaysVisibility(true)}
+                    onClick={() => openEditModal(true)}
                 />
             </div>
             <Typography className={classes.label} variant="h5">
@@ -114,15 +115,15 @@ const ServicePatternMenu = ({
                 variant="fullWidth"
             />
             <StopsList
-                id={`${id}-stoplist`}
+                id={`${id}-stop-list`}
                 stops={servicePattern.stops}
             />
             <WeekDaysModal
                 days={servicePattern.settings.daysOfOperation}
                 id={`${id}-modal-days`}
-                onClose={() => setModaDaysVisibility(false)}
+                onClose={() => openEditModal(false)}
                 onConfirm={onUpdateDays}
-                open={modalDayVisibility}
+                open={editModalVisible}
             />
         </div>
     );

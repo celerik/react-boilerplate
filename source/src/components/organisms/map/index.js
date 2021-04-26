@@ -1,6 +1,8 @@
 // @packages
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
+import ReactMapBoxGl, { Cluster, GeoJSONLayer, Marker } from 'react-mapbox-gl';
+import StopIcon from '../../atoms/stop-icon';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
 
@@ -9,25 +11,12 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
-import mockedSource from './source-geo.json';
-import StopIcon from '../../atoms/stop-icon';
-import ReactMapBoxGl, { Feature, GeoJSONLayer, Layer, Source, Marker} from 'react-mapbox-gl';
 
 // @constants
-const AVALIABLE_CONTROLS = ['zoom'];
+const AVAILABLE_CONTROLS = ['zoom'];
 const shapes = {
-    circle: {
-        paint: {
-            'circle-color': '#ff0000',
-            'circle-radius': 10
-        },
-        layout: {
-            'visibility': 'visible'
-        }
-    },
     line: {
         paint: {
-            'line-color': 'yellow',
             'line-width': 5
         },
         layout: {
@@ -55,19 +44,11 @@ const CustomMap = ({
 
     const mapRef = useRef();
 
-    const { servicePatterns } = useSelector(state => ({
-        servicePatterns: state.map.servicePatterns
-    }));
+    const { servicePatterns, stops } = useSelector(state => state.map);
 
     useEffect(() => {
         if (servicePatterns.length && servicePatterns[0].features?.length) {
             setCenter(servicePatterns[0].features[0]?.geometry.coordinates[0]);
-            // setCenter(mockedSource.route.features[0].geometry.coordinates[0]);
-            // setCenter([
-            //     -1.5396335718074,
-            //     53.7997586213104
-            // ])
-            setCenter([0,0])
         }
     }, [servicePatterns]);
 
@@ -80,15 +61,41 @@ const CustomMap = ({
                 className={classes.map}
                 center={center}
             >
-                <GeoJSONLayer
-                    data={mockedSource.route}
-                    lineLayout={shapes.line.layout}
-                    linePaint={shapes.line.paint}
-                /> 
+                {servicePatterns.map(featureCollection => (
+                    <GeoJSONLayer
+                        data={featureCollection}
+                        lineLayout={shapes.line.layout}
+                        linePaint={{
+                            ...shapes.line.paint,
+                            'line-color': theme.palette.primary.main
+                        }}
+                    /> 
+                ))}
+                <Cluster 
+                    ClusterMarkerFactory={(coordinates, pointCount) => (
+                        <Marker coordinates={coordinates}>
+                            <StopIcon 
+                                // label={index < featureCollection.features.length - 1 && index + 1}
+                                label={`+${pointCount}`}
+                            />
+                        </Marker>
+                    )}
+                    maxZoom={11}
+                >
+                    {stops.flatMap(featureCollection => featureCollection.features.map(
+                        (feature, index) => (
+                            <Marker coordinates={feature.geometry.coordinates}>
+                                <StopIcon 
+                                    label={index < featureCollection.features.length - 1 && index + 1}
+                                />
+                            </Marker>
+                        )
+                    ))}
+                </Cluster>
             </Map>
             {controls.includes('zoom') && (
                 <ZoomButtons
-                    id={`${id}-zoom-buttoms`}
+                    id={`${id}-zoom-buttons`}
                     onZoomIn={() => mapRef.current.state.map.zoomIn()}
                     onZoomOut={() => mapRef.current.state.map.zoomOut()}
                 />
@@ -99,13 +106,13 @@ const CustomMap = ({
 
 CustomMap.propTypes = {
     classes: PropTypes.object.isRequired,
-    controls: PropTypes.arrayOf(PropTypes.oneOf(AVALIABLE_CONTROLS)),
+    controls: PropTypes.arrayOf(PropTypes.oneOf(AVAILABLE_CONTROLS)),
     className: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired
 };
 
 CustomMap.defaultProps = {
-    controls: AVALIABLE_CONTROLS
+    controls: AVAILABLE_CONTROLS
 };
 
 export default withStyles(styles)(CustomMap);

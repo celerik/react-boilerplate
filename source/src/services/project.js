@@ -29,7 +29,7 @@ class Project {
                 }
             };
 
-            servicePattern.features = [];
+            servicePattern.features = [featurePath];
 
             return servicePattern;
         } catch (error) {
