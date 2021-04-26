@@ -24,11 +24,11 @@ const ServicePatternCard = ({
     id,
     isCheckeable,
     isChecked,
-    issues,
     onCheck,
     operationDays,
     routeName,
     servicePatternName,
+    status,
     statusService,
     value
 }) => {
@@ -89,7 +89,7 @@ const ServicePatternCard = ({
                 <Typography variant="h6">{formatOperationDays(operationDays)}</Typography>
             </div>
             <div className={classes.actionsContainer}>
-                {issues && <IconStatus status="warning" />}
+                {status && <IconStatus status={status} />}
                 {actionsVisible && actions.map((action) => (
                     <Tooltip
                         title={action.name}
@@ -119,11 +119,11 @@ ServicePatternCard.propTypes = {
     id: PropTypes.string.isRequired,
     isCheckeable: PropTypes.bool,
     isChecked: PropTypes.bool,
-    issues: PropTypes.objectOf(PropTypes.string).isRequired,
     onCheck: PropTypes.func,
     operationDays: PropTypes.arrayOf(PropTypes.string),
     routeName: PropTypes.string.isRequired,
     servicePatternName: PropTypes.string.isRequired,
+    status: PropTypes.string,
     statusService: PropTypes.string,
     value: PropTypes.string.isRequired
 };
@@ -136,6 +136,7 @@ ServicePatternCard.defaultProps = {
     isChecked: undefined,
     onCheck: undefined,
     operationDays: [],
+    status: '',
     statusService: null
 };
 

@@ -86,7 +86,7 @@ const ServicePatterns = ({
                         operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
                         routeName={servicePattern.routeName}
                         servicePatternName={servicePattern.servicePatternName}
-                        issues={servicePattern.issues}
+                        status={servicePattern.issues && 'warning'}
                     />
                 ))}
             </div>
