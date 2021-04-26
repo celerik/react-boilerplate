@@ -64,15 +64,13 @@ const ServicePatterns = ({
             <AlertDialog
                 actions={
                     [
+                        { name: config.text.observationPeriodsPage.cancel },
                         {
-                            name: config.text.observationPeriodsPage.cancel
-                        },
-                        {
+                            disabled: true,
                             name: config.text.observationPeriodsPage.observationPeriods
                         }
                     ]
                 }
-                className={classes.buttonLock}
                 isExitButtonVisible={false}
                 content={(
                     <>
@@ -82,7 +80,7 @@ const ServicePatterns = ({
                 )}
                 onClose={handleClose}
                 title={(
-                        <div className={classes.titleHeader}>{config.text.observationPeriodsPage.addObservationPeriods}</div>
+                    <div className={classes.titleHeader}>{config.text.observationPeriodsPage.addObservationPeriods}</div>
                 )}
                 colorChange={theme.palette.primary.warn}
                 visible={observationModalVisible}

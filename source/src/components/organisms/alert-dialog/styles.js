@@ -17,7 +17,7 @@ export default theme => Object.assign({}, {
         justifyContent: 'center'
     },
     bottomDisabled: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.ligth,
         color: 'white'
     },
     bottomFilled: {

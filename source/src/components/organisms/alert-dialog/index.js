@@ -57,9 +57,9 @@ const AlertDialog = ({
                         action.disabled && classes.bottomDisabled
                     )}
                     style={{
-                        backgroundColor: index === 0
-                            ? 'transparent'
-                            : colorChange,
+                        backgroundColor: action.disabled === true
+                            ? colorChange
+                            : 'transparent',
                         borderColor: colorChange
                     }}
                 >
@@ -73,7 +73,7 @@ const AlertDialog = ({
 AlertDialog.propTypes = {
     actions: PropTypes.object.isRequired,
     classes: PropTypes.object.isRequired,
-    colorChange: PropTypes.string.isRequired,
+    colorChange: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExitButtonVisible: PropTypes.bool,

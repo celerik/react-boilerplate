@@ -102,13 +102,15 @@ const ServicePatterns = ({
                 startIcon="lock_outlined"
             />
             <AlertDialog
-                actions={[
-                    { name: config.text.createServicePattern.cancel },
-                    {
-                        name: config.text.createServicePattern.lock,
-                        disabled: true
-                    }
-                ]}
+                actions={
+                    [
+                        { name: config.text.createServicePattern.cancel },
+                        {
+                            disabled: true,
+                            name: config.text.createServicePattern.lock
+                        }
+                    ]
+                }
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}
