@@ -27,6 +27,10 @@ export default theme => ({
         alignItems: 'center',
         display: 'flex'
     },
+    icon: {
+        color: theme.palette.text.hint,
+        fontSize: 14
+    },
     subtitle: {
         color: theme.palette.text.disabled,
         fontSize: 20

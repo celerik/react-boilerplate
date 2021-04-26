@@ -74,6 +74,22 @@ class Project {
             throw error;
         }
     }
+
+    static async updateServicePatternSettings(projectId, servicePatternId, servicePatterns) {
+        try {
+            await axios.put(
+                format(config.services.servicePatterns.settings, projectId, servicePatternId),
+                servicePatterns
+            );
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.editServicePattern.updateServicePattern,
+                config.text.editServicePattern.errorUpdatingDays
+            );
+
+            throw error;
+        }
+    }
 }
 
 export default Project;
