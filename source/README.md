@@ -18,19 +18,19 @@ npm start
 ```
 
 ##### Run different environments
-FlowOS has suppor for many different environments right now and running this project with ```npm start``` will only deploy a development version in your browser.
+FlowOS has support for many different environments right now and running this project with ```npm start``` will only deploy a development version in your browser.
 You can set an environment variable for any of these before running ```npm start``` command
 ```
 SET REACT_APP_ENVIRONMENT=local
 SET REACT_APP_ENVIRONMENT=qa
 SET REACT_APP_ENVIRONMENT=production
 ```
-If needed, you can change some of the following configuartions in any ```env-{NAME}.json``` file located at ```/config/settings```
+If needed, you can change some of the following configurations in any ```env-{NAME}.json``` file located at ```/config/settings```
 
 - Any of the microservices root URL
 - Service Mocker configuration
-- Redux middlewares configuration
-- Mocked third party API's authorizations *(Please, don't leave any of these keys in your production deployment)*
+- Redux middleware configuration
+- Mocked third party APIs authorizations *(Please, don't leave any of these keys in your production deployment)*
 
 ##### Build
 For building this code you can simply run
@@ -38,7 +38,7 @@ For building this code you can simply run
 npm run build
 ```
 
-This will generate your production files in ```./build``` folder. Then, youc an use any HTTP server to see it or deploy it.
+This will generate your production files in ```./build``` folder. Then, you can use any HTTP server to see it or deploy it.
 
 We suggest using npm ```http-server``` for checking the status of the build before deployment.
 
