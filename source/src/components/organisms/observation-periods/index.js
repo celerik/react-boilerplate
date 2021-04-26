@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useSelector } from 'react-redux';
-import { withStyles } from '@material-ui/core';
+import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import AlertDialog from '../alert-dialog';
@@ -13,7 +13,6 @@ import Calendar from '../calendar';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
 import { format } from '../../../util/string';
-import { theme } from '../../../styles/material-ui';
 
 // @styles
 import styles from './styles';
@@ -23,6 +22,7 @@ const ServicePatterns = ({
     id,
     match
 }) => {
+    const theme = useTheme();
     const [observationModalVisible, setObservationModalVisibility] = useState(false);
     const { params: { projectId } } = match;
     const { projects } = useSelector(state => ({
@@ -47,7 +47,7 @@ const ServicePatterns = ({
         <div className={classes.mainContainer} id={id}>
             <BackToButton label={format(config.text.projectMenu.backToProject, project.projectName)} />
             <Typography className={classes.title} variant="h4">
-                {config.text.observationPeriodsPage.observatioPeriods}
+                {config.text.observationPeriodsPage.observationPeriods}
             </Typography>
             <Typography className={classes.subTitle} variant="h6">
                 {config.text.observationPeriodsPage.selectVersion}
