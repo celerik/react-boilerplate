@@ -24,6 +24,7 @@ const TemplateDashboard = ({
     return (
         <div className={classes.mainContainer}>
             <DefaultActionBar
+                id="default-bar"
                 isExpanded={isMenuExpanded}
                 onExpand={() => setMenuExpanded(true)}
                 onCollapse={() => setMenuExpanded(false)}

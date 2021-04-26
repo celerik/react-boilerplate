@@ -4,20 +4,24 @@ export default theme => ({
         justifyContent: 'center'
     },
     backDrop: {
-        backdropFilter: 'blur(1px)',
-        backgroundColor: '#FEFEFE',
-        opacity: 0.8
+        backdropFilter: 'blur(2px)',
+        backgroundColor: 'rgba(254, 254, 254, 0.1)'
     },
     checkboxSelect: {
         border: `2px solid ${theme.palette.primary.contrastText}`,
         borderRadius: 4,
-        height: 15,
-        marginLeft: 2,
-        marginRight: 3,
-        width: 15
+        height: 21,
+        marginLeft: 1,
+        marginRight: 2,
+        width: 21
     },
     checkboxUnSelect: {
-        color: `${theme.palette.primary.contrastText}`
+        border: `2px solid ${theme.palette.primary.contrastText}`,
+        borderRadius: 4,
+        height: 21,
+        marginLeft: 1,
+        marginRight: 2,
+        width: 21
     },
     checkContainer: {
         alignItems: 'center',

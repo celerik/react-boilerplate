@@ -1,22 +1,25 @@
 // @packages
 import Divider from '@material-ui/core/Divider';
+import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
+import { useDispatch } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
-import Icon from '@material-ui/core/Icon';
+import IconButton from '../../atoms/icon-button';
+import Project from '../../../services/project';
+import StopsList from '../../molecules/stops-list';
+import WeekDaysModal from '../../molecules/modal-days-week';
 import { config } from '../../../config';
-import { useDispatch } from 'react-redux';
+import { formatUrlParam } from '../../../util';
+import { globalUI } from '../../../core';
+import { setMapServicePatterns } from '../../../actions';
 
 // @styles
 import styles from './styles';
-import Project from '../../../services/project';
-import StopsList from '../../molecules/stops-list';
-import { setMapServicePatterns } from '../../../actions';
-import { formatUrlParam } from '../../../util';
 
 const ServicePatternMenu = ({
     classes,
@@ -27,6 +30,7 @@ const ServicePatternMenu = ({
     const theme = useTheme();
     const { projectId, servicePatternId } = match.params;
     const [servicePattern, setServicePattern] = useState(null);
+    const [modalDayVisibility, setModaDaysVisibility] = useState(false);
     const dispatch = useDispatch();
 
     const fetchServicePatternData = async () => {
@@ -37,6 +41,20 @@ const ServicePatternMenu = ({
     };
 
     useEffect(fetchServicePatternData, []);
+
+    const onUpdateDays = async (days) => {
+        const infoDays = {
+            servicePatternName: servicePattern.settings.servicePatternName,
+            daysOfOperation: days
+        };
+        await Project.updateServicePatternSettings(projectId, servicePatternId, infoDays);
+        globalUI.showAlertNotificationSuccess(
+            config.text.editServicePattern.updateServicePattern,
+            config.text.editServicePattern.putDaysSuccess
+        );
+        await fetchServicePatternData();
+        setModaDaysVisibility(false);
+    };
 
     if (!servicePattern) {
         return null;
@@ -61,10 +79,19 @@ const ServicePatternMenu = ({
                     </Typography>
                 </div>
             </div>
-            <Typography className={classes.subtitle} variant="body1">
-                {config.text.editServicePattern.route}
-                {servicePattern.routeName}
-            </Typography>
+            <div className={classes.header}>
+                <Typography className={classes.subtitle} variant="body1">
+                    {config.text.editServicePattern.route}
+                    {servicePattern.routeName}
+                </Typography>
+                <IconButton
+                    icon="edit"
+                    iconClassname={classes.icon}
+                    id={`${id}-edit-icon`}
+                    label="edit"
+                    onClick={() => setModaDaysVisibility(true)}
+                />
+            </div>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
             </Typography>
@@ -75,6 +102,13 @@ const ServicePatternMenu = ({
             <StopsList
                 id={`${id}-stoplist`}
                 stops={servicePattern.stops}
+            />
+            <WeekDaysModal
+                days={servicePattern.settings.daysOfOperation}
+                id={`${id}-modal-days`}
+                onClose={() => setModaDaysVisibility(false)}
+                onConfirm={onUpdateDays}
+                open={modalDayVisibility}
             />
         </div>
     );
