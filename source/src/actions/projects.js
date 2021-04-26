@@ -21,7 +21,7 @@ export const getProjects = () =>
 
         dispatch({
             type: GET_PROJECTS,
-            payload: projects
+            payload: projects ?? []
         });
     };
 

@@ -1,15 +1,10 @@
 export default theme => Object.assign({}, {
-    adjustText: {
-        color: theme.palette.text.disable,
-        fontSize: 14,
-        textAlign: 'center'
-    },
     backdropClassName: {
         backgroundColor: 'rgba(254, 254, 254, 0.1)',
         backdropFilter: 'blur(15px)'
     },
     bottom: {
-        border: '1px solid mediumpurple',
+        border: '1px solid',
         color: '#161c3a',
         height: 40,
         marginBottom: 21,
@@ -22,16 +17,21 @@ export default theme => Object.assign({}, {
         justifyContent: 'center'
     },
     bottomDisabled: {
-        backgroundColor: theme.palette.primary.light,
+        backgroundColor: theme.palette.primary.ligth,
+        color: 'white'
+    },
+    bottomFilled: {
+        backgroundColor: theme.palette.primary.warn,
         color: 'white'
     },
     content: {
+        alignItems: 'center',
+        color: theme.palette.text.disable,
         display: 'flex',
-        height: 40,
-        marginLeft: '34px',
-        marginRight: '34px',
-        padding: 0,
-        width: 343
+        flexDirection: 'column',
+        fontSize: 14,
+        margin: '0 18px',
+        textAlign: 'center'
     },
     closeButton: {
         color: '#323232',
@@ -42,8 +42,8 @@ export default theme => Object.assign({}, {
         width: 11
     },
     paper: {
-        height: 198,
-        width: 434
+        height: 'auto',
+        width: '45%'
     },
     titleHeader: {
         alignItems: 'center',

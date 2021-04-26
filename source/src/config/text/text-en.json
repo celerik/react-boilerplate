@@ -53,7 +53,10 @@
   },
   "observationPeriodsPage": {
     "addObservationPeriod": "Add Observation period",
-    "observatioPeriods": "Observation Periods",
+    "addObservationPeriods": "Add a new observation period",
+    "cancel": "Cancel",
+    "content": "Select a start and end date for the observation period",
+    "observationPeriods": "Observation Periods",
     "observationPeriodsPage": "From",
     "selectVersion": "Select a version and check the results",
     "to": "to"
