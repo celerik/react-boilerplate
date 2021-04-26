@@ -47,7 +47,7 @@ const AlertDialog = ({
             {content}
         </DialogContent>
         <DialogActions className={classes.bottomActions}>
-            {actions?.map((action, index) => (
+            {actions.map((action, index) => (
                 <Button
                     id={`${id}-action-${index}`}
                     key={index}
@@ -71,7 +71,11 @@ const AlertDialog = ({
 );
 
 AlertDialog.propTypes = {
-    actions: PropTypes.object.isRequired,
+    actions: PropTypes.arrayOf(PropTypes.shape({
+        onClick: PropTypes.func,
+        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+        disabled: PropTypes.bool
+    })),
     classes: PropTypes.object.isRequired,
     colorChange: PropTypes.object.isRequired,
     content: PropTypes.object.isRequired,
@@ -83,6 +87,7 @@ AlertDialog.propTypes = {
 };
 
 AlertDialog.defaultProps = {
+    actions: [],
     colorChange: theme.palette.primary.light,
     isExitButtonVisible: true
 };

@@ -114,8 +114,9 @@ const ProjectBar = ({
                     ]
                 }
                 content={config.text.projectMenu.content}
-                title={config.text.projectMenu.cloneProject}
+                id="modal-clone-project"
                 onClose={() => setCloneProjectId(null)}
+                title={config.text.projectMenu.cloneProject}
                 visible={Boolean(cloneProjectId)}
             />
         </>

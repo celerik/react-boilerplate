@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Actionbutton from '../../atoms/button';
+import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import ServicePatternCard from '../../molecules/service-pattern-card';
@@ -89,28 +89,31 @@ const ServicePatterns = ({
                     />
                 ))}
             </div>
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonAdd}
                 label={config.text.createServicePattern.addServicePattern}
                 onClick={toNewServicePattern}
                 startIcon="add"
             />
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonLock}
                 label={config.text.createServicePattern.lockServicePattern}
                 onClick={handleClickOpen}
                 startIcon="lock_outlined"
             />
             <AlertDialog
-                actions={
-                    [
-                        { name: config.text.createServicePattern.cancel },
-                        {
-                            disabled: true,
-                            name: config.text.createServicePattern.lock
-                        }
-                    ]
-                }
+                actions={[
+                    {
+                        name: config.text.createServicePattern.cancel,
+                        onClick: Function.prototype
+                    },
+                    {
+                        name: config.text.createServicePattern.lock,
+                        disabled: true,
+                        onClick: Function.prototype
+                    }
+                ]}
+                id={`${id}-lock-service-pattern`}
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}
