@@ -11,7 +11,7 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 import styles from './styles';
 import mockedSource from './source-geo.json';
 import StopIcon from '../../atoms/stop-icon';
-import ReactMapboxGl, { Feature, GeoJSONLayer, Layer, Source, Marker} from 'react-mapbox-gl';
+import ReactMapBoxGl, { Feature, GeoJSONLayer, Layer, Source, Marker} from 'react-mapbox-gl';
 
 // @constants
 const AVALIABLE_CONTROLS = ['zoom'];
@@ -37,7 +37,7 @@ const shapes = {
     }
 }    
 
-const Map = ReactMapboxGl({
+const Map = ReactMapBoxGl({
     accessToken: config.settings.mapBox.token
 });
 
