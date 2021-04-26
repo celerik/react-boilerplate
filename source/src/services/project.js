@@ -1,5 +1,6 @@
 // @packages
 import axios from 'axios';
+import { parse as parseWkt } from 'wkt';
 
 // @scripts
 import { config } from '../config';
@@ -9,15 +10,49 @@ import { globalUI } from '../core';
 class Project {
     static async getServicePattern(projectId, servicePatternId) {
         try {
-            const servicePatterns = await axios.get(
+            const servicePattern = await axios.get(
                 format(config.services.servicePatterns.getServicePattern, projectId, servicePatternId)
+            );
+
+            const coordinates = servicePattern.segments.flatMap(
+                segment => parseWkt(segment.path.pathGeometry).coordinates
+            );
+
+            const featurePath = {
+                type: 'Feature',
+                properties: {
+                    name: 'test'
+                },
+                geometry: {
+                    type: 'LineString',
+                    coordinates
+                }
+            };
+
+            servicePattern.features = [];
+
+            return servicePattern;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.editServicePattern.title,
+                config.text.editServicePattern.getServicePatternError
+            );
+
+            throw error;
+        }
+    }
+
+    static async getServicePatterns(projectId) {
+        try {
+            const servicePatterns = await axios.get(
+                format(config.services.projects.getServicePatterns, projectId)
             );
 
             return servicePatterns;
         } catch (error) {
             globalUI.showAlertNotificationError(
-                config.text.editServicePattern.title,
-                config.text.editServicePattern.getServicePatternError
+                config.text.services.project.servicePatterns,
+                error.message
             );
 
             throw error;

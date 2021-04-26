@@ -16,6 +16,7 @@ import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
+import Project from '../../../services/project';
 
 const ServicePatterns = ({
     classes,
@@ -24,11 +25,10 @@ const ServicePatterns = ({
     match
 }) => {
     const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
-    const dispatch = useDispatch();
+    const [servicePatterns, setServicesPatterns] = useState([])
     const { projectId } = match.params;
-    const { projects, servicePatterns } = useSelector(state => ({
-        projects: state.projects,
-        servicePatterns: state.servicePatterns
+    const { projects } = useSelector(state => ({
+        projects: state.projects
     }));
 
     const project = projects.find(project => project.projectId === projectId);
@@ -41,8 +41,8 @@ const ServicePatterns = ({
         setServicePatternCloneModalVisibility(false);
     };
 
-    useEffect(() => {
-        dispatch(getServicePatterns({ projectId }));
+    useEffect(async () => {
+        setServicesPatterns(await Project.getServicePatterns(projectId));
     }, [projectId]);
 
     if (!project) {
