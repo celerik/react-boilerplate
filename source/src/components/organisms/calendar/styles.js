@@ -66,8 +66,8 @@ export default theme => ({
         },
         '& .react-calendar__tile--rangeEnd': {
             background: theme.palette.primary.warn,
-            border: '1px solid theme.palette.primary.warn',
-            borderRadius: '100px',
+            border: `1px solid ${theme.palette.primary.warn}`,
+            borderRadius: 100,
             color: 'white'
         },
         '& .react-calendar__tile--range': {
@@ -75,8 +75,8 @@ export default theme => ({
         },
         '& .react-calendar__tile--rangeStart': {
             background: theme.palette.primary.warn,
-            border: '1px solid theme.palette.primary.warn',
-            borderRadius: '100px',
+            border: `1px solid ${theme.palette.primary.warn}`,
+            borderRadius: 100,
             color: 'white'
         }
     }

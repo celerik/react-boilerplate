@@ -44,10 +44,8 @@ export default theme => Object.assign({}, {
     titleHeader: {
         fontFamily: 'Poppins',
         fontSize: 24,
-        fontStyle: 'normal',
         fontWeight: 600,
         letterSpacing: '-0.04em',
-        marginBottom: -12,
         textAlign: 'center'
     }
 });

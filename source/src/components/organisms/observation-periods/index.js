@@ -62,27 +62,27 @@ const ServicePatterns = ({
                 ]}
             />
             <AlertDialog
-                actions={
-                    [
-                        { name: config.text.observationPeriodsPage.cancel },
-                        {
-                            disabled: true,
-                            name: config.text.observationPeriodsPage.observationPeriods
-                        }
-                    ]
-                }
-                isExitButtonVisible={false}
+                actions={[
+                    { name: config.text.observationPeriodsPage.cancel },
+                    {
+                        disabled: true,
+                        name: config.text.observationPeriodsPage.observationPeriods
+                    }
+                ]}
+                colorChange={theme.palette.primary.warn}
                 content={(
                     <>
                         <div className={classes.titleContainer}>{config.text.observationPeriodsPage.content}</div>
                         <Calendar />
                     </>
                 )}
+                isExitButtonVisible={false}
                 onClose={handleClose}
                 title={(
-                    <div className={classes.titleHeader}>{config.text.observationPeriodsPage.addObservationPeriods}</div>
+                    <div className={classes.titleHeader}>
+                        {config.text.observationPeriodsPage.addObservationPeriods}
+                    </div>
                 )}
-                colorChange={theme.palette.primary.warn}
                 visible={observationModalVisible}
             />
             <ButtonAction

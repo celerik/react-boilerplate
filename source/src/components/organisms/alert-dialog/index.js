@@ -49,7 +49,7 @@ const AlertDialog = ({
         <DialogActions className={classes.bottomActions}>
             {actions?.map((action, index) => (
                 <Button
-                    id={`${id}-action-${id}`}
+                    id={`${id}-action-${index}`}
                     key={index}
                     onClick={action.onClick}
                     className={classNames(
@@ -57,7 +57,7 @@ const AlertDialog = ({
                         action.disabled && classes.bottomDisabled
                     )}
                     style={{
-                        backgroundColor: action.disabled === true
+                        backgroundColor: action.disabled
                             ? colorChange
                             : 'transparent',
                         borderColor: colorChange

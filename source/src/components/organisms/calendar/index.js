@@ -6,7 +6,7 @@ import moment from 'moment';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import { ReactComponent as Image } from './image.svg';
+import { ReactComponent as ArrowIcon } from './arrow-icon.svg';
 
 // @styles
 import styles from './styles';
@@ -27,10 +27,10 @@ const Calendar = ({
                     </div>
                 )}
                 next2Label={null}
-                nextLabel={<Image />}
+                nextLabel={<ArrowIcon />}
                 prev2AriaLabel={null}
                 prev2Label={null}
-                prevLabel={<Image />}
+                prevLabel={<ArrowIcon />}
                 minDetail="month"
                 onChange={onChange}
                 selectRange
