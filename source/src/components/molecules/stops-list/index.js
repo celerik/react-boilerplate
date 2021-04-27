@@ -1,10 +1,10 @@
 // @packages
+import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
+import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import PropTypes from 'prop-types';
 import React from 'react';
-import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
 import SwapHorizOutlinedIcon from '@material-ui/icons/SwapHorizOutlined';
 import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
-import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import { withStyles } from '@material-ui/core';
 
 // @scrips

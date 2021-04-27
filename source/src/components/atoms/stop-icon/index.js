@@ -9,15 +9,15 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 
 const StopIcon = ({
+    className,
     classes,
     id,
-    className,
     label
 }) => (
     <span
         className={classNames(
-            classes.mainContainer,
-            className
+            className,
+            classes.mainContainer
         )}
         id={id}
     >
@@ -26,9 +26,9 @@ const StopIcon = ({
 );
 
 StopIcon.propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
-    className: PropTypes.string,
     label: PropTypes.string.isRequired
 };
 

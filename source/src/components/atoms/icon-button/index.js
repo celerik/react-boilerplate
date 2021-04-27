@@ -11,16 +11,16 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 
 const IconComponent = ({
+    arrow,
     buttonClassname,
-    iconClassName,
     classes,
+    color,
+    icon,
+    iconClassName,
     id,
     label,
-    arrow,
-    placement,
-    color,
     onClick,
-    icon
+    placement
 }) => {
     const buttonClass = classNames(
         classes.iconButton,
@@ -34,16 +34,16 @@ const IconComponent = ({
 
     return (
         <Tooltip
-            id={id}
-            title={label}
             arrow={arrow}
-            placement={placement}
             enterDelay={500}
             enterNextDelay={500}
+            id={id}
+            placement={placement}
+            title={label}
         >
             <IconButton
-                id={`${id}-action`}
                 className={buttonClass}
+                id={`${id}-action`}
                 onClick={onClick}
             >
                 <Icon
@@ -58,26 +58,26 @@ const IconComponent = ({
 };
 
 IconComponent.propTypes = {
+    arrow: PropTypes.bool,
     buttonClassname: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    color: PropTypes.string,
+    icon: PropTypes.string.isRequired,
     iconClassName: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
-    arrow: PropTypes.bool,
-    color: PropTypes.string,
     onClick: PropTypes.func,
-    placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom']),
-    icon: PropTypes.string.isRequired
+    placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom'])
 };
 
 IconComponent.defaultProps = {
+    arrow: false,
     buttonClassname: null,
+    color: null,
     iconClassName: null,
     label: '',
-    placement: 'bottom',
-    color: null,
-    arrow: false,
-    onClick: Function.prototype
+    onClick: Function.prototype,
+    placement: 'bottom'
 };
 
 export default withStyles(styles)(IconComponent);
