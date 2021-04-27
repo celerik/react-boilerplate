@@ -17,16 +17,19 @@ const StopsList = ({
 }) => (
     <div className={classes.container} id={id}>
         <ol className={classes.stops}>
-        {stops.map((stop, index) => (
-            <li key={`${id}-item-${stop.stopName}`} className={classes.stopItem}>
-                <span className={classes.stopNumber}>
-                    {index < stops.length - 1
-                        ? index + 1
-                        : <LocationOnIcon />}
-                </span>
-                {stop.stopName}
-            </li>
-        ))}
+            {stops.map((stop, index) => (
+                <li
+                    key={`${id}-item-${stop.stopName}`}
+                    className={classes.stopItem}
+                >
+                    <span className={classes.stopNumber}>
+                        {index < stops.length - 1
+                            ? index + 1
+                            : <LocationOnIcon />}
+                    </span>
+                    {stop.stopName}
+                </li>
+            ))}
         </ol>
     </div>
 );

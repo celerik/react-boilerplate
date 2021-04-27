@@ -99,6 +99,7 @@ const ServicePatternMenu = ({
                 className={classes.divider}
                 variant="fullWidth"
             />
+            {/* aca */}
             <StopsList
                 id={`${id}-stoplist`}
                 stops={servicePattern.stops}
