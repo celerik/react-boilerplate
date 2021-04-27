@@ -77,7 +77,7 @@ AlertDialog.propTypes = {
         disabled: PropTypes.bool
     })),
     classes: PropTypes.object.isRequired,
-    colorChange: PropTypes.object.isRequired,
+    colorChange: PropTypes.object,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExitButtonVisible: PropTypes.bool,
