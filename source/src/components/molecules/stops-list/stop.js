@@ -50,7 +50,7 @@ const Stop = ({
             <div className={classes.title}>
                 <div className={classes.headerOptions}>
                     {stopName}
-                    {!actionsVisible && (
+                    {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             {actions.map((action, index) => (
                                 <IconButton
