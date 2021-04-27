@@ -12,11 +12,11 @@ import styles from './styles';
 
 const Stop = ({
     actions,
-    lastItem,
     classes,
     content,
-    onHoverSegment,
     id,
+    lastItem,
+    onHoverSegment,
     stopName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);

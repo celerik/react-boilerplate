@@ -1,4 +1,4 @@
-// @packages
+// @scripts
 import BaselineConnect from '../services/baseline-connect';
 
 // @actions

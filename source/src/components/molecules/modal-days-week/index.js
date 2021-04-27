@@ -1,6 +1,5 @@
 // @packages
 import CheckBox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -9,7 +8,7 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Stop from '@material-ui/icons/Stop';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
 import ButtonAction from '../../atoms/button';
@@ -26,6 +25,7 @@ const ModalDaysWeek = ({
     onConfirm,
     open
 }) => {
+    const theme = useTheme();
     const [daysChecked, setDaysChecked] = useState([...days]);
 
     const handleCheckBoxes = (day) => {
@@ -62,7 +62,13 @@ const ModalDaysWeek = ({
                                 checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
                                 color="primary"
                                 id={`${id}-checkbox-day`}
-                                icon={<CheckBoxOutlineBlankIcon className={classes.checkboxUnSelect} />}
+                                icon={(
+                                    <Stop
+                                        fontSize="medium"
+                                        className={classes.checkboxUnSelect}
+                                        style={{ color: theme.palette.common.pearl }}
+                                    />
+                                )}
                                 onChange={() => handleCheckBoxes(dayValue)}
                             />
                             <Typography>{config.text.servicePatternsMenu.days[dayValue]}</Typography>
