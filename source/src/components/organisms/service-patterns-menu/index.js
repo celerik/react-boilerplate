@@ -9,13 +9,13 @@ import { withStyles } from '@material-ui/core';
 import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { format, formatUrlParam } from '../../../util/string';
 import { config } from '../../../config';
+import { format, formatUrlParam } from '../../../util/string';
 
 // @styles
 import styles from './styles';
-import Project from '../../../services/project';
 
 const ServicePatterns = ({
     classes,

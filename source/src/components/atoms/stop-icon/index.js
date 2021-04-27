@@ -2,17 +2,17 @@
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import styles from './styles';
-import classNames from 'classnames';
 
 const StopIcon = ({
     classes,
-    label,
+    id,
     isListItem,
-    id
+    label
 }) => (
     <span
         className={classNames(
