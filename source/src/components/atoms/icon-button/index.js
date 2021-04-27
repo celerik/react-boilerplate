@@ -16,6 +16,8 @@ const IconComponent = ({
     classes,
     id,
     label,
+    arrow,
+    placement,
     color,
     onClick,
     icon
@@ -34,6 +36,8 @@ const IconComponent = ({
         <Tooltip
             id={id}
             title={label}
+            arrow={arrow}
+            placement={placement}
             enterDelay={500}
             enterNextDelay={500}
         >
@@ -59,8 +63,10 @@ IconComponent.propTypes = {
     iconClassname: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
+    arrow: PropTypes.bool,
     color: PropTypes.string,
     onClick: PropTypes.func,
+    placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom']),
     icon: PropTypes.string.isRequired
 };
 
@@ -68,7 +74,9 @@ IconComponent.defaultProps = {
     buttonClassname: null,
     iconClassname: null,
     label: '',
+    placement: 'bottom',
     color: null,
+    arrow: false,
     onClick: Function.prototype
 };
 

@@ -22,6 +22,10 @@
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
     "getServicePatternError": "There's been an error while fetching your service pattern",
     "lock": "Lock",
+    "addStopBelow": "Add Stop Below",
+    "checkpoint": "Checkpoint",
+    "replace": "Replace",
+    "delete": "Delete",
     "route": "Route",
     "title": "Edit Service Pattern",
     "unlocked": "Unlocked"

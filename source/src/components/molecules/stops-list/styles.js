@@ -1,4 +1,13 @@
 export default theme => Object.assign({}, {
+    actions: {
+        padding: 0
+    },
+    actionsContainer: {
+        marginLeft: 20
+    },
+    onFocus: {
+        boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
+    },
     container: {
         display: 'flex',
         flexDirection: 'row',
