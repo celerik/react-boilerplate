@@ -13,7 +13,7 @@ export default theme => ({
         justifyContent: 'space-between',
         width: 'calc(100% - 28px)',
         '&:hover': {
-            backgroundColor: theme.palette.primary.none
+            backgroundColor: 'white'
         }
     },
     containerCards: {
