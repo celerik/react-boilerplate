@@ -59,7 +59,7 @@ const ProjectMenu = ({
                 <IconButton
                     label="settings"
                     onClick={() => setModalSettingsVisibility(true)}
-                    iconClassname={classes.settingsIcon}
+                    iconClassName={classes.settingsIcon}
                     icon="settings"
                     color={!modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light}
                 />

@@ -1,14 +1,11 @@
 // @packages
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-// @scrips
-import stopsList from './stops-list.json';
-
 // @styles
 import styles from './styles';
+import StopIcon from '../../atoms/stop-icon';
 
 const StopsList = ({
     classes,
@@ -19,11 +16,11 @@ const StopsList = ({
         <ol className={classes.stops}>
         {stops.map((stop, index) => (
             <li key={`${id}-item-${stop.stopName}`} className={classes.stopItem}>
-                <span className={classes.stopNumber}>
-                    {index < stops.length - 1
-                        ? index + 1
-                        : <LocationOnIcon />}
-                </span>
+                <StopIcon
+                    id={`${id}-stop-icon-${index}`}
+                    isListItem
+                    label={index < stops.length - 1 && index + 1}
+                />
                 {stop.stopName}
             </li>
         ))}
@@ -41,7 +38,7 @@ StopsList.propTypes = {
 };
 
 StopsList.defaultProps = {
-    stops: stopsList
+    stops: []
 };
 
 export default withStyles(styles)(StopsList);

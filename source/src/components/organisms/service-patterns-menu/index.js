@@ -2,17 +2,17 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
 import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { format, formatUrlParam } from '../../../util/string';
-import { getServicePatterns } from '../../../actions/service-patterns';
 import { config } from '../../../config';
+import { format, formatUrlParam } from '../../../util/string';
 
 // @styles
 import styles from './styles';
@@ -24,11 +24,10 @@ const ServicePatterns = ({
     match
 }) => {
     const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
-    const dispatch = useDispatch();
+    const [servicePatterns, setServicesPatterns] = useState([]);
     const { projectId } = match.params;
-    const { projects, servicePatterns } = useSelector(state => ({
-        projects: state.projects,
-        servicePatterns: state.servicePatterns
+    const { projects } = useSelector(state => ({
+        projects: state.projects
     }));
 
     const project = projects.find(project => project.projectId === projectId);
@@ -41,8 +40,8 @@ const ServicePatterns = ({
         setServicePatternCloneModalVisibility(false);
     };
 
-    useEffect(() => {
-        dispatch(getServicePatterns({ projectId }));
+    useEffect(async () => {
+        setServicesPatterns(await Project.getServicePatterns(projectId));
     }, [projectId]);
 
     if (!project) {

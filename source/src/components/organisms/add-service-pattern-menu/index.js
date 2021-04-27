@@ -1,6 +1,6 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -12,9 +12,8 @@ import ListSelector from '../../atoms/list-selector';
 import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { config } from '../../../config';
-import { getServicePatterns } from '../../../actions';
 import { globalUI } from '../../../core';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
@@ -29,7 +28,6 @@ const CreateServicePattern = ({
     const [selectedServicePeriod, selectServicePeriod] = useState(null);
     const [selectedServicePatterns, selectServicePatterns] = useState([]);
     const [servicePatterns, setServicePatterns] = useState([]);
-    const dispatch = useDispatch();
     const { projectId } = match.params;
     const {
         projects,
@@ -42,10 +40,6 @@ const CreateServicePattern = ({
     }));
 
     const project = projects.find(project => project.projectId === projectId);
-
-    useEffect(() => {
-        dispatch(getServicePatterns({ projectId }));
-    }, [projectId]);
 
     if (!project) {
         return null;
