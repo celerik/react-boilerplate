@@ -10,6 +10,7 @@ import Actionbutton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import IconButton from '../../atoms/icon-button';
+import Item from '../../atoms/item';
 import ProjectSettingsModal from '../project-settings';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
@@ -22,13 +23,12 @@ import styles from './styles';
 const ProjectMenu = ({
     classes,
     history,
-    match,
-    id
+    id,
+    match
 }) => {
     const [runModalVisible, setRunModalVisibility] = useState(false);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
-
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
 
@@ -49,6 +49,11 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
+    const actions = [{
+        icon: 'lock_open_outlined',
+        onClick: Function.prototype
+    }];
+
     return (
         <div classNames={classes.mainContainer} id={id}>
             <BackToButton label={config.text.projectMenu.backToProjects} id={`${id}-back-button`} />
@@ -68,18 +73,20 @@ const ProjectMenu = ({
                 {config.masterData.projectMenu.map((menuOption, index) => (
                     <div
                         className={classes.option}
-                        onClick={onClickMenuItem(menuOption.name)}
-                        tabIndex={index}
-                        role="button"
                         id={`${id}-option-${menuOption.name}`}
-                        onKeyDown={Function.prototype}
                         key={`${id}-option-${menuOption.name}`}
+                        onClick={onClickMenuItem(menuOption.name)}
+                        onKeyDown={Function.prototype}
+                        role="button"
+                        tabIndex={index}
                     >
                         <Icon>{menuOption.icon}</Icon>
-                        <Typography className={classes.optionText} variant="body1">
-                            {config.text.projectMenu[menuOption.name]}
-                        </Typography>
-
+                        <Item
+                            className={classes.centerIcon}
+                            iconButtons={actions}
+                            text={config.text.projectMenu[menuOption.name]}
+                            textClass={classes.optionText}
+                        />
                     </div>
                 ))}
             </div>

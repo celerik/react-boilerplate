@@ -14,7 +14,9 @@ const Item = ({
     classes,
     iconButtons,
     id,
-    text
+    text,
+    textClass,
+    variant
 }) => {
     const itemContainer = classNames(classes.itemContainer, className);
     const [actionsVisible, setActionsVisibility] = useState(false);
@@ -31,7 +33,7 @@ const Item = ({
             onMouseLeave={() => setActionsVisibility(false)}
             onMouseOver={onHoverCard}
         >
-            <Typography>
+            <Typography variant={variant} className={textClass}>
                 {text}
             </Typography>
             <div>
@@ -58,12 +60,16 @@ Item.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     id: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    textClass: PropTypes.object,
+    variant: PropTypes.string
 };
 
 Item.defaultProps = {
     className: '',
-    iconButtons: Array.prototype
+    iconButtons: Array.prototype,
+    textClass: [],
+    variant: 'body1'
 };
 
 export default withStyles(styles)(Item);
