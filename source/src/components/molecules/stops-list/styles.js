@@ -13,6 +13,9 @@ export default theme => Object.assign({}, {
             boxShadow: '0px 0px 0px 4px rgb(134 117 255 / 20%)'
         }
     },
+    bodyOptions: {
+        display: 'flex'
+    },
     container: {
         display: 'flex',
         flexDirection: 'row',

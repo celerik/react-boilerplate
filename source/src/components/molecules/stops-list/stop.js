@@ -12,6 +12,7 @@ import styles from './styles';
 
 const Stop = ({
     actions,
+    actionsContent,
     classes,
     content,
     id,
@@ -71,6 +72,9 @@ const Stop = ({
                     )}
                 </div>
             </div>
+            <div className={classes.bodyOptions}>
+                {actionsContent}
+            </div>
         </li>
     );
 };
@@ -80,6 +84,7 @@ Stop.propTypes = {
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
         onClick: PropTypes.func.isRequired
     })),
+    actionsContent: PropTypes.node,
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     id: PropTypes.string.isRequired,
@@ -90,6 +95,7 @@ Stop.propTypes = {
 
 Stop.defaultProps = {
     actions: Array.prototype,
+    actionsContent: null,
     lastItem: false,
     onHoverSegment: false
 };
