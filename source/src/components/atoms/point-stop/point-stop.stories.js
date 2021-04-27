@@ -13,4 +13,6 @@ const Template = (args) => <PointStop {...args} />;
 
 export const FirstStory = Template.bind({});
 
-FirstStory.args = {}
+FirstStory.args = {
+    id: '1'
+}

@@ -6,12 +6,13 @@ import { withStyles } from '@material-ui/core';
 // @styles
 import styles from './styles';
 
-const PointStop = ({ classes }) => (
-    <span className={classes.main}> </span>
+const PointStop = ({ classes, id }) => (
+    <span id={id} className={classes.main} />
 );
 
 PointStop.propTypes = {
-    classes: PropTypes.object.isRequired
+    classes: PropTypes.object.isRequired,
+    id: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(PointStop);
