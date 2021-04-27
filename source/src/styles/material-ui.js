@@ -7,7 +7,8 @@ const colors = {
         background3: '#F1F1F1',
         background4: '#E3E2E2',
         background5: '#F6F6F6',
-        background6: '#FFFBF5'
+        background6: '#FFFBF5',
+        background7: '#D2CCFF'
     },
     lile: '#8675FF',
     mint: '#7FE3A7',
@@ -34,6 +35,7 @@ export const theme = createMuiTheme({
         background: {
             contrastText: colors.background.background6,
             default: colors.background.background5,
+            light: colors.background.background7,
             primary: colors.background.background1,
             secondary: colors.background.background3
         },
