@@ -1,5 +1,4 @@
 // @packages
-import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
 import React from 'react';
 import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
@@ -10,7 +9,6 @@ import { withStyles } from '@material-ui/core';
 
 // @scrips
 import Stop from './stop';
-import stopsList from './stops-list.json';
 import { config } from '../../../config';
 
 // @styles
@@ -45,7 +43,7 @@ const StopsList = ({
             {stops.map((stop, index) => (
                 <Stop
                     actions={actions}
-                    content={index < stops.length - 1 ? index + 1 : <LocationOnIcon />}
+                    content={index + 1}
                     key={`${id}-item-${stop.stopName}`}
                     lastItem={index === stops.length - 1}
                     stopName={stop.stopName}
@@ -66,7 +64,7 @@ StopsList.propTypes = {
 };
 
 StopsList.defaultProps = {
-    stops: stopsList
+    stops: []
 };
 
 export default withStyles(styles)(StopsList);

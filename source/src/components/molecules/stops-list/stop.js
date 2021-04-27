@@ -6,6 +6,7 @@ import { withStyles, useTheme } from '@material-ui/core';
 
 // @scrips
 import IconButton from '../../atoms/icon-button';
+import StopIcon from '../../atoms/stop-icon';
 
 // @styles
 import styles from './styles';
@@ -43,9 +44,12 @@ const Stop = ({
             onMouseOver={onHoverActions}
         >
             <div className={classes.stopIcon}>
-                <span className={actionsVisible ? stopClass : classes.stopNumber}>
-                    {content}
-                </span>
+                <StopIcon
+                    className={actionsVisible ? stopClass : classes.stopNumber}
+                    id={`${id}-stop-icon-}`}
+                    isListItem
+                    label={!lastItem && content}
+                />
                 {!lastItem && (<span className={onHoverSegment ? separatorLine : classes.stopLine} />)}
             </div>
             <div className={classes.title}>

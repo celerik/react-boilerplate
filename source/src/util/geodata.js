@@ -7,12 +7,14 @@ export const formatSegmentsPath = ({
     pathId
 }) => {
     const [geometryType, strCoordinates] = pathGeometry.replace(')', ', ').split('(');
-    const coordinates = strCoordinates.split(',')
-        .map((item) => item.replace(/^\s|\s$/, '').split(/\s/).map(Number));
-    const removedDuplicated = [...new Set(coordinates.map(JSON.stringify))];
+    const splittedCoords = strCoordinates.split(',');
+    splittedCoords.pop();
+    const coordinates = splittedCoords
+        .map((item) => item.replace(/^\s|\s$/, '').split(/\s/).map(Number))
+        .filter(item => item.length);
 
     return {
-        coordinates: Array.from(removedDuplicated, JSON.parse),
+        coordinates,
         geometryType,
         pathId
     };

@@ -12,7 +12,7 @@ import styles from './styles';
 
 const IconComponent = ({
     buttonClassname,
-    iconClassname,
+    iconClassName,
     classes,
     id,
     label,
@@ -29,7 +29,7 @@ const IconComponent = ({
 
     const iconClass = classNames(
         classes.icon,
-        iconClassname
+        iconClassName
     );
 
     return (
@@ -60,7 +60,7 @@ const IconComponent = ({
 IconComponent.propTypes = {
     buttonClassname: PropTypes.string,
     classes: PropTypes.object.isRequired,
-    iconClassname: PropTypes.string,
+    iconClassName: PropTypes.string,
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
     arrow: PropTypes.bool,
@@ -72,7 +72,7 @@ IconComponent.propTypes = {
 
 IconComponent.defaultProps = {
     buttonClassname: null,
-    iconClassname: null,
+    iconClassName: null,
     label: '',
     placement: 'bottom',
     color: null,

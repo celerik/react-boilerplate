@@ -38,12 +38,12 @@ export default theme => Object.assign({}, {
         position: 'relative',
         '&:last-child, &:first-child': {
             fontWeight: 'bold',
-            '& $stopNumber': {
+            '& span': {
                 height: 35,
                 marginLeft: 0,
                 width: 35
             },
-            '& $stopNumber:before': {
+            '& span:before': {
                 borderStyle: 'groove'
             }
         }
@@ -59,33 +59,6 @@ export default theme => Object.assign({}, {
             top: 30,
             width: 2,
             zIndex: -1
-        }
-    },
-    stopNumber: {
-        alignItems: 'center',
-        background: theme.palette.primary.light,
-        borderRadius: '50%',
-        color: 'white',
-        display: 'flex',
-        height: 25,
-        justifyContent: 'center',
-        marginLeft: 5,
-        marginRight: 23,
-        position: 'relative',
-        width: 25,
-        '& svg': {
-            fontSize: 22
-        },
-        '&:before': {
-            border: `${theme.palette.primary.light}  2px solid`,
-            borderRadius: '50%',
-            borderStyle: 'dashed',
-            bottom: -5,
-            content: '""',
-            left: -5,
-            position: 'absolute',
-            right: -5,
-            top: -5
         }
     },
     stopIcon: {
