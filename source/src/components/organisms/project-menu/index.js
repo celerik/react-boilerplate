@@ -80,13 +80,13 @@ const ProjectMenu = ({
                         role="button"
                         tabIndex={index}
                     >
-                        <Icon>{menuOption.icon}</Icon>
-                        <Item
-                            className={classes.centerIcon}
-                            iconButtons={actions}
-                            text={config.text.projectMenu[menuOption.name]}
-                            textClass={classes.optionText}
-                        />
+                    <Icon>{menuOption.icon}</Icon>
+                    <Item
+                        className={classes.centerIcon}
+                        iconButtons={index === 0 ? actions : []}
+                        text={config.text.projectMenu[menuOption.name]}
+                        textClass={classes.optionText}
+                    />
                     </div>
                 ))}
             </div>

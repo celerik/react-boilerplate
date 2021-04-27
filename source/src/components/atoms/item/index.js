@@ -67,7 +67,7 @@ Item.propTypes = {
 
 Item.defaultProps = {
     className: '',
-    iconButtons: Array.prototype,
+    iconButtons: [],
     textClass: [],
     variant: 'body1'
 };
