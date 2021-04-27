@@ -1,5 +1,4 @@
 // @packages
-import Grid from '@material-ui/core/Grid';
 import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
@@ -17,29 +16,24 @@ const Item = withStyles(styles)(({ nameStop, actions, classes }) => {
     };
 
     return (
-        <>
-            <Grid
-                alignItems="center"
-                className={classes.item}
-                container
-                justify="space-between"
-                onFocus={onHover}
-                onMouseLeave={() => setActionsVisibility(false)}
-                onMouseOver={onHover}
-            >
-                <Typography>{nameStop}</Typography>
-                {actionsVisible && actions.map((action) => (
-                    typeof action.icon === 'string'
-                        ? <Icon className={classes.icon}>{action.icon}</Icon>
-                        : cloneElement(action.icon)
-                ))}
-            </Grid>
-        </>
+        <div
+            className={classes.item}
+            onFocus={onHover}
+            onMouseLeave={() => setActionsVisibility(false)}
+            onMouseOver={onHover}
+        >
+            <Typography>{nameStop}</Typography>
+            {actionsVisible && actions.map((action) => (
+                typeof action.icon === 'string'
+                    ? <Icon className={classes.icon}>{action.icon}</Icon>
+                    : cloneElement(action.icon)
+            ))}
+        </div>
     );
 });
 
 const SubStopsList = ({ actions, classes, subStops }) => (
-    <Grid container className={classes.listContainer}>
+    <div className={classes.listContainer}>
         {subStops.map(({ id, nameStop }, index) => (
             <Item
                 key={`${id}-${index}`}
@@ -47,7 +41,7 @@ const SubStopsList = ({ actions, classes, subStops }) => (
                 actions={actions}
             />
         ))}
-    </Grid>
+    </div>
 );
 
 SubStopsList.propTypes = {
