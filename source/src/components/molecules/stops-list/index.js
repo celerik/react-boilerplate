@@ -42,13 +42,13 @@ const StopsList = ({
     return (
         <div className={classes.container} id={id}>
             <ol className={classes.stops}>
-            <span className={classes.stopLine} />
             {stops.map((stop, index) => (
                 <Stop
-                    key={`${id}-item-${stop.stopName}`}
-                    content={index < stops.length - 1 ? index + 1 : <LocationOnIcon />}
-                    stopName={stop.stopName}
                     actions={actions}
+                    content={index < stops.length - 1 ? index + 1 : <LocationOnIcon />}
+                    key={`${id}-item-${stop.stopName}`}
+                    lastItem={index === stops.length - 1}
+                    stopName={stop.stopName}
                 />
             ))}
             </ol>

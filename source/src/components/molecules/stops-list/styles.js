@@ -1,6 +1,6 @@
 export default theme => Object.assign({}, {
     actions: {
-        padding: 0
+        padding: 3
     },
     actionsContainer: {
         marginLeft: 20
@@ -8,20 +8,30 @@ export default theme => Object.assign({}, {
     onFocus: {
         boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
     },
+    onFocusLine: {
+        '&:after': {
+            boxShadow: '0px 0px 0px 4px rgb(134 117 255 / 20%)'
+        }
+    },
     container: {
         display: 'flex',
         flexDirection: 'row',
         position: 'relative'
     },
     stops: {
+        width: '100%',
         display: 'flex',
         flexDirection: 'column',
         padding: 0
     },
-    stopItem: {
-        alignItems: 'center',
+    headerOptions: {
         display: 'flex',
-        margin: '15px 0',
+        justifyContent: 'start'
+    },
+    stopItem: {
+        alignItems: 'flex-start',
+        display: 'flex',
+        paddingBottom: 25,
         position: 'relative',
         '&:last-child, &:first-child': {
             fontWeight: 'bold',
@@ -33,11 +43,6 @@ export default theme => Object.assign({}, {
             '& $stopNumber:before': {
                 borderStyle: 'groove'
             }
-        },
-        '&:last-child': {
-            '& $stopNumber:after': {
-                display: 'none'
-            }
         }
     },
     stopLine: {
@@ -45,10 +50,12 @@ export default theme => Object.assign({}, {
             background: theme.palette.primary.light,
             content: '""',
             height: '100%',
-            marginLeft: 17,
+            left: 16,
+            marginLeft: 0,
             position: 'absolute',
             top: 30,
-            width: 2
+            width: 2,
+            zIndex: -1
         }
     },
     stopNumber: {
@@ -77,5 +84,13 @@ export default theme => Object.assign({}, {
             right: -5,
             top: -5
         }
+    },
+    stopIcon: {
+        width: '15%',
+        height: '100%'
+    },
+    title: {
+        width: '85%',
+        height: '20%'
     }
 });
