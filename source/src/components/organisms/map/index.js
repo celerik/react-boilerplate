@@ -26,6 +26,14 @@ const shapes = {
     }
 };
 
+const ClusterMarker = (coordinates, pointCount) => (
+    <Marker coordinates={coordinates}>
+        <StopIcon
+            label={`+${pointCount}`}
+        />
+    </Marker>
+);
+
 const Map = ReactMapBoxGl({
     accessToken: config.settings.mapBox.token
 });
@@ -66,6 +74,13 @@ const CustomMap = ({
                     <GeoJSONLayer
                         data={featureCollection}
                         key={`route-${index}`}
+                        layerOptions={{
+                            maxZoom: 15,
+                            minZoom: 11,
+
+                            'max-zoom': 15,
+                            'min-zoom': 11
+                        }}
                         lineLayout={shapes.line.layout}
                         linePaint={{
                             ...shapes.line.paint,
@@ -74,13 +89,7 @@ const CustomMap = ({
                     />
                 ))}
                 <Cluster
-                    ClusterMarkerFactory={(coordinates, pointCount) => (
-                        <Marker coordinates={coordinates}>
-                            <StopIcon
-                                label={`+${pointCount}`}
-                            />
-                        </Marker>
-                    )}
+                    ClusterMarkerFactory={ClusterMarker}
                     maxZoom={11}
                 >
                     {stops.flatMap(featureCollection => featureCollection.features.map(

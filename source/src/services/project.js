@@ -9,7 +9,7 @@ import { globalUI } from '../core';
 
 class Project {
     static async getServicePattern(projectId, servicePatternId) {
-        try {
+        try {   
             const servicePattern = await axios.get(
                 format(config.services.servicePatterns.getServicePattern, projectId, servicePatternId)
             );
