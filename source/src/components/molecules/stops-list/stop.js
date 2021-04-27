@@ -91,7 +91,7 @@ Stop.propTypes = {
 Stop.defaultProps = {
     actions: Array.prototype,
     lastItem: false,
-    onHoverSegment: true
+    onHoverSegment: false
 };
 
 export default withStyles(styles)(Stop);
