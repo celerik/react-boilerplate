@@ -40,6 +40,17 @@ export default theme => Object.assign({}, {
             }
         }
     },
+    stopLine: {
+        '&:after': {
+            background: theme.palette.primary.light,
+            content: '""',
+            height: '100%',
+            marginLeft: 17,
+            position: 'absolute',
+            top: 30,
+            width: 2
+        }
+    },
     stopNumber: {
         alignItems: 'center',
         background: theme.palette.primary.light,
@@ -54,14 +65,6 @@ export default theme => Object.assign({}, {
         width: 25,
         '& svg': {
             fontSize: 22
-        },
-        '&:after': {
-            background: theme.palette.primary.light,
-            bottom: '-100%',
-            content: '""',
-            height: '100%',
-            position: 'absolute',
-            width: 2
         },
         '&:before': {
             border: `${theme.palette.primary.light}  2px solid`,

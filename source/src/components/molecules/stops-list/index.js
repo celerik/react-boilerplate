@@ -42,6 +42,7 @@ const StopsList = ({
     return (
         <div className={classes.container} id={id}>
             <ol className={classes.stops}>
+            <span className={classes.stopLine} />
             {stops.map((stop, index) => (
                 <Stop
                     key={`${id}-item-${stop.stopName}`}
