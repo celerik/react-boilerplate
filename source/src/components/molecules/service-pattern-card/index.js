@@ -12,6 +12,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import IconStatus from '../../atoms/icon-status';
+import FormatDays from '../../atoms/format-days';
 
 // @styles
 import styles from './styles';
@@ -33,24 +34,6 @@ const ServicePatternCard = ({
     value
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
-
-    const formatOperationDays = (days) => {
-        const createDays = (...strings) => (
-            <>
-                {strings[1]}
-                <strong>{strings[2]}</strong>
-                {strings[3]}
-                <strong>{strings[4]}</strong>
-            </>
-        );
-
-        const [str1, str2] = config.text.servicePatternsMenu.runDays.split('{0}');
-        const allDaysExceptLast = [...days];
-        const lastDay = allDaysExceptLast.pop();
-        const strDays = allDaysExceptLast.join(', ').replace(/, $/, '');
-
-        return createDays`${str1} ${strDays} ${str2} ${lastDay}`;
-    };
 
     const onHoverCard = () => {
         setActionsVisibility(true);
@@ -86,7 +69,7 @@ const ServicePatternCard = ({
             </div>
             <div className={classes.textContainer}>
                 <Typography variant="h4">{servicePatternName}</Typography>
-                <Typography variant="h6">{formatOperationDays(operationDays)}</Typography>
+                <FormatDays days={operationDays} id={`${id}-format-days`} />
             </div>
             <div className={classes.actionsContainer}>
                 {status && <IconStatus status={status} />}
