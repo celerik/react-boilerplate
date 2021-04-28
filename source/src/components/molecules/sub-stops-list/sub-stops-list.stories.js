@@ -27,7 +27,8 @@ const subStops = [
 const actions = [
     {
         icon: 'add_circle',
-        onclick: Function.prototype
+        name: 'add',
+        onClick: Function.prototype
     }
 ];
 

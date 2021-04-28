@@ -1,19 +1,9 @@
 export default theme => ({
     listContainer: {
-        width: '100%',
-        margin: 5
-    },
-    icon: {
-        color: theme.palette.text.secondary,
-        marginRight: 7
+        width: '100%'
     },
     item: {
-        '&:hover': {
-            backgroundColor: theme.palette.background.secondary
-        },
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-between',
-        padding: 5
+        color: theme.palette.text.hint,
+        fontFamily: theme.typography.fontFamily
     }
 });

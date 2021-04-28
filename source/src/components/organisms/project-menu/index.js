@@ -15,6 +15,7 @@ import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { theme } from '../../../styles/material-ui';
 import { useSelector } from 'react-redux';
+import SubStopsList from '../../molecules/sub-stops-list';
 
 // @styles
 import styles from './styles';
@@ -89,6 +90,8 @@ const ProjectMenu = ({
                 label={config.text.projectMenu.title}
                 onClick={handleClickOpen}
             />
+            {/* pa eliminar */}
+            <SubStopsList />
             <AlertDialog
                 actions={
                     [
