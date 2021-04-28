@@ -31,9 +31,9 @@ const FormatDaysOperation = ({
 
     return (
         <Typography
-            variant={variant}
             className={classes.container}
             id={id}
+            variant={variant}
         >
             {createDays`${str1} ${strDays} ${str2} ${lastDay}`}
         </Typography>

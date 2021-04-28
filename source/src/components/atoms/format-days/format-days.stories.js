@@ -2,18 +2,18 @@
 import React from 'react';
 
 // @scripts
-import FormDays from '.';
+import FormatDaysOperation from '.';
 
 export default {
     title: 'FormDays Element',
-    component: FormDays
+    component: FormatDaysOperation
 };
 
-const Template = (args) => <FormDays {...args} />;
+const Template = (args) => <FormatDaysOperation {...args} />;
 
 export const FirstStory = Template.bind({});
 
 FirstStory.args = {
-    id: 'FormDays 1',
+    id: 'FormatDaysOperation 1',
     days: ['Mon','Sun'],
 };
