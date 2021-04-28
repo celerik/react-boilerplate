@@ -3,7 +3,7 @@ export default theme => Object.assign({}, {
         alignItems: 'center',
         display: 'flex',
         position: 'absolute',
-        right: 25,
+        right: 5,
         '& span': {
             color: theme.palette.text.secondary,
             marginLeft: 10
@@ -43,5 +43,8 @@ export default theme => Object.assign({}, {
     },
     checkboxUnSelect: {
         color: `${theme.palette.primary.contrastText}`
+    },
+    textContainer: {
+        width: '55%'
     }
 });

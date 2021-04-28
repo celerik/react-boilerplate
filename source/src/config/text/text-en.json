@@ -113,6 +113,14 @@
     "title": "Run project",
     "viewResults": "View results"
   },
+  "services": {
+    "baselineConnect": {
+      "stopDetails": "Stop details"
+    },
+    "project": {
+      "servicePatterns": "Service Patterns"
+    }
+  },
   "servicePatternsMenu": {
     "cancel": "Cancel",
     "confirm": "Confirm",
