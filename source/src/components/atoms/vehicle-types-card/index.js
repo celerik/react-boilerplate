@@ -33,12 +33,12 @@ const typeDays = [
     }
 ];
 
-const Tooltipcontainer = (classes) => (
+const TooltipContent = withStyles(styles)(({ classes }) => (
     <>
         <Typography className={classes.tooltipTitle}>{text.needUpdate}</Typography>
         <Typography className={classes.tooltipSubtitle}>{text.update}</Typography>
     </>
-);
+));
 
 const VehicleTypeCard = ({
     classes,
@@ -47,13 +47,19 @@ const VehicleTypeCard = ({
     vehicleType
 }) => {
     const [infoValue, setInfoValue] = useState(4);
+    const [tooltipVisible, setTooltipVisibility] = useState(false);
+
+    const onHover = () => {
+        setTooltipVisibility(true);
+    };
 
     return (
         <Tooltip
             classes={{ tooltip: classes.tooltip }}
             interactive
             placement="bottom-start"
-            title={needUpdate && Tooltipcontainer(classes)}
+            title={needUpdate && <TooltipContent />}
+            open={tooltipVisible && needUpdate}
         >
             <Grid
                 alignItems="center"
@@ -62,6 +68,9 @@ const VehicleTypeCard = ({
                 id={id}
                 justify="center"
                 row
+                onFocus={onHover}
+                onMouseLeave={() => setTooltipVisibility(false)}
+                onMouseOver={onHover}
             >
                 <Grid
                     container
@@ -73,7 +82,12 @@ const VehicleTypeCard = ({
                             <RefreshIcon />
                         </IconButton>
                     )}
-                    <Typography variant="body2">{vehicleType}</Typography>
+                    <Typography
+                        style={{ fontWeight: tooltipVisible && 'bold' }}
+                        variant="body2"
+                    >
+                        {vehicleType}
+                    </Typography>
                 </Grid>
                 <Grid
                     item
@@ -85,6 +99,7 @@ const VehicleTypeCard = ({
                         itemValProp="value"
                         itemDesProp="text"
                         placeholder={text.typeDays}
+                        className={classes.selectorList}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -111,6 +126,10 @@ VehicleTypeCard.propTypes = {
     id: PropTypes.string.isRequired,
     needUpdate: PropTypes.bool,
     vehicleType: PropTypes.string.isRequired
+};
+
+TooltipContent.propTypes = {
+    classes: PropTypes.object.isRequired
 };
 
 VehicleTypeCard.defaultProps = {

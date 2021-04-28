@@ -55,7 +55,7 @@ export const theme = createMuiTheme({
             secondary: colors.text.text2,
             hint: colors.text.text3,
             disabled: colors.text.text4,
-            contrastText: colors.text.text5 
+            contrastText: colors.text.text5
         }
     },
     typography: {

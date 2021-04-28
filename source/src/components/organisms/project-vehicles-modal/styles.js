@@ -3,12 +3,13 @@ export default (theme) => ({
         justifyContent: 'start',
         padding: '3px 1px'
     },
+    contentDialog: {
+        padding: '40px 10px'
+    },
     outlineButton: {
         backgroundColor: 'white',
-        border: 1,
-        borderColor: theme.palette.primary.main,
+        border: `1px solid ${theme.palette.primary.main}`,
         borderRadius: 2,
-        borderStyle: 'solid',
         color: theme.palette.primary.dark,
         textTransform: 'none',
         fontFamily: 'Poppins',
@@ -16,7 +17,7 @@ export default (theme) => ({
         fontWeight: 'normal',
         fontSize: 14,
         display: 'flex',
-        height: 40,
+        height: 44,
         justifyContent: 'start',
         padding: '0px 24px'
     },

@@ -88,12 +88,6 @@ const ProjectMenu = ({
                         role="button"
                         tabIndex={index}
                     >
-<<<<<<< HEAD
-                        <Icon>{menuOption.icon}</Icon>
-                        <Typography className={classes.optionText} variant="body1">
-                            {config.text.projectMenu[menuOption.name]}
-                        </Typography>
-=======
                     <Icon>{menuOption.icon}</Icon>
                     <Item
                         className={classes.centerIcon}
@@ -101,7 +95,6 @@ const ProjectMenu = ({
                         text={config.text.projectMenu[menuOption.name]}
                         textClass={classes.optionText}
                     />
->>>>>>> main
                     </div>
                 ))}
             </div>
