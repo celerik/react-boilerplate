@@ -7,6 +7,7 @@ import { withStyles, useTheme } from '@material-ui/core';
 // @scrips
 import IconButton from '../../atoms/icon-button';
 import StopIcon from '../../atoms/stop-icon';
+import SubStopsList from '../sub-stops-list';
 
 // @styles
 import styles from './styles';
@@ -75,6 +76,11 @@ const Stop = ({
                         </div>
                     )}
                 </div>
+                {currentOption && (
+                    <div>
+                        <SubStopsList />
+                    </div>
+                )}
             </div>
             <div className={classes.bodyOptions}>
                 {actionsContent}

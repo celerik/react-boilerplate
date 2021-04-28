@@ -4,6 +4,7 @@ export default theme => ({
     },
     item: {
         color: theme.palette.text.hint,
-        fontFamily: theme.typography.fontFamily
+        fontFamily: theme.typography.fontFamily,
+        height: 35
     }
 });
