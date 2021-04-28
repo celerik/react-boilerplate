@@ -1,7 +1,7 @@
 export default theme => Object.assign({}, {
     main: {
         alignItems: 'center',
-        background: theme.palette.background.light,
+        background: '#D2CCFF',
         border: `${theme.palette.primary.light} 0.3px solid`,
         borderRadius: '50%',
         color: 'white',
