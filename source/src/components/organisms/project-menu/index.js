@@ -1,9 +1,7 @@
 // @packages
 import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
@@ -11,6 +9,8 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import IconButton from '../../atoms/icon-button';
+import Item from '../../atoms/item';
 import ProjectSettingsModal from '../project-settings';
 import ProjectVehiclesModal from '../project-vehicles-modal';
 import { config } from '../../../config';
@@ -24,8 +24,8 @@ import styles from './styles';
 const ProjectMenu = ({
     classes,
     history,
-    match,
-    id
+    id,
+    match
 }) => {
     const isDialogOpen = history.location.pathname.match(/vehicles$/ig);
     const [runModalVisible, setRunModalVisibility] = useState(false);
@@ -57,6 +57,11 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
+    const actions = [{
+        icon: 'lock_open_outlined',
+        onClick: Function.prototype
+    }];
+
     return (
         <div classNames={classes.mainContainer} id={id}>
             <BackToButton label={config.text.projectMenu.backToProjects} id={`${id}-back-button`} />
@@ -64,39 +69,39 @@ const ProjectMenu = ({
                 <Typography className={classes.projectName} variant="h4">
                     {project.projectName}
                 </Typography>
-                <Tooltip
-                    title="settings"
-                    key={`${id}-settings-tooltip`}
-                    enterDelay={500}
-                    enterNextDelay={500}
-                >
-                    <IconButton
-                        onClick={() => setModalSettingsVisibility(true)}
-                    >
-                        <Icon
-                            className={classes.settingsIcon}
-                            style={{ color: !modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light }}
-                        >
-                            settings
-                        </Icon>
-                    </IconButton>
-                </Tooltip>
+                <IconButton
+                    label="settings"
+                    onClick={() => setModalSettingsVisibility(true)}
+                    iconClassName={classes.settingsIcon}
+                    icon="settings"
+                    color={!modalSettingsVisibility ? theme.palette.text.hint : theme.palette.primary.light}
+                />
             </div>
             <div className={classes.containerCards}>
                 {config.masterData.projectMenu.map((menuOption, index) => (
                     <div
                         className={classes.option}
-                        onClick={onClickMenuItem(menuOption.name)}
-                        tabIndex={index}
-                        role="button"
                         id={`${id}-option-${menuOption.name}`}
-                        onKeyDown={Function.prototype}
                         key={`${id}-option-${menuOption.name}`}
+                        onClick={onClickMenuItem(menuOption.name)}
+                        onKeyDown={Function.prototype}
+                        role="button"
+                        tabIndex={index}
                     >
+<<<<<<< HEAD
                         <Icon>{menuOption.icon}</Icon>
                         <Typography className={classes.optionText} variant="body1">
                             {config.text.projectMenu[menuOption.name]}
                         </Typography>
+=======
+                    <Icon>{menuOption.icon}</Icon>
+                    <Item
+                        className={classes.centerIcon}
+                        iconButtons={index === 0 ? actions : []}
+                        text={config.text.projectMenu[menuOption.name]}
+                        textClass={classes.optionText}
+                    />
+>>>>>>> main
                     </div>
                 ))}
             </div>

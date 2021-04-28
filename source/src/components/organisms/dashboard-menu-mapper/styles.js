@@ -6,6 +6,7 @@ export default () => Object.assign({}, {
         height: '100vh',
         maxWidth: 474,
         minWidth: 350,
+        overflow: 'auto',
         padding: '30px 20px',
         position: 'relative',
         width: 'fit-content',

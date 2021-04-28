@@ -1,13 +1,16 @@
 {
+  "baselineConnect": {
+    "getStopDetails": "{baseline}/stops/{0}"
+  },
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
     "get": "{projects}/projects",
+    "getServicePatterns": "{projects}/projects/{0}/servicePatterns",
     "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
     "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
-    "get": "{projects}/projects/{0}/servicePatterns",
-    "getOne": "{root}/projects/{0}/servicePatterns/{1}"
+    "getServicePattern": "{projects}/projects/{0}/servicePatterns/{1}"
   },
   "security": {
     "login": "{root}/login"

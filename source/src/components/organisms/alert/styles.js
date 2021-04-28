@@ -12,9 +12,11 @@ export default theme => ({
         }
     },
     container: {
+        background: theme.palette.common.pearl,
         border: `1px solid ${theme.palette.text.contrastText}`,
         borderRadius: 5,
         boxShadow: '0 4px 8px 0 rgb(0 0 0 / 20%)',
+        opacity: 1,
         width: 438
     }
 });

@@ -2,17 +2,17 @@
 import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import Actionbutton from '../../atoms/button';
+import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
-import { format, formatUrlParam } from '../../../util/string';
-import { getServicePatterns } from '../../../actions/service-patterns';
 import { config } from '../../../config';
+import { format, formatUrlParam } from '../../../util/string';
 
 // @styles
 import styles from './styles';
@@ -24,11 +24,10 @@ const ServicePatterns = ({
     match
 }) => {
     const [servicePatternModalVisible, setServicePatternCloneModalVisibility] = useState(false);
-    const dispatch = useDispatch();
+    const [servicePatterns, setServicesPatterns] = useState([]);
     const { projectId } = match.params;
-    const { projects, servicePatterns } = useSelector(state => ({
-        projects: state.projects,
-        servicePatterns: state.servicePatterns
+    const { projects } = useSelector(state => ({
+        projects: state.projects
     }));
 
     const project = projects.find(project => project.projectId === projectId);
@@ -41,8 +40,8 @@ const ServicePatterns = ({
         setServicePatternCloneModalVisibility(false);
     };
 
-    useEffect(() => {
-        dispatch(getServicePatterns({ projectId }));
+    useEffect(async () => {
+        setServicesPatterns(await Project.getServicePatterns(projectId));
     }, [projectId]);
 
     if (!project) {
@@ -56,7 +55,9 @@ const ServicePatterns = ({
     }, {
         icon: 'edit',
         name: config.text.servicePatternsMenu.edit,
-        onClick: Function.prototype
+        onClick: (servicePatternId) => history.push(
+            formatUrlParam(config.routes.dashboard.editServicePattern.url, projectId, servicePatternId)
+        )
     }, {
         icon: 'delete',
         name: config.text.servicePatternsMenu.delete,
@@ -77,21 +78,24 @@ const ServicePatterns = ({
                 {servicePatterns.map((servicePattern, index) => (
                     <ServicePatternCard
                         actions={actions}
+                        color={servicePattern.colour}
+                        id={servicePattern.servicePatternId}
                         key={`${id}-card-${index}`}
-                        operationDays={servicePattern.settings.daysOfOperation}
+                        operationDays={servicePattern.daysOfOperation}
                         operationDaysStringTemplate={config.text.servicePatternsMenu.runDays}
                         routeName={servicePattern.routeName}
                         servicePatternName={servicePattern.servicePatternName}
+                        status={servicePattern.issues && 'warning'}
                     />
                 ))}
             </div>
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonAdd}
                 label={config.text.createServicePattern.addServicePattern}
                 onClick={toNewServicePattern}
                 startIcon="add"
             />
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonLock}
                 label={config.text.createServicePattern.lockServicePattern}
                 onClick={handleClickOpen}
@@ -99,12 +103,17 @@ const ServicePatterns = ({
             />
             <AlertDialog
                 actions={[
-                    { name: config.text.createServicePattern.cancel },
+                    {
+                        name: config.text.createServicePattern.cancel,
+                        onClick: Function.prototype
+                    },
                     {
                         name: config.text.createServicePattern.lock,
-                        disabled: true
+                        disabled: true,
+                        onClick: Function.prototype
                     }
                 ]}
+                id={`${id}-lock-service-pattern`}
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
                 onClose={handleClose}

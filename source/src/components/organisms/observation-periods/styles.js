@@ -1,11 +1,15 @@
-export default (theme) => Object.assign({}, {
+export default theme => Object.assign({}, {
     buttonAdd: {
         backgroundColor: theme.palette.primary.warn,
         bottom: 5,
         color: 'white',
         height: 47,
         marginTop: 30,
-        position: 'absolute'
+        position: 'absolute',
+        textTransform: 'none',
+        '&::first-letter': {
+            textTransform: 'capitalize'
+        }
     },
     mainContainer: {
         height: '100%',
@@ -32,5 +36,16 @@ export default (theme) => Object.assign({}, {
         marginBottom: 10,
         marginTop: 28,
         textTransform: 'uppercase'
+    },
+    titleContainer: {
+        color: theme.palette.text.text4,
+        marginBottom: 18
+    },
+    titleHeader: {
+        fontFamily: 'Poppins',
+        fontSize: 24,
+        fontWeight: 600,
+        letterSpacing: '-0.04em',
+        textAlign: 'center'
     }
 });

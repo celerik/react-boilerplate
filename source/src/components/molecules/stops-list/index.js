@@ -3,30 +3,32 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { withStyles } from '@material-ui/core';
 
-// @scrips
-import stopsList from './stops-list.json';
-
 // @styles
 import styles from './styles';
+import StopIcon from '../../atoms/stop-icon';
 
-const StopList = ({
+const StopsList = ({
     classes,
     id,
     stops
 }) => (
     <div className={classes.container} id={id}>
         <ol className={classes.stops}>
-        {stops.map(stop => (
-            <li key={stop.name} className={classes.stopItem}>
-                <span className={classes.stopNumber}>{stop.id}</span>
-                {stop.name}
+        {stops.map((stop, index) => (
+            <li key={`${id}-item-${stop.stopName}`} className={classes.stopItem}>
+                <StopIcon
+                    id={`${id}-stop-icon-${index}`}
+                    isListItem
+                    label={index < stops.length - 1 && index + 1}
+                />
+                {stop.stopName}
             </li>
         ))}
         </ol>
     </div>
 );
 
-StopList.propTypes = {
+StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
@@ -35,8 +37,8 @@ StopList.propTypes = {
     }))
 };
 
-StopList.defaultProps = {
-    stops: stopsList
+StopsList.defaultProps = {
+    stops: []
 };
 
-export default withStyles(styles)(StopList);
+export default withStyles(styles)(StopsList);

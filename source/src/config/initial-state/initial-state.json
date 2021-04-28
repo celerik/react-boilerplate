@@ -10,6 +10,10 @@
     "projects": [],
     "routes": [],
     "servicePatterns": [],
+    "map": {
+        "stops": [],
+        "servicePatterns": []
+    },
     "user": {
         "account": {
             "authToken": "",
