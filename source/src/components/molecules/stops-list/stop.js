@@ -1,6 +1,7 @@
 // @packages
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles, useTheme } from '@material-ui/core';
 
@@ -8,6 +9,7 @@ import { withStyles, useTheme } from '@material-ui/core';
 import IconButton from '../../atoms/icon-button';
 import StopIcon from '../../atoms/stop-icon';
 import SubStopsList from '../sub-stops-list';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
@@ -23,7 +25,7 @@ const Stop = ({
     stopName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
-    const [currentOption, setCurrentOption] = useState(false);
+    const [currentOption, setCurrentOption] = useState('');
     const stopClass = classNames(classes.onFocus, classes.stopNumber);
     const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
     const theme = useTheme();
@@ -55,7 +57,7 @@ const Stop = ({
             </div>
             <div className={classes.title}>
                 <div className={classes.headerOptions}>
-                    {stopName}
+                    <Typography variant="body2" style={{ fontWeight: currentOption && 'bold' }}>{stopName}</Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             {actions.map((action, index) => (
@@ -76,11 +78,11 @@ const Stop = ({
                         </div>
                     )}
                 </div>
-                {currentOption && (
-                    <div>
+                <div className={classes.subStopsContainer}>
+                    {currentOption === config.text.editServicePattern.addStopBelow && (
                         <SubStopsList />
-                    </div>
-                )}
+                    )}
+                </div>
             </div>
             <div className={classes.bodyOptions}>
                 {actionsContent}
