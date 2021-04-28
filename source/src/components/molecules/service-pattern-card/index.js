@@ -11,35 +11,24 @@ import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
-import { theme } from '../../../styles/material-ui';
+import IconStatus from '../../atoms/icon-status';
 
 // @styles
 import styles from './styles';
-
-const IconStatus = withStyles(styles)(({ status }) => (
-    status === 'success' ? (
-        <Icon style={{ color: theme.palette.primary.success }}>
-            check_circle
-        </Icon>
-    ) : (
-        <Icon style={{ color: status === 'warning' ? theme.palette.primary.warn : theme.palette.primary.error }}>
-            warning
-        </Icon>
-    )
-));
 
 const ServicePatternCard = ({
     actions,
     className,
     classes,
+    color,
     id,
     isCheckeable,
     isChecked,
     onCheck,
     operationDays,
-    color,
     routeName,
     servicePatternName,
+    status,
     statusService,
     value
 }) => {
@@ -84,9 +73,7 @@ const ServicePatternCard = ({
                     onChange={() => onCheck(value)}
                 />
             )}
-            {statusService && (
-                <IconStatus status={statusService} />
-            )}
+            {statusService && <IconStatus status={statusService} />}
             <div
                 className={classes.routeNameContainer}
                 style={{
@@ -97,11 +84,12 @@ const ServicePatternCard = ({
             >
                 {routeName}
             </div>
-            <div>
+            <div className={classes.textContainer}>
                 <Typography variant="h4">{servicePatternName}</Typography>
                 <Typography variant="h6">{formatOperationDays(operationDays)}</Typography>
             </div>
             <div className={classes.actionsContainer}>
+                {status && <IconStatus status={status} />}
                 {actionsVisible && actions.map((action) => (
                     <Tooltip
                         title={action.name}
@@ -126,8 +114,8 @@ ServicePatternCard.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     className: PropTypes.string,
-    color: PropTypes.string,
     classes: PropTypes.object.isRequired,
+    color: PropTypes.string,
     id: PropTypes.string.isRequired,
     isCheckeable: PropTypes.bool,
     isChecked: PropTypes.bool,
@@ -135,6 +123,7 @@ ServicePatternCard.propTypes = {
     operationDays: PropTypes.arrayOf(PropTypes.string),
     routeName: PropTypes.string.isRequired,
     servicePatternName: PropTypes.string.isRequired,
+    status: PropTypes.string,
     statusService: PropTypes.string,
     value: PropTypes.string.isRequired
 };
@@ -147,6 +136,7 @@ ServicePatternCard.defaultProps = {
     isChecked: undefined,
     onCheck: undefined,
     operationDays: [],
+    status: '',
     statusService: null
 };
 

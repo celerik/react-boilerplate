@@ -1,13 +1,23 @@
 export default theme => ({
-    containerCards: {
-        overflowY: 'auto'
-    },
     buttonAdd: {
         backgroundColor: theme.palette.primary.light,
         color: 'white',
         height: 'auto',
         marginTop: 60,
         width: 140
+    },
+    centerIcon: {
+        alignItems: 'center',
+        cursor: 'pointer',
+        display: 'flex',
+        justifyContent: 'space-between',
+        width: 'calc(100% - 28px)',
+        '&:hover': {
+            backgroundColor: 'white'
+        }
+    },
+    containerCards: {
+        overflowY: 'auto'
     },
     mainContainer: {
         display: 'content'
@@ -21,7 +31,7 @@ export default theme => ({
         paddingLeft: 12,
         width: 'calc(100% - 28px)',
         '&:hover': {
-            backgroundColor: theme.palette.background.default
+            backgroundColor: 'white'
         },
         '&:last-of-type': {
             borderBottom: 'none'

@@ -1,8 +1,10 @@
 // @packages
 import axios from 'axios';
+import { parse as parseWkt } from 'wkt';
 
 // @scripts
 import { config } from '../config';
+import { globalUI } from '../core';
 import { format } from '../util';
 
 class BaselineConnect {
@@ -26,6 +28,34 @@ class BaselineConnect {
         );
 
         return servicePatterns;
+    }
+
+    static async getStopDetails(stopId) {
+        try {
+            const stopDetails = await axios.get(
+                format(config.services.baselineConnect.getStopDetails, stopId)
+            );
+
+            const geometry = {
+                type: 'Point',
+                coordinates: parseWkt(stopDetails.point).coordinates
+            };
+
+            stopDetails.features = [{
+                type: 'Feature',
+                properties: {},
+                geometry
+            }];
+
+            return stopDetails;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.services.baselineConnect.stopDetails,
+                error
+            );
+
+            throw error;
+        }
     }
 }
 
