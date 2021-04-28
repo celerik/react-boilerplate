@@ -57,6 +57,29 @@ class BaselineConnect {
             throw error;
         }
     }
+
+    static async getTeamServicePatterns(teamId, servicePatternIds, date) {
+        try {
+            const servicePatterns = await axios.get(
+                format(config.services.baselineConnect.getTeamServicePatterns, teamId),
+                {
+                    params: {
+                        date,
+                        servicePatternIds: servicePatternIds.toString()
+                    }
+                }
+            );
+
+            return servicePatterns;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.services.baselineConnect.teamServicePatterns,
+                error.message
+            );
+
+            return [];
+        }
+    }
 }
 
 export default BaselineConnect;

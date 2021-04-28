@@ -8,12 +8,13 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import BackToButton from '../../molecules/back-to-button';
 import BaselineConnect from '../../../services/baseline-connect';
+import { setMapServicePatterns, setMapStops } from '../../../actions';
 import ListSelector from '../../atoms/list-selector';
 import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { config } from '../../../config';
 import { globalUI } from '../../../core';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 // @styles
 import styles from './styles';
@@ -28,6 +29,7 @@ const CreateServicePattern = ({
     const [selectedServicePeriod, selectServicePeriod] = useState(null);
     const [selectedServicePatterns, selectServicePatterns] = useState([]);
     const [servicePatterns, setServicePatterns] = useState([]);
+    const dispatch = useDispatch();
     const { projectId } = match.params;
     const {
         projects,
@@ -55,13 +57,42 @@ const CreateServicePattern = ({
         selectServicePeriod(value);
     };
 
+    const getServicePatternsData = async (servicePatternIds) => {
+        const projectServicePatterns = await BaselineConnect.getTeamServicePatterns(
+            selectedTeam,
+            servicePatternIds,
+            selectedServicePeriod
+        );
+        const servicePatterns = projectServicePatterns.filter(servicePattern =>
+            servicePatternIds.includes(servicePattern.servicePatternId));
+
+        console.log(servicePatternIds, projectServicePatterns);
+        const stops = await Promise.all(servicePatterns.flatMap(servicePattern =>
+            servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))));
+
+        const servicePatternsGeojson = servicePatterns.map(servicePattern => ({
+            type: 'FeatureCollection',
+            features: servicePattern.features
+        }));
+
+        const geojsonStops = {
+            type: 'FeatureCollection',
+            features: stops.flatMap(stop => stop.features)
+        };
+
+        dispatch(setMapServicePatterns(servicePatternsGeojson));
+        dispatch(setMapStops([geojsonStops]));
+    };
+
     const onCheckServicePattern = (servicePatternId) => {
         const filterServicePatterns = selectedServicePatterns.filter(
             selectedId => selectedId !== servicePatternId
         );
 
         if (filterServicePatterns.length === selectedServicePatterns.length) {
-            selectServicePatterns([...selectedServicePatterns, servicePatternId]);
+            const servicePatternIds = [...selectedServicePatterns, servicePatternId];
+            selectServicePatterns(servicePatternIds);
+            getServicePatternsData(servicePatternIds);
         } else {
             selectServicePatterns(filterServicePatterns);
         }
