@@ -1,7 +1,4 @@
 export default theme => Object.assign({}, {
-    actions: {
-        padding: 3
-    },
     actionsContainer: {
         marginLeft: 20
     },
