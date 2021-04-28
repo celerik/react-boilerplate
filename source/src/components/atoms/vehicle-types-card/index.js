@@ -1,15 +1,14 @@
 // @packages
 import Grid from '@material-ui/core/Grid';
-import IconButton from '@material-ui/core/IconButton';
 import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
-import RefreshIcon from '@material-ui/icons/Refresh';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
+import IconButton from '../icon-button';
 import SelectorList from '../list-selector';
 import { config } from '../../../config';
 
@@ -57,9 +56,9 @@ const VehicleTypeCard = ({
         <Tooltip
             classes={{ tooltip: classes.tooltip }}
             interactive
+            open={tooltipVisible && needUpdate}
             placement="bottom-start"
             title={needUpdate && <TooltipContent />}
-            open={tooltipVisible && needUpdate}
         >
             <Grid
                 alignItems="center"
@@ -67,10 +66,10 @@ const VehicleTypeCard = ({
                 container
                 id={id}
                 justify="center"
-                row
                 onFocus={onHover}
                 onMouseLeave={() => setTooltipVisibility(false)}
                 onMouseOver={onHover}
+                row
             >
                 <Grid
                     container
@@ -78,11 +77,14 @@ const VehicleTypeCard = ({
                     xs={4}
                 >
                     {needUpdate && (
-                        <IconButton className={classes.refreshIcon}>
-                            <RefreshIcon />
-                        </IconButton>
+                        <IconButton
+                            buttonClassname={classes.refreshIcon}
+                            icon="refresh"
+                            id={id}
+                        />
                     )}
                     <Typography
+                        className={classes.vehicleTypeText}
                         style={{ fontWeight: tooltipVisible && 'bold' }}
                         variant="body2"
                     >
@@ -94,12 +96,12 @@ const VehicleTypeCard = ({
                     xs={4}
                 >
                     <SelectorList
-                        id={id}
-                        items={typeDays}
-                        itemValProp="value"
-                        itemDesProp="text"
-                        placeholder={text.typeDays}
                         className={classes.selectorList}
+                        id={id}
+                        itemDesProp="text"
+                        itemValProp="value"
+                        items={typeDays}
+                        placeholder={text.typeDays}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -112,8 +114,8 @@ const VehicleTypeCard = ({
                 </Grid>
                 <Grid item xs={2}>
                     <Inputfield
-                        icon="content_copy"
                         className={classes.icon}
+                        icon="content_copy"
                     />
                 </Grid>
             </Grid>

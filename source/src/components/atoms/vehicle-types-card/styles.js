@@ -6,9 +6,7 @@ export default theme => ({
         padding: '0 7px'
     },
     refreshIcon: {
-        height: 15,
-        width: 10,
-        marginRight: 5
+        padding: 0
     },
     tooltip: {
         backgroundColor: theme.palette.common.pearl,
@@ -67,5 +65,8 @@ export default theme => ({
             fontSize: 14,
             color: theme.palette.text.scondary
         }
+    },
+    vehicleTypeText: {
+        margin: '0 7px'
     }
 });
