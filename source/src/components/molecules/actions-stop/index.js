@@ -55,8 +55,8 @@ ActionsStop.propTypes = {
     id: PropTypes.string.isRequired,
     defaultColor: PropTypes.string,
     actions: PropTypes.arrayOf(PropTypes.shape({
-        name: PropTypes.string.isRequired,
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
+        name: PropTypes.string.isRequired,
         onClick: PropTypes.func.isRequired
     }))
 };
