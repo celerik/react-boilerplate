@@ -13,6 +13,7 @@ import BaselineConnect from '../../../services/baseline-connect';
 import IconButton from '../../atoms/icon-button';
 import Project from '../../../services/project';
 import StopsList from '../../molecules/stops-list';
+import FormatDays from '../../atoms/format-days';
 import WeekDaysModal from '../../molecules/modal-days-week';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util';
@@ -69,6 +70,7 @@ const ServicePatternMenu = ({
             config.text.editServicePattern.putDaysSuccess
         );
         await fetchServicePatternData();
+        openEditModal(false);
     };
 
     if (!servicePattern) {
@@ -99,13 +101,16 @@ const ServicePatternMenu = ({
                     {config.text.editServicePattern.route}
                     {servicePattern.routeName}
                 </Typography>
-                <IconButton
-                    icon="edit"
-                    iconClassName={classes.icon}
-                    id={`${id}-edit-icon`}
-                    label="edit"
-                    onClick={() => openEditModal(true)}
-                />
+                <div className={classes.daysSection}>
+                    <IconButton
+                        icon="edit"
+                        iconClassName={classes.icon}
+                        id={`${id}-edit-icon`}
+                        label="edit"
+                        onClick={() => openEditModal(true)}
+                    />
+                    <FormatDays days={servicePattern.settings.daysOfOperation} id={`${id}-format-days`} />
+                </div>
             </div>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}

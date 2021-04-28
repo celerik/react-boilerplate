@@ -14,13 +14,6 @@ export default theme => ({
         '& svg': {
             fontSize: 22
         },
-        '&:after': {
-            backgroundColor: theme.palette.primary.light,
-            bottom: '-100%',
-            content: '""',
-            position: 'absolute',
-            width: 2
-        },
         '&:before': {
             border: `${theme.palette.primary.light} 2px solid`,
             borderRadius: '50%',
@@ -31,11 +24,6 @@ export default theme => ({
             position: 'absolute',
             right: -5,
             top: -5
-        }
-    },
-    listItem: {
-        '&:after': {
-            height: '100%'
         }
     }
 });
