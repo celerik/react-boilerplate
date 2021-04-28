@@ -90,8 +90,6 @@ const ProjectMenu = ({
                 label={config.text.projectMenu.title}
                 onClick={handleClickOpen}
             />
-            {/* pa eliminar */}
-            <SubStopsList />
             <AlertDialog
                 actions={
                     [
