@@ -5,7 +5,7 @@
  * @param {object|object[]} args - Args to be replaced into the string.
  * @returns {string}
  */
-export const format = (str = '', ...args) => {
+export const format = (str, ...args) => {
     let formatedStr = str;
     args.forEach((value, index) => {
         while (formatedStr.indexOf(`{${index}}`) >= 0) {

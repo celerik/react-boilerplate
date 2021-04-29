@@ -8,6 +8,9 @@ export const getRoutes = () =>
     async (dispatch, getState) => {
         const { selectedTeam } = getState().user;
         const routes = await BaselineConnect.getRoutes(selectedTeam);
+        if (!routes) {
+            return;
+        }
         dispatch({
             type: GET_ROUTES,
             payload: routes
