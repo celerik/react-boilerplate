@@ -70,7 +70,7 @@ const Stop = ({
                     )}
                 </div>
                 <div className={classes.subStopsContainer}>
-                    {currentOption === config.text.editServicePattern.addStopBelow && (
+                    {currentAction === config.text.editServicePattern.addStopBelow && (
                         <SubStopsList />
                     )}
                 </div>
