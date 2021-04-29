@@ -7,11 +7,11 @@ describe('getProjects', () => {
         const actionCreator = getProjects();
 
         const expectedAction = {
-            payload: config.mockData.projects,
-            type: GET_PROJECTS
+            type: GET_PROJECTS,
+            payload: config.mockData.projects
         };
 
-        return global.testDispatch(actionCreator, [expectedAction]);
+        return global.testDispatch(actionCreator, expectedAction);
     });
 
     test('getProjects (HTTP ERROR)', () => {

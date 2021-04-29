@@ -16,9 +16,7 @@ describe('userReducer', () => {
                 authToken: payload.authToken,
                 email: payload.email,
                 name: payload.name,
-                id: payload.id,
-                password: payload.password,
-                userName: payload.userName
+                permissions: payload.permissions
             }
         });
         expect(newState).toEqual(expectedState);
