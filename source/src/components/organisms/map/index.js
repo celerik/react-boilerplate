@@ -74,13 +74,6 @@ const CustomMap = ({
                     <GeoJSONLayer
                         data={featureCollection}
                         key={`route-${index}`}
-                        layerOptions={{
-                            maxZoom: 15,
-                            minZoom: 11,
-
-                            'max-zoom': 15,
-                            'min-zoom': 11
-                        }}
                         lineLayout={shapes.line.layout}
                         linePaint={{
                             ...shapes.line.paint,

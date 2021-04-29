@@ -66,7 +66,6 @@ const CreateServicePattern = ({
         const servicePatterns = projectServicePatterns.filter(servicePattern =>
             servicePatternIds.includes(servicePattern.servicePatternId));
 
-        console.log(servicePatternIds, projectServicePatterns);
         const stops = await Promise.all(servicePatterns.flatMap(servicePattern =>
             servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))));
 
