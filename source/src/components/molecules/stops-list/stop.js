@@ -19,7 +19,6 @@ const Stop = ({
     actionsContent,
     classes,
     content,
-    currentOption,
     id,
     lastItem,
     onHoverSegment,
@@ -28,6 +27,13 @@ const Stop = ({
     const [actionsVisible, setActionsVisibility] = useState(false);
     const stopClass = classNames(classes.onFocus, classes.stopNumber);
     const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
+
+    const [currentAction, setCurrentOption] = useState('');
+
+    const selectAction = (rollback, action) => {
+        rollback();
+        setCurrentOption(action);
+    };
 
     const onHoverActions = () => {
         setActionsVisibility(true);
@@ -51,12 +57,14 @@ const Stop = ({
             </div>
             <div className={classes.title}>
                 <div className={classes.headerOptions}>
-                    <Typography variant="body2" style={{ fontWeight: currentOption && 'bold' }}>{stopName}</Typography>
+                    <Typography variant="body2" style={{ fontWeight: currentAction && 'bold' }}>{stopName}</Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             <ActionsStop
                                 actions={actions}
                                 id={`${id}-actions`}
+                                currentAction={currentAction}
+                                selectAction={selectAction}
                             />
                         </div>
                     )}
@@ -82,7 +90,6 @@ Stop.propTypes = {
     actionsContent: PropTypes.node,
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    currentOption: PropTypes.string,
     id: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
     onHoverSegment: PropTypes.bool,
@@ -92,7 +99,6 @@ Stop.propTypes = {
 Stop.defaultProps = {
     actions: Array.prototype,
     actionsContent: null,
-    currentOption: '',
     lastItem: false,
     onHoverSegment: false
 };
