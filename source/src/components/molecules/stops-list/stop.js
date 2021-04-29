@@ -2,10 +2,10 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import classNames from 'classnames';
-import { withStyles, useTheme } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 // @scrips
-import IconButton from '../../atoms/icon-button';
+import ActionsStop from '../actions-stop';
 import StopIcon from '../../atoms/stop-icon';
 
 // @styles
@@ -22,18 +22,11 @@ const Stop = ({
     stopName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
-    const [currentOption, setCurrentOption] = useState(false);
     const stopClass = classNames(classes.onFocus, classes.stopNumber);
     const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
-    const theme = useTheme();
 
     const onHoverActions = () => {
         setActionsVisibility(true);
-    };
-
-    const selectAction = (rollback, action) => {
-        rollback();
-        setCurrentOption(action);
     };
 
     return (
@@ -57,21 +50,10 @@ const Stop = ({
                     {stopName}
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
-                            {actions.map((action, index) => (
-                                <IconButton
-                                    arrow
-                                    buttonClassname={classes.actions}
-                                    color={currentOption === action.name
-                                        ? theme.palette.text.primary
-                                        : theme.palette.text.contrastText}
-                                    icon={action.icon}
-                                    id={`${id}-action-${index}`}
-                                    key={index}
-                                    label={action.name}
-                                    onClick={() => selectAction(action.onClick, action.name)}
-                                    placement="top"
-                                />
-                            ))}
+                            <ActionsStop
+                                actions={actions}
+                                id={`${id}-actions`}
+                            />
                         </div>
                     )}
                 </div>
