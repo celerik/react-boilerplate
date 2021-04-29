@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
-import { withStyles, useTheme } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 // @scrips
-import IconButton from '../../atoms/icon-button';
+import ActionsStop from '../actions-stop';
 import StopIcon from '../../atoms/stop-icon';
 import SubStopsList from '../sub-stops-list';
 import { config } from '../../../config';
@@ -19,24 +19,18 @@ const Stop = ({
     actionsContent,
     classes,
     content,
+    currentOption,
     id,
     lastItem,
     onHoverSegment,
     stopName
 }) => {
     const [actionsVisible, setActionsVisibility] = useState(false);
-    const [currentOption, setCurrentOption] = useState('');
     const stopClass = classNames(classes.onFocus, classes.stopNumber);
     const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
-    const theme = useTheme();
 
     const onHoverActions = () => {
         setActionsVisibility(true);
-    };
-
-    const selectAction = (rollback, action) => {
-        rollback();
-        setCurrentOption(action);
     };
 
     return (
@@ -60,21 +54,10 @@ const Stop = ({
                     <Typography variant="body2" style={{ fontWeight: currentOption && 'bold' }}>{stopName}</Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
-                            {actions.map((action, index) => (
-                                <IconButton
-                                    arrow
-                                    buttonClassname={classes.actions}
-                                    color={currentOption === action.name
-                                        ? theme.palette.text.primary
-                                        : theme.palette.text.contrastText}
-                                    icon={action.icon}
-                                    id={`${id}-action-${index}`}
-                                    key={index}
-                                    label={action.name}
-                                    onClick={() => selectAction(action.onClick, action.name)}
-                                    placement="top"
-                                />
-                            ))}
+                            <ActionsStop
+                                actions={actions}
+                                id={`${id}-actions`}
+                            />
                         </div>
                     )}
                 </div>
@@ -99,6 +82,7 @@ Stop.propTypes = {
     actionsContent: PropTypes.node,
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+    currentOption: PropTypes.string,
     id: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
     onHoverSegment: PropTypes.bool,
@@ -108,6 +92,7 @@ Stop.propTypes = {
 Stop.defaultProps = {
     actions: Array.prototype,
     actionsContent: null,
+    currentOption: '',
     lastItem: false,
     onHoverSegment: false
 };
