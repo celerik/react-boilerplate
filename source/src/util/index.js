@@ -1,4 +1,3 @@
-export * from './geodata';
 export * from './global';
 export * from './mock';
 export * from './object';
