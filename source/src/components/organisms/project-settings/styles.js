@@ -46,7 +46,6 @@ export default theme => Object.assign({}, {
         '&:hover': {
             '& .MuiInputBase-root': {
                 borderBottom: `1px solid ${theme.palette.primary.main}`
-
             }
         },
         '& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {

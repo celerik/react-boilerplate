@@ -25,7 +25,7 @@
         "url": "/dashboard/projects"
     },
     "projectVehicles": {
-        "component": null,
+        "component": "ProjectMenu",
         "name": "ProjectVehicles",
         "url": "/dashboard/projects/:projectId/project-vehicles"
     },

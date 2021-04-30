@@ -93,7 +93,17 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
-    "projetcSettingsModal":{
+    "projectsVehiclesModal": {
+      "addFromLibrary": "Add from library",
+      "createVehicleType": "Create vehicle type",
+      "needUpdate": "Need update",
+      "title": "Projects Vehicles",
+      "typeDays": "Type of days...", 
+      "update": "update",
+      "vehicles": "Vehicles",
+      "vehiclesTypes": "VEHICLES TYPES({0})"
+    },
+    "projectSettingsModal": {
       "cancel": "Cancel",
       "day": "/day",
       "defaultOtpThresholds": "Default OTP thresholds",
