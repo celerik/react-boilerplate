@@ -65,5 +65,8 @@ export default theme => Object.assign({}, {
     title: {
         width: '85%',
         height: '20%'
+    },
+    subStopsContainer: {
+        width: '75%'
     }
 });
