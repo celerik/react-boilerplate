@@ -70,7 +70,53 @@ class BaselineConnect {
                 }
             );
 
-            return servicePatterns;
+            const formatServicePatterns = servicePatterns.map((servicePattern) => {
+                const coordinates = servicePattern.segments.flatMap(
+                    segment => parseWkt(segment.path.pathGeometry).coordinates
+                );
+
+                const pathFeature = {
+                    type: 'Feature',
+                    properties: {
+                        color: servicePattern.colour,
+                        name: 'test'
+                    },
+                    geometry: {
+                        type: 'LineString',
+                        coordinates
+                    }
+                };
+
+                const stops = servicePattern.stops.map(stop => {
+                    const geometry = {
+                        type: 'Point',
+                        coordinates: parseWkt(stop.stopPoint).coordinates
+                    };
+
+                    return {
+                        type: 'Feature',
+                        properties: {
+                            color: 'red'
+                        },
+                        geometry
+                    };
+                });
+
+                const stopsFeature = {
+                    type: 'FeatureCollection',
+                    features: stops
+                };
+
+                return {
+                    ...servicePattern,
+                    features: [
+                        pathFeature,
+                        stopsFeature
+                    ]
+                };
+            });
+
+            return formatServicePatterns;
         } catch (error) {
             globalUI.showAlertNotificationError(
                 config.text.services.baselineConnect.teamServicePatterns,

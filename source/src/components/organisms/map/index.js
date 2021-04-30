@@ -77,14 +77,16 @@ const CustomMap = ({
                         lineLayout={shapes.line.layout}
                         linePaint={{
                             ...shapes.line.paint,
-                            'line-color': theme.palette.primary.main
+                            'line-color': [
+                                'case',
+                                ['has', 'color'],
+                                ['get', 'color'],
+                                theme.palette.primary.main
+                            ]
                         }}
                     />
                 ))}
-                <Cluster
-                    ClusterMarkerFactory={ClusterMarker}
-                    maxZoom={11}
-                >
+                <Cluster ClusterMarkerFactory={ClusterMarker} maxZoom={11}>
                     {stops.flatMap(featureCollection => featureCollection.features.map(
                         (feature, index) => (
                             <Marker
@@ -92,6 +94,7 @@ const CustomMap = ({
                                 coordinates={feature.geometry.coordinates}
                             >
                                 <StopIcon
+                                    color={feature.properties.color}
                                     label={index < featureCollection.features.length - 1 && index + 1}
                                 />
                             </Marker>

@@ -9,7 +9,6 @@ import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
-import BaselineConnect from '../../../services/baseline-connect';
 import IconButton from '../../atoms/icon-button';
 import Project from '../../../services/project';
 import StopsList from '../../molecules/stops-list';
@@ -35,11 +34,8 @@ const ServicePatternMenu = ({
     const dispatch = useDispatch();
 
     const fetchServicePatternData = async () => {
-        const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
+        const { servicePattern, stops } = await Project.getServicePattern(projectId, servicePatternId);
         servicePattern.colour = theme.palette.primary.light;
-        const stops = await Promise.all(
-            servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))
-        );
 
         const servicePatternGeojson = {
             type: 'FeatureCollection',

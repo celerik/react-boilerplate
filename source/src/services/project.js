@@ -29,7 +29,12 @@ class Project {
                 }
             };
 
-            servicePattern.features = [featurePath];
+            const stops = [] || servicePattern.stops.map(stopDetails => ({
+                type: 'Point',
+                coordinates: parseWkt(stopDetails.point).coordinates
+            }));
+
+            servicePattern.features = [featurePath, stops];
 
             return servicePattern;
         } catch (error) {
