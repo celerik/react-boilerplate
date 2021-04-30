@@ -8,7 +8,7 @@ import {
 } from '../../actions';
 
 describe('login', () => {
-    test('login)', () => {
+    test('loginWithGoogle)', () => {
         const credentials = {
             authToken: config.settings.serviceMocker.authToken,
             email: config.settings.serviceMocker.loginUserName,
