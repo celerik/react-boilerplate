@@ -9,7 +9,7 @@ export default {
     component: StopListComponent
 };
 
-const stopsLsit = [
+const stopsList = [
     {
         id: '1',
         name: 'stop 1'
