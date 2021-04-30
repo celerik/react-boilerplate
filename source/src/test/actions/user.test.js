@@ -3,8 +3,8 @@ import { config } from '../../config';
 import {
     LOGIN,
     LOGOUT,
-    logout,
-    loginWithGoogle
+    loginWithGoogle,
+    logout
 } from '../../actions';
 
 describe('login', () => {
@@ -19,6 +19,7 @@ describe('login', () => {
             type: LOGIN,
             payload: config.mockData.security.user
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 });
@@ -29,6 +30,7 @@ describe('logout', () => {
         const expectedActions = [{
             type: LOGOUT
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 });

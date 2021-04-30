@@ -11,12 +11,14 @@ describe('getServicePatterns', () => {
             type: GET_SERVICE_PATTERNS,
             payload: config.mockData.servicePatterns
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 
     test('getServicePatterns (HTTP ERROR)', () => {
         const actionCreator = getServicePatterns();
         const expectedAction = [];
+
         return global.testDispatchWithNetworkError(actionCreator, expectedAction);
     });
 });

@@ -10,12 +10,14 @@ describe('getRoutes', () => {
             type: GET_ROUTES,
             payload: config.mockData.routes
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 
     test('getRoutes (HTTP ERROR)', () => {
         const actionCreator = getRoutes();
         const expectedAction = [];
+
         return global.testDispatchWithNetworkError(actionCreator, expectedAction);
     });
 });

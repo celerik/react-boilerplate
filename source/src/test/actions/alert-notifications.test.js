@@ -4,11 +4,11 @@ import { constants } from '../../core';
 import {
     HIDE_ALERT_NOTIFICATION,
     SHOW_ALERT_NOTIFICATION,
+    hideAlertNotification,
     showAlertNotification,
     showAlertNotificationError,
     showAlertNotificationInfo,
-    showAlertNotificationSuccess,
-    hideAlertNotification
+    showAlertNotificationSuccess
 } from '../../actions';
 
 describe('showAlert', () => {
@@ -24,6 +24,7 @@ describe('showAlert', () => {
                 type: constants.notificationType.ERROR
             }
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 
@@ -39,6 +40,7 @@ describe('showAlert', () => {
                 type: constants.notificationType.INFO
             }
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 
@@ -54,6 +56,7 @@ describe('showAlert', () => {
                 type: constants.notificationType.SUCCESS
             }
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 
@@ -68,6 +71,7 @@ describe('showAlert', () => {
             type: SHOW_ALERT_NOTIFICATION,
             payload: params
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 });
@@ -78,6 +82,7 @@ describe('hideAlert', () => {
         const expectedActions = [{
             type: HIDE_ALERT_NOTIFICATION
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 });

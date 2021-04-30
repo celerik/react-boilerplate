@@ -16,8 +16,8 @@ test('alertNotificationReducer: SHOW_ALERT_NOTIFICATION', () => {
     const newState = alertNotificationReducer(config.initialState.alertNotification, action);
     const expectedState = {
         isVisible: true,
-        title: action.payload.title,
         msg: action.payload.msg,
+        title: action.payload.title,
         type: action.payload.type
     };
     expect(newState).toEqual(expectedState);
@@ -26,8 +26,8 @@ test('alertNotificationReducer: SHOW_ALERT_NOTIFICATION', () => {
 test('alertNotificationReducer: HIDE_ALERT_NOTIFICATION', () => {
     const initialState = {
         isVisible: true,
-        title: 'Title',
-        msg: 'It is a message'
+        msg: 'It is a message',
+        title: 'Title'
     };
     const action = {
         type: HIDE_ALERT_NOTIFICATION
@@ -35,8 +35,8 @@ test('alertNotificationReducer: HIDE_ALERT_NOTIFICATION', () => {
     const newState = alertNotificationReducer(initialState, action);
     const expectedState = {
         isVisible: false,
-        title: null,
         msg: null,
+        title: null,
         type: null
     };
     expect(newState).toEqual(expectedState);
@@ -45,8 +45,8 @@ test('alertNotificationReducer: HIDE_ALERT_NOTIFICATION', () => {
 test('alertNotificationReducer: DEFAULT', () => {
     const initialState = {
         isVisible: true,
-        title: 'Title',
         msg: 'The email was sent',
+        title: 'Title',
         type: constants.notificationType.INFO
     };
     const action = {

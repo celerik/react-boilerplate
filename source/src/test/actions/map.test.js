@@ -1,8 +1,8 @@
 // @scripts section
 import { config } from '../../config';
 import {
-    SET_MAP_STOPS,
     SET_MAP_SERVICE_PATTERNS,
+    SET_MAP_STOPS,
     setMapServicePatterns,
     setMapStops
 } from '../../actions/map';
@@ -24,6 +24,7 @@ describe('mapStops', () => {
             type: SET_MAP_STOPS,
             payload: stops
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 });
@@ -35,6 +36,7 @@ describe('mapServicePatterns', () => {
             type: SET_MAP_SERVICE_PATTERNS,
             payload: config.mockData.servicePatterns
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 });

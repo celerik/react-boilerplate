@@ -15,6 +15,7 @@ describe('getTeams', () => {
             type: GET_TEAMS,
             payload: config.mockData.teams
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 
@@ -34,6 +35,7 @@ describe('setSelected', () => {
             type: SET_SELECTED_TEAM,
             payload: selectedTeam
         }];
+
         return global.testDispatch(actionCreator, expectedAction);
     });
 });
