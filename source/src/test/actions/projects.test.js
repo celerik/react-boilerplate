@@ -27,7 +27,7 @@ describe('cloneProject', () => {
             projectId: 1,
             projectName: 'Testing'
         };
-        const actionCreator = getProjects(data);
+        const actionCreator = cloneProject(data);
         const expectedAction = [];
         return global.testDispatchWithNetworkError(actionCreator, expectedAction);
     });
