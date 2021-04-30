@@ -3,31 +3,24 @@ import { config } from '../../config';
 import {
     LOGIN,
     LOGOUT,
+    loginWithGoogle,
     logout
 } from '../../actions';
 
 describe('login', () => {
-    test('login (http request success)', () => {
+    test('loginWithGoogle)', () => {
         const credentials = {
+            authToken: config.settings.serviceMocker.authToken,
             email: config.settings.serviceMocker.loginUserName,
-            password: config.settings.serviceMocker.loginPassword
+            name: config.settings.serviceMocker.name
         };
-        const actionCreator = login(credentials);
+        const actionCreator = loginWithGoogle(credentials);
         const expectedActions = [{
             type: LOGIN,
             payload: config.mockData.security.user
         }];
-        return global.testDispatch(actionCreator, expectedActions);
-    });
 
-    test('login (http request fails)', () => {
-        const credentials = {
-            userName: config.settings.serviceMocker.loginUserName,
-            password: config.settings.serviceMocker.loginPassword
-        };
-        const actionCreator = login(credentials);
-        const expectedActions = [];
-        return global.testDispatchWithNetworkError(actionCreator, expectedActions);
+        return global.testDispatch(actionCreator, expectedActions);
     });
 });
 
@@ -37,6 +30,7 @@ describe('logout', () => {
         const expectedActions = [{
             type: LOGOUT
         }];
+
         return global.testDispatch(actionCreator, expectedActions);
     });
 });

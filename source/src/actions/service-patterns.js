@@ -11,6 +11,10 @@ export const getServicePatterns = (projectId) =>
     async (dispatch) => {
         const servicePatterns = await Project.getServicePatterns(projectId);
 
+        if (!servicePatterns) {
+            return null;
+        }
+
         dispatch({
             type: GET_SERVICE_PATTERNS,
             payload: servicePatterns

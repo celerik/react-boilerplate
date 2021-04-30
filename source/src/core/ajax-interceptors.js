@@ -49,7 +49,7 @@
 import axios from 'axios';
 
 // @scripts
-import { store } from '.';
+import { store, environment } from '.';
 import { printError } from '../util';
 
 /**
@@ -57,8 +57,10 @@ import { printError } from '../util';
  * @return {Promise}
  */
 const handleError = (error) => {
-    printError(error);
-    throw error;
+    if (!environment.isUnitTest) {
+        printError(error);
+        throw error;
+    }
 };
 
 const addRequestInterceptors = () => {

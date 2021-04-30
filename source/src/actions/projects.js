@@ -15,13 +15,13 @@ export const getProjects = () =>
             }
         });
 
-        if (!selectedTeam) {
+        if (!projects) {
             return;
         }
 
         dispatch({
             type: GET_PROJECTS,
-            payload: projects ?? []
+            payload: projects
         });
     };
 
