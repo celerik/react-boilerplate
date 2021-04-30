@@ -90,6 +90,23 @@ class Project {
             throw error;
         }
     }
+
+    static async getProjectsVehicles(projectId) {
+        try {
+            const projectsVehicles = await axios.get(
+                format(config.services.projects.getProjectsVehicles, projectId)
+            );
+
+            return projectsVehicles;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.projectMenu.projectVehicles,
+                error.message
+            );
+
+            throw error;
+        }
+    }
 }
 
 export default Project;

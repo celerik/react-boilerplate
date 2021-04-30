@@ -6,39 +6,22 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import VehicleTypeCard from '../../atoms/vehicle-types-card';
+import projects from '../../../config/mock-data/projects/projects-vehicles.json';
 
 // @styles
 import styles from './styles';
 
-const projects = [
-    {
-        id: '33',
-        vehicleType: 'vehicle type 1'
-    },
-    {
-        id: '363',
-        vehicleType: 'vehicle type 2'
-    },
-    {
-        id: '336',
-        vehicleType: 'vehicle type 3'
-    }
-];
-
 const ProjectsVehiclesList = ({ projects }) => (
     <List>
-        {projects.map(({ id, vehicleType }, index) => (
+        {projects.map((project, index) => (
             <VehicleTypeCard
-                id={id}
-                key={`${id}-${index}`}
-                vehicleType={vehicleType}
+                id={project.id}
+                key={`${project.id}-project-vehicel-${index}`}
+                vehicleTypeName={project.vehicleTypeName}
+                needUpdate={project.deprecated}
+                quantityAvailable={project.quantityAvailable}
             />
         ))}
-        <VehicleTypeCard
-            id="d345"
-            vehicleType="vehicle type 4"
-            needUpdate
-        />
     </List>
 );
 

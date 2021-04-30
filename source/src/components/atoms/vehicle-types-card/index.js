@@ -43,9 +43,11 @@ const VehicleTypeCard = ({
     classes,
     id,
     needUpdate,
-    vehicleType
+    quantityAvailable,
+    vehicleTypeName
 }) => {
-    const [infoValue, setInfoValue] = useState(4);
+    const { quantity } = quantityAvailable[0];
+    const [infoValue, setInfoValue] = useState(quantity);
     const [tooltipVisible, setTooltipVisibility] = useState(false);
 
     const onHover = () => {
@@ -88,7 +90,7 @@ const VehicleTypeCard = ({
                         style={{ fontWeight: tooltipVisible && 'bold' }}
                         variant="body2"
                     >
-                        {vehicleType}
+                        {vehicleTypeName}
                     </Typography>
                 </Grid>
                 <Grid
@@ -108,7 +110,7 @@ const VehicleTypeCard = ({
                     <Inputfield
                         className={classes.inputfield}
                         endAdornment={text.vehicles}
-                        onChange={(e) => setInfoValue(e.target.value)}
+                        onChange={setInfoValue}
                         value={infoValue}
                     />
                 </Grid>
@@ -126,8 +128,12 @@ const VehicleTypeCard = ({
 VehicleTypeCard.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    quantityAvailable: PropTypes.arrayOf(PropTypes.shape({
+        dayType: PropTypes.string.isRequired,
+        quantity: PropTypes.number.isRequired
+    })).isRequired,
     needUpdate: PropTypes.bool,
-    vehicleType: PropTypes.string.isRequired
+    vehicleTypeName: PropTypes.string.isRequired
 };
 
 TooltipContent.propTypes = {
