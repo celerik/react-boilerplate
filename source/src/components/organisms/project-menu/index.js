@@ -88,13 +88,13 @@ const ProjectMenu = ({
                         role="button"
                         tabIndex={index}
                     >
-                    <Icon>{menuOption.icon}</Icon>
-                    <Item
-                        className={classes.centerIcon}
-                        iconButtons={index === 0 ? actions : []}
-                        text={config.text.projectMenu[menuOption.name]}
-                        textClass={classes.optionText}
-                    />
+                        <Icon>{menuOption.icon}</Icon>
+                        <Item
+                            className={classes.centerIcon}
+                            iconButtons={index === 0 ? actions : []}
+                            text={config.text.projectMenu[menuOption.name]}
+                            textClass={classes.optionText}
+                        />
                     </div>
                 ))}
             </div>
@@ -130,8 +130,9 @@ const ProjectMenu = ({
                 projectId={projectId}
             />
             <ProjectVehiclesModal
-                open={openVehiclesModal}
                 onClose={handleCloseProjectsVehiclesModal}
+                open={openVehiclesModal}
+                projectId={projectId}
             />
         </div>
     );

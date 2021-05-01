@@ -23,7 +23,7 @@ const mockedServices = {
             httpCode: httpCodes.success
         }));
     },
-    mockServiceGetProjectsVehicles: () => {
+    mockServiceGetProjectsVehicles: (mockAdapter) => {
         const url = config.services.projects.getProjectsVehicles;
         const pathRegexp = new RegExp(format(url, '.*'));
         mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({

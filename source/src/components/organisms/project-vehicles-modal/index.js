@@ -23,8 +23,9 @@ const text = config.text.projectMenu.projectsVehiclesModal;
 
 const ProjectsVehicles = ({
     classes,
+    onClose,
     open,
-    onClose
+    projectId
 }) => (
     <Dialog
         BackdropProps={{ className: classes.backdropClassName }}
@@ -49,7 +50,7 @@ const ProjectsVehicles = ({
 
         <DialogContent className={classes.contentDialog}>
             <Typography variant="h4">{text.vehiclesTypes}</Typography>
-            <ProjectsVehiclesList />
+            <ProjectsVehiclesList projectId={projectId} />
         </DialogContent>
 
         <DialogActions className={classes.actionsDialog}>
@@ -69,8 +70,9 @@ const ProjectsVehicles = ({
 
 ProjectsVehicles.propTypes = {
     classes: PropTypes.object.isRequired,
+    onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
-    onClose: PropTypes.func.isRequired
+    projectId: PropTypes.string.isRequired
 };
 
 export default withStyles(styles)(ProjectsVehicles);
