@@ -96,23 +96,19 @@ class BaselineConnect {
                     return {
                         type: 'Feature',
                         properties: {
-                            color: 'red'
+                            ...stop,
+                            color: servicePattern.colour
                         },
                         geometry
                     };
                 });
 
-                const stopsFeature = {
-                    type: 'FeatureCollection',
-                    features: stops
-                };
-
                 return {
                     ...servicePattern,
                     features: [
-                        pathFeature,
-                        stopsFeature
-                    ]
+                        pathFeature
+                    ],
+                    stops
                 };
             });
 

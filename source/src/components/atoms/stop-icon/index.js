@@ -29,6 +29,7 @@ const StopIcon = ({
 }) => {
     const colorClasses = customClasses({ color });
 
+    console.log(color);
     return (
         <span
             className={classNames(

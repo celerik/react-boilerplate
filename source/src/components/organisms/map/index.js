@@ -26,13 +26,20 @@ const shapes = {
     }
 };
 
-const ClusterMarker = (coordinates, pointCount) => (
-    <Marker coordinates={coordinates}>
-        <StopIcon
-            label={`+${pointCount}`}
-        />
-    </Marker>
-);
+const CustomCluster = (features = []) => {
+    const color = features[0]?.properties.color;
+
+    const CustomMarker = (coordinates, pointCount) => (
+        <Marker coordinates={coordinates}>
+            <StopIcon
+                color={color}
+                label={`+${pointCount}`}
+            />
+        </Marker>
+    );
+
+    return CustomMarker;
+};
 
 const Map = ReactMapBoxGl({
     accessToken: config.settings.mapBox.token
@@ -86,21 +93,27 @@ const CustomMap = ({
                         }}
                     />
                 ))}
-                <Cluster ClusterMarkerFactory={ClusterMarker} maxZoom={11}>
-                    {stops.flatMap(featureCollection => featureCollection.features.map(
-                        (feature, index) => (
-                            <Marker
-                                key={`marker-${index}`}
-                                coordinates={feature.geometry.coordinates}
-                            >
-                                <StopIcon
-                                    color={feature.properties.color}
-                                    label={index < featureCollection.features.length - 1 && index + 1}
-                                />
-                            </Marker>
-                        )
-                    ))}
-                </Cluster>
+                {stops.map((featureCollection, index) => (
+                    <Cluster
+                        ClusterMarkerFactory={CustomCluster(featureCollection.features)}
+                        key={`${id}-cluster-${index}`}
+                        maxZoom={11}
+                    >
+                        {featureCollection.features.map(
+                            (feature, index) => (
+                                <Marker
+                                    key={`marker-${index}`}
+                                    coordinates={feature.geometry.coordinates}
+                                >
+                                    <StopIcon
+                                        color={feature.properties.color}
+                                        label={index < featureCollection.features.length - 1 && index + 1}
+                                    />
+                                </Marker>
+                            )
+                        )}
+                    </Cluster>
+                ))}
             </Map>
             {controls.includes('zoom') && (
                 <ZoomButtons

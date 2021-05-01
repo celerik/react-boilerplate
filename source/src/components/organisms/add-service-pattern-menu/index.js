@@ -67,21 +67,18 @@ const CreateServicePattern = ({
         const servicePatterns = projectServicePatterns.filter(servicePattern =>
             servicePatternIds.includes(servicePattern.servicePatternId));
 
-        // const stops = await Promise.all(servicePatterns.flatMap(servicePattern =>
-        //     servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))));
+        const geojsonStops = projectServicePatterns.map(servicePattern => ({
+            type: 'FeatureCollection',
+            features: servicePattern.stops
+        }));
 
         const servicePatternsGeojson = servicePatterns.map(servicePattern => ({
             type: 'FeatureCollection',
             features: servicePattern.features
         }));
 
-        // const geojsonStops = {
-        //     type: 'FeatureCollection',
-        //     features: stops.flatMap(stop => stop.features)
-        // };
-
         dispatch(setMapServicePatterns(servicePatternsGeojson));
-        // dispatch(setMapStops([geojsonStops]));
+        dispatch(setMapStops(geojsonStops));
     };
 
     const onCheckServicePattern = (servicePatternId) => {
