@@ -5,11 +5,10 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import { useDispatch } from 'react-redux';
-import { useTheme, withStyles } from '@material-ui/core';
+import { withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
-import BaselineConnect from '../../../services/baseline-connect';
 import IconButton from '../../atoms/icon-button';
 import Project from '../../../services/project';
 import StopsList from '../../molecules/stops-list';
@@ -22,6 +21,7 @@ import { setMapServicePatterns, setMapStops } from '../../../actions';
 
 // @styles
 import styles from './styles';
+import BaselineConnect from '../../../services/baseline-connect';
 
 const ServicePatternMenu = ({
     classes,
@@ -29,7 +29,6 @@ const ServicePatternMenu = ({
     locked,
     match
 }) => {
-    const theme = useTheme();
     const { projectId, servicePatternId } = match.params;
     const [editModalVisible, openEditModal] = useState(false);
     const [servicePattern, setServicePattern] = useState(null);
@@ -37,23 +36,17 @@ const ServicePatternMenu = ({
 
     const fetchServicePatternData = async () => {
         const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
-        servicePattern.colour = theme.palette.primary.light;
         const stops = await Promise.all(
             servicePattern.stops.map(stop => BaselineConnect.getStopDetails(stop.stopId))
         );
 
-        const servicePatternGeojson = {
-            type: 'FeatureCollection',
-            features: servicePattern.features
-        };
-
         const geojsonStops = {
             type: 'FeatureCollection',
-            features: stops.flatMap(stop => stop.features)
+            features: stops.flatMap(stopDetails => stopDetails.features)
         };
 
         setServicePattern(servicePattern);
-        dispatch(setMapServicePatterns([servicePatternGeojson]));
+        dispatch(setMapServicePatterns([servicePattern.pathGeoJSON]));
         dispatch(setMapStops([geojsonStops]));
     };
 
