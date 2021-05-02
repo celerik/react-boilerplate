@@ -32,7 +32,6 @@ const StopIcon = ({
                 className,
                 classes.mainContainer,
                 colorClasses.main,
-                isListItem && classes.listItem
             )}
             id={id}
         >

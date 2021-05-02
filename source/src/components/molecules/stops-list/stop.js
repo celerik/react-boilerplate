@@ -50,7 +50,6 @@ const Stop = ({
                 <StopIcon
                     className={actionsVisible ? stopClass : classes.stopNumber}
                     id={`${id}-stop-icon-}`}
-                    isListItem
                     label={!lastItem && content}
                 />
                 {!lastItem && (<span className={onHoverSegment ? separatorLine : classes.stopLine} />)}
