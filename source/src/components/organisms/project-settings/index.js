@@ -56,7 +56,7 @@ const ProjectSettings = ({
 
     const firstAttributes = [
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultOtpLevel,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultOtpLevel,
             content: [
                 <Inputfield
                     className={inputSmall}
@@ -71,11 +71,11 @@ const ProjectSettings = ({
             ]
         },
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultOtpThresholds,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultOtpThresholds,
             content: [
                 <Inputfield
                     className={inputMedium}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.secs}
                     id={`${id}-default-otp-thresholds-input-1`}
                     key="input-1"
                     onChange={(e) => handleOtpWindow(e, 0)}
@@ -85,7 +85,7 @@ const ProjectSettings = ({
                 />,
                 <Inputfield
                     className={inputMedium}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.secs}
                     id={`${id}-default-otp-thresholds-input-2`}
                     key="input-2"
                     onChange={(e) => handleOtpWindow(e, 1)}
@@ -96,7 +96,7 @@ const ProjectSettings = ({
             ]
         },
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultRecoveryLevel,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultRecoveryLevel,
             content: [
                 <Inputfield
                     className={inputSmall}
@@ -111,11 +111,11 @@ const ProjectSettings = ({
             ]
         },
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultRliefTime,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultRliefTime,
             content: [
                 <Inputfield
                     className={inputMedium}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.secs}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.secs}
                     id={`${id}-default-rlief-time-input`}
                     key="input-4"
                     onChange={(e) => handleSettings(e, 'reliefTime')}
@@ -129,11 +129,11 @@ const ProjectSettings = ({
 
     const secondAttributes = [
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultVehicleDepreciation,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultVehicleDepreciation,
             content: [
                 <Inputfield
                     className={largeInput}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.day}
                     id={`${id}-default-vehicle-depreciation-input`}
                     key="input-5"
                     onChange={(e) => handleSettings(e, 'defaultVehicleDepreciation')}
@@ -145,12 +145,12 @@ const ProjectSettings = ({
             ]
         },
         {
-            nameProperty: config.text.projectMenu.projetcSettingsModal.defaultVechicleOperating,
-            secondarytext: config.text.projectMenu.projetcSettingsModal.running,
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultVechicleOperating,
+            secondarytext: config.text.projectMenu.projectSettingsModal.running,
             content: [
                 <Inputfield
                     className={largeInput}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.day}
                     id={`${id}-default-vehicle-operating-running-input`}
                     key="input-6"
                     onChange={(e) => handleSettings(e, 'defaultOperatingCostWhileRunning')}
@@ -163,11 +163,11 @@ const ProjectSettings = ({
         },
         {
             nameProperty: 'Default vehicle operating cost',
-            secondarytext: config.text.projectMenu.projetcSettingsModal.resting,
+            secondarytext: config.text.projectMenu.projectSettingsModal.resting,
             content: [
                 <Inputfield
                     className={largeInput}
-                    endAdornment={config.text.projectMenu.projetcSettingsModal.day}
+                    endAdornment={config.text.projectMenu.projectSettingsModal.day}
                     id={`${id}-default-vehicle-operating-resting-input`}
                     key="input-7"
                     onChange={(e) => handleSettings(e, 'defaultOperatingCostWhileResting')}
@@ -191,7 +191,7 @@ const ProjectSettings = ({
         >
                 <DialogTitle className={classes.actions}>
                     <Typography variant="h3">
-                        {config.text.projectMenu.projetcSettingsModal.projectSettings}
+                        {config.text.projectMenu.projectSettingsModal.projectSettings}
                     </Typography>
                 </DialogTitle>
                 <DialogContent className={classes.content}>
@@ -199,7 +199,7 @@ const ProjectSettings = ({
                         variant="body2"
                         className={classes.text}
                     >
-                        {config.text.projectMenu.projetcSettingsModal.info}
+                        {config.text.projectMenu.projectSettingsModal.info}
                     </Typography>
                     <Inputfield
                         className={classes.nameProject}
@@ -213,7 +213,7 @@ const ProjectSettings = ({
                         variant="h4"
                         className={classes.subTitle}
                     >
-                        {config.text.projectMenu.projetcSettingsModal.projectSettings}
+                        {config.text.projectMenu.projectSettingsModal.projectSettings}
                     </Typography>
                     {firstAttributes.map((value, index) => (
                         <Attribute
@@ -229,7 +229,7 @@ const ProjectSettings = ({
                         className={classes.subTitle}
                         variant="h4"
                     >
-                        {config.text.projectMenu.projetcSettingsModal.defaultVehicleCost}
+                        {config.text.projectMenu.projectSettingsModal.defaultVehicleCost}
                     </Typography>
                     {secondAttributes.map((value, index) => (
                         <Attribute
@@ -247,13 +247,13 @@ const ProjectSettings = ({
                         className={classes.save}
                         endIcon="save"
                         id={`${id}-confirm`}
-                        label={config.text.projectMenu.projetcSettingsModal.saveSettings}
+                        label={config.text.projectMenu.projectSettingsModal.saveSettings}
                         onClick={onSubmit}
                     />
                     <ButtonAction
                         className={classes.cancel}
                         id={`${id}-cancel`}
-                        label={config.text.projectMenu.projetcSettingsModal.cancel}
+                        label={config.text.projectMenu.projectSettingsModal.cancel}
                         onClick={onClose}
                     />
                 </DialogActions>

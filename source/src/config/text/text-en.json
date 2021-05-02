@@ -18,12 +18,16 @@
     "selectServicePeriod": "Select service period"
   },
   "editServicePattern": {
+    "addStopBelow": "Add Stop Below",
     "backToServicePatterns": "Back to service patterns",
+    "checkpoint": "Checkpoint",
+    "delete": "Delete",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
     "errorUpdatingDays": "Service pattern has not been updated",
     "getServicePatternError": "There's been an error while fetching your service pattern",
     "lock": "Lock",
     "putDaysSuccess": "Service pattern updated successfully",
+    "replace": "Replace",
     "route": "Route",
     "title": "Edit Service Pattern",
     "unlocked": "Unlocked",
@@ -89,7 +93,17 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
-    "projetcSettingsModal":{
+    "projectsVehiclesModal": {
+      "addFromLibrary": "Add from library",
+      "createVehicleType": "Create vehicle type",
+      "needUpdate": "Need update",
+      "title": "Projects Vehicles",
+      "typeDays": "Type of days...", 
+      "update": "update",
+      "vehicles": "Vehicles",
+      "vehiclesTypes": "VEHICLES TYPES({0})"
+    },
+    "projectSettingsModal": {
       "cancel": "Cancel",
       "day": "/day",
       "defaultOtpThresholds": "Default OTP thresholds",
@@ -130,7 +144,7 @@
       "Mon": "Monday",
       "Tue": "Tuesday",
       "Wed": "Wednesday",
-      "Thur": "Thursday",
+      "Thu": "Thursday",
       "Fri": "Friday",
       "Sat": "Saturday",
       "Sun": "Sunday"

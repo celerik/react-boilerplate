@@ -3,12 +3,18 @@ import React from 'react';
 
 // @scripts
 import StopListComponent from '.';
-import stopsList from  './stops-list.json'
 
 export default {
     title: 'Stop list',
     component: StopListComponent
 };
+
+const stopsList = [
+    {
+        id: '1',
+        name: 'stop 1'
+    }
+]
 
 const Template = (args) => <StopListComponent {...args} />;
 

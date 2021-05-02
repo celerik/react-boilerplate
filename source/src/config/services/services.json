@@ -11,7 +11,8 @@
     "settings": "{projects}/projects/{0}/settings"
   },
   "servicePatterns": {
-    "getServicePattern": "{projects}/projects/{0}/servicePatterns/{1}"
+    "getServicePattern": "{projects}/projects/{0}/servicePatterns/{1}",
+    "settings": "{projects}/projects/{0}/servicePatterns/{1}/settings"
   },
   "security": {
     "login": "{root}/login"

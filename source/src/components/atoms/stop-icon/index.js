@@ -18,10 +18,10 @@ const customClasses = makeStyles({
 });
 
 const StopIcon = ({
+    className,
     classes,
     color,
     id,
-    isListItem,
     label
 }) => {
     const colorClasses = customClasses({ color });
@@ -29,6 +29,7 @@ const StopIcon = ({
     return (
         <span
             className={classNames(
+                className,
                 classes.mainContainer,
                 colorClasses.main,
                 isListItem && classes.listItem
@@ -41,16 +42,16 @@ const StopIcon = ({
 };
 
 StopIcon.propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     color: PropTypes.string,
     id: PropTypes.string.isRequired,
-    isListItem: PropTypes.bool,
     label: PropTypes.string.isRequired
 };
 
 StopIcon.defaultProps = {
     color: null,
-    isListItem: false
+    className: null
 };
 
 export default withStyles(styles)(StopIcon);

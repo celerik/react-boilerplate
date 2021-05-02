@@ -23,6 +23,7 @@ const initializeApp = () => {
     const serviceMocker = initializeServiceMocker(store);
     addAjaxInterceptors();
     global.core = {
+        environment,
         globalUI,
         serviceMocker,
         store
@@ -32,6 +33,7 @@ const initializeApp = () => {
 };
 
 export const {
+    environment,
     globalUI,
     serviceMocker,
     store

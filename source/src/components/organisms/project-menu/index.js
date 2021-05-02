@@ -12,6 +12,7 @@ import BackToButton from '../../molecules/back-to-button';
 import IconButton from '../../atoms/icon-button';
 import Item from '../../atoms/item';
 import ProjectSettingsModal from '../project-settings';
+import ProjectVehiclesModal from '../project-vehicles-modal';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { theme } from '../../../styles/material-ui';
@@ -26,7 +27,9 @@ const ProjectMenu = ({
     id,
     match
 }) => {
+    const isDialogOpen = history.location.pathname.match(/vehicles$/ig);
     const [runModalVisible, setRunModalVisibility] = useState(false);
+    const [openVehiclesModal, setOpenVehiclesModal] = useState(isDialogOpen);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
@@ -35,6 +38,11 @@ const ProjectMenu = ({
     if (!project) {
         return null;
     }
+
+    const handleCloseProjectsVehiclesModal = () => {
+        setOpenVehiclesModal(false);
+        history.goBack();
+    };
 
     const handleClickOpen = () => {
         setRunModalVisibility(true);
@@ -120,6 +128,10 @@ const ProjectMenu = ({
                 onClose={() => setModalSettingsVisibility(false)}
                 open={modalSettingsVisibility}
                 projectId={projectId}
+            />
+            <ProjectVehiclesModal
+                open={openVehiclesModal}
+                onClose={handleCloseProjectsVehiclesModal}
             />
         </div>
     );
