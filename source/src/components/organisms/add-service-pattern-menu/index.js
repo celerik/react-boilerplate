@@ -86,13 +86,12 @@ const CreateServicePattern = ({
             selectedId => selectedId !== servicePatternId
         );
 
-        if (filterServicePatterns.length === selectedServicePatterns.length) {
-            const servicePatternIds = [...selectedServicePatterns, servicePatternId];
-            selectServicePatterns(servicePatternIds);
-            getServicePatternsData(servicePatternIds);
-        } else {
-            selectServicePatterns(filterServicePatterns);
-        }
+        const newSelectedServicePatterns = filterServicePatterns.length === selectedServicePatterns.length
+            ? [...selectedServicePatterns, servicePatternId]
+            : filterServicePatterns;
+
+        selectServicePatterns(newSelectedServicePatterns);
+        getServicePatternsData(newSelectedServicePatterns);
     };
 
     const onLoadServicePatterns = async () => {

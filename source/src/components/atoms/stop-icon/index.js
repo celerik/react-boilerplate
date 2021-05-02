@@ -10,12 +10,9 @@ import styles from './styles';
 
 const customClasses = makeStyles({
     main: props => ({
-        backgroundColor: `${props.color}33`,
+        backgroundColor: `${props.color} !important`,
         '&:before': {
-            backgroundColor: props.color
-        },
-        '&:after': {
-            border: `${props.color} 2px solid`
+            border: `${props.color} 2px solid !important`
         }
     })
 });
@@ -29,7 +26,6 @@ const StopIcon = ({
 }) => {
     const colorClasses = customClasses({ color });
 
-    console.log(color);
     return (
         <span
             className={classNames(
