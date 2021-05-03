@@ -7,6 +7,8 @@ import { makeStyles, withStyles } from '@material-ui/core';
 
 // @scripts
 import styles from './styles';
+import { useStops } from '../../../providers/stops';
+import { setActiveStops } from '../../../providers/stops/actions';
 
 const customClasses = makeStyles({
     main: props => ({
