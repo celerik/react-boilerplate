@@ -15,8 +15,9 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import Project from '../../../services/project';
 import ProjectsVehiclesList from '../../molecules/projects-vehicles-list';
-import { format } from '../../../util';
 import { config } from '../../../config';
+import { format } from '../../../util';
+import { globalUI } from '../../../core';
 
 // @styles
 import styles from './styles';
@@ -34,6 +35,11 @@ const ProjectsVehicles = ({
     useEffect(async () => {
         setProjectsVehicles(await Project.getVehicles(projectId));
     }, []);
+
+    const handleClickCreateVehicleType = () => {
+        globalUI.showAlertNotificationSuccess(text.vehicleTypeCreatedSuccessfully,
+            text.youCantFind);
+    };
 
     return (
         <Dialog
@@ -67,6 +73,7 @@ const ProjectsVehicles = ({
                     className={classes.outlineButton}
                     endIcon="directions_bus"
                     label={text.createVehicleType}
+                    onClick={handleClickCreateVehicleType}
                 />
                 <Actionbutton
                     className={classes.outlineButton}

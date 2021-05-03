@@ -50,10 +50,12 @@
     "account": "Account",
     "dataExplorer": "Data explorer",
     "logout": "Log out",
+    "manageTeams": "Manage Teams",
     "privacyPolicy": "Privacy policy",
     "projects": "Projects",
     "teamName": "Team Name",
-    "manageTeams": "Manage Teams"
+    "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
+    "youCantFind": "you can find it in the vehicle type library"
   },
   "observationPeriodsPage": {
     "addObservationPeriod": "Add Observation period",
