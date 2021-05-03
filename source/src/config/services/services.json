@@ -6,7 +6,7 @@
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
     "get": "{projects}/projects",
-    "getProjectsVehicles": "projects/{projectId}/vehicles",
+    "getVehicles": "{projects}/projects/{0}/vehicles",
     "getServicePatterns": "{projects}/projects/{0}/servicePatterns",
     "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
     "settings": "{projects}/projects/{0}/settings"

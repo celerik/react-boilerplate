@@ -2,7 +2,7 @@
 import Grid from '@material-ui/core/Grid';
 import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
@@ -17,20 +17,13 @@ import styles from './styles';
 
 const text = config.text.projectMenu.projectsVehiclesModal;
 
-const typeDays = [
-    {
-        text: 'mon',
-        value: 'mon'
-    },
-    {
-        text: 'tue',
-        value: 'tue'
-    },
-    {
-        text: 'wed',
-        value: 'wed'
-    }
-];
+const days = () => {
+    const objectDays = config.text.servicePatternsMenu.days;
+    return Object.entries(objectDays).map(day => ({
+        value: day[0],
+        text: day[1]
+    }));
+};
 
 const TooltipContent = withStyles(styles)(({ classes }) => (
     <>
@@ -46,12 +39,21 @@ const VehicleTypeCard = ({
     quantityAvailable,
     vehicleTypeName
 }) => {
-    const { quantity } = quantityAvailable[0];
-    const [infoValue, setInfoValue] = useState(quantity);
+    const [infoValue, setInfoValue] = useState(0);
     const [tooltipVisible, setTooltipVisibility] = useState(false);
+    const [selectedTypeDay, setSelectedTypeDay] = useState(null);
+
+    useEffect(() => {
+        const quantity = quantityAvailable.find(el => el.dayType === selectedTypeDay)?.quantity || 0;
+        setInfoValue(quantity);
+    }, [selectedTypeDay]);
 
     const onHover = () => {
         setTooltipVisibility(true);
+    };
+
+    const handleSelectedTypeDay = ({ value }) => {
+        setSelectedTypeDay(value);
     };
 
     return (
@@ -102,8 +104,10 @@ const VehicleTypeCard = ({
                         id={id}
                         itemDesProp="text"
                         itemValProp="value"
-                        items={typeDays}
+                        items={days()}
                         placeholder={text.typeDays}
+                        value={selectedTypeDay}
+                        onChange={handleSelectedTypeDay}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -112,6 +116,7 @@ const VehicleTypeCard = ({
                         endAdornment={text.vehicles}
                         onChange={setInfoValue}
                         value={infoValue}
+                        disable={!needUpdate}
                     />
                 </Grid>
                 <Grid item xs={2}>

@@ -94,10 +94,10 @@ class Project {
         }
     }
 
-    static async getProjectsVehicles(projectId) {
+    static async getVehicles(projectId) {
         try {
             const projectsVehicles = await axios.get(
-                format(config.services.projects.getProjectsVehicles, projectId)
+                format(config.services.projects.getVehicles, projectId)
             );
 
             return projectsVehicles;

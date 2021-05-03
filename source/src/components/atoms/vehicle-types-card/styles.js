@@ -31,7 +31,8 @@ export default theme => ({
         minWidth: '140%',
         width: 'min-content',
         '& .MuiInputBase-root': {
-            padding: '3px 7px'
+            padding: '3px 7px',
+            color: theme.palette.text.secondary
         },
         border: `2px solid ${theme.palette.background.secondary}`,
         '& .MuiTypography-root': {
