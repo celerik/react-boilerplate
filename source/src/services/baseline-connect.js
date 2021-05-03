@@ -8,6 +8,35 @@ import { globalUI } from '../core';
 import { format } from '../util';
 
 class BaselineConnect {
+    static async getHistoryPaths(from, to) {
+        try {
+            const paths = await axios.get(
+                config.services.baselineConnect.getHistoryPaths,
+                { params: { from, to } }
+            );
+
+            const pathsGeoJSON = paths.map(path => ({
+                type: 'Feature',
+                properties: {
+                    id: path.pathId
+                },
+                geometry: {
+                    type: 'LineString',
+                    coordinates: parseWkt(path.pathGeometry).coordinates
+                }
+            }));
+
+            return pathsGeoJSON;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.services.baselineConnect.historyPaths,
+                error.message
+            );
+
+            return error;
+        }
+    }
+
     static async getRoutes(teamId) {
         const routes = await axios.get(format(config.services.routes.getRoutes, teamId));
         return routes;

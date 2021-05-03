@@ -10,9 +10,6 @@ export default theme => Object.assign({}, {
             boxShadow: '0px 0px 0px 4px rgb(134 117 255 / 20%)'
         }
     },
-    bodyOptions: {
-        display: 'flex'
-    },
     container: {
         display: 'flex',
         flexDirection: 'row',
@@ -22,51 +19,50 @@ export default theme => Object.assign({}, {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        padding: 0
-    },
-    headerOptions: {
-        display: 'flex',
-        justifyContent: 'start'
+        paddingLeft: 0
     },
     stopItem: {
-        alignItems: 'flex-start',
         display: 'flex',
-        paddingBottom: 25,
-        position: 'relative',
         '&:last-child, &:first-child': {
             fontWeight: 'bold',
-            '& span': {
-                height: 35,
-                marginLeft: 0,
-                width: 35
-            },
             '& span:before': {
                 borderStyle: 'groove'
             }
         }
     },
+    segmentContainer: {
+        position: 'relative',
+        left: 16,
+        height: '100%',
+        width: 100
+    },
+    segmentEdit: {
+        color: theme.palette.text.secondary,
+        position: 'absolute',
+        top: 15,
+        left: 25
+    },
     stopLine: {
-        '&:after': {
-            background: theme.palette.primary.light,
-            content: '""',
-            height: '100%',
-            left: 16,
-            marginLeft: 0,
-            position: 'absolute',
-            top: 30,
-            width: 2,
-            zIndex: -1
-        }
+        background: theme.palette.primary.light,
+        position: 'absolute',
+        height: '100%',
+        width: 2
     },
     stopIcon: {
-        width: '15%',
-        height: '100%'
+        minHeight: 100,
+        width: 50
+    },
+    infoContainer: {
+        width: '100%'
     },
     title: {
-        width: '85%',
-        height: '20%'
+        justifyContent: 'space-between',
+        display: 'flex',
+        width: '100%'
     },
     subStopsContainer: {
+        backgroundColor: 'white',
+        position: 'relative',
         width: '75%'
     }
 });

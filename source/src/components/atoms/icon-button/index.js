@@ -13,6 +13,7 @@ import styles from './styles';
 const IconComponent = ({
     arrow,
     buttonClassname,
+    className,
     classes,
     color,
     icon,
@@ -20,9 +21,11 @@ const IconComponent = ({
     id,
     label,
     onClick,
-    placement
+    placement,
+    size
 }) => {
     const buttonClass = classNames(
+        className,
         classes.iconButton,
         buttonClassname
     );
@@ -48,7 +51,10 @@ const IconComponent = ({
             >
                 <Icon
                     className={iconClass}
-                    style={color && { color }}
+                    style={{
+                        color,
+                        fontSize: size
+                    }}
                 >
                     {icon}
                 </Icon>
@@ -60,6 +66,7 @@ const IconComponent = ({
 IconComponent.propTypes = {
     arrow: PropTypes.bool,
     buttonClassname: PropTypes.string,
+    className: PropTypes.string.prototype,
     classes: PropTypes.object.isRequired,
     color: PropTypes.string,
     icon: PropTypes.string.isRequired,
@@ -67,17 +74,20 @@ IconComponent.propTypes = {
     id: PropTypes.string.isRequired,
     label: PropTypes.string,
     onClick: PropTypes.func,
-    placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom'])
+    placement: PropTypes.oneOf(['top', 'right', 'left', 'bottom']),
+    size: PropTypes.number
 };
 
 IconComponent.defaultProps = {
     arrow: false,
     buttonClassname: null,
+    className: null,
     color: null,
     iconClassName: null,
     label: '',
     onClick: Function.prototype,
-    placement: 'bottom'
+    placement: 'bottom',
+    size: null
 };
 
 export default withStyles(styles)(IconComponent);

@@ -59,7 +59,7 @@ const CustomMap = ({
 
     const mapRef = useRef();
 
-    const { servicePatterns, stops } = useSelector(state => state.map);
+    const { historyPaths, servicePatterns, stops } = useSelector(state => state.map);
 
     useEffect(() => {
         if (servicePatterns.length && servicePatterns[0].features?.length) {
@@ -90,6 +90,19 @@ const CustomMap = ({
                                 ['get', 'color'],
                                 theme.palette.primary.main
                             ]
+                        }}
+                    />
+                ))}
+                {historyPaths.map((featureCollection, index) => (
+                    <GeoJSONLayer
+                        data={featureCollection}
+                        key={`history-path-${index}`}
+                        lineLayout={shapes.line.layout}
+                        linePaint={{
+                            ...shapes.line.paint,
+                            'line-color': theme.palette.primary.main,
+                            'line-dasharray': [1, 5],
+                            'line-width': 1
                         }}
                     />
                 ))}

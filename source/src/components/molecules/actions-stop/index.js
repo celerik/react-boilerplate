@@ -5,17 +5,17 @@ import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
 import IconButton from '../../atoms/icon-button';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
 
 const ActionsStop = ({
-    actions,
     classes,
+    currentAction,
     defaultColor,
     id,
-    currentAction,
-    selectAction
+    onSelectAction
 }) => {
     const theme = useTheme();
 
@@ -28,7 +28,7 @@ const ActionsStop = ({
 
     return (
         <>
-            {actions.map((action, index) => (
+            {Object.values(config.masterData.stopActions).map((action, index) => (
                 <IconButton
                     arrow
                     buttonClassname={classes.actions}
@@ -36,8 +36,8 @@ const ActionsStop = ({
                     icon={action.icon}
                     id={`${id}-action-${index}`}
                     key={index}
-                    label={action.name}
-                    onClick={() => selectAction(action.onClick, action.name)}
+                    label={config.text.editServicePattern[action.name]}
+                    onClick={() => onSelectAction(action.name)}
                     placement="top"
                 />
             ))}
@@ -50,16 +50,10 @@ ActionsStop.propTypes = {
     currentAction: PropTypes.string.isRequired,
     defaultColor: PropTypes.string,
     id: PropTypes.string.isRequired,
-    selectAction: PropTypes.func.isRequired,
-    actions: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-        name: PropTypes.string.isRequired,
-        onClick: PropTypes.func.isRequired
-    }))
+    onSelectAction: PropTypes.func.isRequired
 };
 
 ActionsStop.defaultProps = {
-    actions: [],
     defaultColor: null
 };
 

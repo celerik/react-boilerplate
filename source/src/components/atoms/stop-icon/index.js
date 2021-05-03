@@ -31,7 +31,7 @@ const StopIcon = ({
             className={classNames(
                 className,
                 classes.mainContainer,
-                colorClasses.main,
+                colorClasses.main
             )}
             id={id}
         >

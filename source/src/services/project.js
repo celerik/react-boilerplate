@@ -21,6 +21,7 @@ class Project {
             const featurePath = {
                 type: 'Feature',
                 properties: {
+                    dashed: true,
                     name: `path-${servicePattern.routeName}`
                 },
                 geometry: {
