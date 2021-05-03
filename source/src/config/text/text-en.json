@@ -53,9 +53,7 @@
     "manageTeams": "Manage Teams",
     "privacyPolicy": "Privacy policy",
     "projects": "Projects",
-    "teamName": "Team Name",
-    "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
-    "youCantFind": "you can find it in the vehicle type library"
+    "teamName": "Team Name"
   },
   "observationPeriodsPage": {
     "addObservationPeriod": "Add Observation period",
@@ -100,10 +98,12 @@
       "createVehicleType": "Create vehicle type",
       "needUpdate": "Need update",
       "title": "Projects Vehicles",
-      "typeDays": "Type of days...", 
+      "typeDays": "Type of days...",
       "update": "update",
+      "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
       "vehicles": "Vehicles",
-      "vehiclesTypes": "VEHICLES TYPES({0})"
+      "vehiclesTypes": "VEHICLES TYPES({0})",
+      "youCantFind": "you can find it in the vehicle type library"
     },
     "projectSettingsModal": {
       "cancel": "Cancel",
