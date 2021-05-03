@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core';
 
 // @scrips
 import ActionsStop from '../actions-stop';
-import StopIcon from '../../atoms/stop-icon';
+import StopIcon from '../stop-icon';
 import SubStopsList from '../sub-stops-list';
 import { config } from '../../../config';
 

@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMapBoxGl, { Cluster, GeoJSONLayer, Marker } from 'react-mapbox-gl';
-import StopIcon from '../../atoms/stop-icon';
+import StopIcon from '../../molecules/stop-icon';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
 
