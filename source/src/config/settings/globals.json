@@ -15,7 +15,9 @@
     "delayResponse": 300,
     "isEnabled": true,
     "loginPassword": "123",
-    "loginUserName": "user@flowos.com"
+    "name": "Celerik",
+    "loginUserName": "user@flowos.com",
+    "authToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9"
   },
   "alertNotification": {
     "autoHideDuration": 5000

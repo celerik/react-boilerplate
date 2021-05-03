@@ -10,6 +10,10 @@ export const getTeams = () =>
     async (dispatch) => {
         const teams = await axios.get(config.services.teams.get);
 
+        if (!teams) {
+            return;
+        }
+
         dispatch({
             type: GET_TEAMS,
             payload: teams

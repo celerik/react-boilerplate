@@ -1,6 +1,6 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
@@ -13,19 +13,14 @@ const ActionsStop = ({
     actions,
     classes,
     defaultColor,
-    id
+    id,
+    currentAction,
+    selectAction
 }) => {
-    const [currentOption, setCurrentOption] = useState(false);
-
-    const selectAction = (rollback, action) => {
-        rollback();
-        setCurrentOption(action);
-    };
-
     const theme = useTheme();
 
     const getColor = (name) => {
-        const color = currentOption === name
+        const color = currentAction === name
             ? theme.palette.text.primary
             : theme.palette.text.contrastText;
         return color;
@@ -52,8 +47,10 @@ const ActionsStop = ({
 
 ActionsStop.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    currentAction: PropTypes.string.isRequired,
     defaultColor: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    selectAction: PropTypes.func.isRequired,
     actions: PropTypes.arrayOf(PropTypes.shape({
         icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
         name: PropTypes.string.isRequired,

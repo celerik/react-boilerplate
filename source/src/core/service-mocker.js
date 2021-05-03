@@ -17,8 +17,17 @@ const httpCodes = {
 };
 
 const mockedServices = {
+    mockServiceCloneProjects: (mockAdapter) => {
+        const url = config.services.projects.clone;
+        const pathRegexp = new RegExp(format(url, '.*'));
+        mockAdapter.onPost(pathRegexp).reply(() =>
+            createMockResponse({
+                httpCode: httpCodes.success
+            }));
+    },
     mockServiceGetProjects: (mockAdapter) => {
-        mockAdapter.onGet(config.services.projects.get).reply(() => createMockResponse({
+        const url = config.services.projects.get;
+        mockAdapter.onGet(url).reply(() => createMockResponse({
             data: config.mockData.projects,
             httpCode: httpCodes.success
         }));
@@ -54,7 +63,7 @@ const mockedServices = {
         });
     },
     mockServiceGetServicePatterns: (mockAdapter) => {
-        const url = config.services.servicePatterns.get;
+        const url = config.services.projects.getServicePatterns;
         const pathRegexp = new RegExp(format(url, '.*'));
         mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({
             data: config.mockData.servicePatterns,
@@ -87,7 +96,6 @@ export const initializeServiceMocker = (store) => {
     const mockAdapter = new MockAdapter(axios, { delayResponse: config.settings.serviceMocker.delayResponse });
     const serviceMocker = {
         replyWithMockData: () => {
-            mockAdapter.reset();
             const include = config.settings.serviceMocker.include || [];
             Object.keys(mockedServices).forEach((name) => {
                 if (include.some(item => item === name)) {

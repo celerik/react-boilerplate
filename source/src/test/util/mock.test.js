@@ -33,7 +33,7 @@ describe('getMockParams', () => {
 
 describe('createMockResponse', () => {
     test('createMockResponse (without data)', () => {
-        const response = createMockResponse({ data: null });
+        const response = createMockResponse({});
         const expected = [200, null];
         expect(response).toEqual(expected);
     });

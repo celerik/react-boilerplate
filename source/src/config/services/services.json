@@ -1,6 +1,7 @@
 {
   "baselineConnect": {
-    "getStopDetails": "{baseline}/stops/{0}"
+    "getStopDetails": "{baseline}/stops/{0}",
+    "getTeamServicePatterns": "{baseline}/teams/{0}/servicePatterns"
   },
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",

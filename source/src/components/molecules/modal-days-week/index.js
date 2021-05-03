@@ -61,7 +61,7 @@ const ModalDaysWeek = ({
                                 defaultChecked={days.includes(dayValue)}
                                 checkedIcon={<Stop fontSize="medium" className={classes.checkboxSelect} />}
                                 color="primary"
-                                id={`${id}-checkbox-day`}
+                                id={`${id}-checkbox-day-${index}`}
                                 icon={(
                                     <Stop
                                         fontSize="medium"

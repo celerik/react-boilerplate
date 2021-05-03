@@ -1,12 +1,15 @@
 // @packages
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
+import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
 import ActionsStop from '../actions-stop';
 import StopIcon from '../../atoms/stop-icon';
+import SubStopsList from '../sub-stops-list';
+import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
@@ -25,6 +28,13 @@ const Stop = ({
     const stopClass = classNames(classes.onFocus, classes.stopNumber);
     const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
 
+    const [currentAction, setCurrentOption] = useState('');
+
+    const selectAction = (rollback, action) => {
+        rollback();
+        setCurrentOption(action);
+    };
+
     const onHoverActions = () => {
         setActionsVisibility(true);
     };
@@ -40,21 +50,27 @@ const Stop = ({
                 <StopIcon
                     className={actionsVisible ? stopClass : classes.stopNumber}
                     id={`${id}-stop-icon-}`}
-                    isListItem
                     label={!lastItem && content}
                 />
                 {!lastItem && (<span className={onHoverSegment ? separatorLine : classes.stopLine} />)}
             </div>
             <div className={classes.title}>
                 <div className={classes.headerOptions}>
-                    {stopName}
+                    <Typography variant="body2" style={{ fontWeight: currentAction && 'bold' }}>{stopName}</Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             <ActionsStop
                                 actions={actions}
                                 id={`${id}-actions`}
+                                currentAction={currentAction}
+                                selectAction={selectAction}
                             />
                         </div>
+                    )}
+                </div>
+                <div className={classes.subStopsContainer}>
+                    {currentAction === config.text.editServicePattern.addStopBelow && (
+                        <SubStopsList />
                     )}
                 </div>
             </div>

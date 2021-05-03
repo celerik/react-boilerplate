@@ -21,7 +21,7 @@ class Project {
             const featurePath = {
                 type: 'Feature',
                 properties: {
-                    name: 'test'
+                    name: `path-${servicePattern.routeName}`
                 },
                 geometry: {
                     type: 'LineString',
@@ -29,7 +29,10 @@ class Project {
                 }
             };
 
-            servicePattern.features = [featurePath];
+            servicePattern.pathGeoJSON = {
+                type: 'FeatureCollection',
+                features: [featurePath]
+            };
 
             return servicePattern;
         } catch (error) {

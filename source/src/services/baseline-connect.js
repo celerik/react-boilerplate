@@ -57,6 +57,71 @@ class BaselineConnect {
             throw error;
         }
     }
+
+    static async getTeamServicePatterns(teamId, servicePatternIds, date) {
+        try {
+            const servicePatterns = await axios.get(
+                format(config.services.baselineConnect.getTeamServicePatterns, teamId),
+                {
+                    params: {
+                        date,
+                        servicePatternIds: servicePatternIds.toString()
+                    }
+                }
+            );
+
+            const formatServicePatterns = servicePatterns.map((servicePattern) => {
+                const coordinates = servicePattern.segments.flatMap(
+                    segment => parseWkt(segment.path.pathGeometry).coordinates
+                );
+
+                const pathFeature = {
+                    type: 'Feature',
+                    properties: {
+                        color: servicePattern.colour,
+                        name: 'test'
+                    },
+                    geometry: {
+                        type: 'LineString',
+                        coordinates
+                    }
+                };
+
+                const stops = servicePattern.stops.map(stop => {
+                    const geometry = {
+                        type: 'Point',
+                        coordinates: parseWkt(stop.stopPoint).coordinates
+                    };
+
+                    return {
+                        type: 'Feature',
+                        properties: {
+                            ...stop,
+                            color: servicePattern.colour
+                        },
+                        geometry
+                    };
+                });
+
+                return {
+                    ...servicePattern,
+                    features: [
+                        pathFeature
+                    ],
+                    stops
+                };
+            });
+
+            return formatServicePatterns;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.services.baselineConnect.teamServicePatterns,
+                error.message
+            );
+
+            return [];
+        }
+    }
 }
 
 export default BaselineConnect;
