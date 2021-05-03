@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
@@ -15,7 +15,7 @@ import ProjectSettingsModal from '../project-settings';
 import ProjectVehiclesModal from '../project-vehicles-modal';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-import { theme } from '../../../styles/material-ui';
+// import { theme } from '../../../styles/material-ui';
 import { useSelector } from 'react-redux';
 
 // @styles
@@ -34,6 +34,7 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
+    const theme = useTheme();
 
     if (!project) {
         return null;
