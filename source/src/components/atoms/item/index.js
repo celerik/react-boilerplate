@@ -16,6 +16,7 @@ const Item = ({
     id,
     text,
     textClass,
+    value,
     variant
 }) => {
     const itemContainer = classNames(classes.itemContainer, className);
@@ -28,7 +29,7 @@ const Item = ({
     return (
         <div
             className={itemContainer}
-            id={`${id}-item-element`}
+            id={id}
             onFocus={onHoverCard}
             onMouseLeave={() => setActionsVisibility(false)}
             onMouseOver={onHoverCard}
@@ -43,7 +44,7 @@ const Item = ({
                     icon={iconButton.icon}
                     key={`${id}-${iconButton.name}-tooltip`}
                     label={iconButton.name}
-                    onClick={(event) => iconButton.onClick(id, event)}
+                    onClick={(event) => iconButton.onClick(value, event)}
                 />
             ))}
             </div>
@@ -62,6 +63,7 @@ Item.propTypes = {
     id: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     textClass: PropTypes.object,
+    value: PropTypes.string.isRequired,
     variant: PropTypes.string
 };
 

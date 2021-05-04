@@ -14,25 +14,25 @@ class Project {
                 format(config.services.servicePatterns.getServicePattern, projectId, servicePatternId)
             );
 
-            const coordinates = servicePattern.segments.flatMap(
-                segment => parseWkt(segment.path.pathGeometry).coordinates
-            );
+            const segments = servicePattern.segments.map(segment => ({
+                ...segment,
+                coordinates: parseWkt(segment.path.pathGeometry).coordinates
+            }));
 
-            const featurePath = {
-                type: 'Feature',
-                properties: {
-                    dashed: true,
-                    name: `path-${servicePattern.routeName}`
-                },
+            const features = segments.map(segment => ({
                 geometry: {
                     type: 'LineString',
-                    coordinates
-                }
-            };
+                    coordinates: segment.coordinates
+                },
+                properties: {
+                    pathId: segment.path.pathId
+                },
+                type: 'Feature'
+            }));
 
             servicePattern.pathGeoJSON = {
                 type: 'FeatureCollection',
-                features: [featurePath]
+                features
             };
 
             return servicePattern;

@@ -11,7 +11,6 @@ export const setMapHistoryPaths = (historyPaths) => ({
     payload: historyPaths
 });
 
-
 /**
  * @param {Array[GeoJSON] || FeatureCollection} servicePatterns
  */

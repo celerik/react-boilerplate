@@ -27,10 +27,10 @@ const StopIcon = ({
     label,
     stopId
 }) => {
-    const colorClasses = customClasses({ color });
     const { activeStops } = useStopsContext();
-    const isActive = activeStops.includes(stopId);
     const setActiveStops = useSetActiveStops();
+    const colorClasses = customClasses({ color });
+    const isActive = activeStops.includes(stopId);
 
     return (
         <span

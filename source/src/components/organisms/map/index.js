@@ -11,6 +11,7 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
+import { useStops, useStopsContext } from '../../../providers/stops';
 
 // @constants
 const AVAILABLE_CONTROLS = ['zoom'];
@@ -21,7 +22,7 @@ const shapes = {
         },
         layout: {
             'line-join': 'round',
-            'line-cap': 'round'
+            'line-cap': 'round',
         }
     }
 };
@@ -60,6 +61,7 @@ const CustomMap = ({
     const mapRef = useRef();
 
     const { historyPaths, servicePatterns, stops } = useSelector(state => state.map);
+    const { activePaths } = useStopsContext();
 
     useEffect(() => {
         if (servicePatterns.length && servicePatterns[0].features?.length) {
@@ -89,6 +91,12 @@ const CustomMap = ({
                                 ['has', 'color'],
                                 ['get', 'color'],
                                 theme.palette.primary.main
+                            ],
+                            'line-width': [
+                                'case',
+                                ['in', ['get', 'pathId'], ['literal', ['-3522245749409731015']]],
+                                8,
+                                5
                             ]
                         }}
                     />
@@ -101,8 +109,8 @@ const CustomMap = ({
                         linePaint={{
                             ...shapes.line.paint,
                             'line-color': theme.palette.primary.main,
-                            'line-dasharray': [1, 5],
-                            'line-width': 1
+                            'line-dasharray': [2, 2.5],
+                            'line-width': 3
                         }}
                     />
                 ))}

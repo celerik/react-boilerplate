@@ -26,7 +26,7 @@ class BaselineConnect {
                 }
             }));
 
-            return pathsGeoJSON;
+            return [paths, pathsGeoJSON];
         } catch (error) {
             globalUI.showAlertNotificationError(
                 config.text.services.baselineConnect.historyPaths,

@@ -7,15 +7,16 @@ import { withStyles } from '@material-ui/core';
 
 // @scrips
 import ActionsStop from '../actions-stop';
+import BaselineConnect from '../../../services/baseline-connect';
+import IconButton from '../../atoms/icon-button';
 import StopIcon from '../../atoms/stop-icon';
 import SubStopsList from '../sub-stops-list';
 import { config } from '../../../config';
+import { useDispatch } from 'react-redux';
 
 // @styles
 import styles from './styles';
-import IconButton from '../../atoms/icon-button';
-import BaselineConnect from '../../../services/baseline-connect';
-import { useSetActiveStops } from '../../../providers/stops/actions';
+import { setMapHistoryPaths } from '../../../actions';
 
 // @constants
 const segmentEdit = 'segmentEdit';
@@ -32,6 +33,7 @@ const Stop = ({
     to
 }) => {
     const id = `stop-${stopId}`;
+    const dispatch = useDispatch();
     const [actionsVisible, setActionsVisibility] = useState(false);
     const [segmentHover, setSegmentHover] = useState(false);
     const [historyPaths, setHistoryPaths] = useState([]);
@@ -41,7 +43,8 @@ const Stop = ({
     };
 
     const onGetHistoryPaths = async () => {
-        const paths = await BaselineConnect.getHistoryPaths(stopId, to);
+        const [paths, pathsGeoJSON] = await BaselineConnect.getHistoryPaths(stopId, to);
+        dispatch(setMapHistoryPaths(pathsGeoJSON));
         setHistoryPaths(paths);
     };
 
@@ -74,7 +77,7 @@ const Stop = ({
                         onMouseOver={() => setSegmentHover(true)}
                     >
                         <span className={classes.stopLine} />
-                        {segmentHover && (
+                        {segmentHover && currentAction !== segmentEdit && (
                             <IconButton
                                 className={classes.segmentEdit}
                                 icon="edit"
@@ -106,12 +109,30 @@ const Stop = ({
                 </div>
                 <div className={classes.subStopsContainer}>
                     {currentAction === config.masterData.stopActions.add.name && (
-                        <SubStopsList />
+                        <SubStopsList
+                            actions={[
+                                {
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: console.log
+                                }
+                            ]}
+                            items={[]}
+                        />
                     )}
                     {currentAction === segmentEdit && (
                         <SubStopsList
-                            id={`${id}-segment-edit`}
-                            items={historyPaths}
+                            actions={[
+                                {
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: console.log
+                                }
+                            ]}
+                            items={historyPaths.map((item, index) => ({
+                                ...item,
+                                name: `Route ${index}`
+                            }))}
                         />
                     )}
                 </div>

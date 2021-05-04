@@ -21,9 +21,10 @@ const ListActions = ({
             <>
                 <Item
                     className={classes.itemList}
-                    id={element.projectId}
+                    id={`${id}-item-${element.projectId}`}
                     text={element.projectName}
                     iconButtons={actions}
+                    value={element.projectId}
                 />
                 <Divider
                     className={classes.divider}

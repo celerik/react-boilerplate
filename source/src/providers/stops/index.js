@@ -1,16 +1,19 @@
 // @packages
 import React, { createContext, useContext, useReducer } from 'react';
-import { SET_ACTIVE_STOPS } from './actions';
+import { SET_ACTIVE_PATHS, SET_ACTIVE_STOPS } from './actions';
 
 // @constants
 const StopsContext = createContext();
 const StopsDispatchContext = createContext();
 const initialState = {
+    activePaths: [],
     activeStops: []
 };
 
 const stopsReducer = (state, action) => {
     switch (action.type) {
+        case SET_ACTIVE_PATHS:
+            return { ...state, activePaths: action.payload };
         case SET_ACTIVE_STOPS:
             return { ...state, activeStops: action.payload };
         default:

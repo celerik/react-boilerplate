@@ -9,27 +9,22 @@ import Item from '../../atoms/item';
 // @styles
 import styles from './styles';
 
-const actions = [
-    {
-        icon: 'add_circle',
-        name: 'add',
-        onClick: Function.prototype
-    }
-];
-
 const SubStopsList = ({
     actions,
     classes,
+    desPropName,
     id,
-    items
+    items,
+    valPropName
 }) => (
     <div className={classes.listContainer} id={id}>
         {items.map((item, index) => (
             <Item
                 className={classes.item}
                 key={`${id}-sub-stop-${index}`}
-                text={item.name}
+                text={item[desPropName]}
                 iconButtons={actions}
+                value={item[valPropName]}
             />
         ))}
     </div>
@@ -42,15 +37,19 @@ SubStopsList.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     classes: PropTypes.object.isRequired,
+    desPropName: PropTypes.string,
     id: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         nameStop: PropTypes.string.isRequired
-    }))
+    })),
+    valPropName: PropTypes.string
 };
 
 SubStopsList.defaultProps = {
-    actions,
+    actions: [],
+    desPropName: 'name',
+    valPropName: 'id',
     items: []
 };
 

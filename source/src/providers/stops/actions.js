@@ -2,6 +2,7 @@
 import { useStopsDispatch } from '.';
 
 // @actions
+export const SET_ACTIVE_PATHS = 'SET_ACTIVE_PATHS';
 export const SET_ACTIVE_STOPS = 'SET_ACTIVE_STOPS';
 
 export const useSetActiveStops = () => {
@@ -13,4 +14,15 @@ export const useSetActiveStops = () => {
     });
 
     return setActiveStops;
+};
+
+export const useSetActivePaths = () => {
+    const dispatch = useStopsDispatch();
+
+    const setActivePaths = (paths) => dispatch({
+        type: SET_ACTIVE_PATHS,
+        payload: paths
+    });
+
+    return setActivePaths;
 };
