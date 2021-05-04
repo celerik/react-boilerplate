@@ -1,13 +1,14 @@
-import { useStopsDispatch } from ".";
+// @scripts
+import { useStopsDispatch } from '.';
 
 // @actions
-export const SET_ACTIVE_STOP = 'SET_ACTIVE_STOP';
+export const SET_ACTIVE_STOPS = 'SET_ACTIVE_STOPS';
 
-export const setActiveStops = () => {
+export const useSetActiveStops = () => {
     const dispatch = useStopsDispatch();
 
     const setActiveStops = (stops) => dispatch({
-        type: SET_ACTIVE_STOP,
+        type: SET_ACTIVE_STOPS,
         payload: stops
     });
 

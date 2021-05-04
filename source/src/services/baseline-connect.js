@@ -72,7 +72,9 @@ class BaselineConnect {
 
             stopDetails.features = [{
                 type: 'Feature',
-                properties: {},
+                properties: {
+                    stopId
+                },
                 geometry
             }];
 

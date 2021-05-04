@@ -25,5 +25,8 @@ export default theme => ({
             right: -5,
             top: -5
         }
+    },
+    onFocus: {
+        boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
     }
 });

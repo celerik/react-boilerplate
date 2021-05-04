@@ -2,9 +2,6 @@ export default theme => Object.assign({}, {
     actionsContainer: {
         marginLeft: 20
     },
-    onFocus: {
-        boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
-    },
     onFocusLine: {
         '&:after': {
             boxShadow: '0px 0px 0px 4px rgb(134 117 255 / 20%)'

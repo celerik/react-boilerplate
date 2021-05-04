@@ -15,6 +15,7 @@ import { config } from '../../../config';
 import styles from './styles';
 import IconButton from '../../atoms/icon-button';
 import BaselineConnect from '../../../services/baseline-connect';
+import { useSetActiveStops } from '../../../providers/stops/actions';
 
 // @constants
 const segmentEdit = 'segmentEdit';
@@ -34,7 +35,6 @@ const Stop = ({
     const [actionsVisible, setActionsVisibility] = useState(false);
     const [segmentHover, setSegmentHover] = useState(false);
     const [historyPaths, setHistoryPaths] = useState([]);
-    const stopClass = classNames(classes.onFocus, classes.stopNumber);
 
     const onHoverActions = () => {
         setActionsVisibility(true);
@@ -42,9 +42,9 @@ const Stop = ({
 
     const onGetHistoryPaths = async () => {
         const paths = await BaselineConnect.getHistoryPaths(stopId, to);
-        console.log(paths);
         setHistoryPaths(paths);
     };
+
     useEffect(() => {
         if (currentAction === segmentEdit) onGetHistoryPaths();
     }, [currentAction]);
@@ -59,8 +59,11 @@ const Stop = ({
         >
             <div className={classes.stopIcon}>
                 <StopIcon
-                    className={actionsVisible ? stopClass : classes.stopNumber}
-                    id={`${stopId}-stop-icon`}
+                    className={classNames(
+                        classes.stopNumber,
+                        actionsVisible && classes.onFocus
+                    )}
+                    stopId={stopId}
                     label={!lastItem && content}
                 />
                 {!lastItem && (

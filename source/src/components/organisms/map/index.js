@@ -121,6 +121,7 @@ const CustomMap = ({
                                     <StopIcon
                                         color={feature.properties.color}
                                         label={index < featureCollection.features.length - 1 && index + 1}
+                                        stopId={feature.properties.stopId}
                                     />
                                 </Marker>
                             )

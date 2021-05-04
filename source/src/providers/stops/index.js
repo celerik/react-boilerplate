@@ -1,18 +1,18 @@
 // @packages
 import React, { createContext, useContext, useReducer } from 'react';
-import { SET_ACTIVE_STOP } from './actions';
+import { SET_ACTIVE_STOPS } from './actions';
 
 // @constants
 const StopsContext = createContext();
 const StopsDispatchContext = createContext();
 const initialState = {
-    activeStop: null
-}
+    activeStops: []
+};
 
 const stopsReducer = (state, action) => {
     switch (action.type) {
-        case SET_ACTIVE_STOP:
-            return { ...state, activeStop: action.payload };
+        case SET_ACTIVE_STOPS:
+            return { ...state, activeStops: action.payload };
         default:
             return state;
     }
@@ -27,7 +27,7 @@ export const StopsProvider = ({ children }) => {
                 {children}
             </StopsDispatchContext.Provider>
         </StopsContext.Provider>
-    )
+    );
 };
 
 export const useStopsContext = () => {
