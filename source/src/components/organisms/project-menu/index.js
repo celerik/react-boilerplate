@@ -57,8 +57,9 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
+    // corregir !project.servicePatternsLocked
     const actions = [{
-        icon: 'lock_open_outlined',
+        icon: project.servicePatternsLocked ? 'lock_open_outlined' : 'lock_outlined',
         onClick: Function.prototype
     }];
 
@@ -88,13 +89,13 @@ const ProjectMenu = ({
                         role="button"
                         tabIndex={index}
                     >
-                    <Icon>{menuOption.icon}</Icon>
-                    <Item
-                        className={classes.centerIcon}
-                        iconButtons={index === 0 ? actions : []}
-                        text={config.text.projectMenu[menuOption.name]}
-                        textClass={classes.optionText}
-                    />
+                        <Icon>{menuOption.icon}</Icon>
+                        <Item
+                            className={classes.centerIcon}
+                            iconButtons={index === 0 ? actions : []}
+                            text={config.text.projectMenu[menuOption.name]}
+                            textClass={classes.optionText}
+                        />
                     </div>
                 ))}
             </div>
