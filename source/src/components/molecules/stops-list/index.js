@@ -27,11 +27,12 @@ const StopsList = ({
             <ol className={classes.stops}>
                 {stops.map((stop, index) => (
                     <Stop
-                        currentAction={selectedStop === stop.stopId && currentAction}
                         content={index + 1}
-                        onSelectAction={onSelectAction(stop.stopId)}
+                        currentAction={selectedStop === stop.stopId && currentAction}
                         key={`${id}-item-${stop.stopName}`}
                         lastItem={index === stops.length - 1}
+                        onSelectAction={onSelectAction(stop.stopId)}
+                        pathId={stop.pathId}
                         stopId={stop.stopId}
                         stopName={stop.stopName}
                         to={stops[index + 1]?.stopId}

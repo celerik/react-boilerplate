@@ -18,7 +18,7 @@ class BaselineConnect {
             const pathsGeoJSON = paths.map(path => ({
                 type: 'Feature',
                 properties: {
-                    id: path.pathId
+                    pathId: path.pathId
                 },
                 geometry: {
                     type: 'LineString',

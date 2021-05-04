@@ -94,7 +94,7 @@ const CustomMap = ({
                             ],
                             'line-width': [
                                 'case',
-                                ['in', ['get', 'pathId'], ['literal', ['-3522245749409731015']]],
+                                ['in', ['get', 'pathId'], ['literal', activePaths]],
                                 8,
                                 5
                             ]
@@ -110,7 +110,12 @@ const CustomMap = ({
                             ...shapes.line.paint,
                             'line-color': theme.palette.primary.main,
                             'line-dasharray': [2, 2.5],
-                            'line-width': 3
+                            'line-width': [
+                                'case',
+                                ['in', ['get', 'pathId'], ['literal', activePaths]],
+                                5,
+                                3
+                            ]
                         }}
                     />
                 ))}

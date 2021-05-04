@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 // @styles
 import styles from './styles';
 import { setMapHistoryPaths } from '../../../actions';
+import { useSetActivePaths } from '../../../providers/stops/actions';
 
 // @constants
 const segmentEdit = 'segmentEdit';
@@ -28,6 +29,7 @@ const Stop = ({
     isSelected,
     lastItem,
     onSelectAction,
+    pathId,
     stopId,
     stopName,
     to
@@ -37,9 +39,29 @@ const Stop = ({
     const [actionsVisible, setActionsVisibility] = useState(false);
     const [segmentHover, setSegmentHover] = useState(false);
     const [historyPaths, setHistoryPaths] = useState([]);
+    const setActivePaths = useSetActivePaths();
 
     const onHoverActions = () => {
         setActionsVisibility(true);
+    };
+
+    const onHoverSegment = (hover) => {
+        if (hover) {
+            setActivePaths([pathId]);
+        } else {
+            setActivePaths([]);
+        }
+
+        setSegmentHover(hover);
+    };
+
+    const onHoverHistoryPath = (pathId) => {
+        console.log(pathId)
+        setActivePaths([pathId]);
+    };
+
+    const onBlurHistoryPath = (pathId) => {
+        setActivePaths([]);
     };
 
     const onGetHistoryPaths = async () => {
@@ -72,9 +94,9 @@ const Stop = ({
                 {!lastItem && (
                     <div
                         className={classes.segmentContainer}
-                        onFocus={() => setSegmentHover(true)}
-                        onMouseLeave={() => setSegmentHover(false)}
-                        onMouseOver={() => setSegmentHover(true)}
+                        onFocus={() => onHoverSegment(true)}
+                        onMouseLeave={() => onHoverSegment(false)}
+                        onMouseOver={() => onHoverSegment(true)}
                     >
                         <span className={classes.stopLine} />
                         {segmentHover && currentAction !== segmentEdit && (
@@ -130,9 +152,11 @@ const Stop = ({
                                 }
                             ]}
                             items={historyPaths.map((item, index) => ({
-                                ...item,
-                                name: `Route ${index}`
+                                id: item.pathId,
+                                name: `Route ${index + 1}`
                             }))}
+                            onHoverItem={onHoverHistoryPath}
+                            onBlurItem={onBlurHistoryPath}
                         />
                     )}
                 </div>

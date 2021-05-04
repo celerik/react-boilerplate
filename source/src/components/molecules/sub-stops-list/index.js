@@ -15,15 +15,22 @@ const SubStopsList = ({
     desPropName,
     id,
     items,
+    onBlurItem,
+    onHoverItem,
     valPropName
 }) => (
     <div className={classes.listContainer} id={id}>
         {items.map((item, index) => (
             <Item
                 className={classes.item}
-                key={`${id}-sub-stop-${index}`}
-                text={item[desPropName]}
                 iconButtons={actions}
+                key={`${id}-sub-stop-${index}`}
+                onBlur={() => onBlurItem(item[valPropName])}
+                onHover={() => {
+                    console.log(item);
+                    onHoverItem(item[valPropName])
+                }}
+                text={item[desPropName]}
                 value={item[valPropName]}
             />
         ))}
@@ -43,14 +50,18 @@ SubStopsList.propTypes = {
         id: PropTypes.string.isRequired,
         nameStop: PropTypes.string.isRequired
     })),
+    onBlur: PropTypes.func.isRequired,
+    onHover: PropTypes.func.isRequired,
     valPropName: PropTypes.string
 };
 
 SubStopsList.defaultProps = {
     actions: [],
     desPropName: 'name',
-    valPropName: 'id',
-    items: []
+    items: [],
+    onBlur: Function.prototype,
+    onHover: Function.prototype,
+    valPropName: 'id'
 };
 
 export default withStyles(styles)(SubStopsList);

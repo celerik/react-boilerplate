@@ -14,6 +14,8 @@ const Item = ({
     classes,
     iconButtons,
     id,
+    onBlur,
+    onHover,
     text,
     textClass,
     value,
@@ -22,17 +24,23 @@ const Item = ({
     const itemContainer = classNames(classes.itemContainer, className);
     const [actionsVisible, setActionsVisibility] = useState(false);
 
-    const onHoverCard = () => {
+    const onBlurItem = () => {
+        setActionsVisibility(false);
+        onBlur(value);
+    };
+
+    const onHoverItem = () => {
         setActionsVisibility(true);
+        onHover(value);
     };
 
     return (
         <div
             className={itemContainer}
             id={id}
-            onFocus={onHoverCard}
-            onMouseLeave={() => setActionsVisibility(false)}
-            onMouseOver={onHoverCard}
+            onFocus={onHoverItem}
+            onMouseLeave={onBlur}
+            onMouseOver={onHoverItem}
         >
             <Typography variant={variant} className={textClass}>
                 {text}
@@ -40,7 +48,7 @@ const Item = ({
             <div>
             {actionsVisible && iconButtons.map((iconButton) => (
                 <IconButton
-                    buttonClassname={classes.iconButton}
+                    buttonClassName={classes.iconButton}
                     icon={iconButton.icon}
                     key={`${id}-${iconButton.name}-tooltip`}
                     label={iconButton.name}
