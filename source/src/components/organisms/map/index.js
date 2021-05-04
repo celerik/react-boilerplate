@@ -22,7 +22,7 @@ const shapes = {
         },
         layout: {
             'line-join': 'round',
-            'line-cap': 'round',
+            'line-cap': 'round'
         }
     }
 };
