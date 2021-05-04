@@ -47,12 +47,10 @@ const ProjectsVehicles = ({
                 </Grid>
             </Grid>
         </DialogTitle>
-
         <DialogContent className={classes.contentDialog}>
             <Typography variant="h4">{text.vehiclesTypes}</Typography>
             <ProjectsVehiclesList />
         </DialogContent>
-
         <DialogActions className={classes.actionsDialog}>
             <Actionbutton
                 className={classes.outlineButton}

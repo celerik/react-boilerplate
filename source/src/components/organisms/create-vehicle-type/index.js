@@ -5,7 +5,6 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +14,7 @@ import { withStyles } from '@material-ui/core';
 // @scripts
 import Actionbutton from '../../atoms/button';
 import Attribute from '../../molecules/project-attribute';
+import Inputfield from '../../molecules/input-field';
 import infoMock from '../project-settings/settingsProject.json';
 import { config } from '../../../config';
 
@@ -23,7 +23,7 @@ import styles from './styles';
 
 const text = config.text.projectMenu.projectsVehiclesModal;
 
-const ProjectsVehiclesType = ({
+const CreateVehicleType = ({
     classes,
     id,
     onClick,
@@ -71,7 +71,7 @@ const ProjectsVehiclesType = ({
             ]
         },
         {
-            nameProperty: 'Default vehicle operating cost',
+            nameProperty: config.text.projectMenu.projectSettingsModal.defaultVechicleOperating,
             secondarytext: config.text.projectMenu.projectSettingsModal.resting,
             content: [
                 <Inputfield
@@ -113,14 +113,12 @@ const ProjectsVehiclesType = ({
                     className={classes.subTitle}
                     variant="h4"
                 >
-                        {text.subtitle}
+                {config.text.projectMenu.createVehicleTypeModal.subTitle}
                 </Typography>
                 <Inputfield
                     className={classes.nameProject}
                     id={`${id}-name-project-input`}
-                    onChange={Function.prototype}
-                    underline
-                    value={text.input}
+                    onChange={(e) => handleSettings(e)}
                     variant="standard"
                 />
                 {secondAttributes.map((value, index) => (
@@ -136,7 +134,7 @@ const ProjectsVehiclesType = ({
                 <Actionbutton
                     className={classes.vehicleFeature}
                     endIcon="add"
-                    label={text.vehicleFeature}
+                    label={config.text.projectMenu.createVehicleTypeModal.vehicleFeature}
                     onClick={onClick}
                 />
             </DialogContent>
@@ -149,7 +147,7 @@ const ProjectsVehiclesType = ({
                 />
                 <Actionbutton
                     className={classes.outlineButtonWhite}
-                    label={text.cancel}
+                    label={config.text.projectMenu.createVehicleTypeModal.cancel}
                     onClick={onClose}
                 />
             </DialogActions>
@@ -157,7 +155,7 @@ const ProjectsVehiclesType = ({
     );
 };
 
-ProjectsVehiclesType.propTypes = {
+CreateVehicleType.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
@@ -165,4 +163,4 @@ ProjectsVehiclesType.propTypes = {
     open: PropTypes.bool.isRequired
 };
 
-export default withStyles(styles)(ProjectsVehiclesType);
+export default withStyles(styles)(CreateVehicleType);

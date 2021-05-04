@@ -29,18 +29,17 @@ export default (theme) => ({
         },
         '&:hover': {
             '& .MuiInputBase-root': {
-                borderBottom: `1px solid ${theme.palette.primary.main}`
-
+                borderBottom: `2px solid ${theme.palette.primary.main}`
             }
         },
         '& input::-webkit-clear-button, & input::-webkit-outer-spin-button, & input::-webkit-inner-spin-button': {
             display: 'none'
         }
-
     },
     mainContainer: {
         '& .MuiDialog-paperWidthSm': {
             backgroundColor: theme.palette.common.pearl,
+            boxShadow: '0px 2px 8px rgba(0, 0, 0, 0.1)',
             height: 727,
             left: '30vh',
             padding: '20px 12px 33px 15px',
@@ -48,7 +47,7 @@ export default (theme) => ({
             width: 496
         },
         '& .MuiTypography-body2': {
-            color: 'black',
+            color: theme.palette.primary.dark,
             fontSize: 12,
             letterSpacing: 0
         }
