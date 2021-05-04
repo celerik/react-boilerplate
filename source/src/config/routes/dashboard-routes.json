@@ -29,6 +29,11 @@
         "name": "ProjectVehicles",
         "url": "/dashboard/projects/:projectId/project-vehicles"
     },
+    "createVehicleType": {
+        "component": "ProjectMenu",
+        "name": "createVehicleType",
+        "url": "/dashboard/projects/:projectId/create-vehicle-type"
+    },
     "servicePatterns": {
         "component": "ServicePatterns",
         "name": "ServicePatterns",
