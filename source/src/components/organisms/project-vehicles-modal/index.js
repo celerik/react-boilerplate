@@ -15,7 +15,6 @@ import { withStyles } from '@material-ui/core';
 import Actionbutton from '../../atoms/button';
 import Project from '../../../services/project';
 import ProjectsVehiclesList from '../../molecules/projects-vehicles-list';
-import CreateVehiclesModalType from '../create-vehicle-type';
 import { config } from '../../../config';
 import { format } from '../../../util';
 import { globalUI } from '../../../core';
