@@ -45,6 +45,12 @@ const ServicePatternMenu = ({
             features: stops.flatMap(stopDetails => stopDetails.features)
         };
 
+        servicePattern.stops = servicePattern.stops.map(stop => ({
+            ...stop,
+            pathId: servicePattern.segments.find(segment =>
+                segment.fromServicePatternStopId === stop.servicePatternStopId)?.path.pathId
+        }));
+
         setServicePattern(servicePattern);
         dispatch(setMapServicePatterns([servicePattern.pathGeoJSON]));
         dispatch(setMapStops([geojsonStops]));

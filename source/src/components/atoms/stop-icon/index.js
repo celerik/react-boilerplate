@@ -7,6 +7,8 @@ import { makeStyles, withStyles } from '@material-ui/core';
 
 // @scripts
 import styles from './styles';
+import { useStopsContext } from '../../../providers/stops';
+import { useSetActiveStops } from '../../../providers/stops/actions';
 
 const customClasses = makeStyles({
     main: props => ({
@@ -22,17 +24,25 @@ const StopIcon = ({
     classes,
     color,
     id,
-    label
+    label,
+    stopId
 }) => {
+    const { activeStops } = useStopsContext();
+    const setActiveStops = useSetActiveStops();
     const colorClasses = customClasses({ color });
+    const isActive = activeStops.includes(stopId);
 
     return (
         <span
             className={classNames(
                 className,
                 classes.mainContainer,
-                colorClasses.main
+                colorClasses.main,
+                isActive && classes.onFocus
             )}
+            onFocus={() => setActiveStops([stopId])}
+            onMouseOver={() => setActiveStops([stopId])}
+            onMouseLeave={() => setActiveStops([])}
             id={id}
         >
             {label || <LocationOnIcon />}
@@ -44,6 +54,7 @@ StopIcon.propTypes = {
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     color: PropTypes.string,
+    stopId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired
 };

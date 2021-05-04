@@ -1,0 +1,18 @@
+{
+    "add": {
+        "name": "addStopBelow",
+        "icon": "add_circle"
+    },
+    "checkpoint": {
+        "name": "checkpoint",
+        "icon": "timer"
+    },
+    "replace": {
+        "name": "replace",
+        "icon": "swap_horiz"
+    },
+    "delete": {
+        "name": "delete",
+        "icon": "delete"
+    }
+}

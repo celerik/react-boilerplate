@@ -1,11 +1,27 @@
 // @scripts section
 import { config } from '../../config';
 import {
+    SET_MAP_HISTORY_PATHS,
     SET_MAP_SERVICE_PATTERNS,
     SET_MAP_STOPS,
+    setMapHistoryPaths,
     setMapServicePatterns,
     setMapStops
 } from '../../actions/map';
+
+describe('setHistoryPaths', () => {
+    test('setHistoryPaths', () => {
+        const { historyPaths } = config.mockData;
+
+        const actionCreator = setMapHistoryPaths(historyPaths);
+        const expectedAction = [{
+            type: SET_MAP_HISTORY_PATHS,
+            payload: historyPaths
+        }];
+
+        return global.testDispatch(actionCreator, expectedAction);
+    });
+});
 
 describe('mapStops', () => {
     test('setStops', () => {

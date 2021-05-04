@@ -9,37 +9,26 @@ import Item from '../../atoms/item';
 // @styles
 import styles from './styles';
 
-const subStops = [
-    {
-        id: '1',
-        nameStop: 'Name stop 2.1'
-    },
-    {
-        id: '2',
-        nameStop: 'Name stop 2.2'
-    },
-    {
-        id: '3',
-        nameStop: 'Name stop 2.3'
-    }
-];
-
-const actions = [
-    {
-        icon: 'add_circle',
-        name: 'add',
-        onClick: Function.prototype
-    }
-];
-
-const SubStopsList = ({ actions, classes, subStops }) => (
-    <div className={classes.listContainer}>
-        {subStops.map(({ id, nameStop }, index) => (
+const SubStopsList = ({
+    actions,
+    classes,
+    desPropName,
+    id,
+    items,
+    onBlurItem,
+    onHoverItem,
+    valPropName
+}) => (
+    <div className={classes.listContainer} id={id}>
+        {items.map((item, index) => (
             <Item
                 className={classes.item}
-                key={`${id}-sub-stop-${index}`}
-                text={nameStop}
                 iconButtons={actions}
+                key={`${id}-sub-stop-${index}`}
+                onBlur={() => onBlurItem(item[valPropName])}
+                onHover={() => onHoverItem(item[valPropName])}
+                text={item[desPropName]}
+                value={item[valPropName]}
             />
         ))}
     </div>
@@ -52,15 +41,24 @@ SubStopsList.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     classes: PropTypes.object.isRequired,
-    subStops: PropTypes.arrayOf(PropTypes.shape({
+    desPropName: PropTypes.string,
+    id: PropTypes.string.isRequired,
+    items: PropTypes.arrayOf(PropTypes.shape({
         id: PropTypes.string.isRequired,
         nameStop: PropTypes.string.isRequired
-    }))
+    })),
+    onBlurItem: PropTypes.func,
+    onHoverItem: PropTypes.func,
+    valPropName: PropTypes.string
 };
 
 SubStopsList.defaultProps = {
-    actions,
-    subStops
+    actions: [],
+    desPropName: 'name',
+    items: [],
+    onBlurItem: Function.prototype,
+    onHoverItem: Function.prototype,
+    valPropName: 'id'
 };
 
 export default withStyles(styles)(SubStopsList);

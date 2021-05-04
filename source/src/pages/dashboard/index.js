@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import Map from '../../components/organisms/map';
 import MenuContent from '../../components/organisms/dashboard-menu-mapper';
 import TemplateDashboard from '../../components/templates/dashboard';
+import { StopsProvider } from '../../providers/stops';
 import { getProjects } from '../../actions/projects';
 import { getRoutes } from '../../actions/routes';
 import { getTeams } from '../../actions/teams';
@@ -28,10 +29,12 @@ const DashboardPage = ({
     }, [selectedTeam]);
 
     return (
-        <TemplateDashboard>
-            <MenuContent />
-            <Map />
-        </TemplateDashboard>
+        <StopsProvider>
+            <TemplateDashboard>
+                <MenuContent />
+                <Map />
+            </TemplateDashboard>
+        </StopsProvider>
     );
 };
 

@@ -1,105 +1,182 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
 import ActionsStop from '../actions-stop';
+import BaselineConnect from '../../../services/baseline-connect';
+import IconButton from '../../atoms/icon-button';
 import StopIcon from '../../atoms/stop-icon';
 import SubStopsList from '../sub-stops-list';
 import { config } from '../../../config';
+import { useDispatch } from 'react-redux';
 
 // @styles
 import styles from './styles';
+import { setMapHistoryPaths } from '../../../actions';
+import { useSetActivePaths } from '../../../providers/stops/actions';
+
+// @constants
+const segmentEdit = 'segmentEdit';
 
 const Stop = ({
-    actions,
-    actionsContent,
     classes,
     content,
-    id,
+    currentAction,
+    isSelected,
     lastItem,
-    onHoverSegment,
-    stopName
+    onSelectAction,
+    pathId,
+    stopId,
+    stopName,
+    to
 }) => {
+    const id = `stop-${stopId}`;
+    const dispatch = useDispatch();
     const [actionsVisible, setActionsVisibility] = useState(false);
-    const stopClass = classNames(classes.onFocus, classes.stopNumber);
-    const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
-
-    const [currentAction, setCurrentOption] = useState('');
-
-    const selectAction = (rollback, action) => {
-        rollback();
-        setCurrentOption(action);
-    };
+    const [segmentHover, setSegmentHover] = useState(false);
+    const [historyPaths, setHistoryPaths] = useState([]);
+    const setActivePaths = useSetActivePaths();
 
     const onHoverActions = () => {
         setActionsVisibility(true);
     };
 
+    const onHoverSegment = (hover) => {
+        if (hover) {
+            setActivePaths([pathId]);
+        } else {
+            setActivePaths([]);
+        }
+
+        setSegmentHover(hover);
+    };
+
+    const onHoverHistoryPath = (pathId) => setActivePaths([pathId]);
+    const onBlurHistoryPath = () => setActivePaths([]);
+
+    const onGetHistoryPaths = async () => {
+        const [paths, pathsGeoJSON] = await BaselineConnect.getHistoryPaths(stopId, to);
+        dispatch(setMapHistoryPaths(pathsGeoJSON));
+        setHistoryPaths(paths);
+    };
+
+    useEffect(() => {
+        if (currentAction === segmentEdit) onGetHistoryPaths();
+    }, [currentAction]);
+
     return (
         <li
             className={classes.stopItem}
             onFocus={onHoverActions}
+            id={id}
             onMouseLeave={() => setActionsVisibility(false)}
             onMouseOver={onHoverActions}
         >
             <div className={classes.stopIcon}>
                 <StopIcon
-                    className={actionsVisible ? stopClass : classes.stopNumber}
-                    id={`${id}-stop-icon-}`}
+                    className={classNames(
+                        classes.stopNumber,
+                        actionsVisible && classes.onFocus
+                    )}
+                    stopId={stopId}
                     label={!lastItem && content}
                 />
-                {!lastItem && (<span className={onHoverSegment ? separatorLine : classes.stopLine} />)}
+                {!lastItem && (
+                    <div
+                        className={classes.segmentContainer}
+                        onFocus={() => onHoverSegment(true)}
+                        onMouseLeave={() => onHoverSegment(false)}
+                        onMouseOver={() => onHoverSegment(true)}
+                    >
+                        <span className={classes.stopLine} />
+                        {segmentHover && currentAction !== segmentEdit && (
+                            <IconButton
+                                className={classes.segmentEdit}
+                                icon="edit"
+                                onClick={() => onSelectAction(segmentEdit)}
+                                label={config.text.editServicePattern.editSegment}
+                                size={16}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
-            <div className={classes.title}>
-                <div className={classes.headerOptions}>
-                    <Typography variant="body2" style={{ fontWeight: currentAction && 'bold' }}>{stopName}</Typography>
+            <div className={classes.infoContainer}>
+                <div className={classes.title}>
+                    <Typography
+                        variant="body2"
+                        style={{ fontWeight: isSelected && 'bold' }}
+                    >
+                        {stopName}
+                    </Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             <ActionsStop
-                                actions={actions}
                                 id={`${id}-actions`}
                                 currentAction={currentAction}
-                                selectAction={selectAction}
+                                onSelectAction={onSelectAction}
                             />
                         </div>
                     )}
                 </div>
                 <div className={classes.subStopsContainer}>
-                    {currentAction === config.text.editServicePattern.addStopBelow && (
-                        <SubStopsList />
+                    {currentAction === config.masterData.stopActions.add.name && (
+                        <SubStopsList
+                            actions={[
+                                {
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: Function.prototype
+                                }
+                            ]}
+                            items={[]}
+                        />
+                    )}
+                    {currentAction === segmentEdit && (
+                        <SubStopsList
+                            actions={[
+                                {
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: Function.prototype
+                                }
+                            ]}
+                            items={historyPaths.map((item, index) => ({
+                                id: item.pathId,
+                                name: `Route ${index + 1}`
+                            }))}
+                            onHoverItem={onHoverHistoryPath}
+                            onBlurItem={onBlurHistoryPath}
+                        />
                     )}
                 </div>
-            </div>
-            <div className={classes.bodyOptions}>
-                {actionsContent}
             </div>
         </li>
     );
 };
 
 Stop.propTypes = {
-    actions: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-        onClick: PropTypes.func.isRequired
-    })),
-    actionsContent: PropTypes.node,
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    id: PropTypes.string.isRequired,
+    currentAction: PropTypes.string,
+    isSelected: PropTypes.bool,
+    onSelectAction: PropTypes.func,
+    pathId: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
-    onHoverSegment: PropTypes.bool,
-    stopName: PropTypes.string.isRequired
+    stopId: PropTypes.string.isRequired,
+    stopName: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired
 };
 
 Stop.defaultProps = {
-    actions: Array.prototype,
-    actionsContent: null,
+    currentAction: null,
+    isSelected: false,
     lastItem: false,
-    onHoverSegment: false
+    onSelectAction: Function.prototype
 };
 
 export default withStyles(styles)(Stop);
