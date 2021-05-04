@@ -120,6 +120,7 @@ const CreateVehicleType = ({
                     id={`${id}-name-project-input`}
                     onChange={(e) => handleSettings(e)}
                     variant="standard"
+                    placeholder={config.text.projectMenu.createVehicleTypeModal.input}
                 />
                 {secondAttributes.map((value, index) => (
                         <Attribute

@@ -47,7 +47,7 @@ export default (theme) => ({
             width: 496
         },
         '& .MuiTypography-body2': {
-            color: theme.palette.primary.dark,
+            color: theme.palette.text.secondary,
             fontSize: 12,
             letterSpacing: 0
         }
@@ -67,16 +67,19 @@ export default (theme) => ({
     outlineButton: {
         backgroundColor: theme.palette.primary.light,
         border: `1px solid ${theme.palette.primary.main}`,
+        borderRadius: '2px',
         color: 'white',
         display: 'flex',
         fontSize: 14,
         height: 44,
         justifyContent: 'start',
-        padding: '10px 15px'
+        padding: '10px 15px',
+        width: 158
     },
     outlineButtonWhite: {
         backgroundColor: 'white',
         border: `1px solid ${theme.palette.primary.main}`,
+        borderRadius: '2px',
         color: theme.palette.primary.dark,
         display: 'flex',
         fontSize: 14,

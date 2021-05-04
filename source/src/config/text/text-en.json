@@ -95,6 +95,7 @@
     "projectVehicles": "Project vehicles",
     "createVehicleTypeModal":{
       "cancel": "Cancel",
+      "input": "Vehicle type 6",
       "subTitle": "Vehicle type name",
       "vehicleFeature": "Vehicle feature"
     },
@@ -103,7 +104,6 @@
       "createVehicleType": "Create vehicle type",
       "features": "FEATURES",
       "header": "Create vehicle type",
-      "input": "Vehicle type 6",
       "needUpdate": "Need update",
       "saveFeatures": "Save features",
       "title": "Projects Vehicles",
