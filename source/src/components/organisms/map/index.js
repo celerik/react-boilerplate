@@ -11,7 +11,7 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
-import { useStops, useStopsContext } from '../../../providers/stops';
+import { useStopsContext } from '../../../providers/stops';
 
 // @constants
 const AVAILABLE_CONTROLS = ['zoom'];
