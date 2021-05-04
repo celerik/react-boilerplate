@@ -47,9 +47,8 @@ const ServicePatternMenu = ({
 
         servicePattern.stops = servicePattern.stops.map(stop => ({
             ...stop,
-            pathId: servicePattern.segments.find(segment => 
-                segment.fromServicePatternStopId === stop.servicePatternStopId
-            )?.path.pathId
+            pathId: servicePattern.segments.find(segment =>
+                segment.fromServicePatternStopId === stop.servicePatternStopId)?.path.pathId
         }));
 
         setServicePattern(servicePattern);

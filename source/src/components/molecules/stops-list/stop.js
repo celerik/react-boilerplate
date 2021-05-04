@@ -55,14 +55,8 @@ const Stop = ({
         setSegmentHover(hover);
     };
 
-    const onHoverHistoryPath = (pathId) => {
-        console.log(pathId)
-        setActivePaths([pathId]);
-    };
-
-    const onBlurHistoryPath = (pathId) => {
-        setActivePaths([]);
-    };
+    const onHoverHistoryPath = (pathId) => setActivePaths([pathId]);
+    const onBlurHistoryPath = () => setActivePaths([]);
 
     const onGetHistoryPaths = async () => {
         const [paths, pathsGeoJSON] = await BaselineConnect.getHistoryPaths(stopId, to);
@@ -136,7 +130,7 @@ const Stop = ({
                                 {
                                     icon: 'check',
                                     name: 'add',
-                                    onClick: console.log
+                                    onClick: Function.prototype
                                 }
                             ]}
                             items={[]}
@@ -148,7 +142,7 @@ const Stop = ({
                                 {
                                     icon: 'check',
                                     name: 'add',
-                                    onClick: console.log
+                                    onClick: Function.prototype
                                 }
                             ]}
                             items={historyPaths.map((item, index) => ({
@@ -169,6 +163,9 @@ Stop.propTypes = {
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
     currentAction: PropTypes.string,
+    isSelected: PropTypes.bool,
+    onSelectAction: PropTypes.func,
+    pathId: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
     stopId: PropTypes.string.isRequired,
     stopName: PropTypes.string.isRequired,
@@ -177,7 +174,9 @@ Stop.propTypes = {
 
 Stop.defaultProps = {
     currentAction: null,
-    lastItem: false
+    isSelected: false,
+    lastItem: false,
+    onSelectAction: Function.prototype
 };
 
 export default withStyles(styles)(Stop);

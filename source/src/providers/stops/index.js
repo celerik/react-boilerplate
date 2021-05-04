@@ -21,6 +21,7 @@ const stopsReducer = (state, action) => {
     }
 };
 
+// eslint-disable-next-line react/prop-types
 export const StopsProvider = ({ children }) => {
     const [state, dispatch] = useReducer(stopsReducer, initialState);
 

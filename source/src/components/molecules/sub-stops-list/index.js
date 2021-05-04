@@ -26,10 +26,7 @@ const SubStopsList = ({
                 iconButtons={actions}
                 key={`${id}-sub-stop-${index}`}
                 onBlur={() => onBlurItem(item[valPropName])}
-                onHover={() => {
-                    console.log(item);
-                    onHoverItem(item[valPropName])
-                }}
+                onHover={() => onHoverItem(item[valPropName])}
                 text={item[desPropName]}
                 value={item[valPropName]}
             />
@@ -50,8 +47,8 @@ SubStopsList.propTypes = {
         id: PropTypes.string.isRequired,
         nameStop: PropTypes.string.isRequired
     })),
-    onBlur: PropTypes.func.isRequired,
-    onHover: PropTypes.func.isRequired,
+    onBlurItem: PropTypes.func,
+    onHoverItem: PropTypes.func,
     valPropName: PropTypes.string
 };
 
@@ -59,8 +56,8 @@ SubStopsList.defaultProps = {
     actions: [],
     desPropName: 'name',
     items: [],
-    onBlur: Function.prototype,
-    onHover: Function.prototype,
+    onBlurItem: Function.prototype,
+    onHoverItem: Function.prototype,
     valPropName: 'id'
 };
 
