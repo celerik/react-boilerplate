@@ -34,6 +34,7 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
+    const locked = project.servicePatternsLocked;
 
     if (!project) {
         return null;
@@ -57,9 +58,8 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
-    // corregir !project.servicePatternsLocked
     const actions = [{
-        icon: project.servicePatternsLocked ? 'lock_open_outlined' : 'lock_outlined',
+        icon: locked ? 'lock_outlined' : 'lock_open_outlined',
         onClick: Function.prototype
     }];
 
@@ -84,7 +84,8 @@ const ProjectMenu = ({
                         className={classes.option}
                         id={`${id}-option-${menuOption.name}`}
                         key={`${id}-option-${menuOption.name}`}
-                        onClick={onClickMenuItem(menuOption.name)}
+                        onClick={locked && index === 0 ? !onClickMenuItem(menuOption.name)
+                            : onClickMenuItem(menuOption.name)}
                         onKeyDown={Function.prototype}
                         role="button"
                         tabIndex={index}
