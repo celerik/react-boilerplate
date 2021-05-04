@@ -39,7 +39,7 @@ const Item = ({
             className={itemContainer}
             id={id}
             onFocus={onHoverItem}
-            onMouseLeave={onBlur}
+            onMouseLeave={onBlurItem}
             onMouseOver={onHoverItem}
         >
             <Typography variant={variant} className={textClass}>
@@ -69,6 +69,8 @@ Item.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     id: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
+    onHover: PropTypes.func,
     text: PropTypes.string.isRequired,
     textClass: PropTypes.object,
     value: PropTypes.string.isRequired,
@@ -78,6 +80,8 @@ Item.propTypes = {
 Item.defaultProps = {
     className: '',
     iconButtons: [],
+    onBlur: Function.prototype,
+    onHover: Function.prototype,
     textClass: [],
     variant: 'body1'
 };

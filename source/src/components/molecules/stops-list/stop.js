@@ -56,7 +56,7 @@ const Stop = ({
     };
 
     const onHoverHistoryPath = (pathId) => {
-        console.log(pathId)
+        console.log(pathId);
         setActivePaths([pathId]);
     };
 
