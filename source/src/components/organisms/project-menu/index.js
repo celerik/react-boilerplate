@@ -13,6 +13,7 @@ import IconButton from '../../atoms/icon-button';
 import Item from '../../atoms/item';
 import ProjectSettingsModal from '../project-settings';
 import ProjectVehiclesModal from '../project-vehicles-modal';
+import ProjectVehiclesModalType from '../create-vehicle-type';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { theme } from '../../../styles/material-ui';
@@ -27,9 +28,11 @@ const ProjectMenu = ({
     id,
     match
 }) => {
-    const isDialogOpen = history.location.pathname.match(/vehicles$/ig);
+    const projectVehiclesUrlMatch = history.location.pathname.match(config.routes.dashboard.projectVehicles.url.split('/').pop());
+    const createVehicleTypeUrlMatch = history.location.pathname.match(config.routes.dashboard.createVehicleType.url.split('/').pop());
     const [runModalVisible, setRunModalVisibility] = useState(false);
-    const [openVehiclesModal, setOpenVehiclesModal] = useState(isDialogOpen);
+    const [vehicleType, setVehicleType] = useState(createVehicleTypeUrlMatch);
+    const [createVehicleTypeModalOpen, openVehicleTypeModal] = useState(projectVehiclesUrlMatch);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
@@ -40,7 +43,12 @@ const ProjectMenu = ({
     }
 
     const handleCloseProjectsVehiclesModal = () => {
-        setOpenVehiclesModal(false);
+        openVehicleTypeModal(false);
+        history.goBack();
+    };
+
+    const handleCloseVehicleTypeModal = () => {
+        setVehicleType(false);
         history.goBack();
     };
 
@@ -130,8 +138,13 @@ const ProjectMenu = ({
                 projectId={projectId}
             />
             <ProjectVehiclesModal
-                open={openVehiclesModal}
+                onClick={onClickMenuItem(config.routes.dashboard.createVehicleType.name)}
                 onClose={handleCloseProjectsVehiclesModal}
+                open={createVehicleTypeModalOpen}
+            />
+            <ProjectVehiclesModalType
+                onClose={handleCloseVehicleTypeModal}
+                open={vehicleType}
             />
         </div>
     );

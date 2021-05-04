@@ -94,10 +94,19 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
+    "createVehicleTypeModal":{
+      "cancel": "Cancel",
+      "input": "Vehicle type 6",
+      "subTitle": "Vehicle type name",
+      "vehicleFeature": "Vehicle feature"
+    },
     "projectsVehiclesModal": {
       "addFromLibrary": "Add from library",
       "createVehicleType": "Create vehicle type",
+      "features": "FEATURES",
+      "header": "Create vehicle type",
       "needUpdate": "Need update",
+      "saveFeatures": "Save features",
       "title": "Projects Vehicles",
       "typeDays": "Type of days...",
       "update": "update",
