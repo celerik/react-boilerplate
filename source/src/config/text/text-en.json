@@ -103,7 +103,7 @@
       "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
       "vehicles": "Vehicles",
       "vehiclesTypes": "VEHICLES TYPES({0})",
-      "youCantFind": "you can find it in the vehicle type library"
+      "youCanFind": "you can find it in the vehicle type library"
     },
     "projectSettingsModal": {
       "cancel": "Cancel",
