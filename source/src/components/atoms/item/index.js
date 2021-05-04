@@ -82,6 +82,8 @@ Item.defaultProps = {
     onBlur: Function.prototype,
     onHover: Function.prototype,
     iconButtons: [],
+    onBlur: Function.prototype,
+    onHover: Function.prototype,
     textClass: [],
     variant: 'body1'
 };
