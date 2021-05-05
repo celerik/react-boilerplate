@@ -4,15 +4,16 @@ import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
+import { useSetActiveAction } from '../../../providers/stops/actions';
+import Project from '../../../services/project';
 import Stop from './stop';
 
 // @styles
 import styles from './styles';
-import { useSetActiveAction } from '../../../providers/stops/actions';
 
 const StopsList = ({
     classes,
-    id,
+    servicePatternId,
     stops
 }) => {
     const setSelectedAction = useSetActiveAction();
@@ -26,16 +27,17 @@ const StopsList = ({
     const onRerouteSegment = (spStopId1, spStopId2) =>
         (segmentId) => {
             console.log(spStopId1, spStopId2, segmentId);
+            Project.rerouteSegment(servicePatternId, spStopId1, spStopId2, segmentId);
         };
 
     return (
-        <div className={classes.container} id={id}>
+        <div className={classes.container} id={`stop-list-sp-${servicePatternId}`}>
             <ol className={classes.stops}>
                 {stops.map((stop, index) => (
                     <Stop
                         content={index + 1}
                         isSelected={selectedStop === stop.stopId}
-                        key={`${id}-item-${stop.stopName}`}
+                        key={`sp-${servicePatternId}-item-${stop.stopName}`}
                         lastItem={index === stops.length - 1}
                         onSelectAction={onSelectAction(stop.stopId)}
                         onRerouteSegment={onRerouteSegment(
@@ -55,7 +57,7 @@ const StopsList = ({
 
 StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    servicePatternId: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
         servicePatternStopId: PropTypes.string.isRequired,
         stopId: PropTypes.string.isRequired,

@@ -119,7 +119,7 @@ const ServicePatternMenu = ({
                 variant="fullWidth"
             />
             <StopsList
-                id={`${id}-stop-list`}
+                servicePatternId={servicePattern.servicePatternId}
                 stops={servicePattern.stops}
             />
             <WeekDaysModal

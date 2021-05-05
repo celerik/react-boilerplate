@@ -111,6 +111,33 @@ class Project {
             throw error;
         }
     }
+
+    static async rerouteSegment(servicePatternId, servicePatternStopId1, servicePatternId2, pathId) {
+        console.log(servicePatternId, servicePatternStopId1, servicePatternId2, pathId);
+        try {
+            const response = await axios.put(
+                format(
+                    config.services.projects.reroute,
+                    servicePatternId, 
+                    servicePatternStopId1, 
+                    servicePatternId2
+                ),
+                {
+                    pathId,
+                    pathGeometry: 'LINESTRING'
+                }
+            );
+
+            return response;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                error.message,
+                error.message
+            );
+
+            throw error;
+        }
+    }
 }
 
 export default Project;
