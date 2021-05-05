@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
@@ -16,7 +16,6 @@ import ProjectVehiclesModal from '../project-vehicles-modal';
 import ProjectVehiclesModalType from '../create-vehicle-type';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-import { theme } from '../../../styles/material-ui';
 import { useSelector } from 'react-redux';
 
 // @styles
@@ -28,8 +27,12 @@ const ProjectMenu = ({
     id,
     match
 }) => {
-    const projectVehiclesUrlMatch = history.location.pathname.match(config.routes.dashboard.projectVehicles.url.split('/').pop());
-    const createVehicleTypeUrlMatch = history.location.pathname.match(config.routes.dashboard.createVehicleType.url.split('/').pop());
+    const projectVehiclesUrlMatch = history.location.pathname.match(
+        config.routes.dashboard.projectVehicles.url.split('/').pop()
+    );
+    const createVehicleTypeUrlMatch = history.location.pathname.match(
+        config.routes.dashboard.createVehicleType.url.split('/').pop()
+    );
     const [runModalVisible, setRunModalVisibility] = useState(false);
     const [vehicleType, setVehicleType] = useState(createVehicleTypeUrlMatch);
     const [createVehicleTypeModalOpen, openVehicleTypeModal] = useState(projectVehiclesUrlMatch);
@@ -37,6 +40,7 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
+    const theme = useTheme();
 
     if (!project) {
         return null;
@@ -96,13 +100,13 @@ const ProjectMenu = ({
                         role="button"
                         tabIndex={index}
                     >
-                    <Icon>{menuOption.icon}</Icon>
-                    <Item
-                        className={classes.centerIcon}
-                        iconButtons={index === 0 ? actions : []}
-                        text={config.text.projectMenu[menuOption.name]}
-                        textClass={classes.optionText}
-                    />
+                        <Icon>{menuOption.icon}</Icon>
+                        <Item
+                            className={classes.centerIcon}
+                            iconButtons={index === 0 ? actions : []}
+                            text={config.text.projectMenu[menuOption.name]}
+                            textClass={classes.optionText}
+                        />
                     </div>
                 ))}
             </div>
@@ -138,9 +142,11 @@ const ProjectMenu = ({
                 projectId={projectId}
             />
             <ProjectVehiclesModal
+                history={history}
                 onClick={onClickMenuItem(config.routes.dashboard.createVehicleType.name)}
                 onClose={handleCloseProjectsVehiclesModal}
                 open={createVehicleTypeModalOpen}
+                projectId={projectId}
             />
             <ProjectVehiclesModalType
                 onClose={handleCloseVehicleTypeModal}

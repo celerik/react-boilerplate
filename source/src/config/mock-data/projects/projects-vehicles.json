@@ -1,0 +1,38 @@
+[
+    {
+        "vehicleTypeId": "111111111111",
+        "vehicleTypeVersion": "type 1",
+        "vehicleTypeName": "vehicle type 1",
+        "quantityAvailable": [
+            {
+                "dayType": "Mon",
+                "quantity": 2
+            }
+        ],
+        "deprecated": false
+    },
+    {
+        "vehicleTypeId": "2222222222222",
+        "vehicleTypeVersion": "type 3",
+        "vehicleTypeName": "vehicle type 2",
+        "quantityAvailable": [
+            {
+                "dayType": "Mon",
+                "quantity": 2
+            }
+        ],
+        "deprecated": true
+    },
+    {
+        "vehicleTypeId": "33333333333",
+        "vehicleTypeVersion": "type 3",
+        "vehicleTypeName": "vehicle type 3",
+        "quantityAvailable": [
+            {
+                "dayType": "Mon",
+                "quantity": 4
+            }
+        ],
+        "deprecated": false
+    }
+]
