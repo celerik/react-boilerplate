@@ -11,6 +11,7 @@ import ZoomButtons from '../../atoms/zoom-buttons/index';
 
 // @styles
 import styles from './styles';
+import { useStopsContext } from '../../../providers/stops';
 
 // @constants
 const AVAILABLE_CONTROLS = ['zoom'];
@@ -59,7 +60,8 @@ const CustomMap = ({
 
     const mapRef = useRef();
 
-    const { servicePatterns, stops } = useSelector(state => state.map);
+    const { historyPaths, servicePatterns, stops } = useSelector(state => state.map);
+    const { activePaths } = useStopsContext();
 
     useEffect(() => {
         if (servicePatterns.length && servicePatterns[0].features?.length) {
@@ -89,6 +91,30 @@ const CustomMap = ({
                                 ['has', 'color'],
                                 ['get', 'color'],
                                 theme.palette.primary.main
+                            ],
+                            'line-width': [
+                                'case',
+                                ['in', ['get', 'pathId'], ['literal', activePaths]],
+                                8,
+                                5
+                            ]
+                        }}
+                    />
+                ))}
+                {historyPaths.map((featureCollection, index) => (
+                    <GeoJSONLayer
+                        data={featureCollection}
+                        key={`history-path-${index}`}
+                        lineLayout={shapes.line.layout}
+                        linePaint={{
+                            ...shapes.line.paint,
+                            'line-color': theme.palette.primary.main,
+                            'line-dasharray': [2, 2.5],
+                            'line-width': [
+                                'case',
+                                ['in', ['get', 'pathId'], ['literal', activePaths]],
+                                5,
+                                3
                             ]
                         }}
                     />
@@ -108,6 +134,7 @@ const CustomMap = ({
                                     <StopIcon
                                         color={feature.properties.color}
                                         label={index < featureCollection.features.length - 1 && index + 1}
+                                        stopId={feature.properties.stopId}
                                     />
                                 </Marker>
                             )

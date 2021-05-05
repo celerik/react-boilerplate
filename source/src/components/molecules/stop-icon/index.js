@@ -1,15 +1,14 @@
 // @packages
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import classNames from 'classnames';
-import { makeStyles, withStyles } from '@material-ui/core';
-
-// @scripts
-import ModalActions from '../modal-actions';
+import { makeStyles, Popover, withStyles } from '@material-ui/core';
 
 // @styles
 import styles from './styles';
+import { useStopsContext } from '../../../providers/stops';
+import { useSetActiveStops } from '../../../providers/stops/actions';
 
 const customClasses = makeStyles({
     main: props => ({
@@ -26,40 +25,76 @@ const StopIcon = ({
     color,
     id,
     label,
-    modalOn
+    actions,
+    stopId
 }) => {
+    const ariaDescribedById = `${id}-actions`;
+    const [anchorEl, setAnchorEl] = useState(null);
     const colorClasses = customClasses({ color });
+    const setActiveStops = useSetActiveStops();
+    const { activeStops } = useStopsContext();
+
+    const isActive = activeStops.includes(stopId);
+    const onClick = event => setAnchorEl(event.currentTarget);
+    const onClose = () => setAnchorEl(null);
 
     return (
-        <>
-            {modalOn && (<ModalActions name="" description="" />)}
+        <div
+            onFocus={() => setActiveStops([stopId])}
+            onMouseOver={() => setActiveStops([stopId])}
+            onMouseLeave={() => setActiveStops([])}
+        >
+            {actions && anchorEl && (
+                <Popover
+                    className={classes.actionsContainer}
+                    anchorEl={anchorEl}
+                    id={ariaDescribedById}
+                    onClose={onClose}
+                    open={isActive}
+                    anchorOrigin={{
+                        vertical: 'top',
+                        horizontal: 'center'
+                    }}
+                    transformOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'center'
+                    }}
+                >
+                    {actions}
+                </Popover>
+            )}
             <span
+                aria-describedby={ariaDescribedById}
                 className={classNames(
                     className,
                     classes.mainContainer,
-                    colorClasses.main
+                    colorClasses.main,
+                    isActive && classes.onFocus
                 )}
+                onClick={onClick}
                 id={id}
+                ref={anchorEl}
             >
                 {label || <LocationOnIcon />}
             </span>
-        </>
+        </div>
     );
 };
 
 StopIcon.propTypes = {
+    actions: PropTypes.node,
     className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     color: PropTypes.string,
+    stopId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
-    modalOn: PropTypes.bool
 };
 
 StopIcon.defaultProps = {
+    actions: null,
     className: null,
-    color: null,
-    modalOn: false
+    color: null
 };
 
 export default withStyles(styles)(StopIcon);

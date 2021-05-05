@@ -1,105 +1,185 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
+import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
 import ActionsStop from '../actions-stop';
+import BaselineConnect from '../../../services/baseline-connect';
+import IconButton from '../../atoms/icon-button';
 import StopIcon from '../stop-icon';
 import SubStopsList from '../sub-stops-list';
 import { config } from '../../../config';
+import { setMapHistoryPaths } from '../../../actions';
+import { useSetActiveAction, useSetActivePaths } from '../../../providers/stops/actions';
+import { useStopsContext } from '../../../providers/stops';
 
 // @styles
 import styles from './styles';
 
 const Stop = ({
-    actions,
-    actionsContent,
     classes,
     content,
-    id,
+    isSelected,
     lastItem,
-    onHoverSegment,
-    stopName
+    pathId,
+    stopId,
+    stopName,
+    to
 }) => {
+    const id = `stop-${stopId}`;
+    const setActiveAction = useSetActiveAction();
+    const dispatch = useDispatch();
     const [actionsVisible, setActionsVisibility] = useState(false);
-    const stopClass = classNames(classes.onFocus, classes.stopNumber);
-    const separatorLine = classNames(classes.onFocusLine, classes.stopLine);
+    const [segmentHover, setSegmentHover] = useState(false);
+    const [historyPaths, setHistoryPaths] = useState([]);
+    const { activeAction } = useStopsContext();
+    const setActivePaths = useSetActivePaths();
 
-    const [currentAction, setCurrentOption] = useState('');
-
-    const selectAction = (rollback, action) => {
-        rollback();
-        setCurrentOption(action);
-    };
+    const isActiveStop = activeAction.stopId === stopId;
+    const isEditingSegment = activeAction.action === config.masterData.stopActions.edit.name;
 
     const onHoverActions = () => {
         setActionsVisibility(true);
     };
 
+    const onHoverSegment = (hover) => {
+        if (hover) {
+            setActivePaths([pathId]);
+        } else {
+            setActivePaths([]);
+        }
+
+        setSegmentHover(hover);
+    };
+
+    const onHoverHistoryPath = (pathId) => setActivePaths([pathId]);
+    const onBlurHistoryPath = () => setActivePaths([]);
+
+    const onGetHistoryPaths = async () => {
+        const [paths, pathsGeoJSON] = await BaselineConnect.getHistoryPaths(stopId, to);
+        dispatch(setMapHistoryPaths(pathsGeoJSON));
+        setHistoryPaths(paths);
+    };
+
+    useEffect(() => {
+        if (!isActiveStop) {
+            return;
+        }
+
+        if (isEditingSegment) onGetHistoryPaths();
+    }, [activeAction]);
+
+    const canEditSegment = segmentHover && !(isActiveStop && isEditingSegment);
+
     return (
         <li
             className={classes.stopItem}
             onFocus={onHoverActions}
+            id={id}
             onMouseLeave={() => setActionsVisibility(false)}
             onMouseOver={onHoverActions}
         >
             <div className={classes.stopIcon}>
                 <StopIcon
-                    className={actionsVisible ? stopClass : classes.stopNumber}
-                    id={`${id}-stop-icon-}`}
+                    className={classNames(
+                        classes.stopNumber,
+                        actionsVisible && classes.onFocus
+                    )}
+                    stopId={stopId}
                     label={!lastItem && content}
                 />
-                {!lastItem && (<span className={onHoverSegment ? separatorLine : classes.stopLine} />)}
+                {!lastItem && (
+                    <div
+                        className={classes.segmentContainer}
+                        onFocus={() => onHoverSegment(true)}
+                        onMouseLeave={() => onHoverSegment(false)}
+                        onMouseOver={() => onHoverSegment(true)}
+                    >
+                        <span className={classes.stopLine} />
+                        {canEditSegment && (
+                            <IconButton
+                                className={classes.segmentEdit}
+                                icon="edit"
+                                onClick={() => setActiveAction(
+                                    stopId, config.masterData.stopActions.edit.name
+                                )}
+                                label={config.text.editServicePattern.editSegment}
+                                size={16}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
-            <div className={classes.title}>
-                <div className={classes.headerOptions}>
-                    <Typography variant="body2" style={{ fontWeight: currentAction && 'bold' }}>{stopName}</Typography>
+            <div className={classes.infoContainer}>
+                <div className={classes.title}>
+                    <Typography
+                        variant="body2"
+                        style={{ fontWeight: isActiveStop && 'bold' }}
+                    >
+                        {stopName}
+                    </Typography>
                     {actionsVisible && (
                         <div className={classes.actionsContainer}>
                             <ActionsStop
-                                actions={actions}
-                                id={`${id}-actions`}
-                                currentAction={currentAction}
-                                selectAction={selectAction}
+                                stopId={stopId}
                             />
                         </div>
                     )}
                 </div>
-                <div className={classes.subStopsContainer}>
-                    {currentAction === config.text.editServicePattern.addStopBelow && (
-                        <SubStopsList />
-                    )}
-                </div>
-            </div>
-            <div className={classes.bodyOptions}>
-                {actionsContent}
+                {isActiveStop && (
+                    <div className={classes.subStopsContainer}>
+                        {activeAction === config.masterData.stopActions.add.name && (
+                        <SubStopsList
+                            actions={[
+                                {
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: Function.prototype
+                                }
+                            ]}
+                            items={[]}
+                        />
+                        )}
+                        {isEditingSegment && (
+                            <SubStopsList
+                                actions={[
+                                    {
+                                        icon: 'check',
+                                        name: 'add',
+                                        onClick: Function.prototype
+                                    }
+                                ]}
+                                items={historyPaths.map((item, index) => ({
+                                    id: item.pathId,
+                                    name: `Route ${index + 1}`
+                                }))}
+                                onHoverItem={onHoverHistoryPath}
+                                onBlurItem={onBlurHistoryPath}
+                            />
+                        )}
+                    </div>
+                )}
             </div>
         </li>
     );
 };
 
 Stop.propTypes = {
-    actions: PropTypes.arrayOf(PropTypes.shape({
-        icon: PropTypes.oneOfType([PropTypes.string, PropTypes.node]).isRequired,
-        onClick: PropTypes.func.isRequired
-    })),
-    actionsContent: PropTypes.node,
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    id: PropTypes.string.isRequired,
+    pathId: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
-    onHoverSegment: PropTypes.bool,
-    stopName: PropTypes.string.isRequired
+    stopId: PropTypes.string.isRequired,
+    stopName: PropTypes.string.isRequired,
+    to: PropTypes.string.isRequired
 };
 
 Stop.defaultProps = {
-    actions: Array.prototype,
-    actionsContent: null,
-    lastItem: false,
-    onHoverSegment: false
+    lastItem: false
 };
 
 export default withStyles(styles)(Stop);

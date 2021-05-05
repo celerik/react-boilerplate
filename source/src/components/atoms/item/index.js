@@ -14,24 +14,33 @@ const Item = ({
     classes,
     iconButtons,
     id,
+    onBlur,
+    onHover,
     text,
     textClass,
+    value,
     variant
 }) => {
     const itemContainer = classNames(classes.itemContainer, className);
     const [actionsVisible, setActionsVisibility] = useState(false);
 
-    const onHoverCard = () => {
+    const onBlurItem = () => {
+        setActionsVisibility(false);
+        onBlur(value);
+    };
+
+    const onHoverItem = () => {
         setActionsVisibility(true);
+        onHover(value);
     };
 
     return (
         <div
             className={itemContainer}
-            id={`${id}-item-element`}
-            onFocus={onHoverCard}
-            onMouseLeave={() => setActionsVisibility(false)}
-            onMouseOver={onHoverCard}
+            id={id}
+            onFocus={onHoverItem}
+            onMouseLeave={onBlurItem}
+            onMouseOver={onHoverItem}
         >
             <Typography variant={variant} className={textClass}>
                 {text}
@@ -39,11 +48,11 @@ const Item = ({
             <div>
             {actionsVisible && iconButtons.map((iconButton) => (
                 <IconButton
-                    buttonClassname={classes.iconButton}
+                    buttonClassName={classes.iconButton}
                     icon={iconButton.icon}
                     key={`${id}-${iconButton.name}-tooltip`}
                     label={iconButton.name}
-                    onClick={(event) => iconButton.onClick(id, event)}
+                    onClick={(event) => iconButton.onClick(value, event)}
                 />
             ))}
             </div>
@@ -60,14 +69,21 @@ Item.propTypes = {
         onClick: PropTypes.func.isRequired
     })),
     id: PropTypes.string.isRequired,
+    onBlur: PropTypes.func,
+    onHover: PropTypes.func,
     text: PropTypes.string.isRequired,
     textClass: PropTypes.object,
+    value: PropTypes.string.isRequired,
     variant: PropTypes.string
 };
 
 Item.defaultProps = {
     className: '',
+    onBlur: Function.prototype,
+    onHover: Function.prototype,
     iconButtons: [],
+    onBlur: Function.prototype,
+    onHover: Function.prototype,
     textClass: [],
     variant: 'body1'
 };

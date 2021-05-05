@@ -1,5 +1,6 @@
 {
   "baselineConnect": {
+    "getHistoryPaths": "{baseline}/paths",
     "getStopDetails": "{baseline}/stops/{0}",
     "getTeamServicePatterns": "{baseline}/teams/{0}/servicePatterns"
   },
