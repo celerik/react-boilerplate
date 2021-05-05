@@ -1,10 +1,6 @@
 // @packages
-import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
-import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import PropTypes from 'prop-types';
 import React from 'react';
-import SwapHorizOutlinedIcon from '@material-ui/icons/SwapHorizOutlined';
-import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
 import Typography from '@material-ui/core/Typography';
 import { withStyles, useTheme } from '@material-ui/core';
 
@@ -17,31 +13,13 @@ import styles from './styles';
 const ModalActions = ({
     classes,
     description,
-    id,
+    stopId,
     name
 }) => {
     const theme = useTheme();
 
-    const actions = [{
-        name: config.text.editServicePattern.addStopBelow,
-        icon: <AddCircleOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.checkpoint,
-        icon: <TimerOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.replace,
-        icon: <SwapHorizOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.delete,
-        icon: <DeleteRoundedIcon />,
-        onClick: Function.prototype
-    }];
-
     return (
-        <div id={id} className={classes.container}>
+        <div id={`${stopId}-modal-actions`} className={classes.container}>
             <Typography className={classes.title}>
                 {name}
             </Typography>
@@ -49,9 +27,9 @@ const ModalActions = ({
                 {description}
             </Typography>
             <ActionsStop
-                actions={actions}
                 defaultColor={theme.palette.text.primary}
-                id={`${id}-actions`}
+                id={`${stopId}-actions`}
+                stopId={stopId}
             />
         </div>
     );
@@ -60,7 +38,7 @@ const ModalActions = ({
 ModalActions.propTypes = {
     classes: PropTypes.object.isRequired,
     description: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
+    stopId: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
 };
 

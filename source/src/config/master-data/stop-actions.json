@@ -1,6 +1,10 @@
 {
+    "edit": {
+        "name": "edit",
+        "icon": "edit"
+    },
     "add": {
-        "name": "addStopBelow",
+        "name": "add",
         "icon": "add_circle"
     },
     "checkpoint": {

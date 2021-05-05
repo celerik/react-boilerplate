@@ -8,18 +8,19 @@ import Stop from './stop';
 
 // @styles
 import styles from './styles';
+import { useSetActiveAction } from '../../../providers/stops/actions';
 
 const StopsList = ({
     classes,
     id,
     stops
 }) => {
-    const [currentAction, setCurrentAction] = useState(null);
+    const setSelectedAction = useSetActiveAction();
     const [selectedStop, setSelectedStop] = useState(null);
 
     const onSelectAction = (stopId) => (action) => {
         setSelectedStop(stopId);
-        setCurrentAction(action);
+        setSelectedAction(action);
     };
 
     return (
@@ -28,7 +29,7 @@ const StopsList = ({
                 {stops.map((stop, index) => (
                     <Stop
                         content={index + 1}
-                        currentAction={selectedStop === stop.stopId && currentAction}
+                        isSelected={selectedStop === stop.stopId}
                         key={`${id}-item-${stop.stopName}`}
                         lastItem={index === stops.length - 1}
                         onSelectAction={onSelectAction(stop.stopId)}
