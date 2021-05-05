@@ -121,7 +121,7 @@ class BaselineConnect {
                 const stops = servicePattern.stops.map(stop => {
                     const geometry = {
                         type: 'Point',
-                        coordinates: parseWkt(stop.stopPoint).coordinates
+                        coordinates: parseWkt(stop.point).coordinates
                     };
 
                     return {
