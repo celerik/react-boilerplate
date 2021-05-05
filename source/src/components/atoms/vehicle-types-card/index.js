@@ -16,14 +16,10 @@ import { config } from '../../../config';
 import styles from './styles';
 
 const text = config.text.projectMenu.projectsVehiclesModal;
-
-const days = () => {
-    const objectDays = config.text.servicePatternsMenu.days;
-    return Object.entries(objectDays).map(day => ({
-        value: day[0],
-        text: day[1]
-    }));
-};
+const days = Object.entries(config.text.servicePatternsMenu.days).map(day => ({
+    value: day[0],
+    text: day[1]
+}));
 
 const TooltipContent = withStyles(styles)(({ classes }) => (
     <>
@@ -104,7 +100,7 @@ const VehicleTypeCard = ({
                         id={id}
                         itemDesProp="text"
                         itemValProp="value"
-                        items={days()}
+                        items={days}
                         placeholder={text.typeDays}
                         value={selectedTypeDay}
                         onChange={handleSelectedTypeDay}
