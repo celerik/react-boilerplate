@@ -71,9 +71,12 @@ const StopIcon = ({
                     colorClasses.main,
                     isActive && classes.onFocus
                 )}
-                onClick={onClick}
                 id={id}
+                onClick={onClick}
+                onKeyDown={event => event.key !== 'Tab' && onClick(event)}
                 ref={anchorEl}
+                role="button"
+                tabIndex={0}
             >
                 {label || <LocationOnIcon />}
             </span>

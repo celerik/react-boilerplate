@@ -16,7 +16,7 @@ class Project {
 
             const segments = servicePattern.segments.map(segment => ({
                 ...segment,
-                coordinates: parseWkt(segment.path.pathGeometry).coordinates
+                coordinates: parseWkt(segment.path.pathGeometry)?.coordinates ?? []
             }));
 
             const features = segments.map(segment => ({

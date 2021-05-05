@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
+import ModalDialog from '../../organisms/alert-dialog';
 import ActionsStop from '../actions-stop';
 import BaselineConnect from '../../../services/baseline-connect';
 import IconButton from '../../atoms/icon-button';
@@ -23,21 +24,24 @@ import styles from './styles';
 const Stop = ({
     classes,
     content,
-    isSelected,
+    onRerouteSegment,
     lastItem,
     pathId,
     stopId,
     stopName,
     to
 }) => {
-    const id = `stop-${stopId}`;
-    const setActiveAction = useSetActiveAction();
-    const dispatch = useDispatch();
     const [actionsVisible, setActionsVisibility] = useState(false);
     const [segmentHover, setSegmentHover] = useState(false);
     const [historyPaths, setHistoryPaths] = useState([]);
+    const [selectedHistoryPath, selectHistoryPath] = useState(null);
+
     const { activeAction } = useStopsContext();
+    const setActiveAction = useSetActiveAction();
+    const dispatch = useDispatch();
     const setActivePaths = useSetActivePaths();
+
+    const id = `stop-${stopId}`;
 
     const isActiveStop = activeAction.stopId === stopId;
     const isEditingSegment = activeAction.action === config.masterData.stopActions.edit.name;
@@ -150,7 +154,7 @@ const Stop = ({
                                     {
                                         icon: 'check',
                                         name: 'add',
-                                        onClick: Function.prototype
+                                        onClick: selectHistoryPath
                                     }
                                 ]}
                                 items={historyPaths.map((item, index) => ({
@@ -163,6 +167,21 @@ const Stop = ({
                         )}
                     </div>
                 )}
+            <ModalDialog
+                title={config.text.editServicePattern.changeRoute}
+                visible={selectedHistoryPath}
+                onClose={() => selectHistoryPath(null)}
+                isExitButtonVisible={false}
+                content={config.text.editServicePattern.changeRouteConfirm}
+                actions={[{
+                    name: config.text.servicePatternsMenu.cancel,
+                    onClick: () => selectHistoryPath(null)
+                }, {
+                    name: config.text.servicePatternsMenu.confirm,
+                    filled: true,
+                    onClick: () => onRerouteSegment(selectedHistoryPath)
+                }]}
+            />
             </div>
         </li>
     );

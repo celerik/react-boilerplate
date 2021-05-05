@@ -4,7 +4,8 @@ export default theme => Object.assign({}, {
         boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
         opacity: 1,
         position: 'relative',
-        width: 153,
+        padding: '10px 13px',
+        width: 'fit-content',
         zIndex: 1
     },
     text: {

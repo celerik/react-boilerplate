@@ -30,7 +30,6 @@ const BackToButton = ({
         <div
             className={classes.mainContainer}
             id={id}
-            focusable
             tabIndex={0}
             role="button"
             onKeyDown={Function.prototype}

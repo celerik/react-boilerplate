@@ -16,7 +16,7 @@ export default theme => Object.assign({}, {
         display: 'flex',
         justifyContent: 'center'
     },
-    bottomDisabled: {
+    buttonfilled: {
         backgroundColor: theme.palette.primary.ligth,
         color: 'white'
     },

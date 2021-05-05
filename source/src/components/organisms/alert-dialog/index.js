@@ -54,10 +54,10 @@ const AlertDialog = ({
                     onClick={action.onClick}
                     className={classNames(
                         classes.bottom,
-                        action.disabled && classes.bottomDisabled
+                        action.filled && classes.buttonfilled
                     )}
                     style={{
-                        backgroundColor: action.disabled
+                        backgroundColor: action.filled
                             ? colorChange
                             : 'transparent',
                         borderColor: colorChange
@@ -73,8 +73,8 @@ const AlertDialog = ({
 AlertDialog.propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape({
         onClick: PropTypes.func,
-        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        disabled: PropTypes.bool
+        filled: PropTypes.bool,
+        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
     })),
     classes: PropTypes.object.isRequired,
     colorChange: PropTypes.object,

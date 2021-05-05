@@ -23,6 +23,11 @@ const StopsList = ({
         setSelectedAction(action);
     };
 
+    const onRerouteSegment = (spStopId1, spStopId2) =>
+        (segmentId) => {
+            console.log(spStopId1, spStopId2, segmentId);
+        };
+
     return (
         <div className={classes.container} id={id}>
             <ol className={classes.stops}>
@@ -33,6 +38,10 @@ const StopsList = ({
                         key={`${id}-item-${stop.stopName}`}
                         lastItem={index === stops.length - 1}
                         onSelectAction={onSelectAction(stop.stopId)}
+                        onRerouteSegment={onRerouteSegment(
+                            stop.servicePatternStopId,
+                            stops[index + 1]?.servicePatternStopId
+                        )}
                         pathId={stop.pathId}
                         stopId={stop.stopId}
                         stopName={stop.stopName}
@@ -48,8 +57,9 @@ StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
-        stopId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+        servicePatternStopId: PropTypes.string.isRequired,
+        stopId: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
     }))
 };
 
