@@ -133,13 +133,13 @@ const CustomMap = ({
                                     coordinates={feature.geometry.coordinates}
                                 >
                                     <StopIcon
-                                        actions={
+                                        actions={(
                                             <ModalActions
                                                 name="Test"
                                                 description="Description Test"
                                                 stopId={feature.properties.stopId}
                                             />
-                                        }
+                                        )}
                                         color={feature.properties.color}
                                         label={index < featureCollection.features.length - 1 && index + 1}
                                         stopId={feature.properties.stopId}
