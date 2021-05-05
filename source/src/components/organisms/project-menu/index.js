@@ -16,7 +16,6 @@ import ProjectVehiclesModal from '../project-vehicles-modal';
 import ProjectVehiclesModalType from '../create-vehicle-type';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-// import { theme } from '../../../styles/material-ui';
 import { useSelector } from 'react-redux';
 
 // @styles

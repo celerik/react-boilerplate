@@ -36,11 +36,6 @@ const ProjectsVehicles = ({
         setProjectsVehicles(await Project.getVehicles(projectId));
     }, []);
 
-    const handleClickCreateVehicleType = () => {
-        globalUI.showAlertNotificationSuccess(text.vehicleTypeCreatedSuccessfully,
-            text.youCanFind);
-    };
-
     return (
         <Dialog
             BackdropProps={{ className: classes.backdropClassName }}
@@ -62,18 +57,16 @@ const ProjectsVehicles = ({
                     </Grid>
                 </Grid>
             </DialogTitle>
-
             <DialogContent className={classes.contentDialog}>
                 <Typography variant="h4">{format(text.vehiclesTypes, projectsVehicles?.length || 0)}</Typography>
                 <ProjectsVehiclesList projectsList={projectsVehicles} />
             </DialogContent>
-
             <DialogActions className={classes.actionsDialog}>
                 <Actionbutton
                     className={classes.outlineButton}
                     endIcon="directions_bus"
                     label={text.createVehicleType}
-                    onClick={handleClickCreateVehicleType}
+                    onClick={Function.prototype}
                 />
                 <Actionbutton
                     className={classes.outlineButton}
