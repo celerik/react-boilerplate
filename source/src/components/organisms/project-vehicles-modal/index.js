@@ -17,7 +17,6 @@ import Project from '../../../services/project';
 import ProjectsVehiclesList from '../../molecules/projects-vehicles-list';
 import { config } from '../../../config';
 import { format } from '../../../util';
-import { globalUI } from '../../../core';
 
 // @styles
 import styles from './styles';
