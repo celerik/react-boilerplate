@@ -29,7 +29,7 @@ const ProjectsVehicles = ({
     open,
     projectId
 }) => {
-    const [projectsVehicles, setProjectsVehicles] = useState(null);
+    const [projectsVehicles, setProjectsVehicles] = useState([]);
 
     useEffect(async () => {
         setProjectsVehicles(await Project.getVehicles(projectId));

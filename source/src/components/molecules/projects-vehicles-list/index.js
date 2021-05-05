@@ -15,7 +15,7 @@ const ProjectsVehiclesList = ({ projectsList }) => (
         {projectsList?.map((project, index) => (
             <VehicleTypeCard
                 id={index}
-                key={`${index}-project-vehicel`}
+                key={index}
                 vehicleTypeName={project.vehicleTypeName}
                 needUpdate={project.deprecated}
                 quantityAvailable={project.quantityAvailable}
@@ -25,7 +25,7 @@ const ProjectsVehiclesList = ({ projectsList }) => (
 );
 
 ProjectsVehiclesList.propTypes = {
-    projectsList: PropTypes.any.isRequired
+    projectsList: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(ProjectsVehiclesList);
