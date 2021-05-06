@@ -63,10 +63,14 @@ const ServicePatterns = ({
             />
             <AlertDialog
                 actions={[
-                    { name: config.text.observationPeriodsPage.cancel },
+                    { 
+                        name: config.text.observationPeriodsPage.cancel,
+                        onClick: handleClose
+                    },
                     {
-                        disabled: true,
-                        name: config.text.observationPeriodsPage.observationPeriods
+                        filled: true,
+                        name: config.text.observationPeriodsPage.observationPeriods,
+                        onClick: handleClose
                     }
                 ]}
                 colorChange={theme.palette.primary.warn}
