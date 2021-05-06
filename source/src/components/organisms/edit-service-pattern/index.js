@@ -9,21 +9,20 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import BackToButton from '../../molecules/back-to-button';
+import BaselineConnect from '../../../services/baseline-connect';
+import FormatDays from '../../atoms/format-days';
 import IconButton from '../../atoms/icon-button';
 import Project from '../../../services/project';
 import StopsList from '../../molecules/stops-list';
-import FormatDays from '../../atoms/format-days';
 import WeekDaysModal from '../../molecules/modal-days-week';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util';
 import { globalUI } from '../../../core';
 import { setMapServicePatterns, setMapStops } from '../../../actions';
+import { useHideMainMenu } from '../../../providers/main-menu/actions';
 
 // @styles
 import styles from './styles';
-import BaselineConnect from '../../../services/baseline-connect';
-import { useMainMenu } from '../../../providers/main-menu';
-import { useHideMainMenu } from '../../../providers/main-menu/actions';
 
 const ServicePatternMenu = ({
     classes,

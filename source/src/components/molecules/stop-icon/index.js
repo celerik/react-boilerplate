@@ -1,14 +1,16 @@
 // @packages
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import PropTypes from 'prop-types';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { makeStyles, Popover, withStyles } from '@material-ui/core';
 
-// @styles
-import styles from './styles';
+// @scripts
 import { useStopsContext } from '../../../providers/stops';
 import { useSetActiveStops } from '../../../providers/stops/actions';
+
+// @styles
+import styles from './styles';
 
 const customClasses = makeStyles({
     main: props => ({

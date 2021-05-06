@@ -9,7 +9,6 @@ import Map from '../../components/organisms/map';
 import MenuContent from '../../components/organisms/dashboard-menu-mapper';
 import TemplateDashboard from '../../components/templates/dashboard';
 import { MainMenuProvider, useMainMenuContext } from '../../providers/main-menu';
-import { StopsProvider } from '../../providers/stops';
 import { getProjects } from '../../actions/projects';
 import { getRoutes } from '../../actions/routes';
 import { getTeams } from '../../actions/teams';
