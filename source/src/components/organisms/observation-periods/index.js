@@ -63,7 +63,7 @@ const ServicePatterns = ({
             />
             <AlertDialog
                 actions={[
-                    { 
+                    {
                         name: config.text.observationPeriodsPage.cancel,
                         onClick: handleClose
                     },
