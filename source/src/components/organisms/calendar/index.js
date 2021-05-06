@@ -15,26 +15,37 @@ const Calendar = ({
     classes,
     id
 }) => {
-    const [value, onChange] = useState(new Date());
+    const [selectedDates, onChange] = useState([new Date(), new Date()]);
 
     return (
         <div className={classes.calendar} id={id}>
             <ReactCalendar
                 calendarType="US"
-                navigationLabel={() => (
+                navigationLabel={({ date, view }) => (
                     <div>
-                    {moment().format('MMMM')}
+                        {moment(date).format(view === 'month' ? 'MMMM' : 'YYYY')}
                     </div>
                 )}
+                tileContent={({
+                    date,
+                    view
+                }) => view === 'month' && (
+                    <span className={classes.rangeSpan}>
+                        {date.getDate()}
+                    </span>
+                )}
                 next2Label={null}
+                formatMonth={(_, date) => (
+                    <div>{moment(date).format('MMM')}</div>
+                )}
                 nextLabel={<ArrowIcon />}
                 prev2AriaLabel={null}
                 prev2Label={null}
                 prevLabel={<ArrowIcon />}
-                minDetail="month"
+                minDetail="year"
                 onChange={onChange}
                 selectRange
-                value={value}
+                value={selectedDates}
             />
         </div>
     );

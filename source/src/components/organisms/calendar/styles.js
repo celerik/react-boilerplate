@@ -4,8 +4,11 @@ export default theme => ({
         boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
         padding: '0 20px',
         width: 304,
+        '& .react-calendar__year-view__months .react-calendar__year-view__months__month': {
+            height: 60
+        },
         '& .react-calendar__month-view__days__day--neighboringMonth': {
-            color: theme.palette.text.secondary
+            color: theme.palette.text.hint
         },
         '& div .react-calendar__month-view__weekdays__weekday abbr': {
             color: 'black',
@@ -62,22 +65,43 @@ export default theme => ({
             fontStyle: 'normal',
             height: 36,
             cursor: 'pointer',
+            position: 'relative',
             textAlign: 'center'
         },
         '& .react-calendar__tile--rangeEnd': {
-            background: theme.palette.primary.warn,
-            border: `1px solid ${theme.palette.primary.warn}`,
-            borderRadius: 100,
-            color: 'white'
+            backgroundColor: '#FFF9F1',
+            borderTopRightRadius: 100,
+            borderBottomRightRadius: 100,
+            color: 'white',
+            '& span': {
+                display: 'flex'
+            }
         },
         '& .react-calendar__tile--range': {
-            background: theme.palette.primary.warn
+            backgroundColor: '#FFF9F1',
+            color: 'black'
         },
         '& .react-calendar__tile--rangeStart': {
-            background: theme.palette.primary.warn,
-            border: `1px solid ${theme.palette.primary.warn}`,
-            borderRadius: 100,
-            color: 'white'
+            backgroundColor: '#FFF9F1',
+            borderTopLeftRadius: 100,
+            borderBottomLeftRadius: 100,
+            color: 'white',
+            '& span': {
+                display: 'flex'
+            }
         }
+    },
+    rangeSpan: {
+        alignItems: 'center',
+        backgroundColor: theme.palette.primary.warn,
+        borderRadius: 20,
+        color: 'white',
+        display: 'none',
+        height: '100%',
+        justifyContent: 'center',
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        width: '100%'
     }
 });

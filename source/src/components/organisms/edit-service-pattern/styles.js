@@ -2,6 +2,7 @@ export default theme => ({
     mainContainer: {
         height: '100%',
         position: 'relative',
+        maxWidth: '45vw',
         width: 600
     },
     daysSection: {

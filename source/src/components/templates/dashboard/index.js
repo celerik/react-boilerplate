@@ -32,10 +32,7 @@ const TemplateDashboard = ({
                 visible={isMenuVisible}
                 width={menuWidth}
             />
-            <div
-                className={classes.infoContainer}
-                // style={{ width: `calc(100% - ${menuWidth}px)` }}
-            >
+            <div className={classes.infoContainer}>
                 {children}
             </div>
             <Logo className={classes.logo} rounded />
