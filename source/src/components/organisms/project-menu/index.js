@@ -107,10 +107,7 @@ const ProjectMenu = ({
                             className={classes.centerIcon}
                             iconButtons={index === 0 ? actions : []}
                             text={config.text.projectMenu[menuOption.name]}
-<<<<<<< HEAD
                             textClass={classes.optionText}
-=======
->>>>>>> main
                         />
                     </div>
                 ))}
