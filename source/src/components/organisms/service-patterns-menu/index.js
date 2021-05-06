@@ -40,6 +40,12 @@ const ServicePatterns = ({
         setServicePatternCloneModalVisibility(false);
     };
 
+    const handleLock = async () => {
+        await Project.updateServicePatternLock(projectId);
+        handleClose();
+        history.push(config.routes.dashboard.projects.url);
+    };
+
     useEffect(async () => {
         setServicesPatterns(await Project.getServicePatterns(projectId));
     }, [projectId]);
@@ -105,12 +111,12 @@ const ServicePatterns = ({
                 actions={[
                     {
                         name: config.text.createServicePattern.cancel,
-                        onClick: Function.prototype
+                        onClick: handleClose
                     },
                     {
                         name: config.text.createServicePattern.lock,
                         filled: true,
-                        onClick: Function.prototype
+                        onClick: handleLock
                     }
                 ]}
                 className={classes.buttonLock}
