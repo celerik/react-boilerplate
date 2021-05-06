@@ -7,6 +7,14 @@
             {
                 "dayType": "Mon",
                 "quantity": 2
+            },
+            {
+                "dayType": "Tue",
+                "quantity": 5
+            },
+            {
+                "dayType": "Thu",
+                "quantity": 6
             }
         ],
         "deprecated": false
@@ -14,7 +22,7 @@
     {
         "vehicleTypeId": "2222222222222",
         "vehicleTypeVersion": "type 3",
-        "vehicleTypeName": "vehicle type 2",
+        "vehicleTypeName": "type 2",
         "quantityAvailable": [
             {
                 "dayType": "Mon",

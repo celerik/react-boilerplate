@@ -38,6 +38,7 @@ const VehicleTypeCard = ({
     const [infoValue, setInfoValue] = useState(0);
     const [tooltipVisible, setTooltipVisibility] = useState(false);
     const [selectedTypeDay, setSelectedTypeDay] = useState(null);
+    const [deprecate, setDeprecate] = useState(needUpdate);
 
     useEffect(() => {
         const quantity = quantityAvailable.find(el => el.dayType === selectedTypeDay)?.quantity || 0;
@@ -56,9 +57,9 @@ const VehicleTypeCard = ({
         <Tooltip
             classes={{ tooltip: classes.tooltip }}
             interactive
-            open={tooltipVisible && needUpdate}
+            open={tooltipVisible && deprecate}
             placement="bottom-start"
-            title={needUpdate && <TooltipContent />}
+            title={deprecate && <TooltipContent />}
         >
             <Grid
                 alignItems="center"
@@ -76,10 +77,11 @@ const VehicleTypeCard = ({
                     item
                     xs={4}
                 >
-                    {needUpdate && (
+                    {deprecate && (
                         <IconButton
                             buttonClassname={classes.refreshIcon}
                             icon="refresh"
+                            onClick={() => setDeprecate(false)}
                             id={id}
                         />
                     )}
@@ -112,7 +114,7 @@ const VehicleTypeCard = ({
                         endAdornment={text.vehicles}
                         onChange={setInfoValue}
                         value={infoValue}
-                        disable={!needUpdate}
+                        disable={!deprecate}
                     />
                 </Grid>
                 <Grid item xs={2}>
