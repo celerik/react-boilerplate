@@ -21,16 +21,18 @@ const Calendar = ({
         <div className={classes.calendar} id={id}>
             <ReactCalendar
                 calendarType="US"
-                navigationLabel={({ date }) => (
-                    <div>{moment(date).format('MMMM')}</div>
+                navigationLabel={({ date, view }) => (
+                    <div>
+                        {moment(date).format(view === 'month' ? 'MMMM' : 'YYYY')}
+                    </div>
                 )}
-                tileContent={({ 
+                tileContent={({
                     date,
                     view
                 }) => view === 'month' && (
                     <span className={classes.rangeSpan}>
-                        {date.getDay()}
-                    </span> 
+                        {date.getDate()}
+                    </span>
                 )}
                 next2Label={null}
                 formatMonth={(_, date) => (
