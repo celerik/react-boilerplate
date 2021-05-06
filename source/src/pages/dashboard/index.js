@@ -47,14 +47,12 @@ const DashboardPage = ({
     }, [selectedTeam]);
 
     return (
-        <StopsProvider>
-            <MainMenuProvider>
-                <Dashboard>
-                    <MenuContent />
-                    <Map />
-                </Dashboard>
-            </MainMenuProvider>
-        </StopsProvider>
+        <MainMenuProvider>
+            <Dashboard>
+                <MenuContent />
+                <Map />
+            </Dashboard>
+        </MainMenuProvider>
     );
 };
 
