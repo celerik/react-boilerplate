@@ -9,13 +9,16 @@ import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
+import classNames from 'classnames';
 
 const FormatDaysOperation = ({
+    className,
     classes,
     days,
     id,
     variant
 }) => {
+    const mainClassName = classNames(className, classes);
     const createDays = (...strings) => (
         <>
             {strings[1]}
@@ -24,6 +27,7 @@ const FormatDaysOperation = ({
             <strong>{strings[4]}</strong>
         </>
     );
+
     const [str1, str2] = config.text.servicePatternsMenu.runDays.split('{0}');
     const allDaysExceptLast = [...days];
     const lastDay = allDaysExceptLast.pop();
@@ -31,7 +35,7 @@ const FormatDaysOperation = ({
 
     return (
         <Typography
-            className={classes.container}
+            className={mainClassName}
             id={id}
             variant={variant}
         >
@@ -41,6 +45,7 @@ const FormatDaysOperation = ({
 };
 
 FormatDaysOperation.propTypes = {
+    className: PropTypes.string,
     classes: PropTypes.object.isRequired,
     days: PropTypes.arrayOf(PropTypes.string).isRequired,
     id: PropTypes.string.isRequired,
@@ -48,6 +53,7 @@ FormatDaysOperation.propTypes = {
 };
 
 FormatDaysOperation.defaultProps = {
+    className: null,
     variant: 'h6'
 };
 

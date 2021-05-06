@@ -8,9 +8,27 @@ import { connect } from 'react-redux';
 import Map from '../../components/organisms/map';
 import MenuContent from '../../components/organisms/dashboard-menu-mapper';
 import TemplateDashboard from '../../components/templates/dashboard';
+import { MainMenuProvider, useMainMenuContext } from '../../providers/main-menu';
 import { getProjects } from '../../actions/projects';
 import { getRoutes } from '../../actions/routes';
 import { getTeams } from '../../actions/teams';
+import { useExpandMainMenu } from '../../providers/main-menu/actions';
+
+// eslint-disable-next-line react/prop-types
+const Dashboard = ({ children }) => {
+    const { expanded, visible } = useMainMenuContext();
+    const expandMainMenu = useExpandMainMenu();
+
+    return (
+        <TemplateDashboard
+            isMenuExpanded={expanded}
+            isMenuVisible={visible}
+            setMenuExpanded={expandMainMenu}
+        >
+            {children}
+        </TemplateDashboard>
+    );
+};
 
 const DashboardPage = ({
     onGetProjects,
@@ -28,10 +46,12 @@ const DashboardPage = ({
     }, [selectedTeam]);
 
     return (
-        <TemplateDashboard>
-            <MenuContent />
-            <Map />
-        </TemplateDashboard>
+        <MainMenuProvider>
+            <Dashboard>
+                <MenuContent />
+                <Map />
+            </Dashboard>
+        </MainMenuProvider>
     );
 };
 

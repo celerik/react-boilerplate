@@ -3,7 +3,7 @@ import Icon from '@material-ui/core/Icon';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { withStyles } from '@material-ui/core';
+import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
 import Actionbutton from '../../atoms/button';
@@ -13,9 +13,9 @@ import IconButton from '../../atoms/icon-button';
 import Item from '../../atoms/item';
 import ProjectSettingsModal from '../project-settings';
 import ProjectVehiclesModal from '../project-vehicles-modal';
+import ProjectVehiclesModalType from '../create-vehicle-type';
 import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
-import { theme } from '../../../styles/material-ui';
 import { useSelector } from 'react-redux';
 
 // @styles
@@ -27,21 +27,33 @@ const ProjectMenu = ({
     id,
     match
 }) => {
-    const isDialogOpen = history.location.pathname.match(/vehicles$/ig);
+    const projectVehiclesUrlMatch = history.location.pathname.match(
+        config.routes.dashboard.projectVehicles.url.split('/').pop()
+    );
+    const createVehicleTypeUrlMatch = history.location.pathname.match(
+        config.routes.dashboard.createVehicleType.url.split('/').pop()
+    );
     const [runModalVisible, setRunModalVisibility] = useState(false);
-    const [openVehiclesModal, setOpenVehiclesModal] = useState(isDialogOpen);
+    const [vehicleType, setVehicleType] = useState(createVehicleTypeUrlMatch);
+    const [createVehicleTypeModalOpen, openVehicleTypeModal] = useState(projectVehiclesUrlMatch);
     const [modalSettingsVisibility, setModalSettingsVisibility] = useState(false);
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
     const locked = project.servicePatternsLocked;
+    const theme = useTheme();
 
     if (!project) {
         return null;
     }
 
     const handleCloseProjectsVehiclesModal = () => {
-        setOpenVehiclesModal(false);
+        openVehicleTypeModal(false);
+        history.goBack();
+    };
+
+    const handleCloseVehicleTypeModal = () => {
+        setVehicleType(false);
         history.goBack();
     };
 
@@ -64,7 +76,7 @@ const ProjectMenu = ({
     }];
 
     return (
-        <div classNames={classes.mainContainer} id={id}>
+        <div id={id}>
             <BackToButton label={config.text.projectMenu.backToProjects} id={`${id}-back-button`} />
             <div className={classes.titleContainer}>
                 <Typography className={classes.projectName} variant="h4">
@@ -95,7 +107,10 @@ const ProjectMenu = ({
                             className={classes.centerIcon}
                             iconButtons={index === 0 ? actions : []}
                             text={config.text.projectMenu[menuOption.name]}
+<<<<<<< HEAD
                             textClass={classes.optionText}
+=======
+>>>>>>> main
                         />
                     </div>
                 ))}
@@ -132,8 +147,15 @@ const ProjectMenu = ({
                 projectId={projectId}
             />
             <ProjectVehiclesModal
-                open={openVehiclesModal}
+                history={history}
+                onClick={onClickMenuItem(config.routes.dashboard.createVehicleType.name)}
                 onClose={handleCloseProjectsVehiclesModal}
+                open={createVehicleTypeModalOpen}
+                projectId={projectId}
+            />
+            <ProjectVehiclesModalType
+                onClose={handleCloseVehicleTypeModal}
+                open={vehicleType}
             />
         </div>
     );

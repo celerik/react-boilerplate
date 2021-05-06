@@ -109,13 +109,14 @@ const ServicePatterns = ({
                     },
                     {
                         name: config.text.createServicePattern.lock,
-                        disabled: true,
+                        filled: true,
                         onClick: Function.prototype
                     }
                 ]}
-                id={`${id}-lock-service-pattern`}
                 className={classes.buttonLock}
                 content={config.text.createServicePattern.content}
+                id={`${id}-lock-service-pattern`}
+                isExitButtonVisible={false}
                 onClose={handleClose}
                 title={config.text.createServicePattern.lockServicePattern}
                 visible={servicePatternModalVisible}

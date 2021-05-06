@@ -1,5 +1,8 @@
 {
   "appName": "Flow OS",
+  "common": {
+    "error": "There's been an internal error"
+  },
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
@@ -20,8 +23,11 @@
   "editServicePattern": {
     "addStopBelow": "Add Stop Below",
     "backToServicePatterns": "Back to service patterns",
+    "changeRoute": "Change route",
+    "changeRouteConfirm": "Are you sure you want to chage the route? The map will be automatically updated.",
     "checkpoint": "Checkpoint",
     "delete": "Delete",
+    "editSegment": "Edit",
     "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
     "errorUpdatingDays": "Service pattern has not been updated",
     "getServicePatternError": "There's been an error while fetching your service pattern",
@@ -50,10 +56,10 @@
     "account": "Account",
     "dataExplorer": "Data explorer",
     "logout": "Log out",
+    "manageTeams": "Manage Teams",
     "privacyPolicy": "Privacy policy",
     "projects": "Projects",
-    "teamName": "Team Name",
-    "manageTeams": "Manage Teams"
+    "teamName": "Team Name"
   },
   "observationPeriodsPage": {
     "addObservationPeriod": "Add Observation period",
@@ -93,15 +99,26 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
+    "createVehicleTypeModal":{
+      "cancel": "Cancel",
+      "input": "Vehicle type 6",
+      "subTitle": "Vehicle type name",
+      "vehicleFeature": "Vehicle feature"
+    },
     "projectsVehiclesModal": {
       "addFromLibrary": "Add from library",
       "createVehicleType": "Create vehicle type",
+      "features": "FEATURES",
+      "header": "Create vehicle type",
       "needUpdate": "Need update",
+      "saveFeatures": "Save features",
       "title": "Projects Vehicles",
-      "typeDays": "Type of days...", 
+      "typeDays": "Type of days...",
       "update": "update",
+      "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
       "vehicles": "Vehicles",
-      "vehiclesTypes": "VEHICLES TYPES({0})"
+      "vehiclesTypes": "VEHICLES TYPES({0})",
+      "youCanFind": "you can find it in the vehicle type library"
     },
     "projectSettingsModal": {
       "cancel": "Cancel",
@@ -129,6 +146,7 @@
   },
   "services": {
     "baselineConnect": {
+      "historyPaths": "Get paths",
       "stopDetails": "Stop details"
     },
     "project": {

@@ -8,6 +8,7 @@ export default theme => Object.assign({}, {
     text: {
         color: theme.palette.text.disabled,
         fontSize: 16,
+        fontWeight: 600,
         marginLeft: 9
     }
 });

@@ -10,47 +10,22 @@ import VehicleTypeCard from '../../atoms/vehicle-types-card';
 // @styles
 import styles from './styles';
 
-const projects = [
-    {
-        id: '33',
-        vehicleType: 'vehicle type 1'
-    },
-    {
-        id: '363',
-        vehicleType: 'vehicle type 2'
-    },
-    {
-        id: '336',
-        vehicleType: 'vehicle type 3'
-    }
-];
-
-const ProjectsVehiclesList = ({ projects }) => (
+const ProjectsVehiclesList = ({ projectsList }) => (
     <List>
-        {projects.map(({ id, vehicleType }, index) => (
+        {projectsList?.map((project, index) => (
             <VehicleTypeCard
-                id={id}
-                key={`${id}-${index}`}
-                vehicleType={vehicleType}
+                id={index}
+                key={index}
+                vehicleTypeName={project.vehicleTypeName}
+                needUpdate={project.deprecated}
+                quantityAvailable={project.quantityAvailable}
             />
         ))}
-        <VehicleTypeCard
-            id="d345"
-            vehicleType="vehicle type 4"
-            needUpdate
-        />
     </List>
 );
 
 ProjectsVehiclesList.propTypes = {
-    projects: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.string.isRequired,
-        vehicleType: PropTypes.string.isRequired
-    }))
-};
-
-ProjectsVehiclesList.defaultProps = {
-    projects
+    projectsList: PropTypes.array.isRequired
 };
 
 export default withStyles(styles)(ProjectsVehiclesList);

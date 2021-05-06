@@ -2,7 +2,7 @@
 import Grid from '@material-ui/core/Grid';
 import Inputfield from '../../molecules/input-field';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core';
@@ -16,21 +16,10 @@ import { config } from '../../../config';
 import styles from './styles';
 
 const text = config.text.projectMenu.projectsVehiclesModal;
-
-const typeDays = [
-    {
-        text: 'mon',
-        value: 'mon'
-    },
-    {
-        text: 'tue',
-        value: 'tue'
-    },
-    {
-        text: 'wed',
-        value: 'wed'
-    }
-];
+const days = Object.entries(config.text.servicePatternsMenu.days).map(day => ({
+    value: day[0],
+    text: day[1]
+}));
 
 const TooltipContent = withStyles(styles)(({ classes }) => (
     <>
@@ -43,13 +32,24 @@ const VehicleTypeCard = ({
     classes,
     id,
     needUpdate,
-    vehicleType
+    quantityAvailable,
+    vehicleTypeName
 }) => {
-    const [infoValue, setInfoValue] = useState(4);
+    const [infoValue, setInfoValue] = useState(0);
     const [tooltipVisible, setTooltipVisibility] = useState(false);
+    const [selectedTypeDay, setSelectedTypeDay] = useState(null);
+
+    useEffect(() => {
+        const quantity = quantityAvailable.find(el => el.dayType === selectedTypeDay)?.quantity || 0;
+        setInfoValue(quantity);
+    }, [selectedTypeDay]);
 
     const onHover = () => {
         setTooltipVisibility(true);
+    };
+
+    const handleSelectedTypeDay = ({ value }) => {
+        setSelectedTypeDay(value);
     };
 
     return (
@@ -88,7 +88,7 @@ const VehicleTypeCard = ({
                         style={{ fontWeight: tooltipVisible && 'bold' }}
                         variant="body2"
                     >
-                        {vehicleType}
+                        {vehicleTypeName}
                     </Typography>
                 </Grid>
                 <Grid
@@ -100,16 +100,19 @@ const VehicleTypeCard = ({
                         id={id}
                         itemDesProp="text"
                         itemValProp="value"
-                        items={typeDays}
+                        items={days}
                         placeholder={text.typeDays}
+                        value={selectedTypeDay}
+                        onChange={handleSelectedTypeDay}
                     />
                 </Grid>
                 <Grid item xs={2}>
                     <Inputfield
                         className={classes.inputfield}
                         endAdornment={text.vehicles}
-                        onChange={(e) => setInfoValue(e.target.value)}
+                        onChange={setInfoValue}
                         value={infoValue}
+                        disable={!needUpdate}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -126,8 +129,12 @@ const VehicleTypeCard = ({
 VehicleTypeCard.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
+    quantityAvailable: PropTypes.arrayOf(PropTypes.shape({
+        dayType: PropTypes.string.isRequired,
+        quantity: PropTypes.number.isRequired
+    })).isRequired,
     needUpdate: PropTypes.bool,
-    vehicleType: PropTypes.string.isRequired
+    vehicleTypeName: PropTypes.string.isRequired
 };
 
 TooltipContent.propTypes = {

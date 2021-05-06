@@ -1,8 +1,12 @@
-export default () => Object.assign({}, {
+export default theme => Object.assign({}, {
     container: {
-        boxShadow: '0px 1px 4px rgb(0 0 0 / 10%)',
-        padding: '7px 15px',
-        width: 'fit-content'
+        background: theme.palette.common.pearl,
+        boxShadow: '0px 1px 4px rgba(0, 0, 0, 0.1)',
+        opacity: 1,
+        position: 'relative',
+        padding: '10px 13px',
+        width: 'fit-content',
+        zIndex: 1
     },
     text: {
         padding: '2px 0px 4px',

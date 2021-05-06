@@ -1,17 +1,17 @@
 export default theme => Object.assign({}, {
     actionsContainer: {
-        marginLeft: 20
-    },
-    onFocus: {
-        boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
+        marginLeft: 20,
+        '& .MuiIconButton-root': {
+            fontSize: 20,
+            marginRight: 9,
+            height: 22,
+            width: 22
+        }
     },
     onFocusLine: {
         '&:after': {
             boxShadow: '0px 0px 0px 4px rgb(134 117 255 / 20%)'
         }
-    },
-    bodyOptions: {
-        display: 'flex'
     },
     container: {
         display: 'flex',
@@ -22,51 +22,54 @@ export default theme => Object.assign({}, {
         width: '100%',
         display: 'flex',
         flexDirection: 'column',
-        padding: 0
-    },
-    headerOptions: {
-        display: 'flex',
-        justifyContent: 'start'
+        paddingLeft: 0
     },
     stopItem: {
-        alignItems: 'flex-start',
         display: 'flex',
-        paddingBottom: 25,
-        position: 'relative',
         '&:last-child, &:first-child': {
             fontWeight: 'bold',
-            '& span': {
-                height: 35,
-                marginLeft: 0,
-                width: 35
-            },
             '& span:before': {
                 borderStyle: 'groove'
             }
         }
     },
+    segmentContainer: {
+        position: 'relative',
+        left: 16,
+        height: '100%',
+        width: 100
+    },
+    segmentEdit: {
+        color: theme.palette.text.secondary,
+        position: 'absolute',
+        top: 15,
+        left: 25
+    },
     stopLine: {
-        '&:after': {
-            background: theme.palette.primary.light,
-            content: '""',
-            height: '100%',
-            left: 16,
-            marginLeft: 0,
-            position: 'absolute',
-            top: 30,
-            width: 2,
-            zIndex: -1
-        }
+        background: theme.palette.primary.light,
+        position: 'absolute',
+        height: '100%',
+        width: 2
     },
     stopIcon: {
-        width: '15%',
-        height: '100%'
+        minHeight: 80,
+        height: '100%',
+        width: 50
+    },
+    infoContainer: {
+        width: '100%'
     },
     title: {
-        width: '85%',
-        height: '20%'
+        alignItems: 'center',
+        display: 'flex',
+        width: '100%'
     },
     subStopsContainer: {
-        width: '75%'
+        marginTop: 5,
+        backgroundColor: 'white',
+        position: 'relative',
+        minWidth: 170,
+        width: 'fit-content',
+        marginBottom: 15
     }
 });

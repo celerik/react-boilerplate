@@ -1,4 +1,7 @@
 export default theme => Object.assign({}, {
+    mainContainer: {
+        maxWidth: 300
+    },
     buttonAdd: {
         backgroundColor: theme.palette.primary.light,
         color: 'white',

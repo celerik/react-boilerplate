@@ -1,54 +1,62 @@
 // @packages
-import AddCircleOutlinedIcon from '@material-ui/icons/AddCircleOutlined';
-import DeleteRoundedIcon from '@material-ui/icons/DeleteRounded';
 import PropTypes from 'prop-types';
-import React from 'react';
-import SwapHorizOutlinedIcon from '@material-ui/icons/SwapHorizOutlined';
-import TimerOutlinedIcon from '@material-ui/icons/TimerOutlined';
+import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
+import { useSetActiveAction } from '../../../providers/stops/actions';
+import Project from '../../../services/project';
 import Stop from './stop';
-import { config } from '../../../config';
 
 // @styles
 import styles from './styles';
 
 const StopsList = ({
     classes,
-    id,
+    projectId,
+    onUpdate,
+    servicePatternId,
     stops
 }) => {
-    const actions = [{
-        name: config.text.editServicePattern.addStopBelow,
-        icon: <AddCircleOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.checkpoint,
-        icon: <TimerOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.replace,
-        icon: <SwapHorizOutlinedIcon />,
-        onClick: Function.prototype
-    }, {
-        name: config.text.editServicePattern.delete,
-        icon: <DeleteRoundedIcon />,
-        onClick: Function.prototype
-    }];
+    const setSelectedAction = useSetActiveAction();
+    const [selectedStop, setSelectedStop] = useState(null);
+
+    const onSelectAction = (stopId) => (action) => {
+        setSelectedStop(stopId);
+        setSelectedAction(action);
+    };
+
+    const onRerouteSegment = (servicePatternStopId1, servicePatternStopId2) =>
+        (pathId, pathGeometry) =>
+            Project.rerouteSegment({
+                pathGeometry,
+                pathId,
+                projectId,
+                servicePatternId,
+                servicePatternStopId1,
+                servicePatternStopId2
+            }).then(onUpdate);
 
     return (
-        <div className={classes.container} id={id}>
+        <div className={classes.container} id={`stop-list-sp-${servicePatternId}`}>
             <ol className={classes.stops}>
-            {stops.map((stop, index) => (
-                <Stop
-                    actions={actions}
-                    content={index + 1}
-                    key={`${id}-item-${stop.stopName}`}
-                    lastItem={index === stops.length - 1}
-                    stopName={stop.stopName}
-                />
-            ))}
+                {stops.map((stop, index) => (
+                    <Stop
+                        content={index + 1}
+                        isSelected={selectedStop === stop.stopId}
+                        key={`sp-${servicePatternId}-item-${stop.stopName}`}
+                        lastItem={index === stops.length - 1}
+                        onSelectAction={onSelectAction(stop.stopId)}
+                        onRerouteSegment={onRerouteSegment(
+                            stop.servicePatternStopId,
+                            stops[index + 1]?.servicePatternStopId
+                        )}
+                        pathId={stop.pathId}
+                        stopId={stop.stopId}
+                        stopName={stop.stopName}
+                        to={stops[index + 1]?.stopId}
+                    />
+                ))}
             </ol>
         </div>
     );
@@ -56,14 +64,18 @@ const StopsList = ({
 
 StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    onUpdate: PropTypes.func,
+    projectId: PropTypes.string.isRequired,
+    servicePatternId: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
-        id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+        servicePatternStopId: PropTypes.string.isRequired,
+        stopId: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
     }))
 };
 
 StopsList.defaultProps = {
+    onUpdate: Function.prototype,
     stops: []
 };
 

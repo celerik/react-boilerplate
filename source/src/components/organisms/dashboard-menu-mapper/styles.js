@@ -4,7 +4,6 @@ export default () => Object.assign({}, {
         display: 'flex',
         flexDirection: 'column',
         height: '100vh',
-        maxWidth: 474,
         minWidth: 350,
         overflow: 'auto',
         padding: '30px 20px',

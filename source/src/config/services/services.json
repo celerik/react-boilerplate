@@ -1,12 +1,15 @@
 {
   "baselineConnect": {
+    "getHistoryPaths": "{baseline}/paths",
     "getStopDetails": "{baseline}/stops/{0}",
     "getTeamServicePatterns": "{baseline}/teams/{0}/servicePatterns"
   },
   "projects": {
     "clone": "{projects}/projects/{0}/servicePatterns/cloneToProject",
     "get": "{projects}/projects",
+    "getVehicles": "{projects}/projects/{0}/vehicles",
     "getServicePatterns": "{projects}/projects/{0}/servicePatterns",
+    "reroute": "{projects}/projects/{0}/servicePatterns/{1}/segments/{2}/{3}/reroute",
     "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
     "settings": "{projects}/projects/{0}/settings"
   },

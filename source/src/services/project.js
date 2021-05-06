@@ -14,24 +14,25 @@ class Project {
                 format(config.services.servicePatterns.getServicePattern, projectId, servicePatternId)
             );
 
-            const coordinates = servicePattern.segments.flatMap(
-                segment => parseWkt(segment.path.pathGeometry).coordinates
-            );
+            const segments = servicePattern.segments.map(segment => ({
+                ...segment,
+                coordinates: parseWkt(segment.path.pathGeometry)?.coordinates ?? []
+            }));
 
-            const featurePath = {
-                type: 'Feature',
-                properties: {
-                    name: `path-${servicePattern.routeName}`
-                },
+            const features = segments.map(segment => ({
                 geometry: {
                     type: 'LineString',
-                    coordinates
-                }
-            };
+                    coordinates: segment.coordinates
+                },
+                properties: {
+                    pathId: segment.path.pathId
+                },
+                type: 'Feature'
+            }));
 
             servicePattern.pathGeoJSON = {
                 type: 'FeatureCollection',
-                features: [featurePath]
+                features
             };
 
             return servicePattern;
@@ -88,6 +89,65 @@ class Project {
             globalUI.showAlertNotificationError(
                 config.text.editServicePattern.updateServicePattern,
                 config.text.editServicePattern.errorUpdatingDays
+            );
+
+            throw error;
+        }
+    }
+
+    static async getVehicles(projectId) {
+        try {
+            const projectsVehicles = await axios.get(
+                format(config.services.projects.getVehicles, projectId)
+            );
+
+            return projectsVehicles;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.projectMenu.projectVehicles,
+                error.message
+            );
+
+            throw error;
+        }
+    }
+
+    /**
+     * @param {String} pathGeometry
+     * @param {String} pathId
+     * @param {String} projectId
+     * @param {String} servicePatternId
+     * @param {String} servicePatternStopId1
+     * @param {String} servicePatternStopId2
+     */
+    static async rerouteSegment({
+        pathGeometry,
+        pathId,
+        projectId,
+        servicePatternId,
+        servicePatternStopId1,
+        servicePatternStopId2
+    }) {
+        try {
+            const response = await axios.put(
+                format(
+                    config.services.projects.reroute,
+                    projectId,
+                    servicePatternId,
+                    servicePatternStopId1,
+                    servicePatternStopId2
+                ),
+                {
+                    pathId,
+                    pathGeometry
+                }
+            );
+
+            return response;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                error.message,
+                error.message
             );
 
             throw error;
