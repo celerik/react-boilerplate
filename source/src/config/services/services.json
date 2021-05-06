@@ -9,7 +9,7 @@
     "get": "{projects}/projects",
     "getVehicles": "{projects}/projects/{0}/vehicles",
     "getServicePatterns": "{projects}/projects/{0}/servicePatterns",
-    "reroute": "{projects}/projects/servicePatterns/{0}/segments/{1}/{2}/reroute",
+    "reroute": "{projects}/projects/{0}/servicePatterns/{1}/segments/{2}/{3}/reroute",
     "importServicePatterns": "{projects}/projects/{0}/servicePatterns/import",
     "settings": "{projects}/projects/{0}/settings"
   },

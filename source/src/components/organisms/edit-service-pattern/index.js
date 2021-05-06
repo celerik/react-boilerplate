@@ -86,13 +86,25 @@ const ServicePatternMenu = ({
                 <Typography variant="h3">
                     {servicePattern.settings.servicePatternName}
                 </Typography>
-                <div className={classes.lockedStatus}>
-                    <Icon fontSize="small">
-                        {locked ? 'lock' : 'lock_open'}
-                    </Icon>
-                    <Typography variant="subtitle">
-                        {locked ? config.text.editServicePattern.locked : config.text.editServicePattern.unlocked}
-                    </Typography>
+                <div className={classes.headerInfoRight}>
+                    <div className={classes.lockedStatus}>
+                        <Icon fontSize="small">
+                            {locked ? 'lock' : 'lock_open'}
+                        </Icon>
+                        <Typography variant="subtitle">
+                            {locked ? config.text.editServicePattern.locked : config.text.editServicePattern.unlocked}
+                        </Typography>
+                    </div>
+                    <div className={classes.daysSection}>
+                        <IconButton
+                            icon="edit"
+                            iconClassName={classes.icon}
+                            id={`${id}-edit-icon`}
+                            label="edit"
+                            onClick={() => openEditModal(true)}
+                        />
+                        <FormatDays days={servicePattern.settings.daysOfOperation} id={`${id}-format-days`} />
+                    </div>
                 </div>
             </div>
             <div className={classes.header}>
@@ -100,16 +112,6 @@ const ServicePatternMenu = ({
                     {config.text.editServicePattern.route}
                     {servicePattern.routeName}
                 </Typography>
-                <div className={classes.daysSection}>
-                    <IconButton
-                        icon="edit"
-                        iconClassName={classes.icon}
-                        id={`${id}-edit-icon`}
-                        label="edit"
-                        onClick={() => openEditModal(true)}
-                    />
-                    <FormatDays days={servicePattern.settings.daysOfOperation} id={`${id}-format-days`} />
-                </div>
             </div>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}
@@ -119,7 +121,9 @@ const ServicePatternMenu = ({
                 variant="fullWidth"
             />
             <StopsList
-                servicePatternId={servicePattern.servicePatternId}
+                projectId={projectId}
+                onUpdate={fetchServicePatternData}
+                servicePatternId={servicePatternId}
                 stops={servicePattern.stops}
             />
             <WeekDaysModal

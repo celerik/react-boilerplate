@@ -1,5 +1,8 @@
 {
   "appName": "Flow OS",
+  "common": {
+    "error": "There's been an internal error"
+  },
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },

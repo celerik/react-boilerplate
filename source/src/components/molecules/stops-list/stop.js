@@ -20,6 +20,7 @@ import { useStopsContext } from '../../../providers/stops';
 
 // @styles
 import styles from './styles';
+import { globalUI } from '../../../core';
 
 const Stop = ({
     classes,
@@ -67,6 +68,19 @@ const Stop = ({
         const [paths, pathsGeoJSON] = await BaselineConnect.getHistoryPaths(stopId, to);
         dispatch(setMapHistoryPaths(pathsGeoJSON));
         setHistoryPaths(paths);
+    };
+
+    const handleOnReroute = () => {
+        try {
+            const { pathId, pathGeometry } = historyPaths.find(path => path.pathId === selectedHistoryPath);
+            onRerouteSegment(pathId, pathGeometry);
+            selectHistoryPath(null);
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.common.error,
+                error.message
+            );
+        }
     };
 
     useEffect(() => {
@@ -150,13 +164,11 @@ const Stop = ({
                         )}
                         {isEditingSegment && (
                             <SubStopsList
-                                actions={[
-                                    {
-                                        icon: 'check',
-                                        name: 'add',
-                                        onClick: selectHistoryPath
-                                    }
-                                ]}
+                                actions={[{
+                                    icon: 'check',
+                                    name: 'add',
+                                    onClick: selectHistoryPath
+                                }]}
                                 items={historyPaths.map((item, index) => ({
                                     id: item.pathId,
                                     name: `Route ${index + 1}`
@@ -179,7 +191,7 @@ const Stop = ({
                 }, {
                     name: config.text.servicePatternsMenu.confirm,
                     filled: true,
-                    onClick: () => onRerouteSegment(selectedHistoryPath)
+                    onClick: handleOnReroute
                 }]}
             />
             </div>
@@ -190,15 +202,17 @@ const Stop = ({
 Stop.propTypes = {
     classes: PropTypes.object.isRequired,
     content: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
-    pathId: PropTypes.string.isRequired,
     lastItem: PropTypes.bool,
+    onRerouteSegment: PropTypes.func,
+    pathId: PropTypes.string.isRequired,
     stopId: PropTypes.string.isRequired,
     stopName: PropTypes.string.isRequired,
     to: PropTypes.string.isRequired
 };
 
 Stop.defaultProps = {
-    lastItem: false
+    lastItem: false,
+    onRerouteSegment: Function.prototype
 };
 
 export default withStyles(styles)(Stop);

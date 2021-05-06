@@ -3,8 +3,10 @@ export default theme => ({
         width: '100%'
     },
     item: {
-        color: theme.palette.text.hint,
-        fontFamily: theme.typography.fontFamily,
-        height: 35
+        height: 25,
+        '& .MuiTypography-root, .MuiIcon-root': {
+            color: theme.palette.text.hint,
+            fontSize: 10
+        }
     }
 });

@@ -112,19 +112,34 @@ class Project {
         }
     }
 
-    static async rerouteSegment(servicePatternId, servicePatternStopId1, servicePatternId2, pathId) {
-        console.log(servicePatternId, servicePatternStopId1, servicePatternId2, pathId);
+    /**
+     * @param {String} pathGeometry
+     * @param {String} pathId
+     * @param {String} projectId
+     * @param {String} servicePatternId
+     * @param {String} servicePatternStopId1
+     * @param {String} servicePatternStopId2
+     */
+    static async rerouteSegment({
+        pathGeometry,
+        pathId,
+        projectId,
+        servicePatternId,
+        servicePatternStopId1,
+        servicePatternStopId2
+    }) {
         try {
             const response = await axios.put(
                 format(
                     config.services.projects.reroute,
-                    servicePatternId, 
-                    servicePatternStopId1, 
-                    servicePatternId2
+                    projectId,
+                    servicePatternId,
+                    servicePatternStopId1,
+                    servicePatternStopId2
                 ),
                 {
                     pathId,
-                    pathGeometry: 'LINESTRING'
+                    pathGeometry
                 }
             );
 

@@ -51,8 +51,7 @@ const ActionsStop = ({
                         onClick={() => setActiveAction(stopId, action.name)}
                         placement="top"
                     />
-                )
-            )}
+                ))}
         </>
     );
 };

@@ -91,7 +91,7 @@ StopIcon.propTypes = {
     color: PropTypes.string,
     stopId: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired
 };
 
 StopIcon.defaultProps = {

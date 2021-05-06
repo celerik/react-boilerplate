@@ -17,11 +17,10 @@ const Item = ({
     onBlur,
     onHover,
     text,
-    textClass,
     value,
     variant
 }) => {
-    const itemContainer = classNames(classes.itemContainer, className);
+    const itemContainer = classNames(className, classes.itemContainer);
     const [actionsVisible, setActionsVisibility] = useState(false);
 
     const onBlurItem = () => {
@@ -42,7 +41,7 @@ const Item = ({
             onMouseLeave={onBlurItem}
             onMouseOver={onHoverItem}
         >
-            <Typography variant={variant} className={textClass}>
+            <Typography variant={variant}>
                 {text}
             </Typography>
             <div>
@@ -72,7 +71,6 @@ Item.propTypes = {
     onBlur: PropTypes.func,
     onHover: PropTypes.func,
     text: PropTypes.string.isRequired,
-    textClass: PropTypes.object,
     value: PropTypes.string.isRequired,
     variant: PropTypes.string
 };
@@ -82,7 +80,6 @@ Item.defaultProps = {
     onBlur: Function.prototype,
     onHover: Function.prototype,
     iconButtons: [],
-    textClass: [],
     variant: 'body1'
 };
 

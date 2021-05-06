@@ -13,6 +13,8 @@ import styles from './styles';
 
 const StopsList = ({
     classes,
+    projectId,
+    onUpdate,
     servicePatternId,
     stops
 }) => {
@@ -24,11 +26,16 @@ const StopsList = ({
         setSelectedAction(action);
     };
 
-    const onRerouteSegment = (spStopId1, spStopId2) =>
-        (segmentId) => {
-            console.log(spStopId1, spStopId2, segmentId);
-            Project.rerouteSegment(servicePatternId, spStopId1, spStopId2, segmentId);
-        };
+    const onRerouteSegment = (servicePatternStopId1, servicePatternStopId2) =>
+        (pathId, pathGeometry) =>
+            Project.rerouteSegment({
+                pathGeometry,
+                pathId,
+                projectId,
+                servicePatternId,
+                servicePatternStopId1,
+                servicePatternStopId2
+            }).then(onUpdate);
 
     return (
         <div className={classes.container} id={`stop-list-sp-${servicePatternId}`}>
@@ -57,6 +64,8 @@ const StopsList = ({
 
 StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
+    onUpdate: PropTypes.func,
+    projectId: PropTypes.string.isRequired,
     servicePatternId: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
         servicePatternStopId: PropTypes.string.isRequired,
@@ -66,6 +75,7 @@ StopsList.propTypes = {
 };
 
 StopsList.defaultProps = {
+    onUpdate: Function.prototype,
     stops: []
 };
 
