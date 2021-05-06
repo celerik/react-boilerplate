@@ -1,10 +1,12 @@
 export default () => ({
     mainContainer: {
         display: 'flex',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        width: '100vw'
     },
     infoContainer: {
-        position: 'relative'
+        position: 'relative',
+        width: '100%'
     },
     logo: {
         position: 'absolute',

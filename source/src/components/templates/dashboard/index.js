@@ -34,7 +34,7 @@ const TemplateDashboard = ({
             />
             <div
                 className={classes.infoContainer}
-                style={{ width: `calc(100% - ${menuWidth}px)` }}
+                // style={{ width: `calc(100% - ${menuWidth}px)` }}
             >
                 {children}
             </div>
