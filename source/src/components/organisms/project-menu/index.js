@@ -75,7 +75,7 @@ const ProjectMenu = ({
     }];
 
     return (
-        <div classNames={classes.mainContainer} id={id}>
+        <div id={id}>
             <BackToButton label={config.text.projectMenu.backToProjects} id={`${id}-back-button`} />
             <div className={classes.titleContainer}>
                 <Typography className={classes.projectName} variant="h4">
@@ -105,7 +105,6 @@ const ProjectMenu = ({
                             className={classes.centerIcon}
                             iconButtons={index === 0 ? actions : []}
                             text={config.text.projectMenu[menuOption.name]}
-                            textClass={classes.optionText}
                         />
                     </div>
                 ))}

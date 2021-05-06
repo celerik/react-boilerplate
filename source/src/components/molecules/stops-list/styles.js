@@ -1,6 +1,12 @@
 export default theme => Object.assign({}, {
     actionsContainer: {
-        marginLeft: 20
+        marginLeft: 20,
+        '& .MuiIconButton-root': {
+            fontSize: 20,
+            marginRight: 9,
+            height: 22,
+            width: 22
+        }
     },
     onFocusLine: {
         '&:after': {
@@ -46,20 +52,24 @@ export default theme => Object.assign({}, {
         width: 2
     },
     stopIcon: {
-        minHeight: 100,
+        minHeight: 80,
+        height: '100%',
         width: 50
     },
     infoContainer: {
         width: '100%'
     },
     title: {
-        justifyContent: 'space-between',
+        alignItems: 'center',
         display: 'flex',
         width: '100%'
     },
     subStopsContainer: {
+        marginTop: 5,
         backgroundColor: 'white',
         position: 'relative',
-        width: '75%'
+        minWidth: 170,
+        width: 'fit-content',
+        marginBottom: 15
     }
 });

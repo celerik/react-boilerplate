@@ -72,7 +72,7 @@ const ProjectBar = ({
         .includes(searchValue.toLowerCase()));
 
     return (
-        <>
+        <div className={classes.mainContainer}>
             <InputField
                 className={classes.searchBar}
                 icon="search"
@@ -101,25 +101,23 @@ const ProjectBar = ({
                 label={config.text.projectMenu.newProject}
             />
             <AlertDialog
-                actions={
-                    [
-                        {
-                            name: config.text.projectMenu.cloneSnapshot,
-                            onClick: Function.prototype
-                        },
-                        {
-                            name: config.text.projectMenu.cloneServicePattern,
-                            onClick: onClickCloneProjet
-                        }
-                    ]
-                }
+                actions={[
+                    {
+                        name: config.text.projectMenu.cloneSnapshot,
+                        onClick: Function.prototype
+                    },
+                    {
+                        name: config.text.projectMenu.cloneServicePattern,
+                        onClick: onClickCloneProjet
+                    }
+                ]}
                 content={config.text.projectMenu.content}
                 id="modal-clone-project"
                 onClose={() => setCloneProjectId(null)}
                 title={config.text.projectMenu.cloneProject}
                 visible={Boolean(cloneProjectId)}
             />
-        </>
+        </div>
     );
 };
 

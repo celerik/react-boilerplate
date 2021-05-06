@@ -1,6 +1,6 @@
 // @packages
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scripts
@@ -13,10 +13,11 @@ import styles from './styles';
 
 const TemplateDashboard = ({
     classes,
-    children
+    children,
+    isMenuExpanded,
+    isMenuVisible,
+    setMenuExpanded
 }) => {
-    const [isMenuExpanded, setMenuExpanded] = useState(false);
-
     const menuWidth = isMenuExpanded
         ? dimensions.MAIN_MENU_EXPANDED_WIDTH
         : dimensions.MAIN_MENU_COLLAPSED_WIDTH;
@@ -28,11 +29,12 @@ const TemplateDashboard = ({
                 isExpanded={isMenuExpanded}
                 onExpand={() => setMenuExpanded(true)}
                 onCollapse={() => setMenuExpanded(false)}
+                visible={isMenuVisible}
                 width={menuWidth}
             />
             <div
                 className={classes.infoContainer}
-                style={{ width: `calc(100% - ${menuWidth}px)` }}
+                // style={{ width: `calc(100% - ${menuWidth}px)` }}
             >
                 {children}
             </div>
@@ -42,8 +44,17 @@ const TemplateDashboard = ({
 };
 
 TemplateDashboard.propTypes = {
+    children: PropTypes.node.isRequired,
     classes: PropTypes.object.isRequired,
-    children: PropTypes.node.isRequired
+    isMenuExpanded: PropTypes.bool,
+    isMenuVisible: PropTypes.bool,
+    setMenuExpanded: PropTypes.func
+};
+
+TemplateDashboard.defaultProps = {
+    isMenuExpanded: false,
+    isMenuVisible: true,
+    setMenuExpanded: Function.prototype
 };
 
 export default withStyles(styles)(TemplateDashboard);

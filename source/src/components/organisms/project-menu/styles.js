@@ -3,6 +3,7 @@ export default theme => ({
         backgroundColor: theme.palette.primary.light,
         color: 'white',
         height: 'auto',
+        maxWidth: 350,
         marginTop: 60,
         width: 140
     },
@@ -14,13 +15,15 @@ export default theme => ({
         width: 'calc(100% - 28px)',
         '&:hover': {
             backgroundColor: 'white'
+        },
+        '& .MuiTypography-root': {
+            color: theme.palette.text.secondary,
+            fontWeight: 600,
+            marginLeft: 19
         }
     },
     containerCards: {
         overflowY: 'auto'
-    },
-    mainContainer: {
-        display: 'content'
     },
     option: {
         alignItems: 'center',
@@ -36,11 +39,6 @@ export default theme => ({
         '&:last-of-type': {
             borderBottom: 'none'
         }
-    },
-    optionText: {
-        color: theme.palette.text.secondary,
-        fontWeight: 'bold',
-        marginLeft: 19
     },
     projectName: {
         letterSpacing: 1.6,

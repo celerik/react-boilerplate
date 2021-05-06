@@ -16,7 +16,7 @@ class Project {
 
             const segments = servicePattern.segments.map(segment => ({
                 ...segment,
-                coordinates: parseWkt(segment.path.pathGeometry).coordinates
+                coordinates: parseWkt(segment.path.pathGeometry)?.coordinates ?? []
             }));
 
             const features = segments.map(segment => ({
@@ -105,6 +105,48 @@ class Project {
         } catch (error) {
             globalUI.showAlertNotificationError(
                 config.text.projectMenu.projectVehicles,
+                error.message
+            );
+
+            throw error;
+        }
+    }
+
+    /**
+     * @param {String} pathGeometry
+     * @param {String} pathId
+     * @param {String} projectId
+     * @param {String} servicePatternId
+     * @param {String} servicePatternStopId1
+     * @param {String} servicePatternStopId2
+     */
+    static async rerouteSegment({
+        pathGeometry,
+        pathId,
+        projectId,
+        servicePatternId,
+        servicePatternStopId1,
+        servicePatternStopId2
+    }) {
+        try {
+            const response = await axios.put(
+                format(
+                    config.services.projects.reroute,
+                    projectId,
+                    servicePatternId,
+                    servicePatternStopId1,
+                    servicePatternStopId2
+                ),
+                {
+                    pathId,
+                    pathGeometry
+                }
+            );
+
+            return response;
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                error.message,
                 error.message
             );
 

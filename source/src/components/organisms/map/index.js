@@ -2,12 +2,13 @@
 import PropTypes from 'prop-types';
 import React, { useEffect, useRef, useState } from 'react';
 import ReactMapBoxGl, { Cluster, GeoJSONLayer, Marker } from 'react-mapbox-gl';
-import StopIcon from '../../atoms/stop-icon';
+import StopIcon from '../../molecules/stop-icon';
 import { useSelector } from 'react-redux';
 import { useTheme, withStyles } from '@material-ui/core';
 
 // @scripts
 import ZoomButtons from '../../atoms/zoom-buttons/index';
+import ModalActions from '../../molecules/modal-actions';
 
 // @styles
 import styles from './styles';
@@ -132,6 +133,13 @@ const CustomMap = ({
                                     coordinates={feature.geometry.coordinates}
                                 >
                                     <StopIcon
+                                        actions={(
+                                            <ModalActions
+                                                name="Test"
+                                                description="Description Test"
+                                                stopId={feature.properties.stopId}
+                                            />
+                                        )}
                                         color={feature.properties.color}
                                         label={index < featureCollection.features.length - 1 && index + 1}
                                         stopId={feature.properties.stopId}

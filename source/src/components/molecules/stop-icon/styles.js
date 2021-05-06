@@ -26,6 +26,12 @@ export default theme => ({
             top: -5
         }
     },
+    actionsContainer: {
+        '& .MuiPopover-paper': {
+            backgroundColor: 'transparent',
+            boxShadow: 'none'
+        }
+    },
     onFocus: {
         boxShadow: '0px 0px 0px 9px rgb(134 117 255 / 20%)'
     }

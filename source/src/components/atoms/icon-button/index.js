@@ -42,6 +42,10 @@ const IconComponent = ({
             enterNextDelay={500}
             id={id}
             placement={placement}
+            style={{
+                height: size,
+                width: size
+            }}
             title={label}
         >
             <IconButton

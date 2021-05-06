@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core';
 
 // @scrips
+import { useSetActiveAction } from '../../../providers/stops/actions';
+import Project from '../../../services/project';
 import Stop from './stop';
 
 // @styles
@@ -11,27 +13,44 @@ import styles from './styles';
 
 const StopsList = ({
     classes,
-    id,
+    projectId,
+    onUpdate,
+    servicePatternId,
     stops
 }) => {
-    const [currentAction, setCurrentAction] = useState(null);
+    const setSelectedAction = useSetActiveAction();
     const [selectedStop, setSelectedStop] = useState(null);
 
     const onSelectAction = (stopId) => (action) => {
         setSelectedStop(stopId);
-        setCurrentAction(action);
+        setSelectedAction(action);
     };
 
+    const onRerouteSegment = (servicePatternStopId1, servicePatternStopId2) =>
+        (pathId, pathGeometry) =>
+            Project.rerouteSegment({
+                pathGeometry,
+                pathId,
+                projectId,
+                servicePatternId,
+                servicePatternStopId1,
+                servicePatternStopId2
+            }).then(onUpdate);
+
     return (
-        <div className={classes.container} id={id}>
+        <div className={classes.container} id={`stop-list-sp-${servicePatternId}`}>
             <ol className={classes.stops}>
                 {stops.map((stop, index) => (
                     <Stop
                         content={index + 1}
-                        currentAction={selectedStop === stop.stopId && currentAction}
-                        key={`${id}-item-${stop.stopName}`}
+                        isSelected={selectedStop === stop.stopId}
+                        key={`sp-${servicePatternId}-item-${stop.stopName}`}
                         lastItem={index === stops.length - 1}
                         onSelectAction={onSelectAction(stop.stopId)}
+                        onRerouteSegment={onRerouteSegment(
+                            stop.servicePatternStopId,
+                            stops[index + 1]?.servicePatternStopId
+                        )}
                         pathId={stop.pathId}
                         stopId={stop.stopId}
                         stopName={stop.stopName}
@@ -45,14 +64,18 @@ const StopsList = ({
 
 StopsList.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired,
+    onUpdate: PropTypes.func,
+    projectId: PropTypes.string.isRequired,
+    servicePatternId: PropTypes.string.isRequired,
     stops: PropTypes.arrayOf(PropTypes.shape({
-        stopId: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
-        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+        servicePatternStopId: PropTypes.string.isRequired,
+        stopId: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired
     }))
 };
 
 StopsList.defaultProps = {
+    onUpdate: Function.prototype,
     stops: []
 };
 

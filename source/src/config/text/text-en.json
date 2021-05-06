@@ -1,5 +1,8 @@
 {
   "appName": "Flow OS",
+  "common": {
+    "error": "There's been an internal error"
+  },
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
@@ -20,6 +23,8 @@
   "editServicePattern": {
     "addStopBelow": "Add Stop Below",
     "backToServicePatterns": "Back to service patterns",
+    "changeRoute": "Change route",
+    "changeRouteConfirm": "Are you sure you want to chage the route? The map will be automatically updated.",
     "checkpoint": "Checkpoint",
     "delete": "Delete",
     "editSegment": "Edit",
