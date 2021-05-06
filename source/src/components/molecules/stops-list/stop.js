@@ -152,13 +152,11 @@ const Stop = ({
                     <div className={classes.subStopsContainer}>
                         {activeAction === config.masterData.stopActions.add.name && (
                         <SubStopsList
-                            actions={[
-                                {
-                                    icon: 'check',
-                                    name: 'add',
-                                    onClick: Function.prototype
-                                }
-                            ]}
+                            actions={[{
+                                icon: 'check',
+                                name: 'add',
+                                onClick: Function.prototype
+                            }]}
                             items={[]}
                         />
                         )}

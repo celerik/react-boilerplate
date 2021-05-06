@@ -22,6 +22,8 @@ import { setMapServicePatterns, setMapStops } from '../../../actions';
 // @styles
 import styles from './styles';
 import BaselineConnect from '../../../services/baseline-connect';
+import { useMainMenu } from '../../../providers/main-menu';
+import { useHideMainMenu } from '../../../providers/main-menu/actions';
 
 const ServicePatternMenu = ({
     classes,
@@ -33,6 +35,7 @@ const ServicePatternMenu = ({
     const [editModalVisible, openEditModal] = useState(false);
     const [servicePattern, setServicePattern] = useState(null);
     const dispatch = useDispatch();
+    const hideMainMenu = useHideMainMenu();
 
     const fetchServicePatternData = async () => {
         const servicePattern = await Project.getServicePattern(projectId, servicePatternId);
@@ -56,7 +59,10 @@ const ServicePatternMenu = ({
         dispatch(setMapStops([geojsonStops]));
     };
 
-    useEffect(fetchServicePatternData, []);
+    useEffect(() => {
+        hideMainMenu(true);
+        fetchServicePatternData();
+    }, []);
 
     const onUpdateDays = async (days) => {
         const infoDays = {
@@ -80,12 +86,19 @@ const ServicePatternMenu = ({
         <div id={id} className={classes.mainContainer}>
             <BackToButton
                 label={config.text.createServicePattern.backToServicePatterns}
+                onClick={() => hideMainMenu(false)}
                 to={formatUrlParam(config.routes.dashboard.servicePatterns.url, projectId)}
             />
             <div className={classes.header}>
-                <Typography variant="h3">
-                    {servicePattern.settings.servicePatternName}
-                </Typography>
+                <div className={classes.headerInfoLeft}>
+                    <Typography variant="h3">
+                        {servicePattern.settings.servicePatternName}
+                    </Typography>
+                    <Typography className={classes.subtitle} variant="body1">
+                        {config.text.editServicePattern.route}
+                        {servicePattern.routeName}
+                    </Typography>
+                </div>
                 <div className={classes.headerInfoRight}>
                     <div className={classes.lockedStatus}>
                         <Icon fontSize="small">
@@ -103,15 +116,13 @@ const ServicePatternMenu = ({
                             label="edit"
                             onClick={() => openEditModal(true)}
                         />
-                        <FormatDays days={servicePattern.settings.daysOfOperation} id={`${id}-format-days`} />
+                        <FormatDays
+                            className={classes.weekdays}
+                            days={servicePattern.settings.daysOfOperation}
+                            id={`${id}-format-days`}
+                        />
                     </div>
                 </div>
-            </div>
-            <div className={classes.header}>
-                <Typography className={classes.subtitle} variant="body1">
-                    {config.text.editServicePattern.route}
-                    {servicePattern.routeName}
-                </Typography>
             </div>
             <Typography className={classes.label} variant="h5">
                 {config.text.editServicePattern.editServicePatternInfo}

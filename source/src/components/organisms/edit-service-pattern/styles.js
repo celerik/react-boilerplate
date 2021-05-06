@@ -1,24 +1,30 @@
 export default theme => ({
     mainContainer: {
         height: '100%',
-        position: 'relative'
+        position: 'relative',
+        width: 600
     },
     daysSection: {
-        alignItems: 'center',
-        display: 'flex'
+        display: 'flex',
+        '& .MuiIcon-root, .MuiIconButton-root': {
+            color: theme.palette.text.secondary,
+            fontSize: 24,
+            height: 24,
+            width: 24
+        }
     },
     divider: {
         margin: '10px 0',
-        width: '70%'
+        width: '60%'
     },
     header: {
         display: 'flex',
         justifyContent: 'space-between',
         marginBottom: 11,
-        marginTop: 31,
-        '& .MuiTypography-root': {
-            width: '60%'
-        }
+        marginTop: 31
+    },
+    headerInfoLeft: {
+        width: '45%'
     },
     headerInfoRight: {
         display: 'flex',
@@ -37,6 +43,12 @@ export default theme => ({
             marginRight: 10
         }
     },
+    weekdays: {
+        color: theme.palette.text.secondary,
+        marginLeft: 7,
+        fontSize: 12,
+        width: 'max-content'
+    },
     label: {
         color: theme.palette.text.disabled,
         marginBottom: 13,
@@ -50,8 +62,6 @@ export default theme => ({
     subtitle: {
         color: theme.palette.text.disabled,
         fontSize: 20,
-        '& .MuiTypography-root': {
-            width: '50%'
-        }
+        marginTop: 7
     }
 });

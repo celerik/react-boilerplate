@@ -13,11 +13,14 @@ const BackToButton = ({
     classes,
     id,
     label,
+    onClick,
     to
 }) => {
     const history = useHistory();
 
-    const onClick = () => {
+    const handleOnClick = () => {
+        onClick();
+
         if (to) {
             history.push(to);
             return;
@@ -33,7 +36,7 @@ const BackToButton = ({
             tabIndex={0}
             role="button"
             onKeyDown={Function.prototype}
-            onClick={onClick}
+            onClick={handleOnClick}
         >
             <ArrowBackIcon />
             <Typography
@@ -50,10 +53,12 @@ BackToButton.propTypes = {
     classes: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    onClick: PropTypes.func,
     to: PropTypes.string
 };
 
 BackToButton.defaultProps = {
+    onClick: Function.prototype,
     to: undefined
 };
 

@@ -22,6 +22,7 @@ const DefaultActionBar = ({
     isExpanded,
     onCollapse,
     onExpand,
+    visible,
     width
 }) => {
     const theme = useTheme();
@@ -30,6 +31,10 @@ const DefaultActionBar = ({
         selectedTeam,
         teams
     } = useSelector(state => state.user);
+
+    if (!visible) {
+        return null;
+    }
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -141,11 +146,13 @@ DefaultActionBar.propTypes = {
     onExpand: PropTypes.func.isRequired,
     onCollapse: PropTypes.func.isRequired,
     id: PropTypes.string.isRequired,
+    visible: PropTypes.bool,
     width: PropTypes.number
 };
 
 DefaultActionBar.defaultProps = {
     isExpanded: false,
+    visible: true,
     width: dimensions.MAIN_MENU_EXPANDED_WIDTH
 };
 
