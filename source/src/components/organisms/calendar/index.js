@@ -19,9 +19,11 @@ const Calendar = ({
     const [selectedDates, onChange] = useState([new Date(), new Date()]);
     const [outLineBorder, setOutLineBorder] = useState();
 
-    const datesAreOnSameDay = (first, second) => first.getFullYear() === second.getFullYear()
+    const datesAreOnSameDay = (first, second) => {
+        return first.getFullYear() === second.getFullYear()
             && first.getMonth() === second.getMonth()
             && first.getDate() === second.getDate();
+    }
 
     const onChangeDate = (data) => {
         if (datesAreOnSameDay(data[0], data[1])) {
