@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core';
 import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
+import LockedIcon from '../../atoms/locked-icon';
 import Project from '../../../services/project';
 import ServicePatternCard from '../../molecules/service-pattern-card';
 import { config } from '../../../config';
@@ -105,7 +106,7 @@ const ServicePatterns = ({
                 className={classes.buttonLock}
                 label={config.text.createServicePattern.lockServicePattern}
                 onClick={handleClickOpen}
-                startIcon="lock_outlined"
+                startIcon={<LockedIcon isLocked={false} id="button" />}
             />
             <AlertDialog
                 actions={[

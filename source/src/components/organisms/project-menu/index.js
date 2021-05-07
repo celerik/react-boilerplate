@@ -18,6 +18,9 @@ import { config } from '../../../config';
 import { formatUrlParam } from '../../../util/string';
 import { useSelector } from 'react-redux';
 
+// @scripts
+import LockedIcon from '../../atoms/locked-icon';
+
 // @styles
 import styles from './styles';
 
@@ -40,7 +43,7 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
-    const locked = project.servicePatternsLocked;
+    const locked = project?.servicePatternsLocked;
     const theme = useTheme();
 
     if (!project) {
@@ -70,8 +73,9 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
+    // locked ? 'lock_outlined' : 'lock_open_outlined'
     const actions = [{
-        icon: locked ? 'lock_outlined' : 'lock_open_outlined',
+        icon: <LockedIcon isLocked={locked} id={projectId} />,
         onClick: Function.prototype
     }];
 
