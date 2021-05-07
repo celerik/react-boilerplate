@@ -8,26 +8,52 @@ export default theme => Object.assign({}, {
             cursor: 'pointer'
         }
     },
+    dateItem: {
+        color: theme.palette.text.hint,
+        marginBlockStart: 'auto',
+        marginLeft: 4,
+        marginRight: 4
+    },
     date: {
-        marginLeft: 10
+        color: theme.palette.text.contrastText,
+        display: 'flex',
+        fontSize: 16,
+        marginLeft: 10,
+        width: '100%',
     },
     icon: {
         color: theme.palette.primary.warn
     },
+    iconDate: {
+        color: theme.palette.text.disabled
+    },
     infoTime: {
-        display: 'flex',
         alignSelf: 'baseline',
+        display: 'flex',
         top: 15
     },
     mainContainer: {
         alignItems: 'center',
+        borderRadius: 2,
         display: 'flex',
-        height: 72,
-        padding: 15,
+        height: 70,
+        marginBottom: 30,
+        paddingLeft: 5,
+        paddingTop: 5,
         position: 'relative',
         '&:hover': {
             backgroundColor: theme.palette.background.contrastText,
-            border: `1px solid ${theme.palette.primary.warn}`
+            border: `1px solid ${theme.palette.primary.warn}`,
+            '& $date': {
+                color: theme.palette.text.secondary,
+            },
+            '& $dateItem': {
+                color: theme.palette.text.secondary,
+                fontWeight: 'bold',
+            },
+            '& $iconDate': {
+                color: theme.palette.text.secondary,
+            }
         }
-    }
+    },
 });

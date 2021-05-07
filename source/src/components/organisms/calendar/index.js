@@ -2,6 +2,7 @@
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import ReactCalendar from 'react-calendar';
+import classNames from 'classnames';
 import moment from 'moment';
 import { withStyles } from '@material-ui/core';
 
@@ -16,9 +17,25 @@ const Calendar = ({
     id
 }) => {
     const [selectedDates, onChange] = useState([new Date(), new Date()]);
+    const [outLineBorder, setOutLineBorder] = useState();
+
+    const datesAreOnSameDay = (first, second) => {
+        return first.getFullYear() === second.getFullYear() &&
+            first.getMonth() === second.getMonth() &&
+            first.getDate() === second.getDate();
+    }
+
+    const onChangeDate = (data) => {
+        if (datesAreOnSameDay(data[0], data[1])) {
+            setOutLineBorder(classes.outLineBorder);
+        } else {
+            setOutLineBorder({});
+        }
+        onChange(data);
+    };
 
     return (
-        <div className={classes.calendar} id={id}>
+        <div className={classNames(classes.calendar, outLineBorder)} id={id}>
             <ReactCalendar
                 calendarType="US"
                 navigationLabel={({ date, view }) => (
@@ -43,7 +60,7 @@ const Calendar = ({
                 prev2Label={null}
                 prevLabel={<ArrowIcon />}
                 minDetail="year"
-                onChange={onChange}
+                onChange={onChangeDate}
                 selectRange
                 value={selectedDates}
             />

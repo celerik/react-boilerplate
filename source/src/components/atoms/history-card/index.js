@@ -36,17 +36,13 @@ const HistoryCard = ({
             onMouseOver={onHoverCard}
         >
             <div className={classes.infoTime}>
-                <CalendarTodayIcon />
-                <Typography className={classes.date}>
+                <CalendarTodayIcon className={classes.iconDate} />
+                <div className={classes.date}>
                     {config.text.observationPeriodsPage.from}
-                    <strong>
-                        { from }
-                    </strong>
+                    <p className={classes.dateItem}>{from}</p>
                     {config.text.observationPeriodsPage.to}
-                    <strong>
-                        { to }
-                    </strong>
-                </Typography>
+                    <p className={classes.dateItem}>{to}</p>
+                </div>
             </div>
             <div className={classes.actionsContainer}>
                 {actionsVisible && (
