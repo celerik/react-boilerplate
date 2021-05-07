@@ -35,8 +35,8 @@ export default theme => Object.assign({}, {
             content: 'none'
         },
         '& .MuiTimelineContent-root': {
-            paddingRight: 0,
-        },
+            paddingRight: 0
+        }
     },
     title: {
         letterSpacing: 1.6,

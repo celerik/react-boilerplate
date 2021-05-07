@@ -89,16 +89,16 @@ export default theme => ({
             '& span': {
                 display: 'flex'
             }
-        },
-        
+        }
+
     },
     outLineBorder: {
         '& .react-calendar__tile--rangeStart': {
             '& span': {
                 backgroundColor: 'white',
                 border: `1px solid ${theme.palette.primary.warn}`,
-                color: 'black',
-            },
+                color: 'black'
+            }
         }
     },
     rangeSpan: {

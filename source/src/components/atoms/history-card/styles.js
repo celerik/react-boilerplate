@@ -19,7 +19,7 @@ export default theme => Object.assign({}, {
         display: 'flex',
         fontSize: 16,
         marginLeft: 10,
-        width: '100%',
+        width: '100%'
     },
     icon: {
         color: theme.palette.primary.warn
@@ -45,15 +45,15 @@ export default theme => Object.assign({}, {
             backgroundColor: theme.palette.background.contrastText,
             border: `1px solid ${theme.palette.primary.warn}`,
             '& $date': {
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.secondary
             },
             '& $dateItem': {
                 color: theme.palette.text.secondary,
-                fontWeight: 'bold',
+                fontWeight: 'bold'
             },
             '& $iconDate': {
-                color: theme.palette.text.secondary,
+                color: theme.palette.text.secondary
             }
         }
-    },
+    }
 });

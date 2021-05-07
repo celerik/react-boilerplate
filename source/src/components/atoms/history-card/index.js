@@ -4,7 +4,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
