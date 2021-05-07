@@ -49,7 +49,7 @@ const ServicePatterns = ({
             <Typography className={classes.title} variant="h4">
                 {config.text.observationPeriodsPage.observationPeriods}
             </Typography>
-            <Typography className={classes.subTitle} variant="h6">
+            <Typography className={classes.subTitle} variant="h5">
                 {config.text.observationPeriodsPage.selectVersion}
             </Typography>
             <HistoryList

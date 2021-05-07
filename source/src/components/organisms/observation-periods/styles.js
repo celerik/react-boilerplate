@@ -22,13 +22,20 @@ export default theme => Object.assign({}, {
         overflowY: 'auto'
     },
     subTitle: {
-        letterSpacing: 1.6,
+        color: theme.palette.text.hint,
+        letterSpacing: 0.8,
         marginBottom: 15,
         marginTop: 5
     },
     timeline: {
+        paddingLeft: 16,
+        paddingRight: 0,
+        paddingTop: 6,
         '& .MuiTimelineItem-missingOppositeContent:before': {
             content: 'none'
+        },
+        '& .MuiTimelineContent-root': {
+            paddingRight: 0
         }
     },
     title: {

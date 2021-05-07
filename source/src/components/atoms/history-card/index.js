@@ -4,7 +4,6 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import PropTypes from 'prop-types';
 import React, { useState } from 'react';
 import Tooltip from '@material-ui/core/Tooltip';
-import Typography from '@material-ui/core/Typography';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core';
 
@@ -36,17 +35,13 @@ const HistoryCard = ({
             onMouseOver={onHoverCard}
         >
             <div className={classes.infoTime}>
-                <CalendarTodayIcon />
-                <Typography className={classes.date}>
+                <CalendarTodayIcon className={classes.iconDate} />
+                <div className={classes.date}>
                     {config.text.observationPeriodsPage.from}
-                    <strong>
-                        { from }
-                    </strong>
+                    <p className={classes.dateItem}>{from}</p>
                     {config.text.observationPeriodsPage.to}
-                    <strong>
-                        { to }
-                    </strong>
-                </Typography>
+                    <p className={classes.dateItem}>{to}</p>
+                </div>
             </div>
             <div className={classes.actionsContainer}>
                 {actionsVisible && (

@@ -37,8 +37,8 @@ const HistoryList = ({
             <TimelineContent>
                 <HistoryCard
                     from={item.from}
-                    to={item.to}
                     id={`${id}-${index}-history-card`}
+                    to={item.to}
                 />
             </TimelineContent>
         </TimelineItem>
