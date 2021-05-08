@@ -4,6 +4,7 @@ import axios from 'axios';
 // @scripts
 import { config } from '../config';
 import { format } from '../util';
+import { globalUI } from '../core';
 
 class Project {
     static async getProjectSettings(projectId) {
@@ -13,7 +14,20 @@ class Project {
     }
 
     static async putProjectSettings(projectId, settingsUpdated) {
-        await axios.put(format(config.services.projects.settings, projectId), settingsUpdated);
+        try {
+            await axios.put(format(config.services.projects.settings, projectId), settingsUpdated);
+            globalUI.showAlertNotificationSuccess(
+                config.text.projectMenu.projectSettingsModal.projectSettings,
+                config.text.projectMenu.projectSettingsModal.settingsSavedSuccessfully
+            );
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.projectMenu.projectSettingsModal.projectSettings,
+                error.message
+            );
+
+            throw error;
+        }
     }
 }
 
