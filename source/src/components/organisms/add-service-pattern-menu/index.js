@@ -91,7 +91,9 @@ const CreateServicePattern = ({
             : filterServicePatterns;
 
         selectServicePatterns(newSelectedServicePatterns);
-        getServicePatternsData(newSelectedServicePatterns);
+        if (newSelectedServicePatterns.length) {
+            getServicePatternsData(newSelectedServicePatterns);
+        }
     };
 
     const onLoadServicePatterns = async () => {
