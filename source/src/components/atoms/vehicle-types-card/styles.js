@@ -20,7 +20,7 @@ export default theme => ({
     },
     tooltipTitle: {
         color: theme.palette.text.secondary,
-        fontWeight: '600',
+        fontWeight: 600,
         fontSize: 12
     },
     tooltipSubtitle: {
