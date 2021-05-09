@@ -41,12 +41,12 @@ const ProjectSettings = ({
     }, [open]);
 
     const handleSettings = (value, property) => {
-        infoProject[property] = value;
+        infoProject[property] = Number(value);
         setInfoProject({ ...infoProject });
     };
 
     const handleOtpWindow = (value, index) => {
-        infoProject.otpWindow[index] = value;
+        infoProject.otpWindow[index] = Number(value);
         setInfoProject({ ...infoProject });
     };
 
@@ -189,74 +189,74 @@ const ProjectSettings = ({
             id={id}
             open={open}
         >
-                <DialogTitle className={classes.actions}>
-                    <Typography variant="h3">
-                        {config.text.projectMenu.projectSettingsModal.projectSettings}
-                    </Typography>
-                </DialogTitle>
-                <DialogContent className={classes.content}>
-                    <Typography
-                        variant="body2"
-                        className={classes.text}
+            <DialogTitle className={classes.actions}>
+                <Typography variant="h3">
+                    {config.text.projectMenu.projectSettingsModal.projectSettings}
+                </Typography>
+            </DialogTitle>
+            <DialogContent className={classes.content}>
+                <Typography
+                    variant="body2"
+                    className={classes.text}
+                >
+                    {config.text.projectMenu.projectSettingsModal.info}
+                </Typography>
+                <Inputfield
+                    className={classes.nameProject}
+                    id={`${id}-name-project-input`}
+                    onChange={Function.prototype}
+                    underline
+                    value="Project name"
+                    variant="standard"
+                />
+                <Typography
+                    variant="h4"
+                    className={classes.subTitle}
+                >
+                    {config.text.projectMenu.projectSettingsModal.projectSettings}
+                </Typography>
+                {firstAttributes.map((value, index) => (
+                    <Attribute
+                        attribute={value.nameProperty}
+                        key={index}
+                        id={`${id}-attribute-${index}-1`}
+                        secondarytext={value.secondarytext}
                     >
-                        {config.text.projectMenu.projectSettingsModal.info}
-                    </Typography>
-                    <Inputfield
-                        className={classes.nameProject}
-                        id={`${id}-name-project-input`}
-                        onChange={Function.prototype}
-                        underline
-                        value="Project name"
-                        variant="standard"
-                    />
-                    <Typography
-                        variant="h4"
-                        className={classes.subTitle}
+                        {value.content}
+                    </Attribute>
+                ))}
+                <Typography
+                    className={classes.subTitle}
+                    variant="h4"
+                >
+                    {config.text.projectMenu.projectSettingsModal.defaultVehicleCost}
+                </Typography>
+                {secondAttributes.map((value, index) => (
+                    <Attribute
+                        attribute={value.nameProperty}
+                        id={`${id}-attribute-${index}-2`}
+                        key={index}
+                        secondarytext={value.secondarytext}
                     >
-                        {config.text.projectMenu.projectSettingsModal.projectSettings}
-                    </Typography>
-                    {firstAttributes.map((value, index) => (
-                        <Attribute
-                            attribute={value.nameProperty}
-                            key={index}
-                            id={`${id}-attribute-${index}-1`}
-                            secondarytext={value.secondarytext}
-                        >
-                            {value.content}
-                        </Attribute>
-                    ))}
-                    <Typography
-                        className={classes.subTitle}
-                        variant="h4"
-                    >
-                        {config.text.projectMenu.projectSettingsModal.defaultVehicleCost}
-                    </Typography>
-                    {secondAttributes.map((value, index) => (
-                        <Attribute
-                            attribute={value.nameProperty}
-                            id={`${id}-attribute-${index}-2`}
-                            key={index}
-                            secondarytext={value.secondarytext}
-                        >
-                            {value.content}
-                        </Attribute>
-                    ))}
-                </DialogContent>
-                <DialogActions className={classes.actions}>
-                    <ButtonAction
-                        className={classes.save}
-                        endIcon="save"
-                        id={`${id}-confirm`}
-                        label={config.text.projectMenu.projectSettingsModal.saveSettings}
-                        onClick={onSubmit}
-                    />
-                    <ButtonAction
-                        className={classes.cancel}
-                        id={`${id}-cancel`}
-                        label={config.text.projectMenu.projectSettingsModal.cancel}
-                        onClick={onClose}
-                    />
-                </DialogActions>
+                        {value.content}
+                    </Attribute>
+                ))}
+            </DialogContent>
+            <DialogActions className={classes.actions}>
+                <ButtonAction
+                    className={classes.save}
+                    endIcon="save"
+                    id={`${id}-confirm`}
+                    label={config.text.projectMenu.projectSettingsModal.saveSettings}
+                    onClick={onSubmit}
+                />
+                <ButtonAction
+                    className={classes.cancel}
+                    id={`${id}-cancel`}
+                    label={config.text.projectMenu.projectSettingsModal.cancel}
+                    onClick={onClose}
+                />
+            </DialogActions>
         </Dialog>
     );
 };

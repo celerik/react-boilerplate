@@ -99,7 +99,7 @@
     "newProject": "New project",
     "observationPeriods": "Observation periods",
     "projectVehicles": "Project vehicles",
-    "createVehicleTypeModal":{
+    "createVehicleTypeModal": {
       "cancel": "Cancel",
       "input": "Vehicle type 6",
       "subTitle": "Vehicle type name",
@@ -123,10 +123,10 @@
     "projectSettingsModal": {
       "cancel": "Cancel",
       "day": "/day",
+      "defaultOtpLevel": "Default OTP level",
       "defaultOtpThresholds": "Default OTP thresholds",
       "defaultRecoveryLevel": "Default recovery level",
       "defaultRliefTime": "Default rlief time",
-      "defaultOtpLevel": "Default OTP level",
       "defaultVechicleOperating": "Default vehicle operating cost",
       "defaultVehicleCost": "Default vehicle costs",
       "defaultVehicleDepreciation": "Default vehicle depreciation",
@@ -135,7 +135,8 @@
       "resting": "(resting)",
       "running": "(running)",
       "saveSettings": "Save settings",
-      "secs": "secs"
+      "secs": "secs",
+      "settingsSavedSuccessfully": "Settings saved successfully"
     },
     "searchProjectByname": "Search project by name...",
     "servicePatterns": "Service patterns",

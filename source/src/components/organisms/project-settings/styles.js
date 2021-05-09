@@ -13,9 +13,9 @@ export default theme => Object.assign({}, {
     },
     cancel: {
         backgroundColor: 'white',
-        border: '1px solid #8675FF',
+        border: `1px solid ${theme.palette.primary.light}`,
         borderRadius: 0,
-        color: '#8675FF',
+        color: theme.palette.primary.light,
         height: 47,
         padding: '0px 15px',
         textTransform: 'capitalize'

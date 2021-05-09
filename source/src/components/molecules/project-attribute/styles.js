@@ -19,7 +19,7 @@ export default theme => Object.assign({}, {
         justifyContent: 'space-between',
         padding: '7px 5px',
         '&:hover': {
-            backgroundColor: theme.palette.background.secondary
+            backgroundColor: `${theme.palette.primary.light}33`
         },
         '&:hover $attribute': {
             fontWeight: 500
