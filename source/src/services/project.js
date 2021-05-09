@@ -95,6 +95,9 @@ class Project {
         }
     }
 
+    /*
+    * @param {String} projectId
+    */
     static async updateServicePatternLock(projectId) {
         try {
             await axios.put(format(config.services.servicePatterns.updateLock, projectId));

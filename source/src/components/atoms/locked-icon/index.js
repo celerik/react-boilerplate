@@ -13,10 +13,10 @@ const LockedIcon = ({
     id,
     isLocked
 }) => (
-    <div
-        id={`${id}-lock-icon`}
-    >
-        { isLocked ? <LockOutlinedIcon className={classes.icon} /> : <LockOpenOutlinedIcon className={classes.icon} />}
+    <div id={`${id}-lock-icon`}>
+        {isLocked
+            ? <LockOutlinedIcon className={classes.icon} />
+            : <LockOpenOutlinedIcon className={classes.icon} />}
     </div>
 );
 

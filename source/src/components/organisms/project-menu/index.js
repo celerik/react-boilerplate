@@ -73,7 +73,6 @@ const ProjectMenu = ({
         history.push(formatUrlParam(optionUrl.url, projectId));
     };
 
-    // locked ? 'lock_outlined' : 'lock_open_outlined'
     const actions = [{
         icon: <LockedIcon isLocked={locked} id={projectId} />,
         onClick: Function.prototype
@@ -100,8 +99,11 @@ const ProjectMenu = ({
                         className={classes.option}
                         id={`${id}-option-${menuOption.name}`}
                         key={`${id}-option-${menuOption.name}`}
-                        onClick={locked && index === 0 ? !onClickMenuItem(menuOption.name)
-                            : onClickMenuItem(menuOption.name)}
+                        onClick={
+                            locked && !index
+                                ? Function.prototype
+                                : onClickMenuItem(menuOption.name)
+                        }
                         onKeyDown={Function.prototype}
                         role="button"
                         tabIndex={index}
