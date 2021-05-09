@@ -41,12 +41,12 @@ const ProjectSettings = ({
     }, [open]);
 
     const handleSettings = (value, property) => {
-        infoProject[property] = value;
+        infoProject[property] = Number(value);
         setInfoProject({ ...infoProject });
     };
 
     const handleOtpWindow = (value, index) => {
-        infoProject.otpWindow[index] = value;
+        infoProject.otpWindow[index] = Number(value);
         setInfoProject({ ...infoProject });
     };
 
