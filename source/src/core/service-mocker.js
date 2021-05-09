@@ -33,7 +33,7 @@ const mockedServices = {
         }));
     },
     mockServiceGetProjectsVehicles: (mockAdapter) => {
-        const url = config.services.projects.getProjectsVehicles;
+        const url = config.services.projects.getVehicles;
         const pathRegexp = new RegExp(format(url, '.*'));
         mockAdapter.onGet(pathRegexp).reply(() => createMockResponse({
             data: config.mockData.projectsVehicles,

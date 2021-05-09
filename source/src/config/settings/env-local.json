@@ -12,7 +12,8 @@
   "serviceMocker": {
     "include": [
       "mockServiceGetTeams",
-      "mockServiceSecurityLogin"
+      "mockServiceSecurityLogin",
+      "mockServiceGetProjectsVehicles"
     ]
   },
   "services": {

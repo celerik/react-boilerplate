@@ -12,18 +12,21 @@ export default theme => ({
         backgroundColor: theme.palette.common.pearl,
         border: `1px solid ${theme.palette.background.default}`,
         borderRadius: '0%',
-        boxShadow: `1px 3px 1px ${theme.palette.primary.contrastText}`,
+        boxShadow: `1px 1px 1px ${theme.palette.primary.contrastText}`,
         color: 'black',
-        margin: '-21px 0 0 0',
-        minHeight: 60
+        margin: '-21px 0 0 -22px',
+        height: 50,
+        width: 100
     },
     tooltipTitle: {
         color: theme.palette.text.secondary,
-        fontWeight: 'bolder'
+        fontWeight: 600,
+        fontSize: 12
     },
     tooltipSubtitle: {
         color: theme.palette.primary.main,
-        marginTop: 5
+        fontSize: 11,
+        margin: '0 20px'
     },
     inputfield: {
         borderRadius: 5,
@@ -68,6 +71,6 @@ export default theme => ({
         }
     },
     vehicleTypeText: {
-        margin: '0 7px'
+        margin: '13px 7px'
     }
 });
