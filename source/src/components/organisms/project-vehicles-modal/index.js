@@ -80,6 +80,7 @@ const ProjectsVehicles = ({
 
 ProjectsVehicles.propTypes = {
     classes: PropTypes.object.isRequired,
+    onClick: PropTypes.func.isRequired,
     onClose: PropTypes.func.isRequired,
     open: PropTypes.bool.isRequired,
     projectId: PropTypes.string.isRequired
