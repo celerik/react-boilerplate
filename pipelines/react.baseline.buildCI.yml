@@ -103,25 +103,3 @@ stages:
         repository: '$(project_name)/$(image_repository)'
         command: 'buildAndPush'
         Dockerfile: './source/Dockerfile'
-
-    - task: CmdLine@2
-      displayName: 'Deploy in cloud run service'
-      inputs:
-        script: |
-          gcloud auth activate-service-account \
-              --quiet \
-              --key-file <(echo $ServiceAccountKey | base64 -d) && \
-          gcloud run deploy $DeployName\
-              --quiet \
-              --service-account=terraform@$ProjectName.iam.gserviceaccount.com \
-              --allow-unauthenticated \
-              --image=gcr.io/$ProjectName/$ImageName:$BUILD_BUILDID \
-              --platform=managed \
-              --region=$Region \
-              --project=$ProjectName
-      env:
-        DeployName: $(image_repository)
-        ImageName: $(image_repository)
-        ServiceAccountKey: "$(GOOGLE_CREDENTIALS_BASE_64)"
-        ProjectName: $(project_name)
-        Region: $(region)
