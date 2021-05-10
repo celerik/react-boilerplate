@@ -28,7 +28,7 @@ const Item = ({
         if (showActions) {
             return;
         }
-        
+
         setActionsVisibility(false);
         onBlur(value);
     };
@@ -37,7 +37,7 @@ const Item = ({
         if (showActions) {
             return;
         }
-        
+
         setActionsVisibility(true);
         onHover(value);
     };
