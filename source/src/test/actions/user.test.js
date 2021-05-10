@@ -10,8 +10,8 @@ import {
 describe('login', () => {
     test('login', () => {
         const credentials = {
-            password: config.settings.serviceMocker.loginPassword,
-            user: config.settings.loginUserName
+            email: config.settings.serviceMocker.loginUserName,
+            password: config.settings.serviceMocker.loginPassword
         };
         const actionCreator = login(credentials);
         const expectedActions = [{
