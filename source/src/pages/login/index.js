@@ -13,14 +13,15 @@ const LoginPage = ({
 }) => (
     <Login
         id={id}
-        backgroundComponent={
-            <div style={{ 
+        backgroundComponent={(
+            <div style={{
                 backgroundClip: '#ff0',
                 opacity: 0.5,
-                width: '100%', 
-                height: '100%', 
-            }} />
-        }
+                width: '100%',
+                height: '100%'
+            }}
+            />
+        )}
     >
         <LoginForm />
     </Login>

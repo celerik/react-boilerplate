@@ -1,4 +1,4 @@
-import Security from "../services/security";
+import Security from '../services/security';
 
 // @constants
 export const LOGIN = 'LOGIN';
@@ -13,19 +13,15 @@ export const login = ({
     email,
     password
 }) => async (dispatch) => {
-    try {
-        const user = await Security.login(email, password);
+    const user = await Security.login(email, password);
 
-        dispatch({
-            type: LOGIN,
-            payload: user
-        });
-        
-        return user;
-    } catch (error) {
-        throw error;
-    }
-}
+    dispatch({
+        type: LOGIN,
+        payload: user
+    });
+
+    return user;
+};
 
 export const logout = () => ({
     type: LOGOUT

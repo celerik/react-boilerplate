@@ -1,22 +1,19 @@
 // @packages
-import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
 import { Route, Switch } from 'react-router-dom';
 import { withStyles } from '@material-ui/core';
 
-// @scripts
-
-
 // @styles
 import styles from './styles';
 
-/**Create Organisms for these components, or templates/pages */
+/** Create Organisms for these components, or templates/pages */
+// eslint-disable-next-line react/prop-types
 const MockComponent = ({ label }) => <div>{label}</div>;
 
-const Component1 = () => <MockComponent label="PAGE 1"/>;
-const Component2 = () => <MockComponent label="PAGE 2"/>;
+const Component1 = () => <MockComponent label="PAGE 1" />;
+const Component2 = () => <MockComponent label="PAGE 2" />;
 
 const componentMapper = {
     Component1,

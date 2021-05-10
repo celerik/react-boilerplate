@@ -3,18 +3,17 @@ import { config } from '../../config';
 import {
     LOGIN,
     LOGOUT,
-    loginWithGoogle,
+    login,
     logout
 } from '../../actions';
 
 describe('login', () => {
-    test('loginWithGoogle)', () => {
+    test('login', () => {
         const credentials = {
-            authToken: config.settings.serviceMocker.authToken,
-            email: config.settings.serviceMocker.loginUserName,
-            name: config.settings.serviceMocker.name
+            password: config.settings.serviceMocker.loginPassword,
+            user: config.settings.loginUserName
         };
-        const actionCreator = loginWithGoogle(credentials);
+        const actionCreator = login(credentials);
         const expectedActions = [{
             type: LOGIN,
             payload: config.mockData.security.user

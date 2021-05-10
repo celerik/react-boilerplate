@@ -1,5 +1,5 @@
 // @packages
-import React, { useEffect } from 'react';
+import React from 'react';
 import DashboardMenuMapper from '../../components/organisms/dashboard-menu-mapper';
 
 // @scripts

@@ -22,6 +22,8 @@ class Security {
                 config.text.services.security.login,
                 error.message
             );
+
+            throw error;
         }
     }
 }

@@ -4,11 +4,7 @@ import axios from 'axios';
 
 // @scripts
 import { config } from '../config';
-import { format } from '../util/string';
-import {
-    createMockResponse,
-    getMockParams
-} from '../util';
+import { createMockResponse, getMockParams } from '../util';
 
 // @constants
 const httpCodes = {
