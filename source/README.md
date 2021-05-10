@@ -1,4 +1,4 @@
-# FlowOS Scheduler
+# Celerik / React Boilerplate
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm start
 ```
 
 ##### Run different environments
-FlowOS has support for many different environments right now and running this project with ```npm start``` will only deploy a development version in your browser.
+React Boilerplate has support for many different environments right now and running this project with ```npm start``` will only deploy a development version in your browser.
 You can set an environment variable for any of these before running ```npm start``` command
 ```
 SET REACT_APP_ENVIRONMENT=local
@@ -61,7 +61,7 @@ docker run -it -p 3000:0 --name react-app boilerplate
 
 ##### Avaliable Scripts
 
-FlowOS has many other scripts that are pretty helpful for any Dev Team.
+React Boilerplate has many other scripts that are pretty helpful for any Dev Team.
 
 - ```lintj``` - You can use this for checking if any change in the code is syntactically correct according to the project's structure.
 
