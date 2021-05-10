@@ -3,12 +3,11 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Alert, AlertTitle } from '@material-ui/lab';
-import { withStyles } from '@material-ui/core';
+import { useTheme, withStyles } from '@material-ui/core';
 
 // @script
 import { config } from '../../../config';
 import { constants } from '../../../core';
-import { theme } from '../../../styles/material-ui';
 
 // @styles
 import styles from './styles';
@@ -22,6 +21,8 @@ const NotificationAlert = ({
     title,
     visible
 }) => {
+    const theme = useTheme();
+
     if (!visible) {
         return null;
     }

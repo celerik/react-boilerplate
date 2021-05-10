@@ -2,24 +2,14 @@
     "environment": {
       "name": "production"
     },
-    "google": {
-      "clientId": "763525612202-6vemcfa6nnu0385fe3814hsbeau4d9bv.apps.googleusercontent.com",
-      "secret": "sUTlKgJTot6hLNTcCg-41cuo"
-    },
-    "mapBox": {
-      "token": "pk.eyJ1Ijoic2NiOTkwOCIsImEiOiJja212aXk5eG4wNWpnMnZxcDY5OW0zcWRwIn0.mXiBqOeM_V6O4tBo_vu2Bg"
-    },
     "serviceMocker": {
       "include": [
-        "mockServiceGetServicePattern",
-        "mockServiceGetServicePatterns",
-        "mockServiceGetTeams",
         "mockServiceSecurityLogin"
-      ]
+      ] 
     },
     "services": {
-      "root": "localhost:8080",
-      "projects": "https://project-service-mnxwmluifa-ew.a.run.app/project/v1",
-      "teams": "localhost:8080"
+      "security": "localhost:8081",
+      "api1": "localhost:8080",
+      "api2": "localhost:8080"
     }
 }

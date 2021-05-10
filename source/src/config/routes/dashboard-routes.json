@@ -1,57 +1,12 @@
 {
-    "editServicePattern": {
-        "component": "EditServicePattern",
-        "name": "EditServicePattern",
-        "url": "/dashboard/projects/:projectId/edit-service-pattern/:servicePatternId"
-    },
-    "newServicePatterns": {
-        "component": "AddServicePatternMenu",
-        "name": "NewServicePatterns",
-        "url": "/dashboard/projects/:projectId/create-service-patterns"
-    },
-    "observationPeriods": {
-        "component": "ObservationPeriods",
-        "name": "ObservationPeriods",
-        "url": "/dashboard/projects/:projectId/observation-periods"
-    },
-    "project": {
-        "component": "ProjectMenu",
-        "name": "Project",
-        "url": "/dashboard/projects/:projectId"
-    },
-    "projects": {
-        "component": "ProjectsMenu",
-        "name": "Projects",
-        "url": "/dashboard/projects"
-    },
-    "projectVehicles": {
-        "component": "ProjectMenu",
-        "name": "ProjectVehicles",
-        "url": "/dashboard/projects/:projectId/project-vehicles"
-    },
-    "createVehicleType": {
-        "component": "ProjectMenu",
-        "name": "createVehicleType",
-        "url": "/dashboard/projects/:projectId/create-vehicle-type"
-    },
-    "servicePatterns": {
-        "component": "ServicePatterns",
-        "name": "ServicePatterns",
-        "url": "/dashboard/projects/:projectId/service-patterns"
-    },
-    "servicesParameters": {
+    "page1": {
         "component": null,
-        "name": "ServicesParameters",
-        "url": "/dashboard/projects/:projectId/services-parameters"
+        "name": "Page1",
+        "url": "/dashboard/page1"
     },
-    "times": {
+    "page2": {
         "component": null,
-        "name": "Times",
-        "url": "/dashboard/projects/:projectId/times"
-    },
-    "viewResults": {
-        "component": null,
-        "name": "ViewResults",
-        "url": "/dashboard/projects/:projectId/view-results"
+        "name": "Page2",
+        "url": "dashboard/page2"
     }
 }

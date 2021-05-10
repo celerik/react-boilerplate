@@ -6,184 +6,22 @@
   "dashboardPage": {
     "helloWorld": "Hello World!"
   },
-  "createServicePattern": {
-    "addServicePattern": "Add Service Pattern",
-    "backToServicePatterns": "Back to service patterns",
-    "cancel": "Cancel",
-    "content": "Are you sure you want to lock the service Patterns of this project?",
-    "importServicePatterns": "Import service pattern",
-    "importedError": "There's been an error while importing service patterns",
-    "importedSuccess": "Service patterns imported successfully",
-    "loadServicePattern": "Load Service Pattern",
-    "lock": "Lock",
-    "lockServicePattern": "Lock Service Pattern",
-    "selectRoute": "Select route",
-    "selectServicePeriod": "Select service period"
-  },
-  "editServicePattern": {
-    "addStopBelow": "Add Stop Below",
-    "backToServicePatterns": "Back to service patterns",
-    "changeRoute": "Change route",
-    "changeRouteConfirm": "Are you sure you want to chage the route? The map will be automatically updated.",
-    "checkpoint": "Checkpoint",
-    "delete": "Delete",
-    "editSegment": "Edit",
-    "editServicePatternInfo": "Here you can see and modify service pattern stops and segments.",
-    "errorUpdatingDays": "Service pattern has not been updated",
-    "getServicePatternError": "There's been an error while fetching your service pattern",
-    "lock": "Lock",
-    "putDaysSuccess": "Service pattern updated successfully",
-    "replace": "Replace",
-    "route": "Route",
-    "title": "Edit Service Pattern",
-    "unlocked": "Unlocked",
-    "updateServicePattern": "Update service pattern"
-  },
   "loginPage": {
-    "invalidCredentials": "Invalid credentials",
-    "loginTitle": "Login page",
-    "loginWithGoogle": "Login with Google"
+    "login": "Login"
+  },
+  "mainMenu": {
+    "account": "Account",
+    "logout": "Log out",
+    "privacyPolicy": "Privacy Policy",
+    "menuItem1": "Menu Item 1",
+    "menuItem2": "Menu Item 2"
   },
   "notFoundPage": {
     "content": "The resource you are looking for has been removed, had its name changed, or is temporarily unavailable."
   },
-  "notifications": {
-    "delete": "The record was successfully deleted!",
-    "insert": "The record was successfully inserted!",
-    "update": "The record was successfully updated!"
-  },
-  "mainMenu": {
-    "account": "Account",
-    "dataExplorer": "Data explorer",
-    "logout": "Log out",
-    "manageTeams": "Manage Teams",
-    "privacyPolicy": "Privacy policy",
-    "projects": "Projects",
-    "teamName": "Team Name"
-  },
-  "observationPeriodsPage": {
-    "addObservationPeriod": "Add Observation period",
-    "addObservationPeriods": "Add a new observation period",
-    "cancel": "Cancel",
-    "content": "Select a start and end date for the observation period",
-    "from": "From",
-    "observationPeriods": "Observation Periods",
-    "selectVersion": "Select a version and check the results",
-    "to": "to"
-  },
-  "pagination": {
-    "items": "items",
-    "itemsPerPage": "Items per page",
-    "next": "Next",
-    "of": "of",
-    "ofTotal": "of total",
-    "page": "Page",
-    "previous": "Previous",
-    "showing": "Showing records from",
-    "to": "to"
-  },
-  "projectMenu": {
-    "backToProject": "Back to {0}",
-    "backToProjects": "Back to projects",
-    "clone": "Clone",
-    "cloneProject": "Clone project",
-    "cloneServicePattern": "Clone a Service Pattern",
-    "cloneSnapshot": "Clone a snapshot",
-    "content": "You can clone a Service Pattern or clone a Snapshot of the project. Select one:",
-    "contents": "You can create a timebands table or a full schedule. Select one:",
-    "copy": "(Copy)",
-    "createSchedule": "Create schedule",
-    "createTimeBoards": "Create Time Bands",
-    "edit": "Edit",
-    "existingProjects": "EXISTING PROJECTS",
-    "newProject": "New project",
-    "observationPeriods": "Observation periods",
-    "projectVehicles": "Project vehicles",
-    "createVehicleTypeModal": {
-      "cancel": "Cancel",
-      "input": "Vehicle type 6",
-      "subTitle": "Vehicle type name",
-      "vehicleFeature": "Vehicle feature"
-    },
-    "projectsVehiclesModal": {
-      "addFromLibrary": "Add from library",
-      "createVehicleType": "Create vehicle type",
-      "features": "FEATURES",
-      "header": "Create vehicle type",
-      "needUpdate": "Need update",
-      "saveFeatures": "Save features",
-      "title": "Projects Vehicles",
-      "typeDays": "Type of days...",
-      "update": "update",
-      "vehicleTypeCreatedSuccessfully": "VEHICLE TYPE CREATED SUCCESSFULLY",
-      "vehicles": "Vehicles",
-      "vehiclesTypes": "VEHICLES TYPES({0})",
-      "youCanFind": "you can find it in the vehicle type library"
-    },
-    "projectSettingsModal": {
-      "cancel": "Cancel",
-      "day": "/day",
-      "defaultOtpLevel": "Default OTP level",
-      "defaultOtpThresholds": "Default OTP thresholds",
-      "defaultRecoveryLevel": "Default recovery level",
-      "defaultRliefTime": "Default rlief time",
-      "defaultVechicleOperating": "Default vehicle operating cost",
-      "defaultVehicleCost": "Default vehicle costs",
-      "defaultVehicleDepreciation": "Default vehicle depreciation",
-      "info": "Here you can define the project settings, from name to OTP leves and thresholds",
-      "projectSettings": "Project settings",
-      "resting": "(resting)",
-      "running": "(running)",
-      "saveSettings": "Save settings",
-      "secs": "secs",
-      "settingsSavedSuccessfully": "Settings saved successfully"
-    },
-    "searchProjectByname": "Search project by name...",
-    "servicePatterns": "Service patterns",
-    "servicesParameters": "Services parameters",
-    "times": "Times",
-    "title": "Run project",
-    "viewResults": "View results"
-  },
   "services": {
-    "baselineConnect": {
-      "historyPaths": "Get paths",
-      "stopDetails": "Stop details"
-    },
-    "project": {
-      "servicePatterns": "Service Patterns"
+    "security": {
+      "login": "User Login"
     }
-  },
-  "servicePatternsMenu": {
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "copy": "Copy",
-    "daysOfWeek": "Days of the week",
-    "days": {
-      "Mon": "Monday",
-      "Tue": "Tuesday",
-      "Wed": "Wednesday",
-      "Thu": "Thursday",
-      "Fri": "Friday",
-      "Sat": "Saturday",
-      "Sun": "Sunday"
-    },
-    "delete": "Delete",
-    "edit": "Edit",
-    "runDays": "Runs on {0} and ",
-    "title": "SERVICE PATTERNS"
-  },
-  "validations": {
-    "date": "Invalid date",
-    "email": "Invalid email",
-    "maxValue": "Max value: {0}",
-    "minCharacters": "Expected at least {0} characters",
-    "minValue": "Min value: {0}",
-    "number": "Invalid number",
-    "phone": "Invalid phone",
-    "required": "Required field",
-    "search": "Invalid search",
-    "verification": "Verification doesn't match",
-    "zip": "Invalid zip code"
   }
 }

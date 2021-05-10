@@ -9,12 +9,10 @@ import { useTheme, withStyles } from '@material-ui/core';
 // @scripts
 import ActionBar from '../../atoms/action-bar';
 import ActionItem from './action-item';
-import TeamDropdown from '../dropdown-selector';
 import styles from './styles';
 import { config } from '../../../config';
 import { dimensions } from '../../../styles/global';
 import { useHistory } from 'react-router';
-import { setSelectedTeam } from '../../../actions/teams';
 
 const DefaultActionBar = ({
     classes,
@@ -26,11 +24,7 @@ const DefaultActionBar = ({
     width
 }) => {
     const theme = useTheme();
-    const {
-        account: { name },
-        selectedTeam,
-        teams
-    } = useSelector(state => state.user);
+    const { account: { name } } = useSelector(state => state.user);
 
     if (!visible) {
         return null;
@@ -45,10 +39,6 @@ const DefaultActionBar = ({
         history.push(item);
     };
 
-    const onSelectTeam = (teamId) => {
-        dispatch(setSelectedTeam(teamId));
-    };
-
     const topActions = [
         isExpanded && (
             <Typography
@@ -59,18 +49,9 @@ const DefaultActionBar = ({
                 {name}
             </Typography>
         ),
-        <TeamDropdown
-            isExpanded={isExpanded}
-            itemDescriptionName="teamName"
-            itemValueName="teamId"
-            items={teams}
-            key="home1"
-            onChange={onSelectTeam}
-            value={selectedTeam}
-        />,
         <ActionItem
             color={theme.palette.text.secondary}
-            description={config.text.mainMenu.dataExplorer}
+            description={config.text.mainMenu.menuItem1}
             expanded={isExpanded}
             icon="data_usage"
             key="home2"
@@ -86,10 +67,10 @@ const DefaultActionBar = ({
         <ActionItem
             color={theme.palette.text.secondary}
             expanded={isExpanded}
-            description={config.text.mainMenu.projects}
+            description={config.text.mainMenu.menuItem2}
             icon="description"
             key="projects"
-            onClick={onSelectItem(config.routes.dashboard.projects.url)}
+            onClick={onSelectItem(config.routes.dashboard.page2.url)}
         />
     ].filter(Boolean);
 

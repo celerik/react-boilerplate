@@ -6,15 +6,6 @@
         "type": null
     },
     "language": "en",
-    "menu":  {},
-    "projects": [],
-    "routes": [],
-    "servicePatterns": [],
-    "map": {
-        "historyPaths": [],
-        "stops": [],
-        "servicePatterns": []
-    },
     "user": {
         "account": {
             "authToken": "",
@@ -22,8 +13,6 @@
             "id": "",
             "name": "",
             "permissions": []
-        },
-        "selectedTeam": null,
-        "teams": []
+        }
     }
 }

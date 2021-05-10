@@ -1,17 +1,17 @@
 // @packages
-import GoogleLogin from 'react-google-login';
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Typography from '@material-ui/core/Typography';
-import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router';
 import { withStyles } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router';
 
 // @scripts
-import Logo from '../../molecules/logo';
+import Logo from '../../atoms/logo';
 import { config } from '../../../config';
-import { loginWithGoogle } from '../../../actions';
+import { login } from '../../../actions';
 
 // @styles
 import styles from './styles';
@@ -22,20 +22,20 @@ const LoginForm = ({
 }) => {
     const history = useHistory();
     const dispatch = useDispatch();
-    const onSuccessGoogleLogin = (googleResponse) => {
-        const {
-            profileObj: { email, name },
-            tokenId: authToken
-        } = googleResponse;
+    const { authToken } = useSelector(state => state.user.account);
 
-        dispatch(loginWithGoogle({
-            email,
-            name,
-            authToken
+    const onLogin = () => {
+        dispatch(login({
+            email: config.mockData.security.user.email,
+            password: '123'
         }));
-
-        history.push(config.routes.application.home.url);
     };
+
+    useEffect(() => {
+        if (authToken) {
+            history.push(config.routes.application.home.url);
+        }
+    }, [authToken]);
 
     return (
         <Paper
@@ -53,16 +53,9 @@ const LoginForm = ({
                         Login in your account
                     </Typography>
                 </div>
-                <GoogleLogin
-                    autoLoad
-                    className={classes.loginButton}
-                    clientId={config.settings.google.clientId}
-                    buttonText={<Typography variant="body2">{config.text.loginPage.loginWithGoogle}</Typography>}
-                    onSuccess={onSuccessGoogleLogin}
-                    scope="email profile"
-                    onFailure={Function.prototype}
-                    cookiePolicy="single_host_origin"
-                />
+                <Button className={classes.loginButton} onClick={onLogin}>
+                    {config.text.loginPage.login}
+                </Button>
             </div>
         </Paper>
     );

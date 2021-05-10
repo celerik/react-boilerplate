@@ -3,13 +3,11 @@ export default () => Object.assign({}, {
         backgroundColor: 'white',
         display: 'flex',
         flexDirection: 'column',
-        height: '100vh',
-        minWidth: 350,
-        maxWidth: '50vw',
+        height: '100%',
+        maxWidth: '100%',
         overflowY: 'auto',
         padding: '30px 20px',
         position: 'relative',
-        width: 'fit-content',
         zIndex: 5
     }
 });

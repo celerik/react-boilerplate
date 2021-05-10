@@ -7,14 +7,20 @@ import { connect } from 'react-redux';
 
 // @scripts
 import Login from '../../components/templates/login';
-import Map from '../../components/organisms/map';
 
 const LoginPage = ({
     id
 }) => (
     <Login
         id={id}
-        backgroundComponent={<Map controls={[]} />}
+        backgroundComponent={
+            <div style={{ 
+                backgroundClip: '#ff0',
+                opacity: 0.5,
+                width: '100%', 
+                height: '100%', 
+            }} />
+        }
     >
         <LoginForm />
     </Login>

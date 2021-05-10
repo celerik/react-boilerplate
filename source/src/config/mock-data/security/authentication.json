@@ -1,7 +1,7 @@
 {
   "user": {
     "authToken": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9",
-    "email": "user@flowos.com",
+    "email": "user@celerik.com",
     "name": "Celerik",
     "permissions": [
       "Dashboard"

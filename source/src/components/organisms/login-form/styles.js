@@ -13,7 +13,9 @@ export default theme => Object.assign({}, {
         flexDirection: 'column',
         justifyContent: 'space-between'
     },
-    logo: {},
+    logo: {
+        marginLeft: 10
+    },
     title: {
         color: theme.palette.text.secondary,
         marginBottom: 4

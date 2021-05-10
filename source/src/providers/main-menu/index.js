@@ -1,7 +1,7 @@
 // @packages
 import React, { createContext, useContext, useReducer } from 'react';
 
-// @actons
+// @actions
 import { EXPAND_MAIN_MENU, HIDE_MAIN_MENU } from './actions';
 
 // @constants

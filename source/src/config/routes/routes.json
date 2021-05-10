@@ -9,7 +9,6 @@
         "component": "Login",
         "name": "Login",
         "url": "/login",
-        "permissions": [],
-        "redirectedBy": ["/"]
+        "permissions": []
     }
 }

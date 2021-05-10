@@ -12,16 +12,12 @@
     "delayResponse": 0,
     "isEnabled": true,
     "include": [
-      "mockServiceCloneProjects",
-      "mockServiceGetProjects",
-      "mockServiceGetRoutes",
-      "mockServiceGetServicePatterns",
-      "mockServiceGetTeams"
+      "mockServiceSecurityLogin"
     ]
   },
   "services": {
-    "baseline": "localhost:8080",
-    "projects": "localhost:8080",
-    "root": "localhost:8080"
+    "security": "localhost:8080",
+    "api1": "localhost:8081",
+    "api2": "localhost:8082"
   }
 }
