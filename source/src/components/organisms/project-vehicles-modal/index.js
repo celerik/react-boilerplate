@@ -25,6 +25,7 @@ const text = config.text.projectMenu.projectsVehiclesModal;
 
 const ProjectsVehicles = ({
     classes,
+    onClick,
     onClose,
     open,
     projectId
@@ -65,7 +66,7 @@ const ProjectsVehicles = ({
                     className={classes.outlineButton}
                     endIcon="directions_bus"
                     label={text.createVehicleType}
-                    onClick={Function.prototype}
+                    onClick={onClick}
                 />
                 <Actionbutton
                     className={classes.outlineButton}
