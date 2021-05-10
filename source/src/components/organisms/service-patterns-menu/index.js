@@ -44,7 +44,6 @@ const ServicePatterns = ({
     const handleLock = async () => {
         await Project.updateServicePatternLock(projectId);
         handleClose();
-        history.push(config.routes.dashboard.projects.url);
     };
 
     useEffect(async () => {
