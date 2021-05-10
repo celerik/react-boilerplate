@@ -17,7 +17,6 @@ import styles from './styles';
 const AlertDialog = ({
     actions,
     classes,
-    colorChange,
     content,
     id,
     isExitButtonVisible,
@@ -49,6 +48,7 @@ const AlertDialog = ({
         <DialogActions className={classes.bottomActions}>
             {actions.map((action, index) => (
                 <Button
+                    disabled={action.disabled}
                     id={`${id}-action-${index}`}
                     key={index}
                     onClick={action.onClick}
@@ -58,12 +58,12 @@ const AlertDialog = ({
                     )}
                     style={{
                         backgroundColor: action.filled
-                            ? colorChange
+                            ? action.colorChange
                             : 'transparent',
-                        borderColor: colorChange
+                        borderColor: action.borderColor
                     }}
                 >
-                {action.name}
+                    {action.name}
                 </Button>
             ))}
         </DialogActions>
@@ -72,12 +72,13 @@ const AlertDialog = ({
 
 AlertDialog.propTypes = {
     actions: PropTypes.arrayOf(PropTypes.shape({
-        onClick: PropTypes.func,
+        borderColor: PropTypes.string,
+        colorChange: PropTypes.object,
         filled: PropTypes.bool,
-        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired
+        name: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
+        onClick: PropTypes.func
     })),
     classes: PropTypes.object.isRequired,
-    colorChange: PropTypes.object,
     content: PropTypes.object.isRequired,
     id: PropTypes.string.isRequired,
     isExitButtonVisible: PropTypes.bool,
@@ -87,8 +88,9 @@ AlertDialog.propTypes = {
 };
 
 AlertDialog.defaultProps = {
-    actions: [],
-    colorChange: theme.palette.primary.light,
+    actions: [{
+        colorChange: theme.palette.primary.light
+    }],
     isExitButtonVisible: true
 };
 

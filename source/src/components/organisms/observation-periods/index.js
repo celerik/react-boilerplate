@@ -12,6 +12,7 @@ import ButtonAction from '../../atoms/button';
 import Calendar from '../calendar';
 import HistoryList from '../../molecules/history-list';
 import { config } from '../../../config';
+import { datesAreOnSameDay } from '../../../util/date';
 import { format } from '../../../util/string';
 
 // @styles
@@ -24,6 +25,8 @@ const ServicePatterns = ({
 }) => {
     const theme = useTheme();
     const [observationModalVisible, setObservationModalVisibility] = useState(false);
+    const [selectedDates, onChange] = useState([new Date(), new Date()]);
+
     const { params: { projectId } } = match;
     const { projects } = useSelector(state => ({
         projects: state.projects
@@ -64,20 +67,24 @@ const ServicePatterns = ({
             <AlertDialog
                 actions={[
                     {
+                        borderColor: theme.palette.primary.warn,
+                        colorChange: theme.palette.primary.warn,
                         name: config.text.observationPeriodsPage.cancel,
                         onClick: handleClose
                     },
                     {
+                        borderColor: !datesAreOnSameDay(selectedDates[0], selectedDates[1]) ? theme.palette.primary.warn : theme.palette.primary.disabled,
+                        colorChange: !datesAreOnSameDay(selectedDates[0], selectedDates[1]) ? theme.palette.primary.warn : theme.palette.primary.disabled,
+                        disabled: datesAreOnSameDay(selectedDates[0], selectedDates[1]),
                         filled: true,
                         name: config.text.observationPeriodsPage.observationPeriods,
                         onClick: handleClose
                     }
                 ]}
-                colorChange={theme.palette.primary.warn}
                 content={(
                     <>
                         <div className={classes.titleContainer}>{config.text.observationPeriodsPage.content}</div>
-                        <Calendar />
+                        <Calendar onChange={onChange} selectedDates={selectedDates} />
                     </>
                 )}
                 isExitButtonVisible={false}

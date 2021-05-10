@@ -9,6 +9,7 @@ const colors = {
         background5: '#F6F6F6',
         background6: '#FFFBF5'
     },
+    disabled: '#FEF1E2',
     lile: '#8675FF',
     mint: '#7FE3A7',
     night: '#3B3664',
@@ -42,13 +43,14 @@ export const theme = createMuiTheme({
         },
         primary: {
             contrastText: colors.background.background4,
+            dark: colors.night,
+            disabled: colors.disabled,
             error: colors.salmon,
             info: colors.sky,
             light: colors.lile,
             main: colors.purple,
             success: colors.mint,
-            warn: colors.summer,
-            dark: colors.night
+            warn: colors.summer
         },
         text: {
             primary: colors.text.text1,

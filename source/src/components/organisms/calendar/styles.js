@@ -89,8 +89,20 @@ export default theme => ({
             '& span': {
                 display: 'flex'
             }
+        },
+        '& .react-calendar__decade-view__years__year': {
+            height: 60,
+            '&:hover': {
+                border: `1px solid ${theme.palette.primary.warn}`,
+                borderRadius: 5
+            }
+        },
+        '& .react-calendar__year-view__months__month': {
+            '&:hover': {
+                border: `1px solid ${theme.palette.primary.warn}`,
+                borderRadius: 5
+            }
         }
-
     },
     outLineBorder: {
         '& .react-calendar__tile--rangeStart': {

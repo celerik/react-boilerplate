@@ -8,20 +8,19 @@ import { withStyles } from '@material-ui/core';
 
 // @scripts
 import { ReactComponent as ArrowIcon } from './arrow-icon.svg';
+import { datesAreOnSameDay } from '../../../util/date';
 
 // @styles
 import styles from './styles';
 
 const Calendar = ({
     classes,
-    id
+    id,
+    onChange,
+    selectedDates
 }) => {
-    const [selectedDates, onChange] = useState([new Date(), new Date()]);
     const [outLineBorder, setOutLineBorder] = useState();
-
-    const datesAreOnSameDay = (first, second) => first.getFullYear() === second.getFullYear()
-            && first.getMonth() === second.getMonth()
-            && first.getDate() === second.getDate();
+    const maxDate = new Date(new Date().getFullYear(), 11, 31);
 
     const onChangeDate = (data) => {
         if (datesAreOnSameDay(data[0], data[1])) {
@@ -36,29 +35,29 @@ const Calendar = ({
         <div className={classNames(classes.calendar, outLineBorder)} id={id}>
             <ReactCalendar
                 calendarType="US"
-                navigationLabel={({ date, view }) => (
-                    <div>
-                        {moment(date).format(view === 'month' ? 'MMMM' : 'YYYY')}
-                    </div>
+                navigationLabel={({ date, view, label }) => (
+                    <>
+                        {view === 'month'
+                            ? moment(date).format(view === 'month' ? 'MMMM' : 'YYYY')
+                            : label}
+                    </>
                 )}
-                tileContent={({
-                    date,
-                    view
-                }) => view === 'month' && (
+                tileContent={({ date, view }) => view === 'month' && (
                     <span className={classes.rangeSpan}>
                         {date.getDate()}
                     </span>
                 )}
                 next2Label={null}
                 formatMonth={(_, date) => (
-                    <div>{moment(date).format('MMM')}</div>
+                    <>{moment(date).format('MMM')}</>
                 )}
+                maxDate={maxDate}
+                minDetail="decade"
                 nextLabel={<ArrowIcon />}
+                onChange={onChangeDate}
                 prev2AriaLabel={null}
                 prev2Label={null}
                 prevLabel={<ArrowIcon />}
-                minDetail="year"
-                onChange={onChangeDate}
                 selectRange
                 value={selectedDates}
             />
@@ -68,7 +67,9 @@ const Calendar = ({
 
 Calendar.propTypes = {
     classes: PropTypes.object.isRequired,
-    id: PropTypes.string.isRequired
+    id: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
+    selectedDates: PropTypes.arrayOf(PropTypes.string).isRequired
 };
 
 Calendar.defaultProps = {};
