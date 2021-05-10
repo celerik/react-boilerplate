@@ -95,6 +95,22 @@ class Project {
         }
     }
 
+    /*
+    * @param {String} projectId
+    */
+    static async updateServicePatternLock(projectId) {
+        try {
+            await axios.put(format(config.services.servicePatterns.updateLock, projectId));
+        } catch (error) {
+            globalUI.showAlertNotificationError(
+                config.text.editServicePattern.lock,
+                error.message
+            );
+
+            throw error;
+        }
+    }
+
     static async getVehicles(projectId) {
         try {
             const projectsVehicles = await axios.get(

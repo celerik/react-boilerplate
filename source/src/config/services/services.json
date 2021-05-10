@@ -15,7 +15,8 @@
   },
   "servicePatterns": {
     "getServicePattern": "{projects}/projects/{0}/servicePatterns/{1}",
-    "settings": "{projects}/projects/{0}/servicePatterns/{1}/settings"
+    "settings": "{projects}/projects/{0}/servicePatterns/{1}/settings",
+    "updateLock": "{projects}/projects/{0}/servicePatterns/lock"
   },
   "security": {
     "login": "{root}/login"

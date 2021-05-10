@@ -6,11 +6,12 @@ import Typography from '@material-ui/core/Typography';
 import { withStyles, useTheme } from '@material-ui/core';
 
 // @scripts
-import Actionbutton from '../../atoms/button';
+import ActionButton from '../../atoms/button';
 import AlertDialog from '../alert-dialog';
 import BackToButton from '../../molecules/back-to-button';
 import IconButton from '../../atoms/icon-button';
 import Item from '../../atoms/item';
+import LockedIcon from '../../atoms/locked-icon';
 import ProjectSettingsModal from '../project-settings';
 import ProjectVehiclesModal from '../project-vehicles-modal';
 import ProjectVehiclesModalType from '../create-vehicle-type';
@@ -40,6 +41,7 @@ const ProjectMenu = ({
     const { params: { projectId } } = match;
     const projects = useSelector(state => state.projects);
     const project = projects.find(project => project.projectId === projectId);
+    const locked = project?.servicePatternsLocked;
     const theme = useTheme();
 
     if (!project) {
@@ -70,7 +72,7 @@ const ProjectMenu = ({
     };
 
     const actions = [{
-        icon: 'lock_open_outlined',
+        icon: <LockedIcon isLocked={locked} id={projectId} />,
         onClick: Function.prototype
     }];
 
@@ -103,31 +105,31 @@ const ProjectMenu = ({
                         <Icon>{menuOption.icon}</Icon>
                         <Item
                             className={classes.centerIcon}
+                            showActions
                             iconButtons={index === 0 ? actions : []}
                             text={config.text.projectMenu[menuOption.name]}
+                            textClass={classes.optionText}
                         />
                     </div>
                 ))}
             </div>
-            <Actionbutton
+            <ActionButton
                 className={classes.buttonAdd}
                 id={`${id}-run-project`}
                 label={config.text.projectMenu.title}
                 onClick={handleClickOpen}
             />
             <AlertDialog
-                actions={
-                    [
-                        {
-                            name: config.text.projectMenu.createTimeboards,
-                            onClick: Function.prototype
-                        },
-                        {
-                            name: config.text.projectMenu.createSchedule,
-                            onClick: Function.prototype
-                        }
-                    ]
-                }
+                actions={[
+                    {
+                        name: config.text.projectMenu.createTimeBoards,
+                        onClick: Function.prototype
+                    },
+                    {
+                        name: config.text.projectMenu.createSchedule,
+                        onClick: Function.prototype
+                    }
+                ]}
                 content={config.text.projectMenu.contents}
                 id={`${id}-run-project-modal`}
                 onClose={handleClose}

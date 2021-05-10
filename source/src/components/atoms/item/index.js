@@ -10,6 +10,7 @@ import { withStyles } from '@material-ui/core';
 import styles from './styles';
 
 const Item = ({
+    showActions,
     className,
     classes,
     iconButtons,
@@ -21,14 +22,22 @@ const Item = ({
     variant
 }) => {
     const itemContainer = classNames(className, classes.itemContainer);
-    const [actionsVisible, setActionsVisibility] = useState(false);
+    const [actionsVisible, setActionsVisibility] = useState(showActions);
 
     const onBlurItem = () => {
+        if (showActions) {
+            return;
+        }
+
         setActionsVisibility(false);
         onBlur(value);
     };
 
     const onHoverItem = () => {
+        if (showActions) {
+            return;
+        }
+
         setActionsVisibility(true);
         onHover(value);
     };
@@ -70,6 +79,7 @@ Item.propTypes = {
     id: PropTypes.string.isRequired,
     onBlur: PropTypes.func,
     onHover: PropTypes.func,
+    showActions: PropTypes.bool,
     text: PropTypes.string.isRequired,
     value: PropTypes.string.isRequired,
     variant: PropTypes.string
@@ -77,9 +87,10 @@ Item.propTypes = {
 
 Item.defaultProps = {
     className: '',
+    iconButtons: [],
     onBlur: Function.prototype,
     onHover: Function.prototype,
-    iconButtons: [],
+    showActions: false,
     variant: 'body1'
 };
 
