@@ -30,13 +30,12 @@ const DefaultActionBar = ({
         return null;
     }
 
-    const dispatch = useDispatch();
     const history = useHistory();
 
     const onSelectItem = item => (event) => {
         event.stopPropagation();
         onCollapse();
-        history.push(item);
+        history.replace(item);
     };
 
     const topActions = [
@@ -55,7 +54,7 @@ const DefaultActionBar = ({
             expanded={isExpanded}
             icon="data_usage"
             key="home2"
-            onClick={onSelectItem('/dashboard/home2')}
+            onClick={onSelectItem(config.routes.dashboard.page1.url)}
         />,
         isExpanded && (
             <Divider

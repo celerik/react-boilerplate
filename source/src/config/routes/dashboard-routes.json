@@ -1,12 +1,12 @@
 {
     "page1": {
-        "component": null,
+        "component": "Component1",
         "name": "Page1",
         "url": "/dashboard/page1"
     },
     "page2": {
-        "component": null,
+        "component": "Component2",
         "name": "Page2",
-        "url": "dashboard/page2"
+        "url": "/dashboard/page2"
     }
 }

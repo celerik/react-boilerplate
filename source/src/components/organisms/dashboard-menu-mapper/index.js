@@ -12,7 +12,15 @@ import { withStyles } from '@material-ui/core';
 // @styles
 import styles from './styles';
 
+/**Create Organisms for these components, or templates/pages */
+const MockComponent = ({ label }) => <div>{label}</div>;
+
+const Component1 = () => <MockComponent label="PAGE 1"/>;
+const Component2 = () => <MockComponent label="PAGE 2"/>;
+
 const componentMapper = {
+    Component1,
+    Component2
 };
 
 const MenuContent = ({
